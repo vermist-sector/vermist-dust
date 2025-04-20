@@ -4,8 +4,8 @@ meta:
   engineVersion: 250.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/20/2025 00:17:49
-  entityCount: 5223
+  time: 04/20/2025 01:35:27
+  entityCount: 5225
 maps:
 - 1
 grids:
@@ -2182,7 +2182,7 @@ entities:
       pos: -15.5,0.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -79170.875
+      secondsUntilStateChange: -79224.664
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2194,7 +2194,7 @@ entities:
       pos: -15.5,-0.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -79169.58
+      secondsUntilStateChange: -79223.37
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2206,7 +2206,7 @@ entities:
       pos: -15.5,1.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -79173.48
+      secondsUntilStateChange: -79227.266
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2223,7 +2223,7 @@ entities:
       pos: -42.5,24.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -27106.48
+      secondsUntilStateChange: -27160.271
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2263,7 +2263,7 @@ entities:
       pos: -33.5,17.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -14998.487
+      secondsUntilStateChange: -15052.278
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -12199,6 +12199,15 @@ entities:
     - type: Transform
       pos: -52.033367,-17.533976
       parent: 2
+- proto: ClothingHeadHatPirateTricord
+  entities:
+  - uid: 5224
+    components:
+    - type: Transform
+      parent: 1816
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingMaskClownSecurity
   entities:
   - uid: 1786
@@ -12233,7 +12242,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ClothingOuterHardsuitSalvage
+- proto: ClothingOuterHardsuitSpatio
   entities:
   - uid: 1817
     components:
@@ -13070,7 +13079,7 @@ entities:
       pos: -17.5,-6.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -77310.48
+      secondsUntilStateChange: -77364.266
       state: Closing
   - uid: 1906
     components:
@@ -24014,6 +24023,8 @@ entities:
           occludes: True
           ents:
           - 1817
+          - 5224
+          - 5225
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -33638,6 +33649,15 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: WeaponRevolverPirate
+  entities:
+  - uid: 5225
+    components:
+    - type: Transform
+      parent: 1816
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: WeaponShotgunKammerer
   entities:
   - uid: 257
@@ -33914,7 +33934,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -15534.187
+      secondsUntilStateChange: -15587.978
       state: Opening
     - type: Airlock
       autoClose: False
@@ -34505,7 +34525,7 @@ entities:
       pos: -21.5,-9.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -23918.982
+      secondsUntilStateChange: -23972.773
       state: Opening
   - uid: 4840
     components:
@@ -34514,7 +34534,7 @@ entities:
       pos: -18.5,-9.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -23918.082
+      secondsUntilStateChange: -23971.873
       state: Opening
   - uid: 4841
     components:
