@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 248.0.2
+  engineVersion: 250.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/19/2025 23:47:24
-  entityCount: 5220
+  time: 04/20/2025 00:17:49
+  entityCount: 5223
 maps:
 - 1
 grids:
@@ -2182,7 +2182,7 @@ entities:
       pos: -15.5,0.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -79063.36
+      secondsUntilStateChange: -79170.875
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2194,7 +2194,7 @@ entities:
       pos: -15.5,-0.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -79062.06
+      secondsUntilStateChange: -79169.58
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2206,7 +2206,7 @@ entities:
       pos: -15.5,1.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -79065.96
+      secondsUntilStateChange: -79173.48
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2223,7 +2223,7 @@ entities:
       pos: -42.5,24.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -26998.97
+      secondsUntilStateChange: -27106.48
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2263,7 +2263,7 @@ entities:
       pos: -33.5,17.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -14890.976
+      secondsUntilStateChange: -14998.487
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -6281,6 +6281,21 @@ entities:
     components:
     - type: Transform
       pos: -28.5,0.5
+      parent: 2
+  - uid: 5221
+    components:
+    - type: Transform
+      pos: -13.5,-7.5
+      parent: 2
+  - uid: 5222
+    components:
+    - type: Transform
+      pos: -14.5,-7.5
+      parent: 2
+  - uid: 5223
+    components:
+    - type: Transform
+      pos: -14.5,-8.5
       parent: 2
 - proto: CableApcStack10
   entities:
@@ -13055,7 +13070,7 @@ entities:
       pos: -17.5,-6.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -77202.96
+      secondsUntilStateChange: -77310.48
       state: Closing
   - uid: 1906
     components:
@@ -23281,11 +23296,6 @@ entities:
     - type: Transform
       pos: -52.5,-10.5
       parent: 2
-  - uid: 3174
-    components:
-    - type: Transform
-      pos: -15.5,-9.5
-      parent: 2
 - proto: HolopadCargoBay
   entities:
   - uid: 3175
@@ -30018,6 +30028,13 @@ entities:
       rot: 3.141592653589793 rad
       pos: -21.5,5.5
       parent: 2
+- proto: VaultDoorCommandLocked
+  entities:
+  - uid: 3174
+    components:
+    - type: Transform
+      pos: -15.5,-9.5
+      parent: 2
 - proto: VendingBarDrobe
   entities:
   - uid: 4067
@@ -33897,7 +33914,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -15426.675
+      secondsUntilStateChange: -15534.187
       state: Opening
     - type: Airlock
       autoClose: False
@@ -34488,7 +34505,7 @@ entities:
       pos: -21.5,-9.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -23811.473
+      secondsUntilStateChange: -23918.982
       state: Opening
   - uid: 4840
     components:
@@ -34497,7 +34514,7 @@ entities:
       pos: -18.5,-9.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -23810.572
+      secondsUntilStateChange: -23918.082
       state: Opening
   - uid: 4841
     components:
