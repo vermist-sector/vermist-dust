@@ -1,84 +1,6 @@
 ﻿Entries:
 - author: Sha-Seng
   changes:
-  - message: Body bags now have high-vis tape on them
-    type: Tweak
-  id: 1115
-  time: '2025-02-13T14:48:00.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1666
-- author: Sha-Seng
-  changes:
-  - message: The WinterDrobe has coat and boot colors now!
-    type: Add
-  id: 1116
-  time: '2025-02-13T14:47:12.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1667
-- author: crocodilecarousel
-  changes:
-  - message: Explorer gas mask got a minor visual refresh.
-    type: Tweak
-  id: 1117
-  time: '2025-02-13T14:46:31.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1664
-- author: AvianMaiden
-  changes:
-  - message: Reverted the Drozd sprite to what it was before
-    type: Remove
-  id: 1118
-  time: '2025-02-13T17:14:41.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1671
-- author: AvianMaiden
-  changes:
-  - message: Reverted the empty gun click sound
-    type: Remove
-  id: 1119
-  time: '2025-02-13T17:19:38.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1672
-- author: Darkmajia
-  changes:
-  - message: Security cadets spawn with sunglasses.
-    type: Add
-  id: 1120
-  time: '2025-02-13T17:20:49.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1653
-- author: MintyTheBinty
-  changes:
-  - message: Changed a few of the suitskirts to now include sheer leggings, plus changed
-      the hue of the nightclub suit's tie to not blend in so much with grey tiles.
-    type: Tweak
-  id: 1121
-  time: '2025-02-13T22:06:18.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1680
-- author: bigsantino1
-  changes:
-  - message: Added a maints bar kit to the cargo request computer.
-    type: Add
-  id: 1122
-  time: '2025-02-13T22:38:49.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1607
-- author: formlessnameless
-  changes:
-  - message: Bonfires can cook things now. Start the cookout.
-    type: Add
-  id: 1123
-  time: '2025-02-14T01:39:44.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1677
-- author: ruddygreat
-  changes:
-  - message: Some cargo items can no longer be bought for less than their sell price.
-    type: Tweak
-  id: 1124
-  time: '2025-02-14T02:22:50.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1681
-- author: TheGrimbeeper
-  changes:
-  - message: reduced radioactivity of uranium and uranium-based materials
-    type: Tweak
-  id: 1125
-  time: '2025-02-14T07:49:54.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/1644
-- author: Sha-Seng
-  changes:
   - message: Portable Criminal Records now fits in the tank slot!
     type: Tweak
   id: 1126
@@ -4156,3 +4078,96 @@
   id: 1614
   time: '2025-05-06T22:43:57.0000000+00:00'
   url: https://github.com/impstation/imp-station-14/pull/2411
+- author: FlippenPage
+  changes:
+  - message: Added the BoogieBot. Craft one today!
+    type: Add
+  id: 1615
+  time: '2025-05-08T20:03:28.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2415
+- author: AvianMaiden
+  changes:
+  - message: Shotgun and axe cabinets finally got cleaned
+    type: Tweak
+  id: 1616
+  time: '2025-05-08T20:04:16.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2416
+- author: hivehum
+  changes:
+  - message: All moths can sigh.
+    type: Fix
+  id: 1617
+  time: '2025-05-08T23:39:19.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2420
+- author: Ecramox
+  changes:
+  - message: The RD has a shiny new cloak in place of the old shitty one.
+    type: Tweak
+  id: 1618
+  time: '2025-05-08T23:40:54.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2418
+- author: hivehum, crocodilecarousel, faelingdraws
+  changes:
+  - message: 65 new markings have been added for further customization.
+    type: Add
+  - message: Gray antennae and ears are visible again.
+    type: Fix
+  id: 1619
+  time: '2025-05-08T23:42:33.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2412
+- author: widgetbeck
+  changes:
+  - message: Anomalites now have unique talk and scream sounds, and access to the
+      emote wheel.
+    type: Tweak
+  - message: Anomalites can now ventcrawl.
+    type: Tweak
+  - message: Anomalites now have unique death sprites.
+    type: Tweak
+  - message: Anomalites now have resistances to relevant damage types.
+    type: Tweak
+  - message: Anomalites can now have their modifiers changed via APEs.
+    type: Fix
+  id: 1620
+  time: '2025-05-08T23:45:55.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2408
+- author: DinnerCalzone
+  changes:
+  - message: Airlocks to escape pods now require maints access instead of external
+      access until roundstart docking is fixed.
+    type: Fix
+  id: 1621
+  time: '2025-05-08T23:47:15.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2424
+- author: CombustibleToast
+  changes:
+  - message: Two new bomber jackets for atmos techs! Find em in your loadout screen
+      or the atmos drobe.
+    type: Add
+  id: 1622
+  time: '2025-05-08T23:58:20.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2388
+- author: ATDoop
+  changes:
+  - message: Coconuts! Grow them and throw them today!
+    type: Add
+  id: 1623
+  time: '2025-05-08T23:59:44.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2373
+- author: jtfg-dev
+  changes:
+  - message: Cassette tapes are now five minutes per side.
+    type: Tweak
+  id: 1624
+  time: '2025-05-09T00:06:47.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2421
+- author: CombustibleToast
+  changes:
+  - message: The lead custodial jumpskirt is no longer called a jumpsuit
+    type: Fix
+  - message: The lead custodial jumpskirt and lead bartending uniform no longer have
+      the option to be folded (wasn't implemented).
+    type: Remove
+  id: 1625
+  time: '2025-05-09T21:14:02.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/2428
