@@ -42,7 +42,7 @@
             Reporter: [1, 1]
             #ServiceWorker: [2, 2]
             # engineering
-            AtmosphericTechnician: [ 2, 2 ]
+            AtmosphericTechnician: [ 1, 1 ]
             StationEngineer: [ 1, 1 ]
             TechnicalAssistant: [ 1, 1 ]
             # medical
