@@ -1,6 +1,6 @@
 <p align="center"> <img src = "https://github.com/impstation/imp-station-14/blob/master/Resources/Textures/Logo/logo.png" width ="300" /> <img src = "https://github.com/vermist-sector/vermist-dust/blob/master/Resources/Textures/Logo/logo_badge.png" width ="300" /> </p>
 
-Vermist Dust is an irregularly-run private Impstation instance that aims to provide a slower pace than Impstation proper. What if I want to play lowpop at 4PM? What then?
+Vermist Dust Sector is an irregularly-run private Impstation instance that aims to provide a slower pace than Impstation proper. What if I want to play lowpop at 4PM? What then?
 
 ---
 
