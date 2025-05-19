@@ -1,4 +1,8 @@
-<p align="center"> <img alt="Impstation" src="https://github.com/impstation/imp-station-14/blob/master/Resources/Textures/Logo/logo.png" /></p>
+<p align="center"> <img src = "https://github.com/impstation/imp-station-14/blob/master/Resources/Textures/Logo/logo.png" width ="300" /> <img src = "https://github.com/vermist-sector/vermist-dust/blob/master/Resources/Textures/Logo/logo_badge.png" width ="300" /> </p>
+
+Vermist Dust Sector is an irregularly-run private Impstation instance that aims to provide a slower pace than Impstation proper. What if I want to play lowpop at 4PM? What then?
+
+---
 
 Impstation is a fork of Space Station 14, a remake of SS13 that runs on [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), a homegrown engine written in C#.
 
