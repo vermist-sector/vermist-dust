@@ -26,6 +26,9 @@ humanoid-profile-editor-cd-records-postmortem = Postmortem Instructions:
 
 # Imp edit for wording; tweaked allergies as one, then box for things like DNR or other
 
+# Admin
+humanoid-profile-editor-cd-records-admin = Admin
+
 # Entries
 humanoid-profile-editor-cd-records-add-entry = Add Entry
 humanoid-profile-editor-cd-records-edit-entry = Edit Entry
