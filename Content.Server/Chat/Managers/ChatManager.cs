@@ -282,7 +282,20 @@ internal sealed partial class ChatManager : IChatManager
         {
             oocColor = prefs.OOCColor.ToHex();
         }
+        // Normal OOC Message
+        wrappedMessage = Loc.GetString("chat-manager-send-ooc-wrap-message",
+                ("playerName", player.Name),
+                ("message", FormattedMessage.EscapeText(message)),
+                ("oocColor", oocColor));
 
+        if (_netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) && player.Channel.UserData.PatronTier is { } patron && PatronOocColors.TryGetValue(patron, out var patronColor))
+        {
+            // Patron OOC Message
+            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message",
+                ("patronColor", patronColor),
+                ("playerName", player.Name),
+                ("message", FormattedMessage.EscapeText(message)));
+        }
         if (_adminManager.HasAdminFlag(player, AdminFlags.NameColor) && _preferencesManager.TryGetCachedPreferences(player.UserId, out var adminPrefs))
         {
             // Get admin preferences and colors
@@ -292,34 +305,11 @@ internal sealed partial class ChatManager : IChatManager
 
             // Admin OOC message
             wrappedMessage = Loc.GetString("chat-manager-send-ooc-admin-wrap-message",
-                ("playerName", player.Name),
-                ("message", FormattedMessage.EscapeText(message)),
-                ("oocColor", oocColor),
-                ("adminOOCColor", adminOOCColor));
-
-            ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);
-            _mommiLink.SendOOCMessage(player.Name, message.Replace("@", "\\@").Replace("<", "\\<").Replace("/", "\\/")); // @ and < are both problematic for discord due to pinging. / is sanitized solely to kneecap links to murder embeds via blunt force
-            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"OOC from {player:Player}: {message}");
-            return;
+                    ("playerName", player.Name),
+                    ("message", FormattedMessage.EscapeText(message)),
+                    ("oocColor", oocColor),
+                    ("adminOOCColor", adminOOCColor));
         }
-        if (_netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) && player.Channel.UserData.PatronTier is { } patron && PatronOocColors.TryGetValue(patron, out var patronColor))
-        {
-            // Patron OOC Message
-            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message",
-                ("patronColor", patronColor),
-                ("playerName", player.Name),
-                ("message", FormattedMessage.EscapeText(message)));
-
-            ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);
-            _mommiLink.SendOOCMessage(player.Name, message.Replace("@", "\\@").Replace("<", "\\<").Replace("/", "\\/")); // @ and < are both problematic for discord due to pinging. / is sanitized solely to kneecap links to murder embeds via blunt force
-            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"OOC from {player:Player}: {message}");
-            return;
-        }
-        // Normal OOC Message
-        wrappedMessage = Loc.GetString("chat-manager-send-ooc-wrap-message",
-            ("playerName", player.Name),
-            ("message", FormattedMessage.EscapeText(message)),
-            ("oocColor", oocColor));
 
         ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);
         _discordLink.SendMessage(message, player.Name, ChatChannel.OOC);
