@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 260.2.0
+  engineVersion: 261.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/18/2025 20:34:04
-  entityCount: 45255
+  time: 06/27/2025 18:08:36
+  entityCount: 45262
 maps:
 - 1
 grids:
@@ -126,9 +126,7 @@ entities:
     - type: Transform
     - type: Map
       mapPaused: True
-    - type: PhysicsMap
     - type: GridTree
-    - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
   - uid: 2
@@ -17529,52 +17527,6 @@ entities:
     - type: Transform
       pos: -109.44115,76.63715
       parent: 2
-- proto: ActionToggleInternals
-  entities:
-  - uid: 37988
-    components:
-    - type: Transform
-      parent: 14497
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 14497
-  - uid: 37990
-    components:
-    - type: Transform
-      parent: 14510
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 14510
-  - uid: 37993
-    components:
-    - type: Transform
-      parent: 42249
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 42249
-- proto: ActionToggleJetpack
-  entities:
-  - uid: 36839
-    components:
-    - type: Transform
-      parent: 14497
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 14497
-  - uid: 37989
-    components:
-    - type: Transform
-      parent: 14510
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 14510
-  - uid: 37991
-    components:
-    - type: Transform
-      parent: 42249
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 42249
 - proto: AirAlarm
   entities:
   - uid: 37
@@ -20111,7 +20063,7 @@ entities:
       pos: 16.5,-9.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -1246528.8
+      secondsUntilStateChange: -1247014.6
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -22555,7 +22507,7 @@ entities:
       pos: -40.5,-18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -375734.28
+      secondsUntilStateChange: -376220.12
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -22616,7 +22568,7 @@ entities:
       pos: -66.5,139.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -324471.3
+      secondsUntilStateChange: -324957.16
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -22822,7 +22774,7 @@ entities:
       pos: -46.5,155.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -327620.38
+      secondsUntilStateChange: -328106.22
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -23266,7 +23218,7 @@ entities:
       pos: 5.5,2.5
       parent: 13260
     - type: Door
-      secondsUntilStateChange: -331431.75
+      secondsUntilStateChange: -331917.6
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -114649,7 +114601,7 @@ entities:
       pos: 55.5,-23.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -7308.7856
+      secondsUntilStateChange: -7794.6147
       state: Closing
   - uid: 29835
     components:
@@ -199560,7 +199512,7 @@ entities:
       pos: -24.5,-48.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -630438.7
+      secondsUntilStateChange: -630924.5
       state: Opening
   - uid: 18444
     components:
@@ -200451,49 +200403,16 @@ entities:
     - type: Transform
       pos: 103.73704,72.61116
       parent: 2
-    - type: GasTank
-      toggleActionEntity: 37988
-    - type: Jetpack
-      toggleActionEntity: 36839
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 36839
-          - 37988
   - uid: 14510
     components:
     - type: Transform
       pos: 103.24781,72.57447
       parent: 2
-    - type: GasTank
-      toggleActionEntity: 37990
-    - type: Jetpack
-      toggleActionEntity: 37989
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 37989
-          - 37990
   - uid: 42249
     components:
     - type: Transform
       pos: 90.36691,67.71111
       parent: 2
-    - type: GasTank
-      toggleActionEntity: 37993
-    - type: Jetpack
-      toggleActionEntity: 37991
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 37991
-          - 37993
 - proto: JetpackSecurityFilled
   entities:
   - uid: 22573
@@ -203970,13 +203889,6 @@ entities:
     - type: Transform
       pos: -14.482232,164.46252
       parent: 2
-- proto: MatterBinStockPart
-  entities:
-  - uid: 13270
-    components:
-    - type: Transform
-      pos: -25.025364,-22.571075
-      parent: 2
 - proto: MeatwheatBushel
   entities:
   - uid: 28725
@@ -204299,6 +204211,13 @@ entities:
     components:
     - type: Transform
       pos: -91.5,3.5
+      parent: 2
+- proto: MicroManipulatorStockPart
+  entities:
+  - uid: 13270
+    components:
+    - type: Transform
+      pos: -25.025364,-22.571075
       parent: 2
 - proto: MicrophoneInstrument
   entities:
@@ -279656,61 +279575,126 @@ entities:
     - type: Transform
       pos: -65.5,-25.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 12218
     components:
     - type: Transform
       pos: -62.5,-28.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 19117
     components:
     - type: Transform
       pos: -72.5,-28.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 22538
     components:
     - type: Transform
       pos: -62.5,-35.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 22578
     components:
     - type: Transform
       pos: -43.5,-28.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 36839
   - uid: 22608
     components:
     - type: Transform
       pos: -43.5,-25.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 36839
   - uid: 22610
     components:
     - type: Transform
       pos: -65.5,-18.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 22617
     components:
     - type: Transform
       pos: -65.5,-35.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 22818
     components:
     - type: Transform
       pos: -55.5,-29.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 22819
     components:
     - type: Transform
       pos: -55.5,-24.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 22820
     components:
     - type: Transform
       pos: -72.5,-25.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
   - uid: 23003
     components:
     - type: Transform
       pos: -62.5,-18.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37988
+- proto: WeaponEnergyTurretAIControlPanel
+  entities:
+  - uid: 36839
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -42.5,-22.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 22578
+      - 22608
+  - uid: 37988
+    components:
+    - type: Transform
+      pos: -58.5,-25.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 22819
+      - 22818
+      - 5080
+      - 12218
+      - 22820
+      - 19117
+      - 22617
+      - 22538
+      - 23003
+      - 22610
 - proto: WeaponEnergyTurretStation
   entities:
   - uid: 17372
@@ -279718,21 +279702,128 @@ entities:
     - type: Transform
       pos: 52.5,176.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 45256
   - uid: 17373
     components:
     - type: Transform
       pos: 46.5,176.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 45256
   - uid: 20407
     components:
     - type: Transform
       pos: 47.5,148.5
       parent: 2
+  - uid: 37989
+    components:
+    - type: Transform
+      pos: -0.5,-3.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37993
+  - uid: 37990
+    components:
+    - type: Transform
+      pos: 7.5,-3.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37993
+  - uid: 37991
+    components:
+    - type: Transform
+      pos: 3.5,-2.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 37993
   - uid: 40651
     components:
     - type: Transform
       pos: 93.5,124.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 45262
+  - uid: 45257
+    components:
+    - type: Transform
+      pos: 45.5,169.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 45261
+  - uid: 45258
+    components:
+    - type: Transform
+      pos: 53.5,169.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 45261
+  - uid: 45259
+    components:
+    - type: Transform
+      pos: 45.5,161.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 45261
+  - uid: 45260
+    components:
+    - type: Transform
+      pos: 53.5,161.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 45261
+- proto: WeaponEnergyTurretStationControlPanel
+  entities:
+  - uid: 37993
+    components:
+    - type: Transform
+      pos: -2.5,-7.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 37991
+      - 37990
+      - 37989
+  - uid: 45256
+    components:
+    - type: Transform
+      pos: 48.5,171.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 17373
+      - 17372
+  - uid: 45261
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 47.5,167.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 45260
+      - 45259
+      - 45257
+      - 45258
+  - uid: 45262
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 89.5,122.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 40651
 - proto: WeaponGrapplingGun
   entities:
   - uid: 10707
@@ -280390,7 +280481,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -335259.72
+      secondsUntilStateChange: -335745.56
       state: Opening
     - type: Airlock
       autoClose: False
@@ -280617,7 +280708,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -715982.75
+      secondsUntilStateChange: -716468.56
       state: Opening
     - type: Airlock
       autoClose: False
@@ -285678,7 +285769,7 @@ entities:
       pos: 10.5,6.5
       parent: 13260
     - type: Door
-      secondsUntilStateChange: -826430.2
+      secondsUntilStateChange: -826916
       state: Opening
   - uid: 13491
     components:
