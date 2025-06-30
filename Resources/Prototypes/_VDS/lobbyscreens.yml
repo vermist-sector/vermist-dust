@@ -1,0 +1,5 @@
+- type: lobbyBackground
+  id: GravitationalPull
+  background: /Textures/_VDS/LobbyScreens/gravitational_pull.webp
+  name: gravitational pull
+  artist: (blackmage)mathie
