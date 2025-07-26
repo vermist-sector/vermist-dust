@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made by Jellvisk. Special thanks to Ruddygreat for making it so decals can take a shader.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "unshadedLine"
+    },
+    {
+      "name": "unshadedLineCenter"
+    },
+    {
+      "name": "unshadedLineCenterCorner"
+    },
+    {
+      "name": "unshadedLineCenterDiagonal"
+    },
+    {
+      "name": "unshadedLineCenterInnerDiagonal"
+    },
+    {
+      "name": "unshadedLineCenterRounded"
+    },
+    {
+      "name": "unshadedLineCorner"
+    },
+    {
+      "name": "unshadedLineDiagonal"
+    },
+    {
+      "name": "unshadedLineInnerDiagonal"
+    },
+    {
+      "name": "unshadedLineRounded"
+    },
+    {
+      "name": "unshadedLineLongDiagonal1"
+    },
+    {
+      "name": "unshadedLineLongDiagonal2"
+    }
+  ]
+}

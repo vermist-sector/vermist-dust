@@ -1,0 +1,107 @@
+- type: decal
+  id: UnshadedLine
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLine
+
+- type: decal
+  id: UnshadedLineCenter
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineCenter
+
+- type: decal
+  id: UnshadedLineCenterCorner
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineCenterCorner
+
+- type: decal
+  id: UnshadedLineCenterDiagonal
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineCenterDiagonal
+
+- type: decal
+  id: UnshadedLineCenterInnerDiagonal
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineCenterInnerDiagonal
+
+- type: decal
+  id: UnshadedLineCenterRounded
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineCenterRounded
+
+- type: decal
+  id: UnshadedLineCorner
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineCorner
+
+- type: decal
+  id: UnshadedLineDiagonal
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineDiagonal
+
+- type: decal
+  id: UnshadedLineInnerDiagonal
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineInnerDiagonal
+
+- type: decal
+  id: UnshadedLineRounded
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineRounded
+
+- type: decal
+  id: UnshadedLineLongDiagonal1
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineLongDiagonal1
+
+- type: decal
+  id: UnshadedLineLongDiagonal2
+  tags: ["unshaded", "line"]
+  defaultCustomColor: true
+  shaderID: "unshaded"
+  sprite:
+    sprite: _Impstation/Decals/Unshaded/lines.rsi
+    state: unshadedLineLongDiagonal2
