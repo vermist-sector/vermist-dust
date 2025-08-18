@@ -34,6 +34,7 @@
   id: NanoMedPlusInventory
   startingInventory:
     HandheldHealthAnalyzer: 3
+    Gauze: 5
     Brutepack: 5
     Ointment: 5
     ChemistryBottleParacetamol: 3 # Offbrand
@@ -43,12 +44,20 @@
     TourniquetOffbrand: 2 # Offbrand
     Splints: 2 # Offbrand
     ChemistryBottleEpinephrine: 3
+    ChemistryBottleBicaridine: 1
     Syringe: 5
     BoxBottle: 3
+    PillCanisterTricordrazine: 3
+    PillCanisterIron: 1
+    PillCanisterCopper: 1
+    PillCanisterPotassiumIodide: 1
+    PillCanisterIpecac: 1
     ClothingEyesHudMedical: 2
     ClothingEyesEyepatchHudMedical: 2
     ClothingEyesGlassesHudMedical: 2
   contrabandInventory:
+    PillCanisterRandom: 3
+    PillSpaceDrugs: 3
     FoodApple: 1
     ClothingEyesHudMedChem: 1
 
@@ -60,7 +69,6 @@
     Gauze: 5
     Brutepack: 5
     Ointment: 4
-    Bloodpack: 5
     TourniquetOffbrand: 1 # Offbrand
     ChemistryBottleEpinephrine: 3
     Syringe: 5
