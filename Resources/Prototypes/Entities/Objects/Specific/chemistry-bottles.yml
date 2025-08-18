@@ -351,18 +351,18 @@
           Quantity: 30
 
 - type: entity
-  id: ChemistryBottleDiphendydramine
-  suffix: diphendydramine
+  id: ChemistryBottleDiphenhydramine
+  suffix: diphenhydramine
   parent: BaseChemistryBottleFilled
   components:
   - type: Label
-    currentLabel: reagent-name-diphendydramine
+    currentLabel: reagent-name-diphenhydramine
   - type: SolutionContainerManager
     solutions:
       drink:
         maxVol: 30
         reagents:
-        - ReagentId: Diphendydramine
+        - ReagentId: Diphenhydramine
           Quantity: 30
 
 - type: entity
@@ -471,7 +471,7 @@
           Quantity: 30
 
 - type: entity
-  id: ChemistryBottleHolyWater
+  id: ChemistryBottleHolywater
   suffix: holy water
   parent: BaseChemistryBottleFilled
   components:
@@ -482,7 +482,7 @@
       drink:
         maxVol: 30
         reagents:
-        - ReagentId: HolyWater
+        - ReagentId: Holywater
           Quantity: 30
 
 - type: entity
