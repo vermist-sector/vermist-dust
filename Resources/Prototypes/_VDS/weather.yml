@@ -1,0 +1,5 @@
+- type: weather
+  id: DustSprinkle
+  sprite:
+    sprite: /Textures/_VDS/Effects/weather.rsi
+    state: dust_sprinkle
