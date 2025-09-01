@@ -274,16 +274,16 @@
   components:
     - type: Physics
       canCollide: false
-    - type: Occluder
+    # - type: Occluder # VDS. fuck that.
     - type: Sprite
       drawdepth: Effects
-      sprite: Effects/spookysmoke.rsi
+      sprite: _VDS/Effects/spookysmoke.rsi # VDS
       layers:
       - state: spookysmoke
         color: "#793a80dd"
         map: [base]
     - type: Kudzu
-      growthTickChance: 0.2
+      growthTickChance: 0.1 # VDS, 0.2 to 0.1.
       spreadChance: 0.99
     - type: RandomSpawner
       deleteSpawnerAfterSpawn: false
@@ -293,7 +293,7 @@
       prototypes:
       - ShadowBasaltRandom
       rarePrototypes:
-      - ShadowPortal
+      # - ShadowPortal # VDS. no.
       - ShadowKudzuLootSpawner
     - type: Tag
       tags:
