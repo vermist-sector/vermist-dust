@@ -86,17 +86,29 @@ namespace Content.Client.Flash
             {
                 // TODO: This is a very simple placeholder.
                 // Replace it with a proper shader once we come up with something good.
-                // Turns out making an effect that is supposed to be a bright, sudden, and disorienting flash 
+                // Turns out making an effect that is supposed to be a bright, sudden, and disorienting flash
                 // not do any of that while also being equivalent in terms of game balance is hard.
-                var alpha = 1 - MathF.Pow(PercentComplete, 8f); // similar falloff curve to the flash shader
-                worldHandle.DrawRect(args.WorldBounds, new Color(0f, 0f, 0f, alpha));
+
+                // VDS
+                var alpha = 1 - MathF.Pow(PercentComplete, 8f) - 0.2f;
+                var alphashade = 1 - MathF.Pow(PercentComplete, 10f) - 0.1f;
+                worldHandle.DrawTextureRectRegion(ScreenshotTexture, args.WorldBounds, new Color(1f, 1f, 1f, alpha));
+                worldHandle.DrawTextureRectRegion(ScreenshotTexture, args.WorldBounds, new Color(0f, 0f, 0f, alphashade));
+                // VDS end
             }
             else
             {
-                _shader.SetParameter("percentComplete", PercentComplete);
-                worldHandle.UseShader(_shader);
-                worldHandle.DrawTextureRectRegion(ScreenshotTexture, args.WorldBounds);
-                worldHandle.UseShader(null);
+                // VDS
+                var alpha = 1 - MathF.Pow(PercentComplete, 8f) - 0.2f;
+                var alphashade = 1 - MathF.Pow(PercentComplete, 10f) - 0.1f;
+                worldHandle.DrawTextureRectRegion(ScreenshotTexture, args.WorldBounds, new Color(1f, 1f, 1f, alpha));
+                worldHandle.DrawTextureRectRegion(ScreenshotTexture, args.WorldBounds, new Color(0f, 0f, 0f, alphashade));
+                //VDS end
+
+                // _shader.SetParameter("percentComplete", PercentComplete);
+                // worldHandle.UseShader(_shader); // VDS - no
+                // worldHandle.DrawTextureRectRegion(ScreenshotTexture, args.WorldBounds);
+                // worldHandle.UseShader(null);
             }
         }
 
