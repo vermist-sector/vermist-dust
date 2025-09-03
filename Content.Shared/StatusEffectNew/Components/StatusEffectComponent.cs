@@ -24,6 +24,12 @@ public sealed partial class StatusEffectComponent : Component
     /// When this effect will end. If Null, the effect lasts indefinitely.
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField, AutoNetworkedField]
+    public TimeSpan? StartEffectTime;
+
+    /// <summary>
+    /// When this effect will end. If Null, the effect lasts indefinitely.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField, AutoNetworkedField]
     public TimeSpan? EndEffectTime;
 
     /// <summary>
