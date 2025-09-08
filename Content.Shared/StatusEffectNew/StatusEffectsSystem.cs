@@ -215,6 +215,8 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         SetStatusEffectEndTime((effect.Value, effectComp), endTime); //Fix null delay causing null time
         SetStatusEffectStartTime(effect.Value, _timing.CurTime + delay);
 
+        TryApplyStatusEffect((effect.Value, effectComp));
+
         return true;
     }
 
