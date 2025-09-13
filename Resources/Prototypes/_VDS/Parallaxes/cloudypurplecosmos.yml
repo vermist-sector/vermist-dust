@@ -1,0 +1,61 @@
+- type: parallax
+  id: CloudyPurpleCosmos
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/1-space.png"
+      slowness: 0.999
+      scale: "2, 2"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/2-starsbg.png"
+      slowness: 0.998
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/3-starsfg.png"
+      slowness: 0.996
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/4-faintgas.png"
+      slowness: 0.95
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/5-dust.png"
+      slowness: 0.990
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/6-speckle.png"
+      slowness: 0.983
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/7-farjunk.png"
+      slowness: 0.982
+      scale: "1, 1"
+      scrolling: "0.0877777, 0.038046875"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/8-bgclouds.png"
+      slowness: 0.980
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/9-fgclouds.png"
+      slowness: 0.968
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/10-junk.png"
+      slowness: 0.966
+      scale: "1, 1"
+      scrolling: "-0.00976656, 0.098046875"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/CloudyPurpleCosmos/11-junk2.png"
+      slowness: 0.960
+      scale: "1, 1"
+      scrolling: "0.0977777, -0.098846875"
