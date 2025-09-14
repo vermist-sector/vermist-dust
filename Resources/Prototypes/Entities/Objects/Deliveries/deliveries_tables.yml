@@ -100,6 +100,8 @@
       - id: Tincture
     - !type:NestedSelector
       tableId: LetterImpRareEntityTable # end imp
+      - id: Bloodpack
+      - id: ChemistryBottleParacetamol # Offbrand
 
 # Packages
 # TODO: Currently mostly maints loot, should be updated in the future.

@@ -1,4 +1,4 @@
-﻿using Content.Shared._Impstation.Construction.Steps;
+using Content.Shared._Impstation.Construction.Steps;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown.Mapping;
@@ -51,6 +51,12 @@ namespace Content.Shared.Construction.Steps
             {
                 return typeof(EntityRemoveConstructionGraphStep);
             }
+            // Begin Offbrand
+            if (node.Has("whitelist") || node.Has("blacklist"))
+            {
+                return typeof(Content.Shared._Offbrand.Surgery.WhitelistConstructionGraphStep);
+            }
+            // End Offbrand
 
             return null;
         }

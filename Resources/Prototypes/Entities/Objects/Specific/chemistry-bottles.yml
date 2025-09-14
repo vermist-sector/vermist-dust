@@ -674,3 +674,89 @@
     - id: ChemistryBottleSodium
     - id: ChemistryBottleSugar
     - id: ChemistryBottleSulfur
+
+- type: entityTable
+  id: CoreMedicineReagentBottleTable
+  table: !type:GroupSelector
+    children:
+    - id: ChemistryBottleBicaridine
+    - id: ChemistryBottleKelotane
+    - id: ChemistryBottleDermaline
+    - id: ChemistryBottleDylovene
+    - id: ChemistryBottleInaprovaline
+    - id: ChemistryBottleDexalin
+    - id: ChemistryBottleDexalinPlus
+    - id: ChemistryBottleSaline
+    - id: ChemistryBottleTricordrazine
+    - id: ChemistryBottleParacetamol # Offbrand
+
+- type: entityTable
+  id: SpecialtyMedicineReagentBottleTable
+  table: !type:GroupSelector
+    children:
+    - id: ChemistryBottleCryoxadone
+    - id: ChemistryBottleEpinephrine
+    - id: ChemistryBottleHyronalin
+    - id: ChemistryBottleArithrazine
+    - id: ChemistryBottlePhalanximine
+    - id: ChemistryBottleTricordrazine
+    - id: ChemistryBottleTranexamicAcid
+    - id: ChemistryBottleOculine
+    - id: ChemistryBottleTramadol # Offbrand
+
+- type: entityTable
+  id: AllMedicineReagentBottlesTable
+  table: !type:GroupSelector
+    children:
+    - id: ChemistryBottleAloxadone
+    - id: ChemistryBottleAmbuzol
+    - id: ChemistryBottleAmbuzolPlus
+    - id: ChemistryBottleArithrazine
+    - id: ChemistryBottleBarozine
+    - id: ChemistryBottleBicaridine
+    - id: ChemistryBottleBruizine
+    - id: ChemistryBottleCognizine
+    - id: ChemistryBottleCryoxadone
+    - id: ChemistryBottleCryptobiolin
+    - id: ChemistryBottleDermaline
+    - id: ChemistryBottleDexalin
+    - id: ChemistryBottleDexalinPlus
+    - id: ChemistryBottleDiphenhydramine
+    - id: ChemistryBottleDiphenylmethylamine
+    - id: ChemistryBottleDoxarubixadone
+    - id: ChemistryBottleDylovene
+    - id: ChemistryBottleEpinephrine
+    - id: ChemistryBottleEthyloxyephedrine
+    - id: ChemistryBottleEthylredoxrazine
+    - id: ChemistryBottleHaloperidol
+    - id: ChemistryBottleHolywater
+    - id: ChemistryBottleHyronalin
+    - id: ChemistryBottleInaprovaline
+    - id: ChemistryBottleInsuzine
+    - id: ChemistryBottleIpecac
+    - id: ChemistryBottleKelotane
+    - id: ChemistryBottleLacerinol
+    - id: ChemistryBottleLeporazine
+    - id: ChemistryBottleLipozine
+    - id: ChemistryBottleMannitol
+    - id: ChemistryBottleNecrosol
+    - id: ChemistryBottleOculine
+    - id: ChemistryBottleOmnizine
+    - id: ChemistryBottleOpporozidone
+    - id: ChemistryBottlePhalanximine
+    - id: ChemistryBottlePolypyryliumOligomers
+    - id: ChemistryBottlePotassiumIodide
+    - id: ChemistryBottlePsicodine
+    - id: ChemistryBottlePulpedBananaPeel
+    - id: ChemistryBottlePuncturase
+    - id: ChemistryBottlePyrazine
+    - id: ChemistryBottleSaline
+    - id: ChemistryBottleSiderlac
+    - id: ChemistryBottleSigynate
+    - id: ChemistryBottleStellibinin
+    - id: ChemistryBottleSynaptizine
+    - id: ChemistryBottleTranexamicAcid
+    - id: ChemistryBottleTricordrazine
+    - id: ChemistryBottleUltravasculine
+    - id: ChemistryBottleParacetamol # Offbrand
+    - id: ChemistryBottleTramadol # Offbrand

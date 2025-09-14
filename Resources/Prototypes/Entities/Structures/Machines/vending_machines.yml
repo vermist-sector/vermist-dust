@@ -958,22 +958,20 @@
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/medical.rsi
     layers:
-    - state: "off"
+    - state: "off-civilian"
       map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
+    - state: "off-civilian"
       map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Medical"]]
   - type: PointLight
     radius: 1.5
     energy: 1.6
     color: "#9dc5c9"
   - type: GuideHelp
     guides:
-    - MedicalDoctor
+    - OffbrandMedical # Offbrand
 
 - type: entity
   parent: VendingMachine
@@ -2324,7 +2322,7 @@
   - type: GuideHelp
     guides:
     - Chemicals
-    - Chemist
+    - OffbrandChemist # Offbrandp
 
 - type: entity
   parent: VendingMachineChemicals
@@ -2384,3 +2382,44 @@
   - type: GuideHelp
     guides:
     - Medical
+
+- type: entity
+  parent: VendingMachineWallMedicalCivilian
+  id: VendingMachineWallMedical
+  name: NanoMed
+  components:
+  - type: VendingMachine
+    pack: NanoMedInventory
+    offState: off
+  - type: Sprite
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - texture: Structures/Machines/VendingMachines/maintenance_panel.png
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Medical"]]
+    - OffbrandMedical # Offbrand
+
+- type: entity
+  parent: VendingMachineWallMedicalCivilian
+  id: VendingMachineWallMedical
+  name: NanoMed
+  components:
+  - type: VendingMachine
+    pack: NanoMedInventory
+    offState: off
+  - type: Sprite
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - texture: Structures/Machines/VendingMachines/maintenance_panel.png
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Medical"]]

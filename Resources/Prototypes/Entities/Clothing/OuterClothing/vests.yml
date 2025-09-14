@@ -81,3 +81,7 @@
     sprite: Clothing/OuterClothing/Vests/tankharnesscommand.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Vests/tankharnesscommand.rsi
+  - type: Tag # Offbrand
+    tags:
+    - OperatableClothing
+    - WhitelistChameleon
