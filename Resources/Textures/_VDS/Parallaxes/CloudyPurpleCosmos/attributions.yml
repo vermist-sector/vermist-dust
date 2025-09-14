@@ -1,16 +1,4 @@
-- files: [
-  "1-space.png",
-  "2-starsbg.png",
-  "3-starsfg.png",
-  "4-faintgas.png",
-  "5-dust.png",
-  "6-speckle.png",
-  "7-farjunk.png",
-  "8-bgclouds.png",
-  "9-fgclouds.png"
-  "10-junk.png",
-  "11-junk2.png",
-]
+- files: [ "1-space.png", "2-starsbg.png", "3-starsfg.png", "4-faintgas.png", "5-dust.png", "6-speckle.png", "7-farjunk.png", "8-bgclouds.png", "9-fgclouds.png", "10-junk.png", "11-junk2.png" ]
   license: "CC-BY-NC-SA-3.0"
   copyright: "by Jellvisk for Vermist Dust Sector (https://github.com/vermist-sector/vermist-dust)"
   source: "https://github.com/Jellvisk"
