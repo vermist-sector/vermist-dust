@@ -144,6 +144,7 @@ public sealed partial class StatusEffectsSystem : EntitySystem
 
             statusEffectEnt.Comp.Applied = true;
 
+            DirtyField(statusEffectEnt, statusEffectEnt.Comp, nameof(StatusEffectComponent.StartEffectTime));
             return true;
         }
 
@@ -210,7 +211,7 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         statusEffect = effect;
 
         var endTime = delay == null ? _timing.CurTime + duration : _timing.CurTime + delay + duration;
-        SetStatusEffectEndTime((effect.Value, effectComp), endTime); //Fix null delay causing null time
+        SetStatusEffectEndTime((effect.Value, effectComp), endTime);
         var startTime = delay == null ? TimeSpan.Zero : _timing.CurTime + delay.Value;
         SetStatusEffectStartTime(effect.Value, startTime);
 
@@ -292,7 +293,7 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         var ev = new StatusEffectEndTimeUpdatedEvent(appliedTo, endTime);
         RaiseLocalEvent(ent, ref ev);
 
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(StatusEffectComponent.EndEffectTime));
     }
 
     private void SetStatusEffectStartTime(Entity<StatusEffectComponent?> ent, TimeSpan startTime)
@@ -311,7 +312,7 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         var ev = new StatusEffectStartTimeUpdatedEvent(appliedTo, startTime);
         RaiseLocalEvent(ent, ref ev);
 
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(StatusEffectComponent.StartEffectTime));
     }
 }
 
