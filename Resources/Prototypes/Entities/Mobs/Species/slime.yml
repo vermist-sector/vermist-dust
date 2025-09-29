@@ -26,7 +26,7 @@
     containers:
       storagebase: !type:Container
         ents: []
-      cavity_slot: !type:ContainerSlot # Offbrand
+      cavity_slot: !type:Container # Offbrand
   - type: UserInterface
     interfaces:
       enum.StorageUiKey.Key:
