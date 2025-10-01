@@ -250,7 +250,7 @@
             max: 213.0
           damage:
             types:
-             Cellular: -2
+             Cellular: -6 # Offbrand - boost to deal with cryostasis
 
 - type: reagent
   id: Dermaline
