@@ -240,6 +240,7 @@
   - BaseMobHeartrate # Offbrand
   - BaseMobBrain # Offbrand
   - BaseMobCryostasis # Offbrand
+  - BaseMobLungDamage # Offbrand
   id: BaseMobSpeciesOrganic
   abstract: true
   components:
