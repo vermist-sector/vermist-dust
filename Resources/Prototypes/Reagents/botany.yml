@@ -333,12 +333,11 @@
         conditions:
         - !type:OrganType
           type: Vox
-        factor: -4
+        factor: -1 # Offbrand
       - !type:Oxygenate #imp, thaven can breathe all gases safely
         conditions:
         - !type:OrganType
           type: Thaven
-
 
 - type: reagent
   id: Diethylamine
