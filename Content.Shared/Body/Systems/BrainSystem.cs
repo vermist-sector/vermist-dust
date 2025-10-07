@@ -33,7 +33,6 @@ public sealed class BrainSystem : EntitySystem
 
         var ghostOnMove = EnsureComp<GhostOnMoveComponent>(newEntity);
         ghostOnMove.MustBeDead = HasComp<MobStateComponent>(newEntity); // Don't ghost living players out of their bodies.
-        Dirty(newEntity, ghostOnMove);
 
         //IMP EDIT: brain remembers its old identity
         if (TryComp<GrammarComponent>(oldEntity, out var formerSelf) && !HasComp<GrammarComponent>(newEntity))
