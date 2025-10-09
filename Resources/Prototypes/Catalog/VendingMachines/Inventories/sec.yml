@@ -5,6 +5,7 @@
     ClothingBeltSecurityWebbing: 5
     ClothingEyesEyepatchHudSecurity: 2
     ClothingEyesGlassesHudSecurity: 2 # imp
+    TourniquetOffbrand: 5 # Offbrand
     ClothingEyesGlassesSunglasses: 2
     ClothingEyesHudSecurity: 2
     ClothingOuterArmorBasic: 1 # imp 2>1
@@ -26,7 +27,6 @@
     SecurityWhistle: 5
     TearGasGrenade: 4
     TicketPad: 5 # imp
-    Tourniquet: 5
     Zipties: 12
   # security officers need to follow a diet regimen!
   contrabandInventory:
