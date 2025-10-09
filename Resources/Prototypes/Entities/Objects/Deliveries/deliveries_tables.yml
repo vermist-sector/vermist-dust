@@ -98,10 +98,10 @@
       - id: Bloodpack
       - id: SimpleSuture #start imp
       - id: Tincture
-    - !type:NestedSelector
-      tableId: LetterImpRareEntityTable # end imp
       - id: Bloodpack
       - id: ChemistryBottleParacetamol # Offbrand
+    - !type:NestedSelector
+      tableId: LetterImpRareEntityTable # end imp
 
 # Packages
 # TODO: Currently mostly maints loot, should be updated in the future.
