@@ -90,6 +90,8 @@ public sealed partial class StatusEffectsSystem : EntitySystem
             statusComp.AppliedTo = ent;
             Dirty(args.Entity, statusComp);
         }
+        var ev = new StatusEffectAppliedEvent(ent);
+        RaiseLocalEvent(args.Entity, ref ev);
     }
 
     private void OnEntityRemoved(Entity<StatusEffectContainerComponent> ent, ref EntRemovedFromContainerMessage args)
