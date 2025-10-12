@@ -238,6 +238,21 @@
 
 - type: entity
   parent: IVBag
+  id: IVBagBloodKodepiia
+  suffix: kodepiia ooze
+  components:
+  - type: Label
+    currentLabel: reagent-name-bloodkodepiia
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 400
+        reagents:
+        - ReagentId: BloodKodepiia
+          Quantity: 400
+
+- type: entity
+  parent: IVBag
   id: IVBagCopperBlood
   suffix: blue blood
   components:
@@ -249,6 +264,21 @@
         maxVol: 400
         reagents:
         - ReagentId: CopperBlood
+          Quantity: 400
+
+- type: entity
+  parent: IVBag
+  id: IVBagGrayBlood
+  suffix: joos
+  components:
+  - type: Label
+    currentLabel: reagent-name-gray-blood
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 400
+        reagents:
+        - ReagentId: GrayBlood
           Quantity: 400
 
 - type: entity
@@ -283,6 +313,21 @@
 
 - type: entity
   parent: IVBag
+  id: IVBagShimmeringBlood
+  suffix: shimmering blood
+  components:
+  - type: Label
+    currentLabel: reagent-name-shimmering-blood
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 400
+        reagents:
+        - ReagentId: ShimmeringBlood
+          Quantity: 400
+
+- type: entity
+  parent: IVBag
   id: IVBagSlime
   suffix: slime
   components:
@@ -304,9 +349,12 @@
     - id: IVBag
     - id: IVBagAmmoniaBlood
     - id: IVBagBlood
+    - id: IVBagBloodKodepiia
     - id: IVBagCopperBlood
+    - id: IVBagGrayBlood
     - id: IVBagInsectBlood
     - id: IVBagSap
+    - id: IVBagShimmeringBlood
     - id: IVBagSlime
 
 - type: entity
