@@ -12,7 +12,15 @@
       "directions": 4
     },
     {
+      "name": "hair_astolfo",
+      "directions": 4
+    },
+    {
       "name": "hair_baum",
+      "directions": 4
+    },
+    {
+      "name": "hair_beachwave",
       "directions": 4
     },
     {
@@ -76,6 +84,42 @@
       "directions": 4
     },
     {
+      "name": "hair_fluffy_bangs",
+      "directions": 4
+    },
+    {
+      "name": "hair_fluffy_short",
+      "directions": 4
+    },
+    {
+      "name": "hair_fortuneteller",
+      "directions": 4
+    },
+    {
+      "name": "hair_fortuneteller_alt",
+      "directions": 4
+    },
+    {
+      "name": "hair_froofylong",
+      "directions": 4
+    },
+    {
+      "name": "hair_geisha",
+      "directions": 4
+    },
+    {
+      "name": "hair_gentle_bun",
+      "directions": 4
+    },
+    {
+      "name": "hair_gentle_duo_bun",
+      "directions": 4
+    },
+    {
+      "name": "hair_glammetal",
+      "directions": 4
+    },
+    {
       "name": "hair_gloomy_long",
       "directions": 4
     },
@@ -136,11 +180,31 @@
       "directions": 4
     },
     {
+      "name": "hair_longdtails",
+      "directions": 4
+    },
+    {
       "name": "hair_longovereye_alt",
       "directions": 4
     },
     {
+      "name": "hair_longsidepartstraight",
+      "directions": 4
+    },
+    {
       "name": "hair_loose_slicked",
+      "directions": 4
+    },
+    {
+      "name": "hair_mcsqueeb",
+      "directions": 4
+    },
+    {
+      "name": "hair_mediumbraid",
+      "directions": 4
+    },
+    {
+      "name": "hair_mermaid",
       "directions": 4
     },
     {
@@ -149,6 +213,14 @@
     },
     {
       "name": "hair_mohawkshort",
+      "directions": 4
+    },
+    {
+      "name": "hair_newyou",
+      "directions": 4
+    },
+    {
+      "name": "hair_phoenix",
       "directions": 4
     },
     {
@@ -161,6 +233,10 @@
     },
     {
       "name": "hair_punktails",
+      "directions": 4
+    },
+    {
+      "name": "hair_quadcurls",
       "directions": 4
     },
     {
@@ -192,7 +268,15 @@
       "directions": 4
     },
     {
+      "name": "hair_scully",
+      "directions": 4
+    },
+    {
       "name": "hair_short_tassles",
+      "directions": 4
+    },
+    {
+      "name": "hair_shy",
       "directions": 4
     },
     {
@@ -256,6 +340,14 @@
       "directions": 4
     },
     {
+      "name": "hair_violet_ponytail",
+      "directions": 4
+    },
+    {
+      "name": "hair_viper",
+      "directions": 4
+    },
+    {
       "name": "hair_volajupompless",
       "directions": 4
     },
@@ -265,6 +357,22 @@
     },
     {
       "name": "hair_zoey",
+      "directions": 4
+    },
+    {
+      "name": "halfshave_glamorous",
+      "directions": 4
+    },
+    {
+      "name": "halfshave_long",
+      "directions": 4
+    },
+    {
+      "name": "halfshave_messy",
+      "directions": 4
+    },
+    {
+      "name": "halfshave_messylong",
       "directions": 4
     },
     {
