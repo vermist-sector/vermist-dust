@@ -481,10 +481,16 @@
       types:
         Heat: -10
   # imp edit start
-    healingBeginSound:
+    tendingBeginSound:
       path: "/Audio/Items/Toys/ToyFall2.ogg"
-    healingEndSound:
+      params:
+        volume: 1.0
+        variation: 0.125
+    tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
   - type: EmitSoundOnLand
     sound:
       path: "/Audio/Voice/Slime/slime_squish.ogg"

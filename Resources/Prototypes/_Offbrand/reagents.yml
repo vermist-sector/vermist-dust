@@ -280,7 +280,7 @@
   physicalDesc: reagent-physical-desc-viscous
   flavor: metallic
   color: "#bf0000"
-  contrabandSeverity: Syndicate
+  contraband: Syndicate
   metabolisms:
     Medicine:
       metabolismRate: 0.2
@@ -299,7 +299,7 @@
   physicalDesc: reagent-physical-desc-putrid
   flavor: meaty
   color: "#c9abab"
-  contrabandSeverity: Syndicate
+  contraband: Syndicate
   metabolisms:
     Medicine:
       effects:
