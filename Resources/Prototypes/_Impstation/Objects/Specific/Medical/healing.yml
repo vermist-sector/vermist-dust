@@ -5,29 +5,29 @@
   id: SimpleSuture
   suffix: Full
   components:
-    - type: Tag
-      tags:
-        - Brutepack
-- type: Sprite
-  state: simple-suture
-- type: Item
-  heldPrefix: simple-suture
-  storedRotation: 90
-- type: Healing
-  damageContainers:
-    - Biological
-  damage:
-    types:
-      Slash: -10
-      Piercing: -5
+  - type: Tag
+    tags:
+    - Brutepack
+  - type: Sprite
+    state: simple-suture
+  - type: Item
+    heldPrefix: simple-suture
+    storedRotation: 90
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Slash: -10
+        Piercing: -5
     bloodlossModifier: -10
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
-- type: Tending
-  woundWhitelist:
-    tags: [WoundCut, WoundPuncture]
+  - type: Tending
+    woundWhitelist:
+      tags: [WoundCut, WoundPuncture]
     damage:
       types:
         Slash: -10
@@ -36,23 +36,23 @@
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     tendingEndSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
-- type: Stack
-  stackType: SimpleSuture
-  count: 10
-- type: StackPrice
-  price: 5
-- type: PluralName # imp
-  oneOf: plural-name-spindle-1
-  someOf: plural-name-spindle-2plus
+  - type: Stack
+    stackType: SimpleSuture
+    count: 10
+  - type: StackPrice
+    price: 5
+  - type: PluralName # imp
+    oneOf: plural-name-spindle-1
+    someOf: plural-name-spindle-2plus
 
 - type: entity
   id: SimpleSuture1
   parent: SimpleSuture
   suffix: Single
   components:
-    - type: Stack
-      stackType: SimpleSuture
-      count: 1
+  - type: Stack
+    stackType: SimpleSuture
+    count: 1
 
 - type: entity
   name: shock gel
@@ -61,27 +61,27 @@
   id: ShockGel
   suffix: Full
   components:
-    - type: Tag
-      tags:
-        - Ointment
-- type: Sprite
-  state: shock-gel
-- type: Item
-  heldPrefix: shock-gel
-- type: Healing
-  damageContainers:
-    - Biological
-  damage:
-    types:
-      Shock: -10
-      Heat: -5
+  - type: Tag
+    tags:
+    - Ointment
+  - type: Sprite
+    state: shock-gel
+  - type: Item
+    heldPrefix: shock-gel
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Shock: -10
+        Heat: -5
     healingBeginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
     healingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
-- type: Tending
-  woundWhitelist:
-    tags: [WoundHeat, WoundShock]
+  - type: Tending
+    woundWhitelist:
+      tags: [WoundHeat, WoundShock]
     damage:
       types:
         Shock: -10
@@ -90,23 +90,23 @@
       path: "/Audio/Items/Medical/ointment_begin.ogg"
     tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
-- type: Stack
-  stackType: ShockGel
-  count: 10
-- type: StackPrice
-  price: 5
-- type: PluralName # imp
-  oneOf: plural-name-tube-1
-  someOf: plural-name-tube-2plus
+  - type: Stack
+    stackType: ShockGel
+    count: 10
+  - type: StackPrice
+    price: 5
+  - type: PluralName # imp
+    oneOf: plural-name-tube-1
+    someOf: plural-name-tube-2plus
 
 - type: entity
   id: ShockGel1
   parent: ShockGel
   suffix: Single
   components:
-    - type: Stack
-      stackType: ShockGel
-      count: 1
+  - type: Stack
+    stackType: ShockGel
+    count: 1
 
 - type: entity
   name: electrode pad
@@ -115,27 +115,27 @@
   id: ElectrodePad
   suffix: Full
   components:
-    - type: Tag
-      tags:
-        - Brutepack
-- type: Sprite
-  state: electrode-pad
-- type: Item
-  heldPrefix: electrode-pad
-- type: Healing
-  damageContainers:
-    - Biological
-  damage:
-    types:
-      Blunt: -10
-      Asphyxiation: -5
+  - type: Tag
+    tags:
+    - Brutepack
+  - type: Sprite
+    state: electrode-pad
+  - type: Item
+    heldPrefix: electrode-pad
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Blunt: -10
+        Asphyxiation: -5
     healingBeginSound:
       path: "/Audio/Items/appraiser.ogg"
     healingEndSound:
       path: "/Audio/Effects/sparks4.ogg"
-- type: Tending
-  woundWhitelist:
-    tags: [WoundBruise]
+  - type: Tending
+    woundWhitelist:
+      tags: [WoundBruise]
     damage:
       types:
         Blunt: -10
@@ -144,21 +144,21 @@
       path: "/Audio/Items/appraiser.ogg"
     tendingEndSound:
       path: "/Audio/Effects/sparks4.ogg"
-- type: Stack
-  stackType: ElectrodePad
-  count: 10
-- type: StackPrice
-  price: 5
-- type: StunOnHeal # imp
+  - type: Stack
+    stackType: ElectrodePad
+    count: 10
+  - type: StackPrice
+    price: 5
+  - type: StunOnHeal # imp
 
 - type: entity
   id: ElectrodePad1
   parent: ElectrodePad
   suffix: Single
   components:
-    - type: Stack
-      stackType: ElectrodePad
-      count: 1
+  - type: Stack
+    stackType: ElectrodePad
+    count: 1
 
 - type: entity
   name: tincture
@@ -167,28 +167,28 @@
   id: Tincture
   suffix: Full
   components:
-    - type: Tag
-      tags:
-        - Brutepack
+  - type: Tag
+    tags:
+    - Brutepack
     - Ointment
-- type: Sprite
-  state: tincture
-- type: Item
-  heldPrefix: tincture
-- type: Healing
-  damageContainers:
+  - type: Sprite
+    state: tincture
+  - type: Item
+    heldPrefix: tincture
+  - type: Healing
+    damageContainers:
     - Biological
-  damage:
-    groups:
-      Brute: -6 #2 of each
-      Burn: -8 #2 of each
+    damage:
+      groups:
+        Brute: -6 #2 of each
+        Burn: -8 #2 of each
     healingBeginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
     healingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
-- type: Tending
-  woundWhitelist:
-    tags: [WoundBrute, WoundBurn]
+  - type: Tending
+    woundWhitelist:
+      tags: [WoundBrute, WoundBurn]
     damage:
       groups:
         Brute: -6
@@ -197,42 +197,42 @@
       path: "/Audio/Items/Medical/ointment_begin.ogg"
     tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
-- type: Stack
-  stackType: Tincture
-  count: 10
-- type: StackPrice
-  price: 5
-- type: DamageOnLand
-  damage:
-    types:
-      Blunt: 5
-- type: Damageable
-  damageContainer: Inorganic
-- type: Destructible
-  thresholds:
+  - type: Stack
+    stackType: Tincture
+    count: 10
+  - type: StackPrice
+    price: 5
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
     - trigger:
-      !type:DamageTrigger
-      damage: 5
+        !type:DamageTrigger
+        damage: 5
       behaviors:
-        - !type:PlaySoundBehavior
-      sound:
-        collection: GlassBreak
-        params:
-          volume: -4
-    - !type:DoActsBehavior
-  acts: [ "Destruction" ]
-- type: PluralName # imp
-  oneOf: plural-name-bottle-1
-  someOf: plural-name-bottle-2plus
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+          params:
+            volume: -4
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: PluralName # imp
+    oneOf: plural-name-bottle-1
+    someOf: plural-name-bottle-2plus
 
 - type: entity
   id: Tincture1
   parent: Tincture
   suffix: Single
   components:
-    - type: Stack
-      stackType: Tincture
-      count: 1
+  - type: Stack
+    stackType: Tincture
+    count: 1
 
 - type: entity
   name: EZ Graft
@@ -241,27 +241,27 @@
   id: EZGraft
   suffix: Full
   components:
-    - type: Tag
-      tags:
-        - Ointment
-- type: Sprite
-  state: ez-graft
-- type: Item
-  heldPrefix: ez-graft
-- type: Healing
-  damageContainers:
-    - Biological
-  damage:
-    types:
-      Caustic: -5
-      Slash: 3
+  - type: Tag
+    tags:
+    - Ointment
+  - type: Sprite
+    state: ez-graft
+  - type: Item
+    heldPrefix: ez-graft
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Caustic: -5
+        Slash: 3
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
-- type: Tending
-  woundWhitelist:
-    tags: [WoundCaustic]
+  - type: Tending
+    woundWhitelist:
+      tags: [WoundCaustic]
     damage:
       types:
         Caustic: -10
@@ -270,20 +270,20 @@
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
-- type: Stack
-  stackType: EZGraft
-  count: 10
-- type: StackPrice
-  price: 5
+  - type: Stack
+    stackType: EZGraft
+    count: 10
+  - type: StackPrice
+    price: 5
 
 - type: entity
   id: EZGraft1
   parent: EZGraft
   suffix: Single
   components:
-    - type: Stack
-      stackType: EZGraft
-      count: 1
+  - type: Stack
+    stackType: EZGraft
+    count: 1
 
 - type: entity
   name: cold pack
@@ -292,26 +292,26 @@
   id: ColdPack
   suffix: Full
   components:
-    - type: Tag
-      tags:
-        - Ointment
-- type: Sprite
-  state: cold-pack
-- type: Item
-  heldPrefix: cold-pack
-- type: Healing
-  damageContainers:
-    - Biological
-  damage:
-    types:
-      Cold: -10
+  - type: Tag
+    tags:
+    - Ointment
+  - type: Sprite
+    state: cold-pack
+  - type: Item
+    heldPrefix: cold-pack
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Cold: -10
     healingBeginSound:
       path: "/Audio/Items/Toys/ToyFall2.ogg" #the logic is flawless.
     healingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
-- type: Tending
-  woundWhitelist:
-    tags: [WoundCold]
+  - type: Tending
+    woundWhitelist:
+      tags: [WoundCold]
     damage:
       types:
         Cold: -10
@@ -319,20 +319,20 @@
       path: "/Audio/Items/Toys/ToyFall2.ogg" #the logic is flawless.
     tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
-- type: EmitSoundOnLand
-  sound:
-    path: "/Audio/Voice/Slime/slime_squish.ogg" # Added Immersion.
-- type: Stack
-  stackType: ColdPack
-  count: 10
-- type: StackPrice
-  price: 5
+  - type: EmitSoundOnLand
+    sound:
+      path: "/Audio/Voice/Slime/slime_squish.ogg" # Added Immersion.
+  - type: Stack
+    stackType: ColdPack
+    count: 10
+  - type: StackPrice
+    price: 5
 
 - type: entity
   id: ColdPack1
   parent: ColdPack
   suffix: Single
   components:
-    - type: Stack
-      stackType: ColdPack
-      count: 1
+  - type: Stack
+    stackType: ColdPack
+    count: 1
