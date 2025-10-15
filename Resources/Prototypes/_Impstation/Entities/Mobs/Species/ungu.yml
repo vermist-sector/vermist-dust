@@ -83,11 +83,11 @@
       types:
         Blunt: 15
         Structural: 20
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      150: Critical
-      250: Dead
+  # - type: MobThresholds
+  #   thresholds:
+  #     0: Alive
+  #     150: Critical
+  #     250: Dead
   - type: StaminaDamageOnHit
     damage: 20
   - type: Hunger

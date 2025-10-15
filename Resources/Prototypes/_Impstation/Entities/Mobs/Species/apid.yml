@@ -35,11 +35,11 @@
       Brute:
         sprite: _Impstation/Mobs/Effects/apid_brute_damage.rsi # technically this is only brute sprites for the chest. but that doesn't matter
         color: "#808A51"
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      60: Critical
-      125: Dead
+  # - type: MobThresholds
+  #   thresholds:
+  #     0: Alive
+  #     60: Critical
+  #     125: Dead
   - type: MovementSpeedModifier
     # NOTE: to edit this entity's base movement speed, you will need to edit the leg bodypart. i discovered this so you didnt have to
     baseWeightlessFriction: 0.2
