@@ -101,7 +101,6 @@
       - id: MedicatedSuture
       - id: RegenerativeMesh
       - id: Tincture #IMP
-      - id: Bloodpack #IMP; Reduced from 2 -> 1. People keep throwing these out...
       - id: ChemistryBottleTramadol # Offbrand
 
 - type: entity
