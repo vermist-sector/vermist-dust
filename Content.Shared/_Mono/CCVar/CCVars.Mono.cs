@@ -14,6 +14,18 @@ namespace Content.Shared._Mono.CCVar;
 [CVarDefs]
 public sealed partial class MonoCVars
 {
+    /// <summary>
+    ///     How often to clean up space garbage entities, in seconds.
+    /// </summary>
+    public static readonly CVarDef<float> SpaceGarbageCleanupInterval =
+        CVarDef.Create("mono.space_garbage_cleanup_interval", 1800.0f, CVar.SERVERONLY);
+
+	/// <summary>
+    ///     Whether to play radio static/noise sounds when receiving radio messages on headsets.
+    /// </summary>
+    public static readonly CVarDef<bool> RadioNoiseEnabled =
+        CVarDef.Create("mono.radio_noise_enabled", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+
     #region Audio
 
     /// <summary>
@@ -37,7 +49,7 @@ public sealed partial class MonoCVars
     /// </summary>
     /// <seealso cref="AreaEchoSystem"/>
     public static readonly CVarDef<int> AreaEchoReflectionCount =
-        CVarDef.Create("mono.area_echo.max_reflections", 2, CVar.ARCHIVE | CVar.CLIENTONLY);
+        CVarDef.Create("mono.area_echo.max_reflections", 1, CVar.ARCHIVE | CVar.CLIENTONLY);
 
     /// <summary>
     ///     Distantial interval, in tiles, in the rays used to calculate the roofs of an open area for echos,
