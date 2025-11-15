@@ -56,8 +56,8 @@
   - type: BlockWeather
   - type: SunShadowCast
   - type: AudioAbsorption # VDS
-    absorption: 10
-    reflectRay: true
+    absorption: 0.1
+    reflectray: true
 
 
 - type: entity

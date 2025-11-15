@@ -180,8 +180,8 @@
     - WirePanels
     - Networking
   - type: AudioAbsorption # VDS
-    absorption: 30
-    reflectRay: true
+    absorption: 0.3
+    reflectray: true
   placement:
     mode: SnapgridCenter
 

@@ -98,8 +98,8 @@
     price: 100
   - type: BlockWeather
   - type: AudioAbsorption # VDS
-    absorption: 20
-    reflectRay: true
+    absorption: 0.2
+    reflectray: true
 
 - type: entity
   parent: Window
@@ -148,7 +148,7 @@
       Brute:
         collection: GlassSmack
   - type: Sprite
-    drawdepth: OverMobs # VDS
+    drawdepth: Mobs
     sprite: Structures/Windows/directional.rsi
     state: window
   - type: Icon
@@ -166,7 +166,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.45" # VDS
+          bounds: "-0.5,-0.5,0.5,-0.28125"
         density: 1500
         mask:
         - FullTileMask
@@ -223,8 +223,8 @@
   - type: StaticPrice
     price: 15
   - type: AudioAbsorption # VDS
-    absorption: 10
-    reflectRay: true
+    absorption: 0.2
+    reflectray: true
 
 - type: entity
   id: WindowDirectionalRCDResistant
