@@ -236,7 +236,7 @@ public sealed class AreaEchoSystem : EntitySystem
             !_transformQuery.HasComponent(clientEnt)
             )
         {
-            Logger.Warning($"fuck. {clientEnt.IsValid()} client ent: {clientEnt.Id}, ");
+            // Logger.Warning($"fuck. {clientEnt.IsValid()} client ent: {clientEnt.Id}, ");
             return false;
         }
         var clientTransform = Transform(clientEnt);
@@ -306,24 +306,24 @@ public sealed class AreaEchoSystem : EntitySystem
             && _transformSystem.TryGetGridTilePosition(clientEnt, out var indices)
             && !_roofSystem.IsRooved((clientTransform.GridUid.Value, grid, roof), indices))
         {
-            Logger.Debug("reached");
+            // Logger.Debug("reached");
             finalMagnitude *= 0.3f;
         }
 
         magnitude = finalMagnitude;
-        Logger.Debug($"""
-                Acoustics:
-                - Average Magnitude: {avgMagnitude:F2}
-                - Average Absorption: {avgAbsorption:F2}
-                - Average Escaped: {avgEscaped:F2}
-                - Average Bounces: {avgBounces:F2}
-
-                - Absorb Coefficient: {InverseNormalizeToPercentage(avgAbsorption, 100f):F2}
-                - Escape Coefficient: {InverseNormalizeToPercentage(avgEscaped, 100f):F2}
-                - Final Magnitude: {magnitude}
-                - Preset: {GetBestPreset(magnitude)}
-
-                """);
+        // Logger.Debug($"""
+        //         Acoustics:
+        //         - Average Magnitude: {avgMagnitude:F2}
+        //         - Average Absorption: {avgAbsorption:F2}
+        //         - Average Escaped: {avgEscaped:F2}
+        //         - Average Bounces: {avgBounces:F2}
+        //
+        //         - Absorb Coefficient: {InverseNormalizeToPercentage(avgAbsorption, 100f):F2}
+        //         - Escape Coefficient: {InverseNormalizeToPercentage(avgEscaped, 100f):F2}
+        //         - Final Magnitude: {magnitude}
+        //         - Preset: {GetBestPreset(magnitude)}
+        //
+        //         """);
 
         return true;
     }
@@ -388,7 +388,7 @@ public sealed class AreaEchoSystem : EntitySystem
             var probe = _rayCast.CastRay(mapId, stepData.NewPos, stepData.ProbeTranslation, stopAtFilter);
             if (probe.Results.Count > 0)
             {
-                Logger.Debug($"HIT: {ToPrettyString(probe.Results[0].Entity)}");
+                // Logger.Debug($"HIT: {ToPrettyString(probe.Results[0].Entity)}");
                 var worldMatrix = _transformSystem.GetWorldMatrix(probe.Results[0].Entity);
                 var mapHitPos = probe.Results[0].Point;
 
@@ -461,7 +461,7 @@ public sealed class AreaEchoSystem : EntitySystem
                 that's why this is a method. for easy editing in the future.
             */
 
-            Logger.Debug($"FOUND: {ToPrettyString(hit.Entity)}, absorption: {comp.Absorption}");
+            // Logger.Debug($"FOUND: {ToPrettyString(hit.Entity)}, absorption: {comp.Absorption}");
 
             // linear decay based on distance from the listener and the final ray distance.
             hit.Entity.ToCoordinates().TryDistance(
@@ -471,7 +471,7 @@ public sealed class AreaEchoSystem : EntitySystem
                     );
             var distanceFactor = MathHelper.Clamp(1f - (distance - maxDistance) / maxDistance, 0f, 100f);
             stats.TotalAbsorption += comp.Absorption * distanceFactor;
-            Logger.Debug($"New Total Absorb {stats.TotalAbsorption}");
+            // Logger.Debug($"New Total Absorb {stats.TotalAbsorption}");
         }
     }
 
