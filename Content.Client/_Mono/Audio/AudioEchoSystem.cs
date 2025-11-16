@@ -259,8 +259,8 @@ public sealed class AreaEchoSystem : EntitySystem
         };
         var stopAtFilter = new QueryFilter
         {
-            LayerBits = (int)CollisionGroup.WallLayer,
-            IsIgnored = ent => _absorptionQuery.TryGetComponent(ent, out var comp) && comp.ReflectRay,
+            MaskBits = (int)CollisionGroup.Impassable,
+            IsIgnored = ent => _absorptionQuery.TryGetComponent(ent, out var comp) && !comp.ReflectRay,
             Flags = QueryFlags.Static | QueryFlags.Dynamic
         };
 
