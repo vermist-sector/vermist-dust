@@ -10,7 +10,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Physics;
+// using Robust.Shared.Physics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Diagnostics.Contracts;
@@ -19,7 +19,7 @@ using System.Numerics;
 using DependencyAttribute = Robust.Shared.IoC.DependencyAttribute;
 using Robust.Client.Player;
 using Content.Shared._VDS.Audio;
-using Robust.Shared.Debugging;
+// using Robust.Shared.Debugging;
 using Content.Shared.Coordinates;
 using Robust.Shared.Random;
 using Robust.Shared.Player;
@@ -42,7 +42,7 @@ public sealed class AreaEchoSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly RayCastSystem _rayCast = default!;
-    [Dependency] private readonly SharedDebugRayDrawingSystem _debugRay = default!;
+    // [Dependency] private readonly SharedDebugRayDrawingSystem _debugRay = default!;
     [Dependency] private readonly TurfSystem _turfSystem = default!;
     [Dependency] private readonly SharedRoofSystem _roofSystem = default!;
 
@@ -399,15 +399,13 @@ public sealed class AreaEchoSystem : EntitySystem
                 UpdateProbeStep(ref stepData, mapHitPos);
                 UpdateAcousticData(ref rayStats, probe.Results[0], stepData.NewDistance, _clientEnt);
             }
-#if DEBUG
             // jank as fuck but whatever
-            _debugRay.ReceiveLocalRayFromAnyThread(new(
-                Ray: new Ray(stepData.OldPos, stepData.Direction),
-                MaxLength: stepData.NewDistance,
-                Results: null,
-                ServerSide: false,
-                mapId));
-#endif
+            // _debugRay.ReceiveLocalRayFromAnyThread(new(
+            //     Ray: new Ray(stepData.OldPos, stepData.Direction),
+            //     MaxLength: stepData.NewDistance,
+            //     Results: null,
+            //     ServerSide: false,
+            //     mapId));
             // cast our results ray that'll go to the wall we found with our probe- if any. scans for acoustic data.
             var results = _rayCast.CastRay(mapId, stepData.OldPos, stepData.Translation, filter);
             if (results.Results.Count > 0)
