@@ -13,13 +13,28 @@ public sealed partial class WoundableHealthAnalyzerData
     public float BrainHealth;
 
     [DataField]
+    public AttributeRating BrainHealthRating;
+
+    [DataField]
     public float HeartHealth;
+
+    [DataField]
+    public AttributeRating HeartHealthRating;
 
     [DataField]
     public (int, int) BloodPressure;
 
     [DataField]
+    public AttributeRating BloodPressureRating;
+
+    [DataField]
+    public AttributeRating BloodFlowRating;
+
+    [DataField]
     public int HeartRate;
+
+    [DataField]
+    public AttributeRating HeartRateRating;
 
     [DataField]
     public int Etco2;
@@ -29,6 +44,9 @@ public sealed partial class WoundableHealthAnalyzerData
 
     [DataField]
     public float Spo2;
+
+    [DataField]
+    public AttributeRating BloodOxygenationRating;
 
     [DataField]
     public float LungHealth;
@@ -71,6 +89,17 @@ public enum MetricRanking : byte
     Dangerous = 4,
 }
 
+[Serializable, NetSerializable]
+public enum AttributeRating : byte
+{
+    Good = 0,
+    Okay = 1,
+    Poor = 2,
+    Bad = 3,
+    Awful = 4,
+    Dangerous = 5,
+}
+
 public abstract class SharedWoundableHealthAnalyzerSystem : EntitySystem
 {
     [Dependency] private readonly BrainDamageSystem _brainDamage = default!;
@@ -80,6 +109,15 @@ public abstract class SharedWoundableHealthAnalyzerSystem : EntitySystem
 
     protected const string MedicineGroup = "Medicine";
 
+    private AttributeRating RateHigherIsBetter(double value)
+    {
+        return RateHigherIsWorse(1d - value);
+    }
+
+    private AttributeRating RateHigherIsWorse(double value)
+    {
+        return (AttributeRating)(byte)Math.Clamp(Math.Floor(6d * value), 0d, 5d);
+    }
     public List<string>? SampleWounds(EntityUid uid)
     {
         if (!_statusEffects.TryEffectsWithComp<AnalyzableWoundComponent>(uid, out var wounds))
@@ -134,6 +172,8 @@ public abstract class SharedWoundableHealthAnalyzerSystem : EntitySystem
         var heartHealth = 1f - ((float)heartrate.Damage / (float)heartrate.MaxDamage);
         var lungHealth = 1f - ((float)lungDamage.Damage / (float)lungDamage.MaxDamage);
         var (upper, lower) = _heart.BloodPressure((uid, heartrate));
+        var oxygenation = (float)_heart.Spo2((uid, heartrate)).Double();
+        var flow = (float)_heart.Etco2((uid, heartrate));
 
         var hasNonMedical = false;
         var reagents = withWounds ? SampleReagents(uid, out hasNonMedical) : null;
@@ -141,12 +181,18 @@ public abstract class SharedWoundableHealthAnalyzerSystem : EntitySystem
         return new WoundableHealthAnalyzerData()
             {
                 BrainHealth = brainHealth,
+                BrainHealthRating = RateHigherIsBetter(brainHealth),
                 HeartHealth = heartHealth,
+                HeartHealthRating = RateHigherIsBetter(heartHealth),
                 BloodPressure = (upper, lower),
+                BloodPressureRating = RateHigherIsBetter(upper),
                 HeartRate = _heart.HeartRate((uid, heartrate)),
+                HeartRateRating = !heartrate.Running ? AttributeRating.Dangerous : RateHigherIsWorse(_heart.Strain((uid, heartrate))),
                 Etco2 = _heart.Etco2((uid, heartrate)),
+                BloodFlowRating = RateHigherIsBetter(flow),
                 RespiratoryRate = _heart.RespiratoryRate((uid, heartrate)),
                 Spo2 = _heart.Spo2((uid, heartrate)).Float(),
+                BloodOxygenationRating = RateHigherIsBetter(oxygenation),
                 LungHealth = lungHealth,
                 AnyVitalCritical = _shockThresholds.IsCritical(uid) || _brainDamage.IsCritical(uid) || _heart.IsCritical(uid),
                 Etco2Name = heartrate.Etco2Name,

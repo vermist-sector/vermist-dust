@@ -327,10 +327,10 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 
             if (sensor.WoundableData is { } woundable)
             {
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-heart-rate", ("rate", woundable.HeartRate)) });
+                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-heart-rate", ("rate", woundable.HeartRate), ("rating", woundable.HeartRateRating)) });
                 var (systolic, diastolic) = woundable.BloodPressure;
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-blood-pressure", ("systolic", systolic), ("diastolic", diastolic)) });
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-spo2", ("value", $"{woundable.Spo2 * 100:F1}"), ("spo2", woundable.Spo2Name)) });
+                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-blood-pressure", ("systolic", systolic), ("diastolic", diastolic), ("rating", woundable.BloodPressureRating)) });
+                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-spo2", ("value", $"{woundable.Spo2 * 100:F1}"), ("spo2", woundable.Spo2Name), ("rating", woundable.BloodOxygenationRating)) });
             }
 
             mainContainer.AddChild(vitalsContainer);
