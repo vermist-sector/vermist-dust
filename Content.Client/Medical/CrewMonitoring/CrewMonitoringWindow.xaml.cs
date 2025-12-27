@@ -3,6 +3,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client.Pinpointer.UI;
 using Content.Client.Stylesheets;
+using Content.Client.Stylesheets.Sheetlets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Medical.SuitSensor;
 using Content.Shared.StatusIcon;
@@ -212,6 +213,8 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 SizeFlagsStretchRatio = 1.25f,
                 Orientation = LayoutOrientation.Horizontal,
                 HorizontalExpand = true,
+                Margin = new Thickness(0, 0, 5, 0), // VDS
+                MinWidth = 220 // VDS
             };
 
             mainContainer.AddChild(statusContainer);
@@ -279,9 +282,10 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 Text = sensor.Name,
                 HorizontalExpand = true,
                 ClipText = true,
+                StyleClasses = { StyleClass.FontSmall }, // VDS
             };
 
-            statusContainer.AddChild(nameLabel);
+            // statusContainer.AddChild(nameLabel); // VDS moved
 
             // User job container
             var jobContainer = new BoxContainer()
@@ -297,10 +301,10 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             {
                 var jobIcon = new TextureRect()
                 {
-                    TextureScale = new Vector2(2f, 2f),
+                    TextureScale = new Vector2(1.5f, 1.5f), // VDS from 2f
                     VerticalAlignment = VAlignment.Center,
                     Texture = _spriteSystem.Frame0(proto.Icon),
-                    Margin = new Thickness(5, 0, 5, 0),
+                    Margin = new Thickness(1, 0, 5, 0), // VDS 1 from 5
                 };
 
                 jobContainer.AddChild(jobIcon);
@@ -312,6 +316,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 Text = sensor.Job,
                 HorizontalExpand = true,
                 ClipText = true,
+                StyleClasses = { StyleClass.FontSmall }, // VDS
             };
 
             jobContainer.AddChild(jobLabel);
@@ -327,14 +332,18 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 
             if (sensor.WoundableData is { } woundable)
             {
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-heart-rate", ("rate", woundable.HeartRate), ("rating", woundable.HeartRateRating)) });
+                statusContainer.AddChild(new RichTextLabel() { Margin = new Thickness(5, 0, 5, 0),StyleClasses = { StyleClass.FontSmall }, Text = Loc.GetString("offbrand-crew-monitoring-damage-estimate", ("rating", woundable.DamageRating)) });
+
                 var (systolic, diastolic) = woundable.BloodPressure;
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-blood-pressure", ("systolic", systolic), ("diastolic", diastolic), ("rating", woundable.BloodPressureRating)) });
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-spo2", ("value", $"{woundable.Spo2 * 100:F1}"), ("spo2", woundable.Spo2Name), ("rating", woundable.BloodOxygenationRating)) });
+                vitalsContainer.AddChild(new RichTextLabel() { Margin = new Thickness(0, 0, -3, 4), StyleClasses = { StyleClass.FontSmall, StyleClass.Italic }, Text = Loc.GetString("offbrand-crew-monitoring-blood-pressure", ("systolic", systolic), ("diastolic", diastolic)) });
+                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-heart-rate", ("rate", woundable.HeartRate), ("rating", woundable.HeartRateRating)) });
+                vitalsContainer.AddChild(new RichTextLabel() { Margin = new Thickness(5, 0, 0, 0), Text = Loc.GetString("offbrand-crew-monitoring-spo2", ("value", $"{woundable.Spo2 * 100:F1}"), ("rating", woundable.BloodOxygenationRating), ("spo2", woundable.Spo2Name)) });
             }
 
             mainContainer.AddChild(vitalsContainer);
             // End Offbrand Additions
+
+            statusContainer.AddChild(nameLabel); // VDS
 
             // Add user coordinates to the navmap
             if (coordinates != null && NavMap.Visible && _blipTexture != null)

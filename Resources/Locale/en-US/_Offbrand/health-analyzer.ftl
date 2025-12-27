@@ -1,11 +1,11 @@
 -health-analyzer-rating = { $rating ->
-    [good] ([color=#00D3B8]good[/color])
-    [okay] ([color=#30CC19]okay[/color])
-    [poor] ([color=#bdcc00]poor[/color])
-    [bad] ([color=#E8CB2D]bad[/color])
-    [awful] ([color=#EF973C]awful[/color])
-    [dangerous] ([color=#FF6C7F]dangerous[/color])
-   *[other] (unknown)
+    [good] [color=#00D3B8]good ⚫[/color]
+    [okay] [color=#30CC19]okay ◕[/color]
+    [poor] [color=#bdcc00]poor ◑[/color]
+    [bad] [color=#E8CB2D]bad ◔[/color]
+    [awful] [color=#EF973C]awful ○[/color]
+    [dangerous] [color=#FF6C7F]dangerous ◌[/color]
+   *[other] unknown ?
     }
 
 health-analyzer-window-entity-brain-health-text = Brain Activity:
@@ -23,15 +23,16 @@ health-analyzer-window-entity-brain-health-rating = { -health-analyzer-rating(ra
 health-analyzer-window-entity-heart-health-value = {$value}%
 health-analyzer-window-entity-heart-health-rating = { -health-analyzer-rating(rating: $rating) }
 health-analyzer-window-entity-lung-health-value = {$value}%
+health-analyzer-window-entity-lung-health-rating = { -health-analyzer-rating(rating: $rating) }
 health-analyzer-window-entity-heart-rate-value = {$value}bpm
 health-analyzer-window-entity-heart-rate-rating = { -health-analyzer-rating(rating: $rating) }
 health-analyzer-window-entity-respiratory-rate-value = {$value}breaths/minute
 health-analyzer-window-entity-spo2-value = {$value}%
 health-analyzer-window-entity-spo2-rating = { -health-analyzer-rating(rating: $rating) }
 health-analyzer-window-entity-blood-pressure-value = {$systolic}/{$diastolic}
-health-analyzer-window-entity-blood-pressure-rating = { -health-analyzer-rating(rating: $rating) }
 health-analyzer-window-entity-etco2-value = {$value}%
 health-analyzer-window-entity-etco2-rating = { -health-analyzer-rating(rating: $rating) }
+health-analyzer-window-entity-damage-rating = { -health-analyzer-rating(rating: $rating) }
 health-analyzer-window-entity-non-medical-reagents = [color=yellow]Patient has non-medical reagents in bloodstream.[/color]
 
 wound-bone-death = [color=red]Patient has systemic bone failure.[/color]
