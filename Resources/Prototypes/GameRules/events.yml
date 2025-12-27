@@ -177,9 +177,10 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
+    startAnnouncement: false # VDS
     weight: 7
     duration: 1
-    minimumPlayers: 15
+    minimumPlayers: 5 # VDS - down from 15. we got shitty breakers here
   - type: BreakerFlipRule
 
 - type: entity
@@ -217,7 +218,7 @@
   - type: StationEvent
     weight: 5
     duration: 1
-    minimumPlayers: 15 #imp
+    minimumPlayers: 10 #imp # VDS - down from 15
   - type: RandomEntityStorageSpawnRule
     prototype: MobSkeletonCloset
 
@@ -229,7 +230,7 @@
     weight: 6.5
     earliestStart: 30 #imp, originally 40
     reoccurrenceDelay: 20
-    minimumPlayers: 30 #imp
+    minimumPlayers: 20 #imp # VDS - down from 30
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0
@@ -261,7 +262,7 @@
     duration: null
     earliestStart: 30
     reoccurrenceDelay: 20
-    minimumPlayers: 30
+    minimumPlayers: 15 # VDS - down from 39
   - type: SpaceSpawnRule
   - type: AntagLoadProfileRule
   - type: AntagObjectives
@@ -313,7 +314,7 @@
     duration: null
     earliestStart: 20
     reoccurrenceDelay: 20
-    minimumPlayers: 15
+    minimumPlayers: 8 # VDS - down from 15
   - type: ParadoxCloneRule
     objectiveBlacklist:
       tags:
@@ -434,10 +435,10 @@
   components:
   - type: StationEvent
     weight: 5
-    startAnnouncement: true #imp
+    startAnnouncement: false # VDS
     endAnnouncement: true #imp
     duration: 60
-    maxDuration: 120
+    maxDuration: 300 # VDS - 5 minutes max. up from 120
   - type: PowerGridCheckRule
 
 - type: entity
@@ -463,7 +464,7 @@
     - Service
     - Supply
     extraCount: 2
-    lightBreakChancePerSecond: 0.0003
+    lightBreakChancePerSecond: 0.0009 # VDS from 0.0003
     doorToggleChancePerSecond: 0.001
 
 - type: entity
@@ -486,7 +487,7 @@
   components:
   - type: StationEvent
     earliestStart: 75 #imp. original 90, dropped to 60, increased to 75
-    minimumPlayers: 40
+    minimumPlayers: 20 # VDS - down from 40
     weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
     duration: 1
   - type: ZombieRule
@@ -522,9 +523,9 @@
   id: LoneOpsSpawn
   components:
   - type: StationEvent
-    earliestStart: 30 #imp, original 35
+    earliestStart: 10 #imp, original 35 # VDS - down from 30.
     weight: 5.5
-    minimumPlayers: 20
+    minimumPlayers: 5 # VDS - funny. down from 20.
     duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end screen (not always "Neutral outcome!") and... ending the game if the station is nuked.
   - type: RuleGrids
   - type: LoadMapRule
@@ -560,11 +561,11 @@
   id: SleeperAgents
   components:
   - type: StationEvent
-    earliestStart: 30
+    earliestStart: 20 # VDS down from 30
     weight: 8
-    minimumPlayers: 15
+    minimumPlayers: 5 # VDS down from 15
     maxOccurrences: 1 # can only happen once per round
-    startAnnouncement: true #imp
+    startAnnouncement: false # VDS from true
     duration: null # the rule has to last the whole round not 1 second
     occursDuringRoundEnd: false
   - type: AlertLevelInterceptionRule
@@ -587,8 +588,8 @@
   components:
   - type: StationEvent
     weight: 2 #imp
-    duration: 150
-    maxDuration: 300
+    duration: 60 # VDS down from 150
+    maxDuration: 480 # VDS up from 300
     reoccurrenceDelay: 30
   - type: MassHallucinationsRule
     minTimeBetweenIncidents: 0.1
@@ -626,7 +627,7 @@
     #startAudio: #imp
     #  path: /Audio/Announcements/attention.ogg
     weight: 5
-    minimumPlayers: 25
+    minimumPlayers: 15 # VDS - down from 25
     reoccurrenceDelay: 20
   - type: GreytideVirusRule
     accessGroups:
@@ -647,7 +648,7 @@
     earliestStart: 0
     duration: 1
     minimumPlayers: 1
-    maxOccurrences: 2
+    maxOccurrences: 5 # VDS - up from 2. we're a shady place.
     weight: 10
   - type: RandomSpawnRule
     prototype: RandomSatchelSpawner

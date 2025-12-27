@@ -128,7 +128,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    earliestStart: 20
+    earliestStart: 30 # VDS - originally 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -148,7 +148,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    earliestStart: 20
+    earliestStart: 30 # VDS - originally 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -166,7 +166,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    earliestStart: 20
+    earliestStart: 30 # VDS - originally 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -180,7 +180,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    earliestStart: 20
+    earliestStart: 30 # VDS - originally 20
     minimumPlayers: 20
     weight: 1.5
     duration: 60

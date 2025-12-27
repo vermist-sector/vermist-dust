@@ -1,4 +1,4 @@
-﻿# Base
+# Base
 
 - type: entity
   id: BaseVariationPass
@@ -99,6 +99,7 @@
     - InsectBlood
     - WeldingFuel
     - Mold
+    - Ash # VDS
   - quantity: 55
     weight: 4
     reagents:
@@ -136,9 +137,13 @@
   id: RandomFillTrashPuddleBloodbath
   fills:
   - quantity: 80
-    weight: 1
+    weight: 2 # VDS up from 1
     reagents:
     - Blood
+  - quantity: 80 # VDS
+    weight: 1
+    reagents:
+    - Ash
 
 - type: entity
   id: BasicPuddleMessVariationPass

@@ -3,8 +3,8 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
-    earliestStart: 30 #originally 35
-    minimumPlayers: 30 # roundstart changeling is 15 which seems insane
+    earliestStart: 25 #originally 35 # VDS - now 25
+    minimumPlayers: 10 # roundstart changeling is 15 which seems insane # VDS - we're insane.
     weight: 2 # twice as common as zombies
     duration: 1
     occursDuringRoundEnd: false
@@ -40,7 +40,7 @@
     duration: null
     earliestStart: 20 #originally 25
     reoccurrenceDelay: 20
-    minimumPlayers: 15
+    minimumPlayers: 10 # VDS - originally 15
   - type: AntagLoadProfileRule
   - type: RuleGrids
   - type: LoadMapRule
@@ -84,7 +84,7 @@
     weight: 3.5 #not as rare as midround ling or zombies, but rare enough to feel dread
     duration: 1
     earliestStart: 20 #maybe a strange choice, but the one play of v-rex in shift i saw was really calm
-    minimumPlayers: 50
+    minimumPlayers: 15 # VDS - originally 50. it'll be so funny.
     maxOccurrences: 1 # imagine 2 of them
   - type: VentCrittersRule
     specialEntries:
@@ -134,7 +134,7 @@
   - type: StationEvent
     weight: 3
     reoccurrenceDelay: 5
-    minimumPlayers: 15
+    minimumPlayers: 10 # VDS - originally 15
     earliestStart: 25
     duration: null
   - type: MidRoundAntagRule
@@ -158,7 +158,7 @@
     weight: 3.5
     earliestStart: 25
     reoccurrenceDelay: 40
-    minimumPlayers: 30
+    minimumPlayers: 15 # VDS - originally 30
   - type: VentCrittersRule
     specialEntries:
     - id: SpawnPointGhostEeeplet

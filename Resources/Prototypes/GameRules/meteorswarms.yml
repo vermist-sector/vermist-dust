@@ -101,7 +101,7 @@
   - type: StationEvent
     reoccurrenceDelay: 1
     earliestStart: 12
-    minimumPlayers: 25
+    minimumPlayers: 15 # VDS - down from 25
   - type: MeteorSwarm
 
 - type: entity
@@ -118,10 +118,10 @@
       MeteorSpaceDust: 1
     waves:
       min: 2
-      max: 3
+      max: 8 # VDS - up from 3. dusty out here.
     meteorsPerWave:
-      min: 3
-      max: 5
+      min: 1 # VDS - down from 3
+      max: 8 # VDS - up from 5
 
 - type: entity
   parent: GameRuleMeteorSwarm
@@ -136,8 +136,8 @@
     meteors:
       MeteorSpaceDust: 1
     waves:
-      min: 2
-      max: 3
+      min: 3 # VDS - up from 2
+      max: 12 # VDS - up from 3. logic is that our walls tend to be tougher (shuttle walls) so it's fine.
     meteorsPerWave:
       min: 8
       max: 12
@@ -148,12 +148,21 @@
   components:
   - type: StationEvent
     weight: 18
-    minimumPlayers: 15
+    minimumPlayers: 10 # VDS - down from 15
   - type: MeteorSwarm
     startAnnouncement: true # imp
     meteors:
       MeteorSmall: 7
       MeteorMedium: 3
+    waves: # VDS
+      min: 3
+      max: 8
+    meteorsPerWave:
+      min: 2
+      max: 8
+    waveCooldown:
+      min: 10
+      max: 90
 
 - type: entity
   parent: GameRuleMeteorSwarm
@@ -167,6 +176,15 @@
       MeteorSmall: 3
       MeteorMedium: 6
       MeteorLarge: 1
+    waves: # VDS
+      min: 6
+      max: 16
+    meteorsPerWave:
+      min: 1
+      max: 4
+    waveCooldown:
+      min: 30
+      max: 140
 
 - type: entity
   parent: GameRuleMeteorSwarm
@@ -180,6 +198,15 @@
       MeteorSmall: 2
       MeteorMedium: 4
       MeteorLarge: 4
+    waves: # VDS
+      min: 3
+      max: 18
+    meteorsPerWave:
+      min: 2
+      max: 7
+    waveCooldown:
+      min: 1
+      max: 240
 
 - type: entity
   parent: GameRuleMeteorSwarm
@@ -208,7 +235,7 @@
     reoccurrenceDelay: 1
     duration: 1
     earliestStart: 30
-    minimumPlayers: 25
+    minimumPlayers: 20 # VDS - down from 25
   - type: ImmovableRodRule
     rodPrototypes:
     - id: ImmovableRodKeepTilesStill

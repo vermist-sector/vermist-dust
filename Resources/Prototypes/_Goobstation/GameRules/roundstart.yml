@@ -4,7 +4,7 @@
   components:
   - type: GoobChangelingRule
   - type: GameRule
-    minPlayers: 20 #imp: up from 15
+    minPlayers: 5 #imp: up from 15 # VDS - down from 20
     delay:
       min: 30
       max: 60
@@ -19,7 +19,7 @@
     definitions:
     - prefRoles: [ Changeling ]
       max: 5 #imp: 6>5
-      playerRatio: 15 #imp: up from 10
+      playerRatio: 4 #imp: up from 10 # VDS - down from 15
       lateJoinAdditional: true
       blacklist:
         components:

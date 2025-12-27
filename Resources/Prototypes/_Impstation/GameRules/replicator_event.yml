@@ -9,7 +9,7 @@
     earliestStart: 20
     weight: 5.5
     duration: null
-    minimumPlayers: 30
+    minimumPlayers: 20 # VDS - originally 30
     maxOccurrences: 1
   - type: RandomSpawnRule
     prototype: SpawnPointGhostReplicatorQueen
