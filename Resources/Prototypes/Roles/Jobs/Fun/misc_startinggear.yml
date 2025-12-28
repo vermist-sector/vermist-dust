@@ -165,6 +165,11 @@
     - ClothingEyesHudOmni
     - RCDExperimental
     # imp edit end
+    # VDS edit start
+    - AdminSpeaker
+    - HandTeleporterAdmeme
+    - ParcelWrapAdmeme
+    # VDS edit end
 
 #Gladiator with spear
 - type: startingGear

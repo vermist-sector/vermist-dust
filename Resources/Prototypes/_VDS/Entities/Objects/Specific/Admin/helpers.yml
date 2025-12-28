@@ -1,0 +1,42 @@
+- type: entity
+  parent: BaseItem
+  id: AdminSpeaker
+  name: ...
+  description: Talk to the living through the osay command.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/coins.rsi
+    layers:
+    - state: coin_diamond
+      color: blue
+      shader: unshaded
+  - type: Input
+    context: "human"
+  - type: BlockMovement
+  - type: Examiner
+  - type: IntrinsicRadioReceiver
+  - type: ActiveRadio
+    receiveAllChannels: true
+    globalReceive: true
+  - type: DoAfter
+  - type: Actions
+  - type: Speech
+    speechSounds: Bass
+  - type: MobState
+    allowedStates:
+      - Alive
+  - type: Appearance
+  - type: Vocal
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Common
+    - CentCom
+    - Engineering
+    - Service
+    - Security
+    - Science
+    - Medical
+    - Handheld
+    - Syndicate
+    - Freelance
+    - Binary
