@@ -83,6 +83,26 @@ public sealed partial class LungDamageOnInhaledAirTemperatureComponent : Compone
     /// </summary>
     [DataField(required: true)]
     public float HeatConstant;
+
+    // VDS start
+
+    /// <summary>
+    /// The coefficient for how much damage is taken when the air temperature is below <see cref="TemperatureComponent"/>'s ColdDamageThreshold
+    /// Only applies if the entity is wearing internals. Overwrites <see cref="ColdCoefficient"/>
+    /// Useful for not dying instantly to liquid O2/N2 tanks.
+    /// </summary>
+    [DataField(required: false)]
+    public float? InternalColdCoefficient;
+
+    /// <summary>
+    /// The coefficient for how much damage is taken when the air temperature is below <see cref="TemperatureComponent"/>'s HeatDamageThreshold
+    /// Only applies if the entity is wearing internals. Overwrites <see cref="HeatCoefficient"/>
+    /// Useful for not dying instantly to... molten O2/N2 tanks?...
+    /// </summary>
+    [DataField(required: false)]
+    public float? InternalHeatCoefficient;
+
+    // VDS end
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]

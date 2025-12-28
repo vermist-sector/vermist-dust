@@ -313,8 +313,10 @@
     asphyxiationThreshold: 100
   - type: LungDamageOnInhaledAirTemperature
     heatCoefficient: 0.005
+    internalHeatCoefficient: 0.004 # VDS
     heatConstant: -1.375
     coldCoefficient: -0.01
+    internalColdCoefficient: -0.0225 # VDS
     coldConstant: 2
   - type: LungDamageAlerts
     alertThresholds:
