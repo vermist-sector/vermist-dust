@@ -1,0 +1,28 @@
+﻿- type: marking
+  id: VulpTailCoyote # This specifically was in the upstream folder but unused for some... reason
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Vulpkanin ]
+  sprites:
+  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    state: coyote
+
+- type: marking
+  id: VulpTailFox
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Vulpkanin ]
+  sprites:
+  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    state: fox
+  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    state: fox-tip
+
+- type: marking
+  id: VulpTailOtie
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Vulpkanin ]
+  sprites:
+  - sprite: Mobs/Customization/Vulpkanin/tail_markings.rsi
+    state: otie

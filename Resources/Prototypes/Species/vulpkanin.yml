@@ -6,7 +6,7 @@
   randomChance: 0.5 #imp, AT A COST
   prototype: MobVulpkanin
   sprites: MobVulpkaninSprites
-  defaultSkinTone: "#5a3f2d"
+  defaultSkinTone: "#ffffff" # Misfit - Changed from 5a3f2d to ffffff
   markingLimits: MobVulpkaninMarkingLimits
   dollPrototype: MobVulpkaninDummy
   skinColoration: VulpkaninColors
@@ -82,89 +82,89 @@
 - type: humanoidBaseSprite
   id: MobVulpkaninEyes
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: Mobs/Customization/eyes.rsi # Misfit - Change to use human eyes
     state: eyes
 
 - type: humanoidBaseSprite
   id: MobVulpkaninHead
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: head_m
 
 - type: humanoidBaseSprite
   id: MobVulpkaninHeadMale
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: head_m
 
 - type: humanoidBaseSprite
   id: MobVulpkaninHeadFemale
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: head_f
 
 - type: humanoidBaseSprite
   id: MobVulpkaninTorso
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: torso_m
 
 - type: humanoidBaseSprite
   id: MobVulpkaninTorsoMale
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: torso_m
 
 - type: humanoidBaseSprite
   id: MobVulpkaninTorsoFemale
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: torso_f
 
 - type: humanoidBaseSprite
   id: MobVulpkaninLLeg
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: l_leg
 
 - type: humanoidBaseSprite
   id: MobVulpkaninLHand
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: l_hand
 
 - type: humanoidBaseSprite
   id: MobVulpkaninLArm
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: l_arm
 
 - type: humanoidBaseSprite
   id: MobVulpkaninLFoot
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: l_foot
 
 - type: humanoidBaseSprite
   id: MobVulpkaninRLeg
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: r_leg
 
 - type: humanoidBaseSprite
   id: MobVulpkaninRHand
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: r_hand
 
 - type: humanoidBaseSprite
   id: MobVulpkaninRArm
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: r_arm
 
 - type: humanoidBaseSprite
   id: MobVulpkaninRFoot
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _Misfit/Mobs/Species/Vulpkanin/parts.rsi # Misfit - Change to Paradise based sprites
     state: r_foot
