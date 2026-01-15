@@ -116,10 +116,18 @@ public sealed partial class GuideReagentEmbed : BoxContainer, IDocumentTag, ISea
             .ThenBy(p => p.Products.Count)
             .ToList();
 
-        if (reactions.Any())
+        if (reactions.Count != 0) // VDS swapped from .Any()
         {
             foreach (var reactionPrototype in reactions)
             {
+                // VDS start
+                if (RecipesDescriptionContainer.Children.Count() >= 1 &&
+                    RecipesDescriptionContainer.Children.Last().GetControlScrollPosition() == null)
+                {
+                    break;
+                }
+                // VDS end
+
                 RecipesDescriptionContainer.AddChild(new GuideReagentReaction(reactionPrototype, _prototype, _systemManager));
             }
         }
@@ -132,12 +140,20 @@ public sealed partial class GuideReagentEmbed : BoxContainer, IDocumentTag, ISea
         #region Effects
         if (_chemistryGuideData.ReagentGuideRegistry.TryGetValue(reagent.ID, out var guideEntryRegistry) &&
             guideEntryRegistry.GuideEntries != null &&
-            guideEntryRegistry.GuideEntries.Values.Any(pair => pair.EffectDescriptions.Any()))
+            guideEntryRegistry.GuideEntries.Values.Any(pair => pair.EffectDescriptions.Length != 0)) // VDS swapped from .Any()
         {
             EffectsDescriptionContainer.Children.Clear();
             foreach (var (group, effect) in guideEntryRegistry.GuideEntries)
             {
-                if (!effect.EffectDescriptions.Any())
+                // VDS start
+                if (EffectsDescriptionContainer.Children.Count() >= 1 &&
+                    EffectsDescriptionContainer.Children.Last().GetControlScrollPosition() == null)
+                {
+                    break;
+                }
+                // VDS end
+
+                if (effect.EffectDescriptions.Length == 0) // VDS swapped from .Any()
                     continue;
 
                 var groupLabel = new RichTextLabel();
@@ -187,6 +203,14 @@ public sealed partial class GuideReagentEmbed : BoxContainer, IDocumentTag, ISea
             var i = 0;
             foreach (var effectString in guideEntryRegistryPlant.PlantMetabolisms)
             {
+                // VDS start
+                if (PlantMetabolismsDescriptionContainer.Children.Any() &&
+                    PlantMetabolismsDescriptionContainer.Children.Last().GetControlScrollPosition() == null)
+                {
+                    break;
+                }
+                // VDS end
+
                 descMsg.AddMarkupOrThrow(effectString);
                 i++;
                 if (i < descriptionsCount)
@@ -247,6 +271,14 @@ public sealed partial class GuideReagentEmbed : BoxContainer, IDocumentTag, ISea
             .ThenBy(o => o.IdentifierString);
         foreach (var source in orderedSources)
         {
+            // VDS start
+            if (SourcesDescriptionContainer.Children.Count() >= 1 &&
+                SourcesDescriptionContainer.Children.Last().GetControlScrollPosition() == null)
+            {
+                break;
+            }
+            // VDS end
+
             if (source is ReagentEntitySourceData entitySourceData)
             {
                 SourcesDescriptionContainer.AddChild(new GuideReagentReaction(
