@@ -1,4 +1,5 @@
 using Content.Server.DeviceLinking.Components;
+using Content.Shared.DeviceLinking;
 
 namespace Content.Server.DeviceLinking.Systems;
 
@@ -8,30 +9,45 @@ namespace Content.Server.DeviceLinking.Systems;
 public sealed class AutoLinkSystem : EntitySystem
 {
     [Dependency] private readonly DeviceLinkSystem _deviceLinkSystem = default!;
+    [Dependency] private readonly EntityLookupSystem _entityLookupSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
+        base.Initialize();
         SubscribeLocalEvent<AutoLinkTransmitterComponent, MapInitEvent>(OnAutoLinkMapInit);
     }
 
-    private void OnAutoLinkMapInit(EntityUid uid, AutoLinkTransmitterComponent component, MapInitEvent args)
+    private void OnAutoLinkMapInit(Entity<AutoLinkTransmitterComponent> ent, ref MapInitEvent args)
     {
-        var xform = Transform(uid);
+        AutoLinkAllInRange(ent); // VDS moved to own method
+    }
 
-        var query = EntityQueryEnumerator<AutoLinkReceiverComponent>();
-        while (query.MoveNext(out var receiverUid, out var receiver))
+    // VDS start - pretty much changed how the entities are gathered. linking logic stayed the same.
+    /// <summary>
+    /// Link matching <see cref="AutoLinkReceiverComponent"/> to the provided <see cref="AutoLinkTransmitterComponent"/> entity.
+    /// Restricted by the transmitter's <see cref="DeviceLinkSourceComponent"/> range, and they must be on the same grid.
+    /// </summary>
+    public void AutoLinkAllInRange(Entity<AutoLinkTransmitterComponent> ent)
+    {
+        if (!TryComp<DeviceLinkSourceComponent>(ent, out var source))
+            return;
+
+        var xform = Transform(ent);
+
+        foreach (var receiver in _entityLookupSystem.GetEntitiesInRange<AutoLinkReceiverComponent>(xform.Coordinates, source.Range))
         {
-            if (receiver.AutoLinkChannel != component.AutoLinkChannel)
+            if (receiver.Comp.AutoLinkChannel != ent.Comp.AutoLinkChannel)
                 continue; // Not ours.
 
-            var rxXform = Transform(receiverUid);
+            var receiverXform = Transform(receiver);
 
-            if (rxXform.GridUid != xform.GridUid)
+            if (receiverXform.GridUid != xform.GridUid)
                 continue;
 
-            _deviceLinkSystem.LinkDefaults(null, uid, receiverUid);
+            _deviceLinkSystem.LinkDefaults(null, ent, receiver);
         }
     }
+    // VDS end
 }
 
