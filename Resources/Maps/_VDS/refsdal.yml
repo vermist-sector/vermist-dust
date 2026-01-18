@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 01/16/2026 07:03:08
-  entityCount: 5542
+  time: 01/18/2026 16:47:22
+  entityCount: 5548
 maps:
 - 1
 grids:
@@ -2325,13 +2325,13 @@ entities:
             1: 28672
           -12,-9:
             1: 1
-            0: 35262
+            0: 43454
           -13,-9:
             1: 30159
             0: 2048
           -12,-8:
             1: 65329
-            0: 8
+            0: 12
           -11,-11:
             0: 3840
           -11,-9:
@@ -2339,7 +2339,7 @@ entities:
           -11,-10:
             0: 26214
           -11,-8:
-            0: 3590
+            0: 36374
             1: 4096
           -10,-11:
             0: 768
@@ -2368,10 +2368,12 @@ entities:
           -5,1:
             1: 16011
           -4,2:
-            1: 477
+            1: 1502
             0: 51200
           -5,2:
             1: 16298
+          -4,3:
+            0: 3
           -3,0:
             1: 65535
           -3,1:
@@ -2406,7 +2408,7 @@ entities:
           -5,-3:
             1: 52503
           -4,-2:
-            1: 61086
+            1: 65182
           -5,-2:
             1: 48123
           -5,-1:
@@ -2463,7 +2465,7 @@ entities:
           -9,-3:
             1: 65535
           -8,-2:
-            1: 21845
+            1: 21973
           -9,-2:
             1: 65535
           -8,-1:
@@ -2490,7 +2492,7 @@ entities:
           -6,-4:
             1: 63961
           -6,-3:
-            1: 2959
+            1: 11151
           -6,-2:
             1: 62327
           -6,-1:
@@ -2500,22 +2502,23 @@ entities:
           -5,-4:
             1: 29282
           -8,-6:
+            0: 33296
             1: 4096
-            0: 32768
           -9,-6:
-            1: 65280
+            1: 52992
+            0: 4
           -9,-5:
-            1: 65340
+            1: 64571
           -9,0:
             1: 65535
           -8,1:
-            1: 65524
+            1: 65396
           -9,1:
             1: 48051
           -8,2:
             1: 30479
           -9,2:
-            1: 65467
+            1: 65339
           -8,3:
             1: 61695
           -9,3:
@@ -2530,56 +2533,66 @@ entities:
             1: 65512
           -7,4:
             1: 882
+            0: 51200
           -6,1:
-            1: 61687
-            2: 8
+            1: 61695
           -6,2:
-            1: 52031
+            1: 52095
           -6,3:
             1: 16383
+          -6,4:
+            1: 273
+            0: 4132
           -5,3:
             1: 19
+            0: 4736
           -9,4:
             1: 64504
           -8,5:
             1: 19
-            0: 4736
+            0: 65152
           -9,5:
-            1: 16383
+            1: 49151
+          -8,6:
+            1: 1
+            0: 18
+          -9,6:
+            1: 1901
+            0: 30848
           -7,5:
-            0: 1
+            0: 319
           -12,-7:
             1: 63420
           -13,-7:
             1: 65521
           -12,-6:
-            1: 15
-            0: 3840
+            1: 3983
+            0: 61440
           -13,-6:
-            0: 2560
-            1: 1280
+            1: 3824
+            0: 49152
           -12,-5:
-            0: 52224
+            0: 19547
+            1: 32768
           -12,-4:
-            0: 12862
-            1: 51200
+            0: 12854
+            1: 51208
           -11,-7:
             1: 22135
           -11,-6:
-            1: 3279
-            0: 4352
+            1: 15823
           -11,-5:
-            0: 4369
-            1: 36044
+            1: 56335
+            0: 272
           -11,-4:
             1: 7631
           -10,-7:
+            0: 65
             1: 64256
-            0: 64
           -10,-6:
-            1: 61246
+            1: 12094
           -10,-5:
-            1: 52689
+            1: 65487
           -10,-4:
             1: 4095
           -9,-7:
@@ -2590,7 +2603,7 @@ entities:
             0: 8
           -15,2:
             0: 8995
-            1: 2176
+            2: 2176
           -15,3:
             0: 58163
             1: 2252
@@ -2604,7 +2617,8 @@ entities:
           -15,4:
             0: 8
           -14,2:
-            1: 2720
+            3: 544
+            4: 2176
           -14,4:
             0: 85
           -13,3:
@@ -2679,8 +2693,8 @@ entities:
             1: 2055
             0: 34720
           -14,-6:
-            1: 29764
-            0: 2048
+            1: 31940
+            0: 32768
           -14,-7:
             1: 17408
           -13,-5:
@@ -2700,6 +2714,9 @@ entities:
             1: 7935
           -13,7:
             1: 65399
+          -12,8:
+            1: 12335
+            0: 2176
           -11,4:
             1: 49407
           -11,5:
@@ -2708,7 +2725,11 @@ entities:
           -11,6:
             1: 57039
           -11,7:
-            1: 21
+            1: 16021
+            0: 16384
+          -11,8:
+            1: 1
+            0: 14
           -11,3:
             1: 52733
           -10,4:
@@ -2716,12 +2737,12 @@ entities:
           -10,5:
             1: 65534
           -10,6:
-            1: 895
+            1: 52095
+          -10,7:
+            1: 23
+            0: 872
           -10,3:
-            1: 65535
-          -9,6:
-            1: 1
-            0: 32
+            1: 30583
           -15,7:
             0: 32768
           -15,8:
@@ -2736,8 +2757,6 @@ entities:
             0: 35008
           -13,8:
             1: 54655
-          -12,8:
-            1: 12320
           -12,9:
             1: 35
             0: 62208
@@ -2756,6 +2775,8 @@ entities:
             1: 1
           -11,9:
             0: 4096
+          -10,8:
+            0: 1
           -16,10:
             0: 52
           -17,10:
@@ -2781,7 +2802,7 @@ entities:
           -14,10:
             0: 36488
           -11,-3:
-            1: 57343
+            1: 57341
           -11,-2:
             1: 52417
             0: 256
@@ -2811,12 +2832,14 @@ entities:
           -10,2:
             1: 30719
           -18,-9:
-            0: 9216
+            0: 8192
           -18,-8:
             0: 50
             1: 8
+          -17,-9:
+            1: 4096
           -19,-8:
-            0: 200
+            0: 744
           -19,-6:
             1: 49152
           -18,-6:
@@ -2834,9 +2857,15 @@ entities:
             Nitrogen: 82.10312
         - volume: 2500
           temperature: 293.15
+          moles: {}
+        - volume: 2500
+          temperature: 293.15
           moles:
-            Oxygen: 21.6852
-            Nitrogen: 81.57766
+            Nitrogen: 6666.982
+        - volume: 2500
+          temperature: 293.15
+          moles:
+            Oxygen: 6666.982
         chunkSize: 4
     - type: GasTileOverlay
     - type: NavMap
@@ -3633,7 +3662,7 @@ entities:
       pos: -42.5,24.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -72949.96
+      secondsUntilStateChange: -73026.9
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3661,7 +3690,7 @@ entities:
       pos: -33.5,17.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -60841.97
+      secondsUntilStateChange: -60918.906
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4275,6 +4304,42 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -47.5,-35.5
+      parent: 2
+- proto: AtmosFixBlockerMarker
+  entities:
+  - uid: 5547
+    components:
+    - type: Transform
+      pos: -56.5,9.5
+      parent: 2
+  - uid: 5548
+    components:
+    - type: Transform
+      pos: -56.5,10.5
+      parent: 2
+- proto: AtmosFixNitrogenMarker
+  entities:
+  - uid: 5543
+    components:
+    - type: Transform
+      pos: -54.5,9.5
+      parent: 2
+  - uid: 5544
+    components:
+    - type: Transform
+      pos: -54.5,10.5
+      parent: 2
+- proto: AtmosFixOxygenMarker
+  entities:
+  - uid: 5545
+    components:
+    - type: Transform
+      pos: -52.5,9.5
+      parent: 2
+  - uid: 5546
+    components:
+    - type: Transform
+      pos: -52.5,10.5
       parent: 2
 - proto: Autolathe
   entities:
@@ -15001,7 +15066,7 @@ entities:
       pos: -25.5,-10.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -41777.895
+      secondsUntilStateChange: -41854.832
       state: Opening
   - uid: 1910
     components:
@@ -38360,7 +38425,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -61377.668
+      secondsUntilStateChange: -61454.605
       state: Opening
     - type: Airlock
       autoClose: False
@@ -38981,7 +39046,7 @@ entities:
       pos: -21.5,-9.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -69762.47
+      secondsUntilStateChange: -69839.41
       state: Opening
   - uid: 4840
     components:
@@ -38990,7 +39055,7 @@ entities:
       pos: -18.5,-9.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -69761.56
+      secondsUntilStateChange: -69838.5
       state: Opening
 - proto: WoodenSupportBeam
   entities:
