@@ -1,7 +1,7 @@
 - type: skinColoration
   id: Hues
   strategy: !type:ClampedHsvColoration
-    value: [0.175, 1]
+    value: [0, 1] # VDS - reduce min brightness to 0
 
 - type: skinColoration
   id: TintedHues
@@ -26,4 +26,4 @@
   id: VulpkaninColors
   strategy: !type:ClampedHslColoration
     saturation: [0.0, 0.60]
-    lightness: [0.2, 0.9]
+    lightness: [0.0, 0.9] # VDS - reduce min brightness to 0
