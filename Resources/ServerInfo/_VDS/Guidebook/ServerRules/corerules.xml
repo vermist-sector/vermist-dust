@@ -1,0 +1,173 @@
+<Document>
+  <ColorBox Orientation="Horizontal" VerticalAlignment="Center" Color="#ffd781" OutlineColor="#ffd781" >
+      <Box Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" >
+        <Box Margin="10" Orientation="Vertical" />
+        <Box Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
+        [color=#000000][head=1]Server Rules[/head][/color]
+        </Box>
+      </Box>
+  </ColorBox>
+  <Box Margin="10" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Stretch" >
+  Welcome to Vermist Dust Sector, a server focused on improvisational storytelling. If you're here, you probably already know that. You must be 20+ to play here.
+
+  Feel free to AHelp if you need any gameplay or rule clarifications. When in doubt, if it's fun for everyone involved, it's probably alright. Unsure if it would be fun for the others? LOOC in-game or OOC in the lobby and ask!
+
+  Our rules are split into 50000 sections:
+  </Box>
+  <ColorBox Orientation="Vertical" VerticalAlignment="Stretch" Color="#1B1B1E" OutlineColor="#1B1B1E" OutlineThickness="5" >
+    <Box Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+      <Box Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" >
+        <ColorBox Orientation="Vertical" VerticalAlignment="Stretch" Color="#ffd781" OutlineColor="#ffd781" >
+        <Box Orientation="Vertical" VerticalAlignment="Stretch" >
+
+          <Box Margin="8" Orientation="Vertical" />
+          <Box Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            [color=#000000][head=2]Section I: Community Rules[/head][/color]
+          </Box>
+        </Box>
+        </ColorBox>
+        <Box Margin="10" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
+
+        These rules apply at all times, including in the Discord, in your bathroom, in Paris, on the moon, when you're hanging out with 3 gnomes, and during solar eclipses.
+
+            <Table Columns="1">
+            <ColorBox Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Color="#372d26" OutlineColor="#372d26" OutlineThickness="5" >
+            • [bold]1.[/bold] Please engage with the rules and the spirit of the community in good faith, they're rather lenient but only because our community is civil and self-moderating!
+            </ColorBox>
+            <ColorBox Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Color="#2a211a" OutlineColor="#2a211a" OutlineThickness="5" >
+            • [bold]2.[/bold] Be civil: don't flame, don't be toxic, don't be an asshole, be polite and respectful, don't intentionally ruin the fun for others, the usual common-sense and decency stuff.
+            </ColorBox>
+            <ColorBox Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Color="#372d26" OutlineColor="#372d26" OutlineThickness="5" >
+            <Box Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+
+            • [bold]3.[/bold] Communicate: don't let your emotions stew and boil alone! If someone or something is bothering you, please respectfully communicate with them in LOOC/OOC, or in the Discord.
+
+            —◦ [italic][bold]3.1.[/bold] This also goes both ways, if you think you upset someone, please reach out to them.[/italic]
+
+            —◦ [italic][bold]3.2.[/bold] Positive expression over things others have done is also encouraged! Even a simple 'i really enjoyed that chat we had in atmos' goes a long way.[/italic]
+            </Box>
+            </ColorBox>
+            <ColorBox Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Color="#2a211a" OutlineColor="#2a211a" OutlineThickness="5" >
+            • [bold]4.[/bold] No ERP or overtly sexual content. It's too freakin dusty out here to be doing any of that.
+            </ColorBox>
+            </Table>
+        </Box>
+      </Box>
+
+
+      <Box Margin="5" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        ## Section II: Roleplay Rules
+
+        VDS is focused on situational improv, using the game, its mechanics, and the antics of our characters as the catalysts that form our stories and round flow. We don't play to win or to 'greentext', we play to create something memorable.
+
+        While our setting may be considered more serious and horror-themed, this does not inhibit whimsy, comedy, and light-heartedness. Both sides can exist, even at the same time, it is simply about understanding a scene's current context and playing in the space.
+
+        These rules are rather lenient, even more-so if those involved with the scene all consent to whatever's going on. View them as guidelines more than anything.
+        - [bold]0.[/bold] Play a character: they're a separate entity from yourself (even if they're primarily a self-insert). Don't take anything that happens IC personally!
+           - [bold]0.1.[/bold] This is not an excuse to be a major jerk, if the other person doesn't know you well OOC, make sure to check in and let them know that your guy is just a dick.
+        - [bold]1.[/bold] If it makes valid, logical in-character sense, is well-roleplayed and would add more value and fun to those involved, you can do practically anything, including self-antaggy things. When in doubt, feel free to ask in LOOC/OOC or AHelp.
+        - [bold]2.[/bold] Play in the space: there's a time and place for comedy, and there's a time and place for trauma-dumping. Both are allowed, and can even mix, but each round or scene is different and might call for different vibes!
+           - [bold]2.1.[/bold] This can include your actions as well. Depending on the context, some rounds could benefit from withholding knowledge, suddenly being incompetent at your job; more petty crime or more vigilantism, and so on.
+        - [bold]3.[/bold] Value your life, and your job. VDS is known to be a dangerous sector, death and fates worse than death aren't out of the question.
+           - [bold]3.1.[/bold] Cloning should never be an excuse to not fear death, after all: is it really you, is it really stable, is it even available?
+        - [bold]4.[/bold] Do your job: especially during emergencies.
+        - [bold]5.[/bold] Listen to Command: chances are, they have the ship's best interest at heart, and they're your boss. ESPECIALLY during emergencies.
+        - [bold]6.[/bold] Include others: Speak to strangers, invite them to whatever is ongoing, allow others to shine in the spotlight. Don't intentionally ignore someone simply because you don't know them IC/OOC.
+        - [bold]7.[/bold] Follow the Metashield (see next section).
+        - [bold]8.[/bold] When in doubt, LOOC or OOC if what you want to do is okay!
+           - [bold]8.1.[/bold] LOOC/OOC to let others know if something is awesome, keep doing it/please stop, let's move on, as well. Communication with fellow players is key.
+      </Box>
+
+
+      <Box Margin="5" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        ## Section III: Metashield
+
+        This section describes what is commonly known in-character knowledge.
+
+        [color=#446849]### Never Shielded[/color]
+
+        99.99% of characters/players know these facts.
+
+        - The fact that Vermist Dust Sector is a highly dangerous place to be.
+
+        [color=#446849]#### Opt In[/color]
+
+        A super-imposition percentage of characters/players know these facts. Number 4 will make you shit bricks!
+
+        - The fact that VD-Command (central command) is a fairly separate entity from Nanotrasen as a whole, due to distance, lack of Nanotrasen communication, and who knows.
+        - That VDS consistently goes through anomalous/paranormal events.
+
+        [color=#726e3f]### Sometimes Shielded[/color]
+
+        You need solid in-game evidence during the current round in order to even consider things on this list as a possibility. In general, if it's protection for another player or their role, play in the space and don't meta-game or power-game them because you have OOC knowledge!
+
+        - The idea that rival Nanotrasen organizations such as the Syndicate would even care or know about VDS, let alone send anyone on a mission there.
+        - Certain technologies and abilities, such as chameleon items, magic, traitor implants, uplinks, things meant to be 'stealthy' or 'rare'. If it would be more fun for the round if you played dumb, do it. Command/Security have more leeway when it comes to things like traitor items, but only with solid evidence or having no other possible explanation.
+
+        [color=#722b33]### Always Shielded[/color]
+
+        Acknowledging, using, or being influenced by any information here IC is considered meta-gaming.
+
+        - Anything from your old life, should you respawn as a new character or ghost role.
+        - Anything you may have seen/heard/smelled as a ghost, while asleep, in hard-crit, etc.
+        - LOOC/OOC chat. (with the exceptions of scene check-ins and things like that. generally just don't do stuff like run to the engine because someone in OOC said they don't know what they're doing, or start being uncharacteristically cautious of someone because they LOOC'd asking how to use their changeling abilities, etc.)
+      </Box>
+
+
+      <Box Margin="5" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        ## Section IV: Command, Security, and Antagonist Rules
+
+        As any of these roles, you're able to steer the direction of the current story much easier than anyone else. Consider yourself as a form of in-character game-master:
+        - You're the captain and want to go on a planet excursion with the crew? Well, you have the authority! Do it!
+        - You're security and shit is going down? Mysterious murders going on, no clue who the killer is? Round the entire crew up and begin the who-dun-it episode!
+        - Traitor with a kill target? Well, you can do your objectives if you wish, but they are merely suggestions. What if you kidnapped your target and ransomed them for the station's budget, or started a cult with the goal of sacrificing those "inflicted" by dust?
+        - Have access to the red phone? Got an in-character idea and need help setting it up? Make a call and you can get anything to happen. Or just chat up Voronoi for fun.
+
+        If it's fun and interesting for the round, go for it! Feel free to AHelp if you need assistance.
+
+        However, due to your impact on the round, it's important to be mindful of your power and how it can ruin (or enhance) the flow of the round. Keep these guidelines in mind:
+        - As an antagonist, follow 'story telling escalation'. As in, don't round remove somebody 5 minutes into the round. Build up to it. Tell a story with it. Savour it and have fun with it. Objectives are simply ideas for you to run with. But don't do nothing all round, either. It would suck if the protagonist was killed off screen 5 pages into a book. But the book would also be boring if there was no opposition ever.
+        - As command, actually be commanding. You are not just a fancier crewmate of your chosen department. You are command! You want your entire department to do well! Delegate jobs, tell your department what to do! You even have authority to fire people in your department (with permission from the HoP/Captain), something to seriously consider in this dangerous sector. Be a command member first and foremost. You're also expected to be skilled in your chosen department too, of course.
+        - As security, play nice with antagonists. If it would be more interesting for the round, or maybe you caught the antagonist doing crime 5 minutes in, perhaps playing dumb would be the better course of action. However, when the stakes and danger grows, don't play easy. Our space law is currently old and WIP, but murder should never be just a slap on the wrist, and law should not apply to straight up eldritch monsters. Antagonist actions should have scaling consequences.
+
+        Finally, a few small notes:
+        - As Command and Security, you're still allowed to engage in escalated self-antagonist behaviour, but you'll need good reasons and build-up!
+        - Mindshields do not mean you are loyal to NT (though you may opt in to that if you wish). Mindshields are more literal in VDS, simply making you more resistant (not immune) to mind altering effects such as revolution flashes and the Dust
+        - Antag goals may be ignored if you wish and just used as an idea generator, though your new objectives should keep with the 'scale of destruction' of the original goals you were given. If you want to do something much more drastic than your original goals, such as releasing the tesla, please AHelp first.
+      </Box>
+
+
+      <Box Margin="5" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        ## Section V: Round Continuity Rules
+
+        In VDS, the Dust causes each round to be both canon and not canon. What this means is that each round is up to interpretation, as the Dust will alter memories of previous rounds. What TRULY happened beyond the mundane should never be fully discussed, not without somebody chiming in and declaring a different interpretation such as: "but wait, John Antag didn't kill Mary Crewmate yesterday… one, Mary is still alive, two, we were just all playing video games in the bar that shift!".
+
+        You're allowed to discuss previous rounds, but you must alter things to sound more mundane or just completely different. Make anything up! If one person is saying nothing but what actually happened last round, you are obligated to gaslight them and yourself that it actually something else happened.
+
+        Deaths and antagonism are obviously something heavily altered, after all, how else would John Antag be here on today's shift when he fell down into the chasm torture nexus last round? Some may remember John Antag's 'death' and be shocked he's still here, while others should be convinced that something else happened and John Antag was never in danger. If you want a character death to be guaranteed canon, feel free to announce it in the Discord, which inadvertently makes said round more cemented in history, too!
+
+        Acknowledging the memory fuckery is fine in small bursts, but keep in mind, sometimes the previous round ITSELF is just memory fuckery, and you all playing video games in the bar actually was the true reality.
+      </Box>
+
+
+      <Box Margin="5" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        ## Section VI: AHelp/GMHelp
+
+        [color=#25d959]Use AHelp to communicate with GMs![/color]
+
+        AHelp is a direct line to the administrators. While this can be used to report rule violations or discomfort as in other servers, or ask for assistance OOC, it can also be used to work with the administrators to create interesting roleplay or gameplay scenarios.
+
+        - All AHelp messages are relayed to admins via Discord, even when they are not in game. Your AHelp not receiving a response does not mean it was not acted upon, though admins will try to communicate wherever they can.
+        - Using OOC or IC channels to complain about clear AHelpable offences is not preferred - LOOC can and should be used to communicate with the people you’re interacting with, but if you have an issue the admins can help with, AHelping is the best way to resolve it.
+        - AHelp can be used to ask for gameplay clarifications, or request admin intervention in the case of game-breaking bugs or glitches. If you are contacted by an admin through AHelp, it does not mean you've done something wrong.
+        - AHelp is absolutely for requesting bits or events! AHelping to make the round more interesting is encouraged - examples include asking to become a specific antagonist, for a GM to play a character to help play a scene out, or even for your character to be given a modifier - even killed in an interesting way! Don’t be afraid to AHelp in order to make the stories you want to tell happen. You can also pray via an altar or bible, or use the red phone on-station if you’d like to make a request in-character for the admins to interpret more creatively.
+
+         When AHelping for rulebreaks and similar, please assume we have absolutely zero context on what happened and any related history, even if you saw an admin character nearby at the moment. Make sure your AHelp includes the context and details!
+
+         For GMHelping events/bits, also assume we have zero context on any relevant character related stuff and make sure to include said relevant context for clarity!
+      </Box>
+    </Box>
+  </ColorBox>
+
+</Document>
+

@@ -1,0 +1,5 @@
+- type: guideEntry
+  id: VDSRuleset
+  name: guide-entry-rules
+  ruleEntry: true
+  text: "/ServerInfo/_VDS/Guidebook/ServerRules/corerules.xml"
