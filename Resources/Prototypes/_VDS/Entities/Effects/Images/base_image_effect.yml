@@ -1,0 +1,16 @@
+- type: entity
+  abstract: true
+  id: BaseImageEffect
+  name: image
+  components:
+  - type: Sprite
+    snapCardinals: false
+    noRot: false
+    drawdepth: Effects
+  - type: Transform
+    anchored: false
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
