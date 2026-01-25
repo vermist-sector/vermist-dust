@@ -2,7 +2,7 @@
   id: Blank
 
 - type: parallax
-  id: Default
+  id: DefaultOld # VDS, easier to just steal the Default id for ourselves.
   layers:
     - texture:
         !type:ImageParallaxTextureSource

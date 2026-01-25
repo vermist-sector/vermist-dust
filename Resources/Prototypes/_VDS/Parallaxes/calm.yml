@@ -1,0 +1,45 @@
+- type: parallax
+  id: Default
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Calm/1-calm.png"
+      slowness: 0.999
+      scale: "2, 2"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Calm/2-stars.png"
+      slowness: 0.998
+      scale: "1, 1"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Calm/3-swirls.png"
+      slowness: 0.995
+      scale: "1, 1"
+      scrolling: "-0.00095, -0.0015"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Calm/4-dense.png"
+      slowness: 0.990
+      scale: "1, 1"
+      scrolling: "0.0009, 0.0025"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Calm/5-nebulous.png"
+      slowness: 0.985
+      scale: "1, 1"
+      scrolling: "-0.000255, 0.000155"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Calm/6-song.png"
+      slowness: 0.975
+      scale: "1.4, 1.4"
+      scrolling: "0.00095, -0.0018"
+      tiled: false
+      worldHomePosition: "600, -500"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Calm/7-dust.png"
+      slowness: 0.970
+      scale: "1.6, 1.6"
+      scrolling: "0.0088, -0.0045"
