@@ -1,0 +1,259 @@
+<Document>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+  <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" NOTES="Roleplay Rules" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="4" VerticalAlignment="Bottom">
+
+    <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+      <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="8" VerticalAlignment="Stretch"/>
+      <ColorBox Color="#671c94" HorizontalAlignment="Stretch" NOTES="Header" Orientation="Vertical" OutlineColor="#671c94" VerticalAlignment="Stretch">
+        <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+          [color=#000000][head=2]Section II: Roleplay Rules[/head][/color]
+        </Box>
+      </ColorBox>
+
+      <Box HorizontalAlignment="Center" Margin="10" NOTES="Body" Orientation="Vertical" VerticalAlignment="Bottom">
+
+        [bold]VDS is focused on situational improv,[/bold] using the game, its mechanics, and the antics of our characters as the catalysts that form our stories and round flow.
+
+        [italic]We don't play to win or to [color=#449944]'greentext'[/color], we play to create something memorable.[/italic]
+
+        While our setting may be considered more serious and horror-themed, this does not inhibit whimsy, comedy, and light-heartedness. Both sides can exist, even at the same time, it is simply about understanding a scene's current context and playing in the space.
+
+
+        The rules are rather lenient, even more-so if those involved with the scene all consent to whatever's going on. View them as guidelines more than anything.
+
+        <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" NOTES="Fundamental" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="2" VerticalAlignment="Bottom">
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="4" VerticalAlignment="Stretch"/>
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" NOTES="Header" Orientation="Vertical" OutlineColor="#671c94" VerticalAlignment="Stretch">
+              <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+                [head=3][color=#000000]Fundamental[/head][/color]
+              </Box>
+            </ColorBox>
+
+            <Box HorizontalAlignment="Center" Margin="10" NOTES="Body" Orientation="Vertical" VerticalAlignment="Bottom">
+              These rules are considered fundamental to VDS' function, therefore they're pinned at the top to direct more attention to.
+            </Box>
+
+            <Table Columns="1" NOTES="Fundamental Rule List">
+
+              <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1a1220" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1a1220" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+
+                    [color=#671c94]•[/color] [bold]0.[/bold] [bold]Play a character:[/bold] they're a separate entity from yourself (even if they're primarily a self-insert). Don't take anything that happens IC personally!
+
+                    <Table Columns="3">
+
+                      <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                      <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]0.1.[/bold] This is not an excuse to be a major jerk. If the other person doesn't know you well OOC, make sure to check in and let them know that your guy is just a dick.[/italic][/color]
+
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]0.2.[/bold] You cannot be Super Mario, I'm already Super Mario. No playing characters from other media, too. References and inspiration is fine.[/italic][/color]
+                      </Box>
+                      <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+
+                    </Table>
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#2c2134" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#2c2134" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+
+                    [color=#671c94]•[/color] [bold]2.[/bold] [bold]Include others:[/bold] Speak to strangers, invite them to whatever is ongoing, allow others to shine in the spotlight.
+
+                    Don't intentionally ignore someone simply because you don't know them IC/OOC. Making an effort to include others is what allows VDS to work and for the game to be more fun for all involved.
+
+                    [bold]Being left out is probably the worse feeling you can get playing Space Station 14,[/bold] but even a simple [italic]"hey, what'chya drinkin?"[/italic] towards someone sitting alone at the bar can go a long way and create more stories for all.
+
+                    <Table Columns="3">
+
+                      <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                      <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]2.1.[/bold] [bold]This goes both ways![/bold] You can't expect others to always reach out to you. Make an effort and show interest! Even if your character is a brick wall, if you want more things to happen to you, you'll have to show SOME kind of emotion and interest. Give people a hook to drive their teeth into. [bold]Playing a complete loner isn't going to be fun for you or anyone.[/bold][/italic][/color]
+                      </Box>
+                      <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+
+                    </Table>
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1a1220" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1a1220" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                    [color=#671c94]•[/color] [bold]3.[/bold] [bold]Do your job:[/bold] especially during emergencies.
+
+                    <Table Columns="3">
+
+                      <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                      <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]3.1.[/bold] [bold]Do not overstep your job responsibilities beyond reason.[/bold] There is no reason for a Botanist to play Medical Doctor in the medbay, and so on.[/italic][/color]
+
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]3.1.1.[/bold] During times where vital jobs are missing, more leniency on overstepping is given. Ideally ask the HoP or Captain first for a job transfer/addition. The Captain is expected to fill in (or hire for) any missing departments.[/italic][/color]
+
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]3.1.2.[/bold] [bold]Don't let your OOC game knowledge seep into knowledge your character has no reason to know.[/bold] Even if a job is OOC mechanically simple, please do imagine it being a bit more complicated IC, when reasonable. Leniency is given on whether your character knowing (or even OOC fucking up intentionally) would be more fun for all in the moment or not.[/italic][/color]
+
+                        <Table Columns="2">
+                          <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                            [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]3.2.[/bold] If you're an antagonist, do antagonistic things! You do not have to follow your given objectives 1:1, you can use them to gauge how dramatic and lethal your own idea should be.[/italic][/color]
+                          </Box>
+
+                          <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                            [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]3.2.1[/bold] Antagonists have much more leniency when it comes to ignoring their job and overstepping.[/italic][/color]
+                          </Box>
+                        </Table>
+                      </Box>
+
+                      <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+
+                    </Table>
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#2c2134" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#2c2134" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+
+                    [color=#671c94]•[/color] [bold]4.[/bold] If it makes valid, logical in-character sense, [bold]is well-roleplayed and would add more value and [color=#449944][italic]fun[/italic][/color] to those involved[/bold], you can do practically anything, including self-antagonistic things within reason.
+
+                    <Table Columns="3">
+
+                      <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                      <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]4.1.[/bold] This includes murder or other antagonistic things- but please escalate to it (or gain prior permission)! [bold]Be reasonable with your escalation and take in the round's context on whether more drama would be appropiate and fun for the round at the moment.[/bold][/italic][/color]
+
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]4.2.[/bold] This rule is heavily story-telling and fun-value vibes based, it's impossible to predict every scenario. It allows you more freedom, but for it to exist you must be responsible with it! When in doubt, you can always use LOOC/OOC in the moment to ask others if it would be alright. If you want to do something you're really unsure about, consider OOC/AHelping in the pre-round lobby about it.[/italic][/color]
+
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]4.3.[/bold] Try not to take away the spotlight from the actual antagonists of the round, if any.[/italic][/color]
+
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]4.4.[/bold] Consider reading [color=#01b38a][bold]Section III: Metashield[/bold][/color][/italic][/color]
+                      </Box>
+                      <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+
+                    </Table>
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+            </Table>
+          </Box>
+        </ColorBox>
+
+        <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Margin="15" NOTES="Divider" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Center"/>
+
+        <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" NOTES="Addendum" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="2" VerticalAlignment="Bottom">
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="4" VerticalAlignment="Stretch"/>
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" NOTES="Header" Orientation="Vertical" OutlineColor="#671c94" VerticalAlignment="Stretch">
+              <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+                [head=3][color=#000000]Addendum[/head][/color]
+              </Box>
+            </ColorBox>
+
+            <Box HorizontalAlignment="Center" Margin="10" NOTES="Body" Orientation="Vertical" VerticalAlignment="Bottom">
+              The DLC of the roleplay section. Intended to give you more context on our ideals and culture.
+            </Box>
+
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#1a1220" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1a1220" OutlineThickness="5" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+
+                  [color=#671c94]•[/color] [bold]5.[/bold] [bold]Listen to Command:[/bold] chances are, they have the ship's best interest at heart, and they're your boss. [bold]Ignoring direct commands during emergencies is more than reasonable grounds for them to [color=#994444]fire/punish[/color] you.[/bold]
+
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <Table Columns="2">
+
+              <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#2c2134" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#2c2134" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+
+                    [color=#671c94]•[/color] [bold]6.[/bold] [bold]Play in the space:[/bold] there's a time and place for comedy, and there's a time and place for trauma-dumping.
+
+                    Both are allowed, and can even mix, but each round or scene is different and might call for different vibes.
+
+                    <Table Columns="3">
+                      <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                      <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]6.1.[/bold] This can include your actions as well. Depending on the context, some rounds could benefit from withheld knowledge, suddenly being incompetent at your job; more petty crime or more vigilantism, and so on.[/italic][/color]
+                      </Box>
+                      <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                    </Table>
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1a1220" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1a1220" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+
+                    [color=#671c94]•[/color] [bold]7.[/bold] [bold]Value your life, and your job.[/bold] VDS is known to be a dangerous sector, death and fates worse than death aren't out of the question.
+
+                    <Table Columns="3">
+                      <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                      <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]7.1.[/bold] Cloning should never be an excuse to not fear death or loss. After all: is it really you, is it stable; is it even available?[/italic][/color]
+                      </Box>
+                      <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                    </Table>
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+            </Table>
+
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#1a1220" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1a1220" OutlineThickness="5" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+
+                  [color=#671c94]•[/color] [bold]8.[/bold] When in doubt, LOOC or OOC to ask if what you want to do is okay!
+
+                  <Table Columns="3">
+                    <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                    <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]8.1.[/bold] LOOC/OOC to let others know if something is awesome, keep doing it/please stop, let's move on, etc.[/italic][/color]
+
+                      [color=#a4a4a4][italic]Communication with fellow players is key.[/italic][/color]
+                    </Box>
+                    <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                  </Table>
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#2c2134" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#2c2134" OutlineThickness="5" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                  [color=#671c94]•[/color] [bold]9.[/bold] Follow the [color=#01b38a]Metashield[/color]. [italic](see next section)[/italic]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+          </Box>
+        </ColorBox>
+
+        <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Margin="15" NOTES="Divider" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Center"/>
+
+      </Box>
+
+      <Box HorizontalAlignment="Center" Margin="18" Orientation="Vertical" VerticalAlignment="Top">
+        <Box HorizontalAlignment="Center" Margin="-22" Orientation="Vertical" VerticalAlignment="Top">
+          [color=#a4a4a4][italic]NOTE[/italic][/color]
+        </Box>
+          [color=#a4a4a4][italic]We do not label ourselves any of the common Space Station terms HRP, MRP, or LRP due to each term having many intepretations across communities. We're certainly more roleplay focused, but we're not paper pushing either. It varies round by round, scene by scene. A show isn't always bleak or it becomes boring, and vice-versa.[/italic][/color]
+      </Box>
+
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+</Document>

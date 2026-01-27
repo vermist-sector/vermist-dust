@@ -1,0 +1,285 @@
+<Document>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+  <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" NOTES="Special Role Rules" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="4" VerticalAlignment="Bottom">
+    <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+      <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="8" VerticalAlignment="Stretch"/>
+      <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" NOTES="Header" Orientation="Vertical" OutlineColor="#df4e4e" VerticalAlignment="Stretch">
+        <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+          [color=#000000][head=2]Section IV: Special Role Rules[/head][/color]
+        </Box>
+      </ColorBox>
+
+      <Box HorizontalAlignment="Stretch" Margin="10" NOTES="Body" Orientation="Vertical" VerticalAlignment="Stretch">
+
+        <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+          <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top">
+            <Table Columns="1">
+              <Box HorizontalAlignment="Stretch" Margin="12" Orientation="Vertical" VerticalAlignment="Stretch"/>
+              <Box HorizontalAlignment="Center" Margin="-28" Orientation="Vertical" VerticalAlignment="Top">
+                Special roles refer to:
+              </Box>
+            </Table>
+          </Box>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Top">
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+              <ColorBox Color="#df4e4e" HorizontalAlignment="Center" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Stretch"/>
+            </Box>
+
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top">
+              <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+                  [bold]Command[/bold]
+                </Box>
+              <Box HorizontalAlignment="Center" Margin="-14" Orientation="Vertical" VerticalAlignment="Top">
+                [color=#a4a4a4][italic](all)[/italic][/color]
+              </Box>
+            </Box>
+
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+              <ColorBox Color="#df4e4e" HorizontalAlignment="Center" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Stretch"/>
+            </Box>
+
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top">
+              <Box HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                [bold]Security[/bold]
+              </Box>
+            </Box>
+
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+              <ColorBox Color="#df4e4e" HorizontalAlignment="Center" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Stretch"/>
+            </Box>
+
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top">
+              <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+                [bold]Antagonist[/bold]
+              </Box>
+              <Box HorizontalAlignment="Center" Margin="-14" Orientation="Vertical" VerticalAlignment="Top">
+                [color=#a4a4a4][italic](of any kind)[/italic][/color]
+              </Box>
+            </Box>
+            <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Stretch">
+              <ColorBox Color="#df4e4e" HorizontalAlignment="Center" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Stretch"/>
+            </Box>
+
+          </Box>
+        </Box>
+
+        <Box HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Top">
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top"/>
+
+          <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Top"/>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top"/>
+
+          <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Top"/>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top"/>
+
+          <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Top"/>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top"/>
+
+          <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Top"/>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top"/>
+
+          <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Top"/>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top"/>
+
+          <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Top"/>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top"/>
+
+          <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Margin="5" NOTES="Divider" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Top"/>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Top"/>
+        </Box>
+
+        <Box HorizontalAlignment="Center" Margin="10" Orientation="Horizontal" VerticalAlignment="Center">
+
+          As any of these roles, you're able to steer the direction of the current story much easier than anyone else, [bold]and you're encouraged to do so.[/bold]
+
+        </Box>
+
+        <Table Columns="1">
+
+          <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Stretch">
+            A couple examples include:
+          </Box>
+
+          <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="3" VerticalAlignment="Stretch">
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • You're the captain and want to go on a planet excursion with the crew? Well, you have the authority! Do it!
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • You're security and shit is going down? Mysterious murders going on, no clue who the killer is? Round the entire crew up and begin the who-dun-it episode!
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • Traitor with a kill target? Well, you can do your objectives if you wish, but they are merely suggestions. What if you kidnapped your target and ransomed them for the station's budget, or started a cult with the goal of sacrificing those "inflicted" by dust?
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • Have access to the red phone? Got an in-character idea and need help setting it up? Make a call and you can get anything to happen. Or just chat up Voronoi for fun.
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+            </Box>
+          </ColorBox>
+        </Table>
+
+        <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch"/>
+        <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+
+        If it's fun and interesting for the round, go for it! Feel free to AHelp if you need assistance.
+
+        However, due to your impact on the round, it's important to be mindful of your power and how it can ruin (or enhance) the flow of the round.
+
+        </Box>
+
+        <Table Columns="1">
+          <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Stretch">
+            Keep these guidelines in mind:
+          </Box>
+
+          <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="3" VerticalAlignment="Stretch">
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • [bold]As an antagonist, follow 'story telling escalation'.[/bold] As in, don't round remove somebody 5 minutes into the round. Build up to it. Tell a story with it. Savour it and have fun with it.
+
+                    Your objectives are simply idea generators for you to run with if you so choose, otherwise feel free to do something else of similar casualty.
+
+                    Don't do nothing, non-antagonistic things all round, either. It would suck if the protagonist was killed off screen 5 pages into a book. But the book would also be boring if there was no opposition ever.
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • [bold]As command, actually be commanding.[/bold] You are not just a fancier crewmate of your chosen department. You are command! You want your entire department to do well, and you have the authority to be their boss! Delegate jobs, tell your department what to do! You even have authority to fire people in your department [italic](with permission from the HoP/Captain, if available)[/italic], something to seriously consider in this dangerous sector.
+
+                    Be a command member first and foremost. You're also expected to be skilled in your chosen department too, of course.
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • [bold]As security, play fair and nice with antagonists.[/bold] If it would be more interesting for the round, or maybe you caught the antagonist doing crime 5 minutes in, perhaps playing dumb would be the better course of action.
+
+                    [bold]This doesn't mean you shouldn't be a threat.[/bold] When the stakes and danger grows, don't play easy or be a pushover.
+
+                    Our space law is currently old and WIP, but murder should never be just a slap on the wrist, and law should not apply to straight up eldritch monsters. Antagonist actions should have scaling consequences.
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+            </Box>
+          </ColorBox>
+
+        </Table>
+
+        <Box HorizontalAlignment="Stretch" Margin="10" Orientation="Vertical" VerticalAlignment="Stretch"/>
+
+        <Table Columns="1">
+          <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Stretch">
+            Finally, a few small notes:
+          </Box>
+
+          <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="3" VerticalAlignment="Stretch">
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • As Command and Security, you're still allowed to engage in escalated self-antagonist behaviour, [bold]but you'll need good reasons and build-up.[/bold]
+
+                    Make sure it's fun for those involved.
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • Mindshields do not mean you are loyal to NT [italic](though you may opt in to that if you wish)[/italic]. Mindshields are more literal in VDS, simply making you more resistant (not immune) to mind altering effects such as revolution flashes and the Dust
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+              <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Stretch">
+                <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="5" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                    • Antagonist objectives may be ignored and just used as an idea generator.
+
+                    Your own made-up objectives should keep with the 'scale of destruction' of the objectives the game gave you.
+
+                    <Table Columns="3">
+                      <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                      <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                        <Box HorizontalAlignment="Left" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                        ex:
+                        </Box>
+
+                        <Box HorizontalAlignment="Stretch" Margin="-10" Orientation="Vertical" VerticalAlignment="Stretch"/>
+
+                        <Box HorizontalAlignment="Left" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                          don't release the tesla if your game objective is to steal shoes.
+                        </Box>
+
+                        <Box HorizontalAlignment="Stretch" Margin="-10" Orientation="Vertical" VerticalAlignment="Stretch"/>
+
+                        <Box HorizontalAlignment="Left" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                          don't JUST steal shoes if your game objective is die a glorious death.
+                        </Box>
+
+                      </Box>
+                      <Box HorizontalAlignment="Stretch" Margin="10" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                    </Table>
+                    <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch"/>
+
+                    If you want to do something much more drastic than your game-given objectives, please AHelp first.
+
+                  </Box>
+                </ColorBox>
+              </ColorBox>
+
+            </Box>
+          </ColorBox>
+
+        </Table>
+
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+</Document>

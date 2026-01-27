@@ -1,0 +1,103 @@
+<Document>
+
+  <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" NOTES="Roleplay Rules" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="4" VerticalAlignment="Bottom">
+    <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+      <ColorBox Color="#25d959" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="8" VerticalAlignment="Stretch"/>
+      <ColorBox Color="#25d959" HorizontalAlignment="Stretch" NOTES="Header" Orientation="Vertical" OutlineColor="#25d959" VerticalAlignment="Stretch">
+        <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+          [color=#000000][head=2]Section VI: AHelp/GMHelp[/head][/color]
+        </Box>
+      </ColorBox>
+
+      <Box HorizontalAlignment="Center" Margin="10" NOTES="Body" Orientation="Vertical" VerticalAlignment="Bottom">
+        <Box HorizontalAlignment="Center" Margin="10" Orientation="Vertical" VerticalAlignment="Center">
+          [color=#25d959]Use AHelp to communicate with GMs![/color]
+        </Box>
+
+        AHelp is a direct line to the Administrators. While this can be used to report rule violations or discomfort as in other servers, or ask for assistance OOC, it can also be used to work with the Administrators to create interesting roleplay or gameplay scenarios.
+
+        Think of us more as Game Masters for those familiar with tabletop roleplaying games. We thank the community for allowing us to enrich the rounds as Game Masters, rather than having to deal with administrative problems.
+
+        <Table Columns="1" NOTES="AHelp List">
+
+          <ColorBox Color="#25d959" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="1" VerticalAlignment="Top">
+            <ColorBox Color="#132b16" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#132b16" OutlineThickness="5" VerticalAlignment="Stretch">
+              <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                [color=#25d959]•[/color] All AHelp messages are relayed to admins via Discord, even when they are not in game.
+
+                Your AHelp not receiving a response does not mean it was not acted upon, though admins will try to communicate wherever they can.
+
+                We apologize if we miss any event or bit requests. Sometimes we're not online, have no juice; or are [color=#a4a4a4][italic]deadmin'[/italic][/color] so we can be a player.
+
+                <Table Columns="3">
+                  <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                  <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                    [color=#25d959]—◦[/color] [color=#a4a4a4][italic] Deadmin is a command that lets us turn off our admin permissions. This also includes receiving AHelps, aside from in the Discord.[/italic][/color]
+                  </Box>
+                  <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                </Table>
+              </Box>
+            </ColorBox>
+          </ColorBox>
+
+          <ColorBox Color="#25d959" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="1" VerticalAlignment="Top">
+            <ColorBox Color="#203221" HorizontalAlignment="Stretch" Orientation="Horizontal" OutlineColor="#203221" OutlineThickness="5" VerticalAlignment="Stretch">
+              <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                [color=#25d959]•[/color] Using OOC or IC channels to complain about clear AHelpable offences is not preferred - LOOC can and should be used to communicate with the people you’re interacting with, but if you have a community rules issue the admins can help with, AHelping is the best way to resolve it.
+              </Box>
+            </ColorBox>
+          </ColorBox>
+
+          <ColorBox Color="#25d959" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="1" VerticalAlignment="Stretch">
+            <ColorBox Color="#132b16" HorizontalAlignment="Stretch" Orientation="Horizontal" OutlineColor="#132b16" OutlineThickness="5" VerticalAlignment="Stretch">
+              <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                [color=#25d959]•[/color] AHelp can be used to ask for gameplay clarifications, or request admin intervention in the case of game-breaking bugs or glitches.
+
+                If you are contacted by an admin through AHelp, it does not mean you've done something wrong.
+              </Box>
+            </ColorBox>
+          </ColorBox>
+
+          <ColorBox Color="#25d959" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="1" VerticalAlignment="Stretch">
+            <ColorBox Color="#203221" HorizontalAlignment="Stretch" Orientation="Horizontal" OutlineColor="#203221" OutlineThickness="5" VerticalAlignment="Stretch">
+              <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                [color=#25d959]•[/color] [bold]AHelp is absolutely for requesting bits or events![/bold] AHelping to make the round more interesting is encouraged.
+
+                [head=3]Examples include:[/head]
+
+                <Table Columns="3">
+                  <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                  <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                    [color=#25d959]—◦[/color][italic] asking to become a specific antagonist,[/italic]
+
+                    [color=#25d959]—◦[/color][italic] asking to become some form of improvised unique antagonist;[/italic]
+
+                    [color=#25d959]—◦[/color][italic] for a GM to play a character to help play a scene out,[/italic]
+
+                    [color=#25d959]—◦[/color][italic] giving your character a special component or action;[/italic]
+
+                    [color=#25d959]—◦[/color][italic] asking to be a victim of random hauntings (whatever we want) this round,[/italic]
+
+                    [color=#25d959]—◦[/color][italic] even killed in an interesting way![/italic]
+                  </Box>
+                  <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                </Table>
+                  Don’t be afraid to AHelp in order to make the stories you want to tell happen. You can also pray via an altar or bible, or use the red phone on-station if you’d like to make a request in-character for the admins to interpret more creatively.
+
+                  Make sure to specify WHY you want something to happen in your AHelps! Context will help us help you. Assume we have zero context on any relevant character related stuff and make sure to include said relevant context for clarity!
+
+                  If you're planning a large scale event that will need quite a bit of game-master aid, please contact us via the Discord Server's modmail! That way we can prepare ourselves, and you.
+                </Box>
+            </ColorBox>
+          </ColorBox>
+
+        </Table>
+
+       When AHelping for rulebreaks and similar, please assume we have absolutely zero context on what happened and any related history, even if you saw an admin character nearby at the moment. Make sure your AHelp includes the context and details!
+
+      </Box>
+    </Box>
+  </ColorBox>
+
+</Document>

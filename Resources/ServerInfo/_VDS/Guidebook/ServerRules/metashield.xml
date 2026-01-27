@@ -1,0 +1,181 @@
+<Document>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+  <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" NOTES="Metashield Rules" Orientation="Vertical" OutlineColor="#01b38a" OutlineThickness="4" VerticalAlignment="Bottom">
+
+    <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+      <ColorBox Color="#01b38a" NOTES="Header" Orientation="Vertical" OutlineColor="#01b38a" VerticalAlignment="Stretch">
+        <Box Orientation="Vertical" VerticalAlignment="Stretch">
+          <Box Margin="8" Orientation="Vertical"/>
+          <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+            [color=#000000][head=2]Section IV: Metashield[/head][/color]
+          </Box>
+        </Box>
+      </ColorBox>
+
+      <Box HorizontalAlignment="Center" Margin="10" NOTES="Body" Orientation="Vertical" VerticalAlignment="Stretch">
+
+        This section describes what is commonly known in-character knowledge.
+
+        <Table Columns="1" NOTES="Rule List">
+
+          <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#154929" OutlineThickness="3" VerticalAlignment="Stretch">
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+              <ColorBox Color="#154929" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#154929" OutlineThickness="5" VerticalAlignment="Top">
+                <Box Margin="20"/>
+                <Box HorizontalAlignment="Center">
+                  [color=#68de8d][head=3]Never Shielded[/head][/color]
+                </Box>
+              </ColorBox>
+
+              <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="10" VerticalAlignment="Top">
+                <Box HorizontalAlignment="Center" Margin="10" Orientation="Vertical" VerticalAlignment="Bottom">
+                  99.99% of characters/players know these facts.
+                </Box>
+              </ColorBox>
+
+              <Box HorizontalAlignment="Stretch" Orientation="Vertical">
+                <ColorBox Color="#154929" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#154929" OutlineThickness="1" VerticalAlignment="Stretch">
+                  <ColorBox Color="#152618" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#152618" OutlineThickness="5" VerticalAlignment="Top">
+                    <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#154929]•[/color] The fact that Vermist Dust Sector is a highly dangerous place to be.
+                    </Box>
+                  </ColorBox>
+                </ColorBox>
+              </Box>
+
+            </Box>
+          </ColorBox>
+
+          <ColorBox Color="#01b38a" HorizontalAlignment="Stretch" Margin="15" NOTES="Divider" Orientation="Vertical" OutlineColor="#01b38a" OutlineThickness="1" VerticalAlignment="Center"/>
+
+          <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#084647" OutlineThickness="3" VerticalAlignment="Stretch">
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+              <ColorBox Color="#084647" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#084647" OutlineThickness="5" VerticalAlignment="Top">
+                <Box HorizontalAlignment="Center">
+                  [color=#1bc4dd][head=3]Opt In[/head][/color]
+                </Box>
+              </ColorBox>
+
+              <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="10" VerticalAlignment="Top">
+                <Box HorizontalAlignment="Center" Margin="10" Orientation="Vertical" VerticalAlignment="Bottom">
+                  A super-imposition percentage of characters/players know these facts.
+                </Box>
+              </ColorBox>
+
+              <Box HorizontalAlignment="Stretch" Orientation="Vertical">
+                <ColorBox Color="#084647" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#084647" OutlineThickness="1" VerticalAlignment="Stretch">
+                  <ColorBox Color="#142826" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#142826" OutlineThickness="5" VerticalAlignment="Top">
+                    <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#084647]•[/color] The fact that VD-Command (central command) is a fairly separate entity from Nanotrasen as a whole, due to distance, lack of Nanotrasen communication, and who knows.
+                    </Box>
+                  </ColorBox>
+                </ColorBox>
+
+                <ColorBox Color="#084647" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#084647" OutlineThickness="1" VerticalAlignment="Stretch">
+                  <ColorBox Color="#273c39" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#273c39" OutlineThickness="5" VerticalAlignment="Top">
+                    <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#084647]•[/color] That VDS consistently goes through anomalous/paranormal events.
+                    </Box>
+                  </ColorBox>
+                </ColorBox>
+              </Box>
+            </Box>
+          </ColorBox>
+
+          <ColorBox Color="#01b38a" HorizontalAlignment="Stretch" Margin="15" NOTES="Divider" Orientation="Vertical" OutlineColor="#01b38a" OutlineThickness="1" VerticalAlignment="Center"/>
+
+          <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#555a05" OutlineThickness="3" VerticalAlignment="Stretch">
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+              <ColorBox Color="#555a05" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#555a05" OutlineThickness="5" VerticalAlignment="Top">
+                <Box HorizontalAlignment="Center">
+                  [color=#eeee74][head=3]Sometimes Shielded[/head][/color]
+                </Box>
+              </ColorBox>
+
+              <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="10" VerticalAlignment="Bottom">
+                <Box HorizontalAlignment="Center" Margin="10" Orientation="Vertical" VerticalAlignment="Bottom">
+                  You need solid in-game evidence during the current round in order to even consider things on this list as a possibility.
+
+                  In general, if it's protection for another player or their role, play in the space and don't meta-game or power-game them because you have out-of-character knowledge!
+                </Box>
+              </ColorBox>
+
+              <Box HorizontalAlignment="Stretch" Orientation="Vertical">
+                <ColorBox Color="#555a05" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#555a05" OutlineThickness="1" VerticalAlignment="Stretch">
+                  <ColorBox Color="#2f2e0f" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#2f2e0f" OutlineThickness="5" VerticalAlignment="Top">
+                    <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#555a05]•[/color] The idea that rival Nanotrasen organizations such as the Syndicate would even care or know about VDS, let alone send anyone on a mission here.
+                    </Box>
+                  </ColorBox>
+                </ColorBox>
+
+                <ColorBox Color="#555a05" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#555a05" OutlineThickness="1" VerticalAlignment="Stretch">
+                  <ColorBox Color="#423f25" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#423f25" OutlineThickness="5" VerticalAlignment="Top">
+                    <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#555a05]•[/color] Certain technologies and abilities, such as chameleon items, magic, traitor implants, uplinks, things meant to be 'stealthy' or 'rare'.
+
+                      If it would be more fun for the round if you played dumb, do it. Command/Security have more leeway when it comes to things like traitor items, but only with solid evidence or having no other possible explanation.
+                    </Box>
+                  </ColorBox>
+                </ColorBox>
+              </Box>
+            </Box>
+          </ColorBox>
+
+          <ColorBox Color="#01b38a" HorizontalAlignment="Stretch" Margin="15" NOTES="Divider" Orientation="Vertical" OutlineColor="#01b38a" OutlineThickness="1" VerticalAlignment="Center"/>
+
+          <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#4b040e" OutlineThickness="3" VerticalAlignment="Stretch">
+            <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+              <ColorBox Color="#4b040e" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#4b040e" OutlineThickness="5" VerticalAlignment="Top">
+                <Box HorizontalAlignment="Center">
+                  [color=#ec2149][head=3]Always Shielded[/head][/color]
+                </Box>
+              </ColorBox>
+
+              <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="10" VerticalAlignment="Top">
+                <Box HorizontalAlignment="Center" Margin="10" Orientation="Vertical" VerticalAlignment="Bottom">
+                  Acknowledging, using, or being influenced by any information here in-character is considered meta-gaming.
+                </Box>
+              </ColorBox>
+
+              <Box HorizontalAlignment="Stretch" Orientation="Vertical">
+                <ColorBox Color="#4b040e" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#4b040e" OutlineThickness="1" VerticalAlignment="Stretch">
+                  <ColorBox Color="#300b12" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#300b12" OutlineThickness="5" VerticalAlignment="Top">
+                    <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#4b040e]•[/color] Anything from your old life, should you respawn as a new character or ghost role.
+                    </Box>
+                  </ColorBox>
+                </ColorBox>
+
+                <ColorBox Color="#4b040e" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#4b040e" OutlineThickness="1" VerticalAlignment="Stretch">
+                  <ColorBox Color="#411721" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#411721" OutlineThickness="5" VerticalAlignment="Top">
+                    <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#4b040e]•[/color] Anything you may have seen/heard/smelled as a ghost, while asleep, in hard-crit, etc.
+                    </Box>
+                  </ColorBox>
+                </ColorBox>
+
+                <ColorBox Color="#4b040e" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#4b040e" OutlineThickness="1" VerticalAlignment="Stretch">
+                  <ColorBox Color="#300b12" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#300b12" OutlineThickness="5" VerticalAlignment="Top">
+                    <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#4b040e]•[/color] Advantagous/metagamey LOOC/OOC/Discord chat information.
+
+                      If somebody in LOOC says "hey how do i open my uplink?", don't start treating them like a traitor. If somebody over OOC asks "how do I start the engine?", don't immediately rush over if they're wanting on-hands help. Encourage them to reach out in-character.
+
+                      Exceptions include LOOC/OOC check-ins, like somebody asking you to stop something because it's making them uncomfortable. You should obviously alter your character's behaviour then.
+                    </Box>
+                  </ColorBox>
+                </ColorBox>
+              </Box>
+            </Box>
+          </ColorBox>
+        </Table>
+
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+</Document>

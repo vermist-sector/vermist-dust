@@ -1,0 +1,76 @@
+<Document>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+  <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" NOTES="Continuity Rules" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="4" VerticalAlignment="Bottom">
+    <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+      <ColorBox Color="#ba9cbe" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="8" VerticalAlignment="Stretch"/>
+      <ColorBox Color="#ba9cbe" HorizontalAlignment="Stretch" NOTES="Header" Orientation="Vertical" OutlineColor="#ba9cbe" VerticalAlignment="Stretch">
+        <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+          [color=#000000][head=2]Section V: Round Continuity Rules[/head][/color]
+        </Box>
+      </ColorBox>
+
+      <Box HorizontalAlignment="Center" Margin="10" NOTES="Body" Orientation="Vertical" VerticalAlignment="Bottom">
+
+        <ColorBox Color="#ba9cbe" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="1" VerticalAlignment="Top">
+          <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1B1B1E" OutlineThickness="10" VerticalAlignment="Stretch">
+
+            <Table Columns="1" NOTES="Round Continuity List">
+              <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                In VDS, the Dust causes each round to be both canon and not canon. What this means is that each round is up to interpretation, as the Dust will alter memories of previous rounds.
+                <Table Columns="3">
+                  <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                  <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                    What TRULY happened beyond the mundane should never be fully discussed, not without somebody chiming in and declaring a different interpretation such as: "but wait, John Antag didn't kill Mary Crewmate yesterday… one, Mary is still alive, two, we were just all playing video games in the bar that shift!".
+                  </Box>
+                  <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                </Table>
+              </Box>
+
+              <ColorBox Color="#ba9cbe" HorizontalAlignment="Stretch" Margin="10" NOTES="Divider" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="1" VerticalAlignment="Center"/>
+
+              <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                You're allowed to discuss previous rounds, but you must alter things to sound more mundane or just completely different.
+                <Table Columns="3">
+                  <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                  <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                    Make anything up! If one person is saying nothing but what actually happened last round, you are obligated to gaslight them and yourself that it actually something else happened.
+                  </Box>
+                  <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                </Table>
+              </Box>
+
+              <ColorBox Color="#ba9cbe" HorizontalAlignment="Stretch" Margin="10" NOTES="Divider" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="1" VerticalAlignment="Center"/>
+
+              <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                Deaths and antagonism are obviously something heavily altered, after all, how else would John Antag be here on today's shift when he fell down into the chasm torture nexus last round?
+                <Table Columns="3">
+                  <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                  <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                    Some may remember John Antag's 'death' and be shocked he's still here, while others should be convinced that something else happened and John Antag was never in danger.
+
+                    If you want a character death to be guaranteed canon, feel free to announce it in the Discord, which inadvertently makes said round more cemented in history, too!
+                  </Box>
+                  <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                </Table>
+              </Box>
+
+              <ColorBox Color="#ba9cbe" HorizontalAlignment="Stretch" Margin="10" NOTES="Divider" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="1" VerticalAlignment="Center"/>
+
+              <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+                Acknowledging the memory fuckery is fine in small bursts, but keep in mind, sometimes the previous round ITSELF is just memory fuckery, and you all playing video games in the bar actually was the true reality.
+              </Box>
+
+            </Table>
+
+          </ColorBox>
+        </ColorBox>
+      </Box>
+
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+</Document>

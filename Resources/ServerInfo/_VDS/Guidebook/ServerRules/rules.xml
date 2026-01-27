@@ -1,0 +1,151 @@
+<Document>
+
+  <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" Orientation="Horizontal" OutlineColor="#ffd781" VerticalAlignment="Center">
+
+    <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+      <Box HorizontalAlignment="Stretch" Margin="40" NOTES="Fucked up spacer (or header appears off-center or off-screen)" Orientation="Vertical" VerticalAlignment="Stretch"/>
+      <Box HorizontalAlignment="Center" Margin="-30" Orientation="Vertical" VerticalAlignment="Bottom">
+        [color=#000000][head=1]Server Rules[/head][/color]
+      </Box>
+    </Box>
+
+    <Box HorizontalAlignment="Right" Orientation="Vertical" VerticalAlignment="Stretch">
+      <GuideEntityEmbed Caption="" Entity="EffectImageVDS" Scale="0.4"/>
+    </Box>
+
+  </ColorBox>
+
+  <Box HorizontalAlignment="Center" Margin="10" Orientation="Vertical" VerticalAlignment="Stretch">
+
+    Welcome to [color=#ffd781]Vermist Dust Sector[/color], a server focused on improvisational storytelling. If you're here, you probably already know that. [bold]You must be 20+ to play here.[/bold]
+
+    Feel free to AHelp if you need any gameplay or rule clarifications. When in doubt, if it's fun for everyone involved, it's probably alright. Unsure if it would be fun for the others? LOOC in-game or OOC in the lobby and ask!
+
+    [bold]Please read the rules.[/bold] Don't worry, we're quite lenient and operate mostly on self-moderating community respect and good faith. Beyond [color=#ffd781][bold]Section I: Community Rules[/bold][/color], the rest can be considered guidelines rather than strict law. This does not mean we will tolerate behaviour that clashes with the server's ideals.
+
+    <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+      [color=#449944][bold]Engaging with the community in good faith is what allows Vermist to be Vermist![/bold][/color]
+    </Box>
+
+    <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch">
+
+      <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" Orientation="Horizontal" OutlineColor="#FFFFFF" OutlineThickness="2" VerticalAlignment="Stretch">
+        <Box Margin="5" HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+          <Box HorizontalAlignment="Center" Margin="3" Orientation="Vertical" VerticalAlignment="Center">
+            [color=#a4a4a4][italic]= = = Our rules are split into 50000 sections = = =[/italic][/color]
+          </Box>
+
+          <Table Columns="2">
+
+            <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#372d26" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [head=3][color=#ffd781]I[/color][/head]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#2a211a" HorizontalAlignment="Stretch" Orientation="Horizontal" OutlineColor="#ffd781" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [textlink="Community Rules" link="VDSCommunityRules"]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#1a1220" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [head=3][color=#671c94]II[/color][/head]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#671c94" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#2c2134" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#671c94" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [textlink="Roleplay Rules" link="VDSRoleplayRules"]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#01b38a" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#01b38a" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#152618" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#01b38a" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [head=3][color=#01b38a]III[/color][/head]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#01b38a" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#01b38a" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#152618" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#01b38a" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [textlink="Metashield" link="VDSMetashieldRules"]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#301718" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [head=3][color=#df4e4e]IV[/color][/head]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#df4e4e" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#342125" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#df4e4e" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [textlink="Special Role Rules" link="VDSSpecialRoleRules"]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#ba9cbe" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#3e3540" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [head=3][color=#ba9cbe]V[/color][/head]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#ba9cbe" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#49424c" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ba9cbe" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [textlink="Round Continuity" link="VDSContinuityRules"]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#25d959" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#132b16" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Center" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [head=3][color=#25d959]VI[/color][/head]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#25d959" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#203221" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#25d959" OutlineThickness="1" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Center">
+                  [textlink="AHelp/GMHelp Info" link="VDSAHelpRules"]
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+          </Table>
+
+          <Box HorizontalAlignment="Stretch" Margin="5" Orientation="Vertical" VerticalAlignment="Stretch"/>
+          <Box HorizontalAlignment="Stretch" Margin="-14" Orientation="Horizontal" VerticalAlignment="Stretch">
+            <Box HorizontalAlignment="Center" Margin="2" Orientation="Vertical" VerticalAlignment="Top">
+              [color=#212126][italic]- - - I lost the 49994 other sections. - - -[/italic][/color]
+            </Box>
+          </Box>
+        </Box>
+      </ColorBox>
+    </Box>
+  </Box>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+</Document>

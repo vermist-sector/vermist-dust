@@ -1,0 +1,90 @@
+<Document>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+  <ColorBox Color="#1B1B1E" HorizontalAlignment="Stretch" NOTES="Community Rules" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="4" VerticalAlignment="Stretch">
+    <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+      <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="8" VerticalAlignment="Stretch"/>
+      <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" NOTES="Header" Orientation="Vertical" OutlineColor="#ffd781" VerticalAlignment="Stretch">
+        <Box HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+          [color=#000000][head=2]Section I: Community Rules[/head][/color]
+        </Box>
+      </ColorBox>
+
+      <Box HorizontalAlignment="Center" Margin="10" NOTES="Body" Orientation="Vertical" VerticalAlignment="Bottom">
+
+        These rules apply at all times, including in the Discord, in your bathroom, in Paris, on the moon, when you're hanging out with 3 gnomes, and during solar eclipses.
+
+        <Table Columns="2" NOTES="Rule List">
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+            <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="1" VerticalAlignment="Top">
+              <ColorBox Color="#372d26" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#372d26" OutlineThickness="5" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                  [color=#ffd781]•[/color] [bold]1.[/bold] Please engage with the spirit of the rules and community in good faith.
+
+                  The rules are rather lenient but only because our community is civil and self-moderating! Thanks to our culture, it allows us to spend more time as Game Masters rather than Moderators.
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="1" VerticalAlignment="Top">
+              <ColorBox Color="#2a211a" HorizontalAlignment="Stretch" Orientation="Horizontal" OutlineColor="#2a211a" OutlineThickness="5" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                  [color=#ffd781]•[/color] [bold]2.[/bold] [bold]Be civil:[/bold] don't flame, don't be toxic; don't be an asshole, be polite and respectful; don't intentionally ruin the fun for others, don't intentionally make others uncomfortable; be respectful of others.
+
+                  The usual common-sense and decency stuff.
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+            <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#372d26" HorizontalAlignment="Stretch" Orientation="Horizontal" OutlineColor="#372d26" OutlineThickness="5" VerticalAlignment="Stretch">
+                <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                  [color=#ffd781]•[/color] [bold]3.[/bold] No ERP or overtly sexual content. It's too freakin dusty out here to be doing any of that.
+                </Box>
+              </ColorBox>
+            </ColorBox>
+
+          </Box>
+
+          <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+
+            <ColorBox Color="#ffd781" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#ffd781" OutlineThickness="1" VerticalAlignment="Stretch">
+              <ColorBox Color="#2a211a" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#2a211a" OutlineThickness="5" VerticalAlignment="Stretch">
+
+                <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
+                  <Box HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+                    [color=#ffd781]•[/color] [bold]4.[/bold] [bold]Communicate:[/bold] don't let your emotions stew and boil alone!
+
+                    If someone or something is bothering you, please respectfully communicate with them in LOOC/OOC, or in the Discord server.
+                  </Box>
+
+                  <Table Columns="3" NOTES="Behold. My cursed solution for directional margins.">
+                    <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                    <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
+                      [color=#ffd781]—◦[/color] [color=#a4a4a4][italic][bold]4.1.[/bold] This also goes both ways, if you think you upset someone, please reach out to them.[/italic][/color]
+
+                      [color=#ffd781]—◦[/color] [color=#a4a4a4][italic][bold]4.2.[/bold] Positive expression over things others have done is also encouraged![/italic][/color]
+
+                      [color=#a4a4a4][italic]Even a simple 'i really enjoyed that chat we had in atmos' goes a long way.[/italic][/color]
+                    </Box>
+                    <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                  </Table>
+                </Box>
+
+              </ColorBox>
+            </ColorBox>
+
+          </Box>
+
+        </Table>
+
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#FFFFFF" HorizontalAlignment="Stretch" Margin="25" NOTES="Divider" Orientation="Vertical" OutlineColor="#FFFFFF" OutlineThickness="1" VerticalAlignment="Center"/>
+
+</Document>
