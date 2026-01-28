@@ -67,7 +67,7 @@
                 <ColorBox Color="#084647" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#084647" OutlineThickness="1" VerticalAlignment="Stretch">
                   <ColorBox Color="#142826" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#142826" OutlineThickness="5" VerticalAlignment="Top">
                     <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
-                      [color=#084647]•[/color] The fact that VD-Command (central command) is a fairly separate entity from Nanotrasen as a whole, due to distance, lack of Nanotrasen communication, and who knows.
+                      [color=#084647]•[/color] The fact that VD-Command (central command) is a fairly separate entity from Nanotrasen as a whole, due to distance; lack of Nanotrasen communication, and who knows what.
                     </Box>
                   </ColorBox>
                 </ColorBox>
