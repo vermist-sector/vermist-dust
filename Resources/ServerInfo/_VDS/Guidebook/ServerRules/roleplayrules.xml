@@ -45,15 +45,15 @@
                 <ColorBox Color="#1a1220" HorizontalAlignment="Stretch" Orientation="Vertical" OutlineColor="#1a1220" OutlineThickness="5" VerticalAlignment="Stretch">
                   <Box HorizontalAlignment="Stretch" Margin="2" Orientation="Vertical" VerticalAlignment="Stretch">
 
-                    [color=#671c94]•[/color] [bold]0.[/bold] [bold]Play a character:[/bold] they're a separate entity from yourself (even if they're primarily a self-insert). Don't take anything that happens IC personally!
+                    [color=#671c94]•[/color] [bold]1.[/bold] [bold]Play a character:[/bold] they're a separate entity from yourself (even if they're primarily a self-insert). Don't take anything that happens IC personally!
 
                     <Table Columns="3">
 
                       <Box HorizontalAlignment="Stretch" Margin="18" Orientation="Vertical" VerticalAlignment="Stretch"/>
                       <Box HorizontalAlignment="Right" Margin="-6" Orientation="Vertical" VerticalAlignment="Stretch">
-                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]0.1.[/bold] This is not an excuse to be a major jerk. If the other person doesn't know you well OOC, make sure to check in and let them know that your guy is just a dick.[/italic][/color]
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]1.1.[/bold] This is not an excuse to be a major jerk. If the other person doesn't know you well OOC, make sure to check in and let them know that your guy is just a dick.[/italic][/color]
 
-                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]0.2.[/bold] You cannot be Super Mario, I'm already Super Mario. No playing characters from other media, too. References and inspiration is fine.[/italic][/color]
+                        [color=#671c94]—◦[/color] [color=#a4a4a4][italic][bold]1.2.[/bold] You cannot be Super Mario, I'm already Super Mario. No playing characters from other media, too. References and inspiration is fine.[/italic][/color]
                       </Box>
                       <Box HorizontalAlignment="Stretch" Margin="6" Orientation="Vertical" VerticalAlignment="Stretch"/>
 
