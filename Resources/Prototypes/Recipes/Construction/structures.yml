@@ -667,6 +667,23 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
 
+- type: construction #vermist
+  id: ReinforcedCatwalk
+  graph: Catwalk
+  startNode: start
+  targetNode: ReinforcedCatwalk
+  category: construction-category-structures
+  conditions:
+    - !type:TileNotBlocked
+      failIfSpace: false
+    - !type:TileType
+      targets:
+        - Lattice
+        - Plating
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+
 - type: construction
   id: FloorBananium
   graph: FloorBananium

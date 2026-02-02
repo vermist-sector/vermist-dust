@@ -23,3 +23,24 @@
           - !type:DeleteEntity {}
           steps:
             - tool: Cutting
+
+        - to: ReinforcedCatwalk
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 1
+              doAfter: 1
+
+    - node: ReinforcedCatwalk # vermist
+      entity: ReinforcedCatwalk
+      edges:
+        - to: Catwalk
+          completed:
+          - !type:SpawnPrototype
+                prototype: SheetSteel1
+                amount: 1
+          steps:
+            - tool: Cutting
+              doAfter: 2
