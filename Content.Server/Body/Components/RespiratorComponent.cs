@@ -75,7 +75,7 @@ namespace Content.Server.Body.Components
         /// Adjusted update interval based off of the multiplier value.
         /// </summary>
         [ViewVariables]
-        public TimeSpan OverallAdjustedUpdateInterval => UpdateInterval * UpdateIntervalMultiplier * BreathRateMultiplier; // Offbrand
+        public TimeSpan AdjustedUpdateInterval => UpdateInterval * UpdateIntervalMultiplier * BreathRateMultiplier; // Offbrand
 
         /// <summary>
         ///     Saturation level. Reduced by UpdateInterval each tick.

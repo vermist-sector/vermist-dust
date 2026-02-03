@@ -36,28 +36,32 @@
   parent: ClothingBeltUtilityBlack
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
-      - id: Crowbar
-      - id: Wrench
-      - id: Screwdriver
-      - id: Wirecutter
-      - id: Welder
-      - id: NetworkConfigurator
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Crowbar
+        - id: Wrench
+        - id: Screwdriver
+        - id: Wirecutter
+        - id: Welder
+        - id: NetworkConfigurator
 
 - type: entity
   id: ClothingBeltUtilityBlackEngineering
   parent: ClothingBeltUtilityBlack
   suffix: Engineering
   components:
-  - type: StorageFill
-    contents:
-      - id: CrowbarYellow
-      - id: Wrench
-      - id: Screwdriver
-      - id: Wirecutter
-      - id: Welder
-      - id: Multitool
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: CrowbarYellow
+        - id: Wrench
+        - id: Screwdriver
+        - id: Wirecutter
+        - id: Welder
+        - id: Multitool
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -99,42 +103,38 @@
   parent: ClothingBeltQuiverNullrod
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
-      - id: HolyArrow
-      - id: HolyArrow
-      - id: HolyArrow
-      - id: HolyArrow
-      - id: HolyArrow
-      - id: HolyArrow
-      - id: HolyArrow
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: HolyArrow
+          amount: 7
 
 - type: entity
   id: ClothingBeltQuiverNullrodEvilFilled
   parent: ClothingBeltQuiverNullrodEvil
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
-      - id: HolyArrowEvil
-      - id: HolyArrowEvil
-      - id: HolyArrowEvil
-      - id: HolyArrowEvil
-      - id: HolyArrowEvil
-      - id: HolyArrowEvil
-      - id: HolyArrowEvil
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: HolyArrowEvil
+          amount: 7
 
 - type: entity
   id: ClothingBeltUtilityCowFilled
   parent: ClothingBeltUtility
   suffix: Filled, Cow Tools
   components:
-  - type: StorageFill
-    contents:
-    - id: Haycutters
-    - id: Moodriver
-    - id: Wronch
-    - id: Cowbar
-    - id: Mooltitool
-    - id: Cowelder
-    - id: Milkalyzer
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Haycutters
+        - id: Moodriver
+        - id: Wronch
+        - id: Cowbar
+        - id: Mooltitool
+        - id: Cowelder
+        - id: Milkalyzer

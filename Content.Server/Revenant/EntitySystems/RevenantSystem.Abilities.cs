@@ -232,7 +232,7 @@ public sealed partial class RevenantSystem
 
         if (!_mobThresholdSystem.TryGetThresholdForState(args.Args.Target.Value, MobState.Dead, out var damage))
             return;
-        _damage.TryChangeDamage(args.Args.Target.Value, component.HarvestDamage, true, origin: uid); // Offbrand - use a fixed amount
+        _damage.ChangeDamage(args.Args.Target.Value, component.HarvestDamage, true, origin: uid);
 
         args.Handled = true;
     }
@@ -363,7 +363,7 @@ public sealed partial class RevenantSystem
         foreach (var ent in _lookup.GetEntitiesInRange(uid, component.MalfunctionRadius))
         {
             if (_whitelistSystem.IsWhitelistFail(component.MalfunctionWhitelist, ent) ||
-                _whitelistSystem.IsBlacklistPass(component.MalfunctionBlacklist, ent))
+                _whitelistSystem.IsWhitelistPass(component.MalfunctionBlacklist, ent))
                 continue;
 
             _emagSystem.TryEmagEffect(uid, uid, ent);

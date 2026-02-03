@@ -21,9 +21,6 @@ public sealed partial class UniqueWoundOnDamageSystem : EntitySystem
 
     private void OnDamageChanged(Entity<UniqueWoundOnDamageComponent> ent, ref DamageChangedEvent args)
     {
-        if (_timing.ApplyingState)
-            return;
-
         if (args.DamageDelta is not { } delta || !args.DamageIncreased)
             return;
 

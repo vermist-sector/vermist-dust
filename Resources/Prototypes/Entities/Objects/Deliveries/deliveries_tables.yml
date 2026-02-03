@@ -118,7 +118,6 @@
       # imp edit start
       - id: SimpleSuture
       - id: Tincture
-      - id: Bloodpack
       # imp edit end
       - id: ChemistryBottleParacetamol # Offbrand
     - id: SyndicateBusinessCard

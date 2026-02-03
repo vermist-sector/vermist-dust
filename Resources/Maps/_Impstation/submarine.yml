@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 268.0.0
+  engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/14/2026 15:00:08
-  entityCount: 44929
+  time: 01/21/2026 01:20:59
+  entityCount: 44934
 maps:
 - 18185
 grids:
@@ -15433,6 +15433,7 @@ entities:
       id: Submarine
     - type: NavMap
     - type: ImplicitRoof
+    - type: ExplosionAirtightGrid
   - uid: 18185
     components:
     - type: MetaData
@@ -21580,7 +21581,7 @@ entities:
       pos: -45.5,22.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -99548.99
+      secondsUntilStateChange: -99759.7
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -22067,7 +22068,7 @@ entities:
       pos: -19.5,65.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -43871.035
+      secondsUntilStateChange: -44081.75
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -25502,11 +25503,14 @@ entities:
   - uid: 14587
     components:
     - type: MetaData
-      name: Chem Lab APC
+      name: Chem Lab East APC
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 22.5,-3.5
       parent: 2
+    - type: AccessReader
+      accessListsOriginal:
+      - - Engineering
     - type: Fixtures
       fixtures: {}
   - uid: 14757
@@ -25861,6 +25865,16 @@ entities:
       name: Evac Gateway APC
     - type: Transform
       pos: 6.5,83.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 44934
+    components:
+    - type: MetaData
+      name: Chem Lab West APC
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 14.5,-4.5
       parent: 2
     - type: Fixtures
       fixtures: {}
@@ -49882,7 +49896,7 @@ entities:
   - uid: 20326
     components:
     - type: Transform
-      pos: 16.5,-0.5
+      pos: 16.5,-2.5
       parent: 2
   - uid: 20327
     components:
@@ -49892,7 +49906,7 @@ entities:
   - uid: 20328
     components:
     - type: Transform
-      pos: 16.5,-2.5
+      pos: 16.5,-0.5
       parent: 2
   - uid: 20329
     components:
@@ -49902,7 +49916,7 @@ entities:
   - uid: 20330
     components:
     - type: Transform
-      pos: 16.5,-4.5
+      pos: 17.5,-3.5
       parent: 2
   - uid: 20331
     components:
@@ -49912,7 +49926,7 @@ entities:
   - uid: 20332
     components:
     - type: Transform
-      pos: 15.5,-5.5
+      pos: 16.5,-4.5
       parent: 2
   - uid: 20333
     components:
@@ -50018,11 +50032,6 @@ entities:
     components:
     - type: Transform
       pos: 16.5,-7.5
-      parent: 2
-  - uid: 20354
-    components:
-    - type: Transform
-      pos: 17.5,-1.5
       parent: 2
   - uid: 20355
     components:
@@ -59149,11 +59158,6 @@ entities:
     - type: Transform
       pos: 18.5,-10.5
       parent: 2
-  - uid: 33874
-    components:
-    - type: Transform
-      pos: 16.5,-5.5
-      parent: 2
   - uid: 33875
     components:
     - type: Transform
@@ -67118,6 +67122,21 @@ entities:
     components:
     - type: Transform
       pos: 30.5,-41.5
+      parent: 2
+  - uid: 44931
+    components:
+    - type: Transform
+      pos: 15.5,-4.5
+      parent: 2
+  - uid: 44932
+    components:
+    - type: Transform
+      pos: 14.5,-4.5
+      parent: 2
+  - uid: 44933
+    components:
+    - type: Transform
+      pos: 19.5,-6.5
       parent: 2
 - proto: CableApcStack
   entities:
@@ -85903,6 +85922,11 @@ entities:
     - type: Transform
       pos: 17.5,4.5
       parent: 2
+  - uid: 20354
+    components:
+    - type: Transform
+      pos: 16.5,-4.5
+      parent: 2
   - uid: 20366
     components:
     - type: Transform
@@ -87968,6 +87992,11 @@ entities:
     - type: Transform
       pos: -49.5,1.5
       parent: 2
+  - uid: 33874
+    components:
+    - type: Transform
+      pos: 15.5,-4.5
+      parent: 2
   - uid: 33884
     components:
     - type: Transform
@@ -88962,6 +88991,11 @@ entities:
     components:
     - type: Transform
       pos: -76.5,16.5
+      parent: 2
+  - uid: 38285
+    components:
+    - type: Transform
+      pos: 14.5,-4.5
       parent: 2
   - uid: 38382
     components:
@@ -106682,8 +106716,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
 - proto: ClosetMaintenance
@@ -185745,13 +185779,6 @@ entities:
     - type: Transform
       pos: 21.5,59.5
       parent: 2
-- proto: GlowstickBase
-  entities:
-  - uid: 2099
-    components:
-    - type: Transform
-      pos: -19.598991,16.747276
-      parent: 2
 - proto: GlowstickBlue
   entities:
   - uid: 2093
@@ -185778,6 +185805,13 @@ entities:
     components:
     - type: Transform
       pos: -45.58075,32.746277
+      parent: 2
+- proto: GlowstickGreen
+  entities:
+  - uid: 2099
+    components:
+    - type: Transform
+      pos: -19.598991,16.747276
       parent: 2
 - proto: GoldenPersonalAI
   entities:
@@ -198306,6 +198340,9 @@ entities:
     - type: Transform
       pos: 18.5,-3.5
       parent: 2
+    - type: AccessReader
+      accessListsOriginal:
+      - - Command
 - proto: HolopadMedicalCryopods
   entities:
   - uid: 43976
@@ -201626,8 +201663,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
 - proto: LockerAtmosphericsFilled
@@ -201779,13 +201816,13 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
+      removedMasks: 20
       air:
         volume: 200
         immutable: False
         temperature: 293.14673
         moles: {}
       open: True
-      removedMasks: 20
     - type: PlaceableSurface
       isPlaceable: True
     - type: Physics
@@ -238726,7 +238763,7 @@ entities:
       pos: 37.5,-4.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -10520.048
+      secondsUntilStateChange: -10730.761
       state: Opening
   - uid: 22174
     components:
@@ -238788,7 +238825,7 @@ entities:
       pos: -7.5,-27.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -27119.684
+      secondsUntilStateChange: -27330.396
       state: Opening
   - uid: 27884
     components:
@@ -238964,7 +239001,7 @@ entities:
     - type: Transform
       pos: 27.89615,37.818455
       parent: 2
-- proto: SpacemenFigureSpawner
+- proto: SpacemenFigurineSpawner90
   entities:
   - uid: 36262
     components:

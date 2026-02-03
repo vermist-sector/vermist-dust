@@ -9,6 +9,8 @@ using System.Linq;
 using Content.Shared._Offbrand.Wounds; // Offbrand
 using Content.Shared.Mobs; // Offbrand
 using Content.Shared.Damage.Components;
+using Content.Shared._Offbrand.Wounds; // Offbrand
+using Content.Shared.Mobs; // Offbrand
 
 namespace Content.Client.Overlays;
 

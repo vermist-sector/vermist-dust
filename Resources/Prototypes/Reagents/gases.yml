@@ -225,7 +225,7 @@
         - !type:MetabolizerTypeCondition
           type: [ Plant, Thaven ] #imp, thaven don't suffocate from any gases
           inverted: true
-        factor: -4
+        factor: -1 # Offbrand
       # We need a metabolism effect on reagent removal
       #- !type:AdjustAlert
       #  alertType: CarbonDioxide
