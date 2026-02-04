@@ -14792,10 +14792,6 @@ entities:
           - 77
           - 79
           - 126
-    - type: UserInterface
-      actors:
-        enum.StorageUiKey.Key:
-        - invalid
     - type: ActiveUserInterface
   - uid: 7245
     components:

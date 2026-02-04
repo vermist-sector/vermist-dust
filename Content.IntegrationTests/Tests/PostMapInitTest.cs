@@ -160,6 +160,7 @@ namespace Content.IntegrationTests.Tests
             "CentCommVDS",
             "Progenitor",
             "Refsdal",
+            "Foundry",
 
             // DEROTATED:
             //"Eclipse",
