@@ -188,7 +188,7 @@
     maxStrain: 4
   - type: SolutionContainerManager
   - type: InjectableSolution
-    solution: chemicals
+    solution: bloodstream #verm edit, was chemicals. but with the injector changes that came with jet injectors this had to be changed to bloodstream.
   - type: Bloodstream
     bleedReductionAmount: 0
     damageBleedModifiers: null

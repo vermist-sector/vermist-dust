@@ -66,11 +66,45 @@ namespace Content.Server.Database.Migrations.Postgres
                 table: "cd_character_record_entries",
                 column: "cdprofile_id");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_cdprofile_profile_id",
-                table: "cdprofile",
-                column: "profile_id",
-                unique: true);
+
+            // See the comment in the SQLite version.
+            // This is not exactly the same because Postgres and SQLite have different syntax for JSON access.
+            // WHY IS THERE NOT A STANDARD WAY OF DOING THIS!!!
+            migrationBuilder.Sql($"""
+                INSERT INTO cd_character_record_entries (title, involved, description, type, cdprofile_id)
+                    SELECT
+                        jsonb_array_elements.value ->> 'Title', jsonb_array_elements.value ->> 'Involved', jsonb_array_elements.value ->> 'Description',
+                        {(int)CDModel.DbRecordEntryType.Medical}, cdprofile_id
+                    FROM
+                        cdprofile, jsonb_array_elements(character_records -> 'MedicalEntries');
+                """);
+
+            migrationBuilder.Sql($"""
+                INSERT INTO cd_character_record_entries (title, involved, description, type, cdprofile_id)
+                    SELECT
+                        jsonb_array_elements.value ->> 'Title', jsonb_array_elements.value ->> 'Involved', jsonb_array_elements.value ->> 'Description',
+                        {(int)CDModel.DbRecordEntryType.Security}, cdprofile_id
+                    FROM
+                        cdprofile, jsonb_array_elements(character_records -> 'SecurityEntries')
+                """);
+
+            migrationBuilder.Sql($"""
+                INSERT INTO cd_character_record_entries (title, involved, description, type, cdprofile_id)
+                    SELECT
+                        jsonb_array_elements.value ->> 'Title', jsonb_array_elements.value ->> 'Involved', jsonb_array_elements.value ->> 'Description',
+                        {(int)CDModel.DbRecordEntryType.Employment}, cdprofile_id
+                    FROM
+                        cdprofile, jsonb_array_elements(character_records -> 'EmploymentEntries')
+                """);
+
+            migrationBuilder.Sql($"""
+                INSERT INTO cd_character_record_entries (title, involved, description, type, cdprofile_id)
+                    SELECT
+                        jsonb_array_elements.value ->> 'Title', jsonb_array_elements.value ->> 'Involved', jsonb_array_elements.value ->> 'Description',
+                        {(int)CDModel.DbRecordEntryType.Admin}, cdprofile_id
+                    FROM
+                        cdprofile, jsonb_array_elements(character_records -> 'AdminEntries')
+                """);
         }
 
         /// <inheritdoc />

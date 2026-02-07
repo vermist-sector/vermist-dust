@@ -1,0 +1,118 @@
+- type: parallax
+  id: Unfounded
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/1-dirt-space.png"
+      slowness: 0.999
+      scale: "2, 2"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/2-smoke.png"
+      slowness: 0.989
+      scale: "1, 1"
+      scrolling: "0.0055, -0.095"
+      # asteroids
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/1-unfound-rock.png"
+      slowness: 0.9850
+      scale: "1.1, 1.1"
+      scrolling: "0.01, -0.05"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/2-unfound-rock.png"
+      slowness: 0.9840
+      scale: "1.2, 1.2"
+      scrolling: "0.008, 0.09"
+      #bg
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/3-gas.png"
+      slowness: 0.975
+      scale: "1, 1"
+      scrolling: "-0.099, -0.25"
+      # asteroids
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/3-unfound-rock.png"
+      slowness: 0.9615
+      scale: "1.5, 1.5"
+      scrolling: "0.05, 0.009"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/4-unfound-rock.png"
+      slowness: 0.9465
+      scale: "1.78, 1.78"
+      scrolling: "0.08, -0.05"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/5-unfound-rock.png"
+      slowness: 0.9440
+      scale: "1.8, 1.8"
+      scrolling: "0.08, -0.05"
+      # ship
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/1-unfound-ship.png"
+      slowness: 0.92
+      scale: "1.7, 1.7"
+      scrolling: "0.00055, 0.0055"
+      tiled: false
+      worldHomePosition: "290, -313"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/2-unfound-ship.png"
+      slowness: 0.8790
+      scale: "2.1, 2.1"
+      scrolling: "0.00055, 0.0055"
+      tiled: false
+      worldHomePosition: "292, -310"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/3-unfound-ship.png"
+      slowness: 0.8775
+      scale: "2.2, 2.2"
+      scrolling: "0.00055, 0.0055"
+      tiled: false
+      worldHomePosition: "298, -307"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/4-unfound-ship.png"
+      slowness: 0.8770
+      scale: "2.2, 2.2"
+      scrolling: "0.00055, 0.0055"
+      tiled: false
+      worldHomePosition: "299, -305"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/5-unfound-ship.png"
+      slowness: 0.8745
+      scale: "2.2, 2.2"
+      scrolling: "0.00055, 0.0055"
+      tiled: false
+      worldHomePosition: "300, -300"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/4-broil-bg.png"
+      slowness: 0.8500
+      scale: "1, 1"
+      scrolling: "0.19, -0.0025"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/5-broil.png"
+      slowness: 0.8400
+      scale: "1, 1"
+      scrolling: "0.19, -0.0025"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/6-magma-bg.png"
+      slowness: 0.820
+      scale: "1.45, 1.45"
+      scrolling: "-0.00355, 0.195"
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_VDS/Parallaxes/Unfounded/7-magma.png"
+      slowness: 0.815
+      scale: "1.5, 1.5"
+      scrolling: "-0.00355, 0.195"
