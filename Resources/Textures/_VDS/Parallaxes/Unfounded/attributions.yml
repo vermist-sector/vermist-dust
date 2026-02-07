@@ -1,0 +1,4 @@
+- files: [ 1-dirt-space.png, 2-smoke.png, 3-gas.png, 4-broil-bg.png, 5-broil.png, 6-magma-bg.png, 7-magma.png, 1-unfound-ship.png, 2-unfound-ship.png, 3-unfound-ship.png, 4-unfound-ship.png, 5-unfound-ship.png, 1-unfound-rock, 2-unfound-rock, 3-unfound-rock, 4-unfound-rock, 5-unfound-rock ]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "by Jellvisk for Vermist Dust Sector (https://github.com/vermist-sector/vermist-dust)"
+  source: "https://github.com/Jellvisk"
