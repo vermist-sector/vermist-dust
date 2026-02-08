@@ -114,7 +114,6 @@ internal sealed partial class ChatManager : IChatManager
 
     public void DispatchServerAnnouncement(string message, Color? colorOverride = null)
     {
-        colorOverride ??= Color.White; // vds
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", FormattedMessage.EscapeText(message)));
         ChatMessageToAll(ChatChannel.Server, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride);
         _sawmill ??= _logManager.GetSawmill("SERVER"); // fuck my gay ass life
@@ -367,7 +366,6 @@ internal sealed partial class ChatManager : IChatManager
 
     public void ChatMessageToOne(ChatChannel channel, string message, string wrappedMessage, EntityUid source, bool hideChat, INetChannel client, Color? colorOverride = null, bool recordReplay = false, string? audioPath = null, float audioVolume = 0, NetUserId? author = null)
     {
-        colorOverride ??= Color.White; // vds
         var user = author == null ? null : EnsurePlayer(author);
         var netSource = _entityManager.GetNetEntity(source);
         user?.AddEntity(netSource);
@@ -390,7 +388,6 @@ internal sealed partial class ChatManager : IChatManager
 
     public void ChatMessageToMany(ChatChannel channel, string message, string wrappedMessage, EntityUid source, bool hideChat, bool recordReplay, List<INetChannel> clients, Color? colorOverride = null, string? audioPath = null, float audioVolume = 0, NetUserId? author = null)
     {
-        colorOverride ??= Color.White; // vds
         var user = author == null ? null : EnsurePlayer(author);
         var netSource = _entityManager.GetNetEntity(source);
         user?.AddEntity(netSource);
@@ -411,7 +408,6 @@ internal sealed partial class ChatManager : IChatManager
     public void ChatMessageToManyFiltered(Filter filter, ChatChannel channel, string message, string wrappedMessage, EntityUid source,
         bool hideChat, bool recordReplay, Color? colorOverride = null, string? audioPath = null, float audioVolume = 0)
     {
-        colorOverride ??= Color.White; // vds
         if (!recordReplay && !filter.Recipients.Any())
             return;
 
@@ -426,7 +422,6 @@ internal sealed partial class ChatManager : IChatManager
 
     public void ChatMessageToAll(ChatChannel channel, string message, string wrappedMessage, EntityUid source, bool hideChat, bool recordReplay, Color? colorOverride = null, string? audioPath = null, float audioVolume = 0, NetUserId? author = null)
     {
-        colorOverride ??= Color.White; // vds
         var user = author == null ? null : EnsurePlayer(author);
         var netSource = _entityManager.GetNetEntity(source);
         user?.AddEntity(netSource);
