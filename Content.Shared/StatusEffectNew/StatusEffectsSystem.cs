@@ -36,7 +36,8 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         SubscribeLocalEvent<StatusEffectContainerComponent, EntInsertedIntoContainerMessage>(OnEntityInserted);
         SubscribeLocalEvent<StatusEffectContainerComponent, EntRemovedFromContainerMessage>(OnEntityRemoved);
 
-        SubscribeLocalEvent<StatusEffectContainerComponent, RejuvenateEvent>(OnRejuvenate); // Offbrand
+        SubscribeLocalEvent<RejuvenateRemovedStatusEffectComponent, StatusEffectRelayedEvent<RejuvenateEvent>>(OnRejuvenate);
+
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
 
         _containerQuery = GetEntityQuery<StatusEffectContainerComponent>();
@@ -115,8 +116,6 @@ public sealed partial class StatusEffectsSystem : EntitySystem
             statusComp.AppliedTo = ent;
             DirtyField(args.Entity, statusComp, nameof(StatusEffectComponent.AppliedTo));
         }
-        var ev = new StatusEffectAppliedEvent(ent);
-        RaiseLocalEvent(args.Entity, ref ev);
     }
 
     private void OnEntityRemoved(Entity<StatusEffectContainerComponent> ent, ref EntRemovedFromContainerMessage args)
@@ -141,19 +140,11 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         Dirty(args.Entity, statusComp);
     }
 
-    // Begin Offbrand Changes
-    private void OnRejuvenate(Entity<StatusEffectContainerComponent> ent,
-        ref RejuvenateEvent args)
+    private void OnRejuvenate(Entity<RejuvenateRemovedStatusEffectComponent> ent,
+        ref StatusEffectRelayedEvent<RejuvenateEvent> args)
     {
-        if (!TryEffectsWithComp<RejuvenateRemovedStatusEffectComponent>(ent, out var effects))
-            return;
-
-        foreach (var effect in effects)
-        {
-            Del(effect);
-        }
+        PredictedQueueDel(ent.Owner);
     }
-    // End Offbrand Changes
 
     /// <summary>
     /// Applies the status effect, i.e. starts it after it has been added. Ensures delayed start times trigger when they should.

@@ -237,7 +237,7 @@
     state: pda-internmed
   - type: GuideHelp
     guides:
-    - OffbrandPhysician # Offbrand
+    - MedicalDoctor
 
 - type: entity
   parent: BaseSecurityPDA
@@ -807,7 +807,7 @@
     state: pda-medical
   - type: GuideHelp
     guides:
-    - OffbrandPhysician # Offbrand
+    - MedicalDoctor
 
 - type: entity
   parent: MedicalPDA

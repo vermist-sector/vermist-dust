@@ -41,7 +41,7 @@
           Empty: { visible: false }
   - type: GuideHelp
     guides:
-    - OffbrandBody # Offbrand
+    - MedicalDoctor
   - type: DamageOtherOnHit # imp
     damage:
       types:

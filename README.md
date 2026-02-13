@@ -100,5 +100,4 @@ Content under these subdirectories either originate from their respective fork, 
 | `_NF`            | Frontier Station    | https://github.com/new-frontiers-14/frontier-station-14               | AGPL 3.0 |
 | `_Harmony`       | Harmony             | https://github.com/ss14-harmony/ss14-harmony                          | AGPL 3.0 |
 | `_Mono`          | Monolith            | https://github.com/Monolith-Station/Monolith                          | AGPL 3.0 |
-| `_Offbrand`      | Offbrand            | https://github.com/space-wizards/space-station-14/tree/offmed-staging | MIT      |
 | `_White`         | White Dream         | https://github.com/WWhiteDreamProject/wwdpublic/                      | AGPL 3.0 |

@@ -62,8 +62,6 @@
     noRot: true
   - type: Anchorable
   - type: Pullable
-  - type: AcousticData # VDS
-    absorption: 15
 
 
 - type: entity
@@ -85,7 +83,7 @@
     node: medicalbed
   - type: GuideHelp
     guides:
-    - OffbrandPhysician # Offbrand
+    - MedicalDoctor
 
 - type: entity
   parent: Bed

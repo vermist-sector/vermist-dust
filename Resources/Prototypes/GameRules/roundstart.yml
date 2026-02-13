@@ -303,7 +303,7 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 10 # VDS - down from 15
+    minPlayers: 15
   - type: RevolutionaryRule
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
@@ -401,7 +401,7 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 10 # VDS - down from 20
+    minPlayers: 20
     delay:
       min: 600
       max: 900
@@ -556,7 +556,6 @@
   components:
   - type: RoundstartStationVariationRule
     rules:
-    - id: SupplyOffbrandItemsVariationPass # Offbrand
     - id: BasicPoweredLightVariationPass
     - id: BasicTrashVariationPass
     - id: SolidWallRustingVariationPass

@@ -36,13 +36,12 @@ namespace Content.IntegrationTests.Tests
         {
             "CentComm",
             "CentCommImp", // imp edit
-            "CentCommVDS",
             "Dart"
         };
 
         private static readonly string[] Grids =
         {
-            "/Maps/_VDS/vds_centcomm.yml", // vds edit
+            "/Maps/_Impstation/centcomm.yml", // imp edit
             AdminTestArenaSystem.ArenaMapPath
         };
 
@@ -76,7 +75,6 @@ namespace Content.IntegrationTests.Tests
             "/Maps/centcomm.yml",
             "/Maps/Shuttles/AdminSpawn/**", // admin gaming
             "/Maps/_Impstation/centcomm.yml", // imp edit
-            "/Maps/_VDS/vds_centcomm.yml", // VDS
 
             // Stations
             "/Maps/_Impstation/bagel.yml", // Contains mime's rubber stamp
@@ -88,7 +86,6 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Impstation/reach.yml", // Contains handheld crew monitor
             "/Maps/_Impstation/xeno.yml", // Contains PTK-800 "Matter Dematerializer"
             "/Maps/_Impstation/eclipse.yml", // Contains PTK-800 "Matter Dematerializer", LSE-400c "Svalinn machine gun"
-            "/Maps/_VDS/progenitor.yml", // Contains EXP-2100g "Duster" machine board, "EXP-320g "Friendship" machine board, "PTK-800 "Matter Dematerializer" machine board, LSE-1200c "Perforator" machine board, and an anomalite spawn point for good measure. No suffix can contain me. None.
 
             // Shuttles
             "/Maps/_DV/Shuttles/listening_post.yml", // Contains captain's rubber stamp, chief engineer's rubber stamp, chaplain's rubber stamp, clown's rubber stamp, blablabla you get the picture
@@ -156,15 +153,10 @@ namespace Content.IntegrationTests.Tests
             "Pathway",
             "Whisper",
 
-            // VDS PROTOTYPES:
-            "CentCommVDS",
-            "Progenitor",
-            "Refsdal",
-            "Foundry",
-
             // DEROTATED:
             //"Eclipse",
             //"Luna",
+            //"Refsdal",
             //"reHash",
             //"RelicImp",
             //"Skimmer",

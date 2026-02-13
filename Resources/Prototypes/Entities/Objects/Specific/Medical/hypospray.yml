@@ -251,18 +251,12 @@
   - type: SolutionContainerManager
     solutions:
       pen:
-        maxVol: 35 # Offbrand
+        maxVol: 15
         reagents:
         - ReagentId: Epinephrine
           Quantity: 12
         - ReagentId: TranexamicAcid
           Quantity: 3
-        # Begin Offbrand
-        - ReagentId: Paracetamol
-          Quantity: 10
-        - ReagentId: Inaprovaline
-          Quantity: 10
-        # End Offbrand
   - type: Tag # goob edit
     tags:
       - Trash
@@ -678,7 +672,7 @@
         reagents:
         - ReagentId: Omnizine
           Quantity: 25
-        - ReagentId: Coagulant # Offbrand
+        - ReagentId: TranexamicAcid
           Quantity: 5
   - type: StaticPrice
     price: 1500

@@ -4,17 +4,19 @@
   name: medical supplies crate
   description: Basic medical supplies.
   components:
-  - type: StorageFill
-    contents:
-      - id: MedkitFilled
-        amount: 2
-      - id: Gauze
-        amount: 2
-      - id: ChemistryBottleParacetamol # Offbrand
-        amount: 2
-      - id: BoxLatexGloves
-      - id: BoxSterileMask
-      - id: BoxMouthSwab
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: MedkitFilled
+          amount: 2
+        - id: Gauze
+          amount: 2
+        - id: Bloodpack
+          amount: 2
+        - id: BoxLatexGloves
+        - id: BoxSterileMask
+        - id: BoxMouthSwab
 
 - type: entity
   parent: CrateMedical
@@ -63,19 +65,17 @@
   name: surgical supplies crate
   description: Surgical instruments.
   components:
-  - type: StorageFill
-    contents:
-      - id: Scalpel
-      - id: Retractor
-      - id: Cautery
-      - id: Drill
-      - id: Saw
-      - id: Hemostat
-      - id: ClothingMaskSterile
-      - id: BoneGel # Offbrand
-      - id: BoneSetter # Offbrand
-      - id: VascularRecoupler # Offbrand
-      - id: Suture # Offbrand
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: Scalpel
+        - id: Retractor
+        - id: Cautery
+        - id: Drill
+        - id: Saw
+        - id: Hemostat
+        - id: ClothingMaskSterile
 
 - type: entity
   parent: CrateMedical

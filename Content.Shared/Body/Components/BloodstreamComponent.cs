@@ -84,14 +84,14 @@ public sealed partial class BloodstreamComponent : Component
     /// The default values are defined per mob/species in YML.
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier? BloodlossDamage = new(); // Offbrand: we don't need this
+    public DamageSpecifier BloodlossDamage = new();
 
     /// <summary>
     /// The base bloodloss damage to be healed if above <see cref="BloodlossThreshold"/>
     /// The default values are defined per mob/species in YML.
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier? BloodlossHealDamage = new(); // Offbrand: we don't need this
+    public DamageSpecifier BloodlossHealDamage = new();
 
     // TODO shouldn't be hardcoded, should just use some organ simulation like bone marrow or smth.
     /// <summary>
@@ -114,7 +114,7 @@ public sealed partial class BloodstreamComponent : Component
     /// For example, piercing damage is increased while poison damage is nullified entirely.
     /// </remarks>
     [DataField, AutoNetworkedField]
-    public ProtoId<DamageModifierSetPrototype>? DamageBleedModifiers = "BloodlossHuman"; // Offbrand: we don't want this
+    public ProtoId<DamageModifierSetPrototype> DamageBleedModifiers = "BloodlossHuman";
 
     /// <summary>
     /// The sound to be played when a weapon instantly deals blood loss damage.
@@ -151,14 +151,6 @@ public sealed partial class BloodstreamComponent : Component
     /// </remarks>
     [DataField, AutoNetworkedField]
     public Solution BloodReferenceSolution = new([new("Blood", 300)]);
-
-    /// <summary>
-    /// VDS (offmed patch) How many units of blood is considered to be a healthy amount in the bloodstream.
-    /// Typically should equal the amount defined in <see cref="BloodReferenceSolution"/>.
-    /// Used by <seealso cref="_Offbrand.Wounds.HeartSystem"/>.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public float HealthyBloodVolume = 300f;
 
     /// <summary>
     /// Caches the blood data of an entity.

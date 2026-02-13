@@ -61,6 +61,7 @@ public sealed partial class SleepingSystem : EntitySystem
         SubscribeLocalEvent<SleepingComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<SleepingComponent, ComponentInit>(OnCompInit);
         SubscribeLocalEvent<SleepingComponent, ComponentRemove>(OnComponentRemoved);
+        SubscribeLocalEvent<SleepingComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<SleepingComponent, SpeakAttemptEvent>(OnSpeakAttempt);
         SubscribeLocalEvent<SleepingComponent, CanSeeAttemptEvent>(OnSeeAttempt);
         SubscribeLocalEvent<SleepingComponent, PointAttemptEvent>(OnPointAttempt);
@@ -71,7 +72,6 @@ public sealed partial class SleepingSystem : EntitySystem
         SubscribeLocalEvent<SleepingComponent, InteractHandEvent>(OnInteractHand);
         SubscribeLocalEvent<SleepingComponent, StunEndAttemptEvent>(OnStunEndAttempt);
         SubscribeLocalEvent<SleepingComponent, StandUpAttemptEvent>(OnStandUpAttempt);
-        SubscribeLocalEvent<SleepingComponent, RejuvenateEvent>(OnRejuvenate);
 
         SubscribeLocalEvent<ForcedSleepingStatusEffectComponent, StatusEffectAppliedEvent>(OnStatusEffectApplied);
         SubscribeLocalEvent<SleepingComponent, UnbuckleAttemptEvent>(OnUnbuckleAttempt);

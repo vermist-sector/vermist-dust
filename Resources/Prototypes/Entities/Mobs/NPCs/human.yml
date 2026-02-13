@@ -91,14 +91,8 @@
         Blunt: 19
   - type: Inventory
     templateId: corpse
-  # Begin Offbrand Additions
-  - type: BrainDamage
-    damage: 100
-    oxygen: 0
-  - type: Heartrate
-    running: false
-    damage: 50
-  # End Offbrand Additions
+  - type: Rotting
+    totalRotTime: 1200 # 20 minutes
 
 - type: entity
   parent: MobHuman

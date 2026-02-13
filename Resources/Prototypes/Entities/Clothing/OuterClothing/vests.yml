@@ -28,7 +28,7 @@
       - state: equipped-OUTERCLOTHING-unshaded
         shader: shaded
       outerClothing-anomalocarid: # imp
-      - state: equipped-OUTERCLOTHING-anomalocarid
+      - state: equipped-OUTERCLOTHING-anomalocarid 
       - state: equipped-OUTERCLOTHING-unshaded-anomalocarid
         shader: unshaded
       - state: equipped-OUTERCLOTHING-unshaded-anomalocarid
@@ -94,7 +94,3 @@
     sprite: Clothing/OuterClothing/Vests/tankharnesscommand.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Vests/tankharnesscommand.rsi
-  - type: Tag # Offbrand
-    tags:
-    - OperatableClothing
-    - WhitelistChameleon

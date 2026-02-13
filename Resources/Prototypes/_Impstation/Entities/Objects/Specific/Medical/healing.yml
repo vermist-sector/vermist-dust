@@ -409,7 +409,7 @@
     storedRotation: 90
   - type: Healing
     damageContainers:
-      - Biological
+    - Biological
     damage:
       types:
         Slash: -10
@@ -418,17 +418,6 @@
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-  - type: Tending # offmed
-    woundWhitelist:
-      tags: [WoundCut, WoundPuncture]
-    damage:
-      types:
-        Slash: -10
-        Piercing: -5
-    tendingBeginSound:
-      path: "/Audio/Items/Medical/brutepack_begin.ogg"
-    tendingEndSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
   - type: Stack
     stackType: SimpleSuture
@@ -464,7 +453,7 @@
     heldPrefix: shock-gel
   - type: Healing
     damageContainers:
-      - Biological
+    - Biological
     damage:
       types:
         Shock: -10
@@ -472,17 +461,6 @@
     healingBeginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
     healingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
-  - type: Tending # offmed
-    woundWhitelist:
-      tags: [WoundHeat, WoundShock]
-    damage:
-      types:
-        Shock: -10
-        Heat: -5
-    tendingBeginSound:
-      path: "/Audio/Items/Medical/ointment_begin.ogg"
-    tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
   - type: Stack
     stackType: ShockGel
@@ -518,7 +496,7 @@
     heldPrefix: electrode-pad
   - type: Healing
     damageContainers:
-      - Biological
+    - Biological
     damage:
       types:
         Blunt: -10
@@ -526,17 +504,6 @@
     healingBeginSound:
       path: "/Audio/Items/appraiser.ogg"
     healingEndSound:
-      path: "/Audio/Effects/sparks4.ogg"
-  - type: Tending # offmed
-    woundWhitelist:
-      tags: [WoundBruise]
-    damage:
-      types:
-        Blunt: -10
-        Asphyxiation: -5
-    tendingBeginSound:
-      path: "/Audio/Items/appraiser.ogg"
-    tendingEndSound:
       path: "/Audio/Effects/sparks4.ogg"
   - type: Stack
     stackType: ElectrodePad
@@ -579,17 +546,6 @@
     healingBeginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
     healingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
-  - type: Tending # offmed
-    woundWhitelist:
-      tags: [WoundBrute, WoundBurn]
-    damage:
-      groups:
-        Brute: -6
-        Burn: -8
-    tendingBeginSound:
-      path: "/Audio/Items/Medical/ointment_begin.ogg"
-    tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
   - type: Stack
     stackType: Tincture
@@ -644,7 +600,7 @@
     heldPrefix: ez-graft
   - type: Healing
     damageContainers:
-      - Biological
+    - Biological
     damage:
       types:
         Caustic: -5
@@ -652,17 +608,6 @@
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
-  - type: Tending # offmed
-    woundWhitelist:
-      tags: [WoundCaustic]
-    damage:
-      types:
-        Caustic: -10
-        Slash: 6
-    tendingBeginSound:
-      path: "/Audio/Items/Medical/brutepack_begin.ogg"
-    tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
   - type: Stack
     stackType: EZGraft
@@ -695,23 +640,13 @@
     heldPrefix: cold-pack
   - type: Healing
     damageContainers:
-      - Biological
+    - Biological
     damage:
       types:
         Cold: -10
     healingBeginSound:
       path: "/Audio/Items/Toys/ToyFall2.ogg" #the logic is flawless.
     healingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
-  - type: Tending # offmed
-    woundWhitelist:
-      tags: [WoundCold]
-    damage:
-      types:
-        Cold: -10
-    tendingBeginSound:
-      path: "/Audio/Items/Toys/ToyFall2.ogg" #the logic is flawless.
-    tendingEndSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
   - type: EmitSoundOnLand
     sound:
@@ -730,3 +665,4 @@
   - type: Stack
     stackType: ColdPack
     count: 1
+

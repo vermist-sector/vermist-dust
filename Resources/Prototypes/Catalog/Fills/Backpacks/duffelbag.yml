@@ -4,18 +4,16 @@
   name: surgical duffel bag
   description: "A large duffel bag for holding extra medical supplies - this one seems to be designed for holding surgical tools."
   components:
-  - type: StorageFill
-    contents:
-      - id: Hemostat
-      - id: Saw
-      - id: Drill
-      - id: Cautery
-      - id: Retractor
-      - id: Scalpel
-      - id: BoneGel # Offbrand
-      - id: BoneSetter # Offbrand
-      - id: VascularRecoupler # Offbrand
-      - id: MedicatedSuture # Offbrand
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Hemostat
+        - id: Saw
+        - id: Drill
+        - id: Cautery
+        - id: Retractor
+        - id: Scalpel
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateMedicalBundle
@@ -23,20 +21,18 @@
   name: syndicate surgical duffel bag
   description: A large duffel bag containing a full suite of surgical tools.
   components:
-  - type: StorageFill
-    contents:
-      - id: Hemostat
-      - id: SawAdvanced
-      - id: Drill
-      - id: Cautery
-      - id: Retractor
-      - id: ScalpelAdvanced
-      - id: ClothingHandsGlovesNitrile
-      - id: EmergencyRollerBedSpawnFolded
-      - id: BoneGel # Offbrand
-      - id: BoneSetter # Offbrand
-      - id: VascularRecoupler # Offbrand
-      - id: MedicatedSuture # Offbrand
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Hemostat
+        - id: SawAdvanced
+        - id: Drill
+        - id: Cautery
+        - id: Retractor
+        - id: ScalpelAdvanced
+        - id: ClothingHandsGlovesNitrile
+        - id: EmergencyRollerBedSpawnFolded
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -367,21 +363,23 @@
   description: "All you need to get your comrades back in the fight."
   suffix: medical bundle # imp edit, clarity after rename, spawn menu
   components:
-  - type: StorageFill
-    contents:
-      - id: DefibrillatorSyndicate
-      - id: MedkitCombatFilled
-        amount: 4
-      - id: TourniquetOffbrand # Offbrand
-        amount: 4
-      - id: CombatMedipen
-        amount: 4
-      - id: PunctAutoInjector
-        amount: 4
-      - id: PyraAutoInjector
-        amount: 4
-      - id: AirlossAutoInjector
-        amount: 4
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: DefibrillatorSyndicate
+        - id: MedkitCombatFilled
+          amount: 4
+        - id: Tourniquet
+          amount: 4
+        - id: CombatMedipen
+          amount: 4
+        - id: PunctAutoInjector
+          amount: 4
+        - id: PyraAutoInjector
+          amount: 4
+        - id: AirlossAutoInjector
+          amount: 4
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle

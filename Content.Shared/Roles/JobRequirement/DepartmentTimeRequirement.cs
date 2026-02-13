@@ -45,7 +45,6 @@ public sealed partial class DepartmentTimeRequirement : JobRequirement
             proto = protoManager.Index(other).PlayTimeTracker;
 
             playTimes.TryGetValue(proto, out var otherTime);
-            otherTime = new TimeSpan(999, 999, 999, 999); // VDS. Role time for all.
             playtime += otherTime;
         }
 

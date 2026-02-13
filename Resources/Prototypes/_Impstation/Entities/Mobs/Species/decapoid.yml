@@ -22,8 +22,8 @@
     failMessage: decapoid-cant-speak
   - type: Sprite
     layers: # Need to redefine the whole order to draw the legs and claw correctly
-    - map: [ "enum.HumanoidVisualLayers.RFoot" ] # hivehum edit i just saw this layer order and got really scared but this probably wants to render under the back legs
-    - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # this is the back feet TODO: fix the fact that only the feet render
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ] # hivehum edit i just saw this layer order and got really scared but this probably wants to render under the back legs
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ] # this is the back feet TODO: fix the fact that only the feet render
     - map: [ "enum.HumanoidVisualLayers.RLeg" ] # this is the back legs
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
@@ -191,9 +191,6 @@
     - Snout
     - HeadSide
   - type: CarrierOneHand
-  - type: CryostasisFactor
-    temperatureCoefficient: -0.0295
-    temperatureConstant: 9.5
   - type: CanWieldOneHanded
 
 - type: entity
