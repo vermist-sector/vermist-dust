@@ -11,7 +11,7 @@ public sealed class SynthSystem : EntitySystem
 {
     // Begin DeltaV - make strings static readonly
     private static readonly ProtoId<TypingIndicatorPrototype> RobotTypingIndicator = "robot";
-    private static readonly ProtoId<ReagentPrototype> SynthBloodReagent = "SynthBlood";
+    // private static readonly ProtoId<ReagentPrototype> SynthBloodReagent = "SynthBlood"; // VDS - use solution in component instead.
     // End DeltaV
 
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
