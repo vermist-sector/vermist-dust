@@ -43,6 +43,7 @@
     ChemistryBottleDexalin: 3 # Offbrand
     TourniquetOffbrand: 2 # Offbrand
     Splints: 2 # Offbrand
+    ChemistryBottleMannitol: 2 # VDS
     ChemistryBottleEpinephrine: 3
     ChemistryBottleBicaridine: 1
     Syringe: 5

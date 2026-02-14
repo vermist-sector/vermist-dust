@@ -36,10 +36,16 @@ public sealed partial class WoundableHealthAnalyzerData
     public AttributeRating HeartRateRating; // VDS
 
     [DataField]
+    public float HeartStrain;
+
+    [DataField]
     public int Etco2;
 
     [DataField]
     public int RespiratoryRate;
+
+    [DataField]
+    public float RespiratoryRateModifier;
 
     [DataField]
     public float Spo2;
@@ -199,9 +205,11 @@ public abstract class SharedWoundableHealthAnalyzerSystem : EntitySystem
                 BloodPressure = (upper, lower),
                 HeartRate = _heart.HeartRate((uid, heartrate)),
                 HeartRateRating = !heartrate.Running ? AttributeRating.Dangerous : RateHigherIsWorse(_heart.Strain((uid, heartrate))), // VDS
+                HeartStrain = _heart.Strain((uid, heartrate)),
                 Etco2 = _heart.Etco2((uid, heartrate)),
                 BloodFlowRating = RateHigherIsBetter(flow), // VDS
                 RespiratoryRate = _heart.RespiratoryRate((uid, heartrate)),
+                RespiratoryRateModifier = _heart.ComputeRespiratoryRateModifier((uid, heartrate)),
                 Spo2 = _heart.Spo2((uid, heartrate)).Float(),
                 BloodOxygenationRating = RateHigherIsBetter(oxygenation), // VDS
                 LungHealth = lungHealth,
