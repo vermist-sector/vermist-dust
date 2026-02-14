@@ -250,19 +250,19 @@
         32:
           sprite: _Impstation/Mobs/Species/Ungu/displacement.rsi
           state: inhand_right
-  - type: Pain
+  - type: Pain #verm offmed adjustments
     painMultiplier: 0.75
     maxShockIncreasePerSecond: 36
     maxShockDecreasePerSecond: 12
     doubleShockRecoveryThreshold: 0.5
-  - type: Heartrate
+  - type: Heartrate #verm offmed adjustments
     maxDamage: 100
     damage: 0
     strainDamageThresholds:
-      0.25: [ 0.3, 0.1 ]
-      0.5: [ 0.45, 0.1 ]
-      0.75: [ 0.6, 0.1 ]
-      1: [ 0.75, 2 ]
+      0.25: [ 0.3, 0.15 ]
+      0.5: [ 0.45, 0.15 ]
+      0.75: [ 0.6, 0.15 ]
+      1: [ 0.75, 3 ]
     respiratoryRateCoefficient: -3
     respiratoryRateConstant: 1.333
     respiratoryRateNormalBreath: 5
