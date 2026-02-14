@@ -69,6 +69,13 @@ High heartrate can also reduce the [color=#7af396]Heart Health[/color].
 
 The [color=#7af396]Heart Health[/color] is an indicator of how much damage the heart has taken, either from strain caused by excessive heartrates, or by direct injury.
 
+<Box>
+  <GuideEntityEmbed Entity="VitalsMonitor" Caption="Vital Monitor" />
+</Box>
+A key component in keeping [color=#7af396]Heart Health[/color] in good condition will be the Vital Monitor installed beside most medical beds.
+This device will give you an audible indicator of the current strain placed on your patients' heart, 
+letting you know early when the patient may require painkillers or surgery.
+
 ## The Bloodstream
 
 The bloodstream is the primary vehicle that carries air from your lungs to the brain, with help from the heart.

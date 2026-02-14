@@ -3,10 +3,16 @@
   id: OperatingTableCircuitboard
   result: OperatingTableCircuitboard
 
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: VitalMonitorCircuitboard
+  result: VitalMonitorCircuitboard
+
 - type: latheRecipePack
   id: OffbrandCircuitboardsStatic
   recipes:
   - OperatingTableCircuitboard
+  - VitalMonitorCircuitboard
 
 - type: latheRecipe
   id: IVBag

@@ -31,8 +31,8 @@
         collection: VitalsPulseDouble
         params:
           volume: -9
-      0.7:
-        collection: VitalsPulseDanger
+      0.7: # VDS - add new audio threshold
+        collection: VitalsPulseDanger 
         params:
           volume: -9
     asystoleAudio:
@@ -106,3 +106,16 @@
         enum.VitalsMonitorVisuals.PulseWarning:
           True: { visible: true }
           False: { visible: false }
+  # VDS - make constructible
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_board
+    - machine_parts
+  - type: Machine
+    board: VitalMonitorCircuitboard
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
