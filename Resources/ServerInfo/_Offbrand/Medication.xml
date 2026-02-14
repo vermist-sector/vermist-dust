@@ -34,6 +34,14 @@ These medicines heal various injuries, but cannot treat severe internal wounds t
 <GuideReagentEmbed Reagent="Arithrazine"/>
 <GuideReagentEmbed Reagent="Phalanximine"/>
 
+## Brain Repairing Medicines
+
+These medicines will, over time, heal the brain's trauma. 
+NOTE: The brain cannot heal without sufficient O2. Make sure your patient has it if you want them to live.
+
+<GuideReagentEmbed Reagent="Inaprovaline"/>
+<GuideReagentEmbed Reagent="Mannitol"/>
+
 ## Cryogenic Medicines
 
 Cryogenic medicines can be applied to patients with low body temperatures. Cryo pods are the primary means of using them.

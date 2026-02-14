@@ -494,7 +494,7 @@
   parent: ChemicalMedipen
   id: AirlossAutoInjector
   name: airloss auto-injector
-  description: A single-dose, non-refillable medipen containing saline, inaprovaline and dexalin, used to stabilize patients suffering from asphyxiation. # Offbrand
+  description: A single-dose, non-refillable medipen containing saline, inaprovaline and dexalin plus, used to stabilize patients suffering from asphyxiation. # Offbrand
   components:
   - type: Item
     inhandVisuals:
