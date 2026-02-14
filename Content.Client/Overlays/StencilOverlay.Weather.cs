@@ -1,3 +1,4 @@
+using System.Data;
 using System.Numerics;
 using Content.Shared.Light.Components;
 using Content.Shared.Weather;
@@ -5,7 +6,8 @@ using Robust.Client.Graphics;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Configuration; // imp
-using Content.Shared._Impstation.CCVar; // imp
+using Content.Shared._Impstation.CCVar;
+using Robust.Shared.Serialization.Manager.Exceptions; // imp
 
 namespace Content.Client.Overlays;
 
@@ -27,10 +29,13 @@ public sealed partial class StencilOverlay
         var worldAABB = args.WorldAABB;
         var worldBounds = args.WorldBounds;
         var position = args.Viewport.Eye?.Position.Position ?? Vector2.Zero;
+        var VisionSensitivity = _configManager.GetCVar(ImpCCVars.DisableWeather);
 
-        if (_configManager.GetCVar(ImpCCVars.DisableWeather)) //imp
+        if (VisionSensitivity&&!weatherProto.Veil) //imp also vds(added &&!weatherProto.Veil)
             return;
 
+        if(weatherProto.Veil && weatherProto.AltSprite == null)// VDS if we have the veil set to true, check that the weather proto actually has an alt texture otherwise return
+            return;
         // Cut out the irrelevant bits via stencil
         // This is why we don't just use parallax; we might want specific tiles to get drawn over
         // particularly for planet maps or stations.
@@ -70,7 +75,11 @@ public sealed partial class StencilOverlay
         worldHandle.UseShader(_protoManager.Index(StencilMask).Instance());
         worldHandle.DrawTextureRect(res.Blep!.Texture, worldBounds);
         var curTime = _timing.RealTime;
-        var sprite = _sprite.GetFrame(weatherProto.Sprite, curTime);
+        Texture sprite;
+        if (VisionSensitivity && weatherProto.Veil) //check if we want to get an alt texture
+            sprite = _sprite.GetFrame(weatherProto.AltSprite!, curTime); //we already checked if it was null
+        else
+            sprite = _sprite.GetFrame(weatherProto.Sprite, curTime);
 
         // Draw the rain
         worldHandle.UseShader(_protoManager.Index(StencilDraw).Instance());

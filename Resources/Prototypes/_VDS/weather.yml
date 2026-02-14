@@ -9,6 +9,10 @@
   sprite:
     sprite: /Textures/_VDS/Effects/weather.rsi
     state: void100
+  veil: true
+  altSprite:
+    sprite: /Textures/_VDS/Effects/weather.rsi
+    state: void100
 
 - type: weather
   id: DustStormDark
@@ -21,3 +25,7 @@
   sprite:
     sprite: /Textures/_VDS/Effects/weather/dust128.rsi
     state: dust_storm_bright
+  veil: true
+  altSprite:
+    sprite: /Textures/_VDS/Effects/weather.rsi
+    state: shhSecret

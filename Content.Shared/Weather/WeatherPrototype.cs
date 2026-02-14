@@ -20,4 +20,15 @@ public sealed partial class WeatherPrototype : IPrototype
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("sound")]
     public SoundSpecifier? Sound;
+
+    //begin VDS edits
+    /// <summary>
+    /// Is this weather effect meant to hide stuff? if so set an alt texture for people with vision sensitivity.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("veil")]
+    public bool Veil;
+
+    [ViewVariables(VVAccess.ReadWrite), DataField("altSprite")]
+    public SpriteSpecifier? AltSprite = default!;
+    //end VDS edits
 }
