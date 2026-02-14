@@ -251,7 +251,7 @@
           sprite: _Impstation/Mobs/Species/Ungu/displacement.rsi
           state: inhand_right
   - type: Pain
-    painMultiplier: 0.75
+    painMultiplier: 1
     maxShockIncreasePerSecond: 36
     maxShockDecreasePerSecond: 12
     doubleShockRecoveryThreshold: 0.5
