@@ -88,7 +88,7 @@
   #   thresholds:
   #     0: Alive
   #     150: Critical
-  #     250: Dead
+  #     200: Dead
   - type: StaminaDamageOnHit
     damage: 18
   - type: Hunger

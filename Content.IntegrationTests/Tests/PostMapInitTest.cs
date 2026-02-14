@@ -88,6 +88,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Impstation/reach.yml", // Contains handheld crew monitor
             "/Maps/_Impstation/xeno.yml", // Contains PTK-800 "Matter Dematerializer"
             "/Maps/_Impstation/eclipse.yml", // Contains PTK-800 "Matter Dematerializer", LSE-400c "Svalinn machine gun"
+            "/Maps/_Impstation/monarch.yml", // Contains ship cannons
             "/Maps/_VDS/progenitor.yml", // Contains EXP-2100g "Duster" machine board, "EXP-320g "Friendship" machine board, "PTK-800 "Matter Dematerializer" machine board, LSE-1200c "Perforator" machine board, and an anomalite spawn point for good measure. No suffix can contain me. None.
 
             // Shuttles
@@ -155,6 +156,7 @@ namespace Content.IntegrationTests.Tests
             "Xeno",
             "Pathway",
             "Whisper",
+            "Monarch",
 
             // VDS PROTOTYPES:
             "CentCommVDS",
@@ -566,7 +568,7 @@ namespace Content.IntegrationTests.Tests
             return resultCount;
         }
 
-        [Test]
+        [Test, NonParallelizable] // imp nonparallelize for OOM
         public async Task AllMapsTested()
         {
             await using var pair = await PoolManager.GetServerClient();
@@ -585,7 +587,7 @@ namespace Content.IntegrationTests.Tests
             await pair.CleanReturnAsync();
         }
 
-        [Test]
+        [Test, NonParallelizable] // imp nonparallelize for OOM
         public async Task NonGameMapsLoadableTest()
         {
             await using var pair = await PoolManager.GetServerClient();
@@ -621,8 +623,9 @@ namespace Content.IntegrationTests.Tests
 
             await server.WaitPost(() =>
             {
-                Assert.Multiple(() =>
-                {
+                // imp disable assert to fix test running out of memory
+                // Assert.Multiple(() =>
+                // {
                     // This bunch of files contains a random mixture of both map and grid files.
                     // TODO MAPPING organize files
                     var opts = MapLoadOptions.Default with
@@ -658,7 +661,7 @@ namespace Content.IntegrationTests.Tests
                             throw new Exception($"Failed to delete map {path}", ex);
                         }
                     }
-                });
+                // }); // imp
             });
 
             await server.WaitRunTicks(1);

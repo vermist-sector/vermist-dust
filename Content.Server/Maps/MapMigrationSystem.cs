@@ -22,7 +22,7 @@ public sealed class MapMigrationSystem : EntitySystem
 #pragma warning restore CS0414
     [Dependency] private readonly IResourceManager _resMan = default!;
 
-    private static readonly string[] MigrationFiles = { "/migration.yml", "/migration_imp.yml" }; // Imp: use array of migration files
+    private static readonly string[] MigrationFiles = { "/migration.yml", "/migration_imp.yml", "/migration_VDS.yml" }; // Imp: use array of migration files
 
     public override void Initialize()
     {
