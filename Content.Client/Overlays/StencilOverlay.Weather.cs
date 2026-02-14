@@ -34,7 +34,7 @@ public sealed partial class StencilOverlay
         if (VisionSensitivity&&!weatherProto.Veil) //imp also vds(added &&!weatherProto.Veil)
             return;
 
-        if(weatherProto.Veil && weatherProto.AltSprite == null)// VDS if we have the veil set to true, check that the weather proto actually has an alt texture otherwise return
+        if(VisionSensitivity && weatherProto.Veil && weatherProto.AltSprite == null)// VDS if we have the veil set to true, check that the weather proto actually has an alt texture otherwise return
             return;
         // Cut out the irrelevant bits via stencil
         // This is why we don't just use parallax; we might want specific tiles to get drawn over
