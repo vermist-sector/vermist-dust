@@ -508,6 +508,10 @@
       statusEffects:
       - statusEffect: StatusEffectHeartStabilizationInaprovaline
       - statusEffect: StatusEffectBrainStabilizationInaprovaline
+      - statusEffect: StatusEffectBrainHealingInaprovaline
+        conditions:
+        - !type:BrainDamageCondition
+          max: 70
       # End Offbrand
       effects:
       - !type:HealthChange
