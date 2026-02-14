@@ -29,7 +29,7 @@ public sealed partial class StencilOverlay
         var worldAABB = args.WorldAABB;
         var worldBounds = args.WorldBounds;
         var position = args.Viewport.Eye?.Position.Position ?? Vector2.Zero;
-        var VisionSensitivity = _configManager.GetCVar(ImpCCVars.DisableWeather);
+        var VisionSensitivity = _configManager.GetCVar(ImpCCVars.DisableWeather);// vds edit. since we use it more than once we get it once and store it here.
 
         if (VisionSensitivity&&!weatherProto.Veil) //imp also vds(added &&!weatherProto.Veil)
             return;
