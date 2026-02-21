@@ -5,7 +5,6 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server.Preferences.Managers;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Speech.Prototypes;
 using Content.Server.Station.Systems;
@@ -38,6 +37,7 @@ using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Minds
 using Content.Server.Popups; // Startlight - Collective Minds
 using Content.Server._Wizden.Chat.Systems; // Imp edit for Last Message Before Death Webhook
 using Content.Shared.Abilities.Mime; // imp
+using Content.Server.Preferences.Managers; // VDS
 
 namespace Content.Server.Chat.Systems;
 
@@ -63,11 +63,10 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
-    [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!; // VDS
     [Dependency] private readonly LastMessageBeforeDeathSystem _lastMessageBeforeDeathSystem = default!; // Imp Edit LastMessageBeforeDeath Webhook
-    [Dependency] private readonly Content.Shared.StatusEffectNew.StatusEffectsSystem _statusEffects = default!; // Offbrand
     [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!; // Starlight - Collective Minds
     [Dependency] private readonly PopupSystem _popupSystem = default!; // Starlight - Collective Minds
+    [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!; // VDS
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
@@ -206,13 +205,6 @@ public sealed partial class ChatSystem : SharedChatSystem
             checkRadioPrefix = false;
             message = message[1..];
         }
-
-        // Begin Offbrand
-        if (desiredType == InGameICChatType.Speak && _statusEffects.HasEffectComp<Content.Shared._Offbrand.StatusEffects.SilencedStatusEffectComponent>(source))
-        {
-            desiredType = InGameICChatType.Whisper;
-        }
-        // End Offbrand
 
         bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
@@ -678,7 +670,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     private void SendLOOC(EntityUid source, ICommonSession player, string message, bool hideChat)
     {
         var name = FormattedMessage.EscapeText(Identity.Name(source, EntityManager));
-        var color = _preferencesManager.GetPreferences(player.UserId).OOCColor;
+        var color = _preferencesManager.GetPreferences(player.UserId).OOCColor; // VDS
 
         if (_adminManager.IsAdmin(player))
         {
@@ -692,7 +684,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var wrappedMessage = Loc.GetString("chat-manager-entity-looc-wrap-message",
             ("entityName", name),
-            ("oocColor", color),
+            ("oocColor", color), // VDS
             ("message", FormattedMessage.EscapeText(message)));
 
         SendInVoiceRange(ChatChannel.LOOC, message, wrappedMessage, source, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, player.UserId);

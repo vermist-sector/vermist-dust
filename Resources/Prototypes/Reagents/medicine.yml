@@ -97,6 +97,17 @@
         damage:
           types:
             Poison: -3
+    #imp edit start
+    Poison:
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Snail ]
+        damage:
+          types:
+            Poison: 4
+      #imp edit end
 
 - type: reagent
   id: Ethylredoxrazine
@@ -146,15 +157,10 @@
   color: "#ffaa00"
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      metabolismRate: 0.1
-      statusEffects:
-      - statusEffect: StatusEffectPainkillersNegligibleBicaridine
-      # End Offbrand
       effects:
       - !type:EvenHealthChange
         damage:
-          Brute: -0.75 # Offbrand
+          Brute: -1.5
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -193,49 +199,18 @@
   - !type:PlantCryoxadone {}
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      statusEffects:
-      - statusEffect: StatusEffectMinorOxygenationCryoxadone
-        conditions:
-        - !type:TemperatureCondition
-          max: 213.0
-      - statusEffect: StatusEffectHeartStabilizationCryoxadone
-        conditions:
-        - !type:TemperatureCondition
-          max: 213.0
       effects:
-      - !type:ModifyHeartDamage
-        amount: -0.3
-        conditions:
-        - !type:TemperatureCondition
-          max: 213.0
-      - !type:ModifyLungDamage
-        amount: -0.3
-        conditions:
-        - !type:TemperatureCondition
-          max: 213.0
-      - !type:EvenHealthChange
-        conditions:
-        - !type:TemperatureCondition
-          max: 213.0
-        damage:
-          Airloss: -8
-          Brute: -6
-          Burn: -6
-          Toxin: -6
-      # End Offbrand
-        # - !type:HealthChange
-        #   conditions:
-        #   - !type:TemperatureCondition
-        #     # this is a little arbitrary but they gotta be pretty cold
-        #     max: 213.0
-        #   damage:
-        #   # todo scale with temp like SS13
-        #     groups:
-        #       Airloss: -6
-        #       Brute: -4
-        #       Burn: -6
-        #       Toxin: -4
+        - !type:EvenHealthChange
+          conditions:
+          - !type:TemperatureCondition
+            # this is a little arbitrary but they gotta be pretty cold
+            max: 213.0
+          damage:
+          # todo scale with temp like SS13
+            Airloss: -3
+            Brute: -2
+            Burn: -2
+            Toxin: -2
 
 - type: reagent
   id: Doxarubixadone
@@ -254,7 +229,7 @@
             max: 213.0
           damage:
             types:
-             Cellular: -6 # Offbrand - boost to deal with cryostasis
+             Cellular: -2
 
 - type: reagent
   id: Dermaline
@@ -266,16 +241,13 @@
   color: "#215263"
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      metabolismRate: 0.1
-      # End Offbrand
       effects:
       - !type:HealthChange
         damage:
           types:
-            Heat: -0.75 # Offbrand
-            Shock: -0.75 # Offbrand
-            Cold: -0.75 # Offbrand
+            Heat: -1.5
+            Shock: -1.5
+            Cold: -1.5
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -303,17 +275,12 @@
   color: "#0041a8"
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      metabolismRate: 0.1
-      statusEffects:
-      - statusEffect: StatusEffectMinorOxygenationDexalin
-      # End Offbrand
       effects:
       - !type:HealthChange
         damage:
           types:
-            Asphyxiation: -0.5
-            Bloodloss: -0.25
+            Asphyxiation: -1
+            Bloodloss: -0.5
       - !type:HealthChange
         conditions:
           - !type:ReagentCondition
@@ -334,17 +301,12 @@
   color: "#4da0bd"
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      metabolismRate: 0.1
-      statusEffects:
-      - statusEffect: StatusEffectMajorOxygenationDexalinPlus
-      # End Offbrand
       effects:
       - !type:HealthChange
         damage:
           types:
-            Asphyxiation: -1.5
-            Bloodloss: -1
+            Asphyxiation: -3.5
+            Bloodloss: -3
       - !type:AdjustReagent
         conditions:
         - !type:ReagentCondition
@@ -373,14 +335,7 @@
   color: "#d2fffa"
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      metabolismRate: 0.25
-      statusEffects:
-      - statusEffect: StatusEffectEpinephrine
       effects:
-      - !type:StartHeart
-        probability: 0.03
-      # End Offbrand
       - !type:AdjustReagent
         conditions:
         - !type:ReagentCondition
@@ -503,16 +458,7 @@
   color: "#731024"
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      metabolismRate: 0.05
-      statusEffects:
-      - statusEffect: StatusEffectHeartStabilizationInaprovaline
-      - statusEffect: StatusEffectBrainStabilizationInaprovaline
-      - statusEffect: StatusEffectBrainHealingInaprovaline
-        conditions:
-        - !type:BrainDamageCondition
-          max: 70
-      # End Offbrand
+      metabolismRate: 0.1 # Smaller doses stabilize critical people for longer. Gives it a specific usecase as to not be entirely outclassed by dex+
       effects:
       - !type:HealthChange
         conditions:
@@ -535,7 +481,6 @@
   color: "#bf3d19"
   metabolisms:
     Medicine:
-      metabolismRate: 0.1 # Offbrand
       effects:
       - !type:HealthChange
         damage:
@@ -691,18 +636,13 @@
   color: "#9423FF"
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      metabolismRate: 0.2
-      statusEffects:
-      - statusEffect: StatusEffectMinorOxygenationPolypyryliumOligomers
-      # End Offbrand
       effects:
       - !type:HealthChange
         damage:
           groups:
-            Brute: -2.0 # Offbrand
+            Brute: -3.5
           types:
-            Asphyxiation: -1.5 # Offbrand
+            Asphyxiation: -2.5
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -725,18 +665,11 @@
   metabolisms:
     Medicine:
       effects:
-      # Begin Offbrand Additions
-      - !type:AdjustReagent
-        reagent: Romerol
-        amount: -0.5
-      # End Offbrand Additions
-        # Begin Offbrand Removals
-        # - !type:CureZombieInfection
-        #   conditions:
-        #     - !type:ReagentCondition
-        #       reagent: Ambuzol
-        #       min: 10
-        # End Offbrand Removals
+        - !type:CureZombieInfection
+          conditions:
+            - !type:ReagentCondition
+              reagent: Ambuzol
+              min: 10
 
 - type: reagent
   id: AmbuzolPlus
@@ -755,11 +688,6 @@
             - !type:ReagentCondition
               reagent: AmbuzolPlus
               min: 5
-          # Begin Offbrand Additions
-        - !type:AdjustReagent
-          reagent: Romerol
-          amount: -5
-          # End Offbrand Additions
 
 - type: reagent
   id: PulpedBananaPeel
@@ -789,7 +717,7 @@
         - !type:SatiateThirst
           factor: 6
         - !type:ModifyBloodLevel
-          amount: 0.25 # Offbrand
+          amount: 6
     # imp edit start
     Poison:
       effects:
@@ -886,7 +814,6 @@
   color: "#ba7d7d"
   metabolisms:
     Medicine:
-      metabolismRate: 0.2
       effects:
       # Medium-large quantities can hurt you instead,
       # but still technically stop your bleeding.
@@ -900,8 +827,6 @@
         damage:
           types:
             Bloodloss: 3
-      - !type:ClampWounds
-        chance: 0.3
 
 - type: reagent
   id: Tricordrazine
@@ -913,22 +838,19 @@
   color: "#00e5ff"
   metabolisms:
     Medicine:
-      metabolismRate: 0.2 # Offbrand
       effects:
       - !type:HealthChange
         conditions:
         - !type:TotalDamageCondition
-          max: 100 # Offbrand
+          max: 50
         damage:
-          # Begin Offbrand Changes
           groups:
-            Brute: -0.3 # Offbrand
+            Brute: -1
           types:
-            Poison: -0.2 ##Should be about what it was when it healed the toxin group
-            Heat: -0.2
-            Shock: -0.2
-            Cold: -0.2
-          # End Offbrand Changes
+            Poison: -0.5 ##Should be about what it was when it healed the toxin group
+            Heat: -0.33
+            Shock: -0.33
+            Cold: -0.33
 
 - type: reagent
   id: Lipozine
@@ -946,6 +868,15 @@
       # what the hell, this isn't satiating at all!!
       - !type:SatiateHunger
         factor: -1
+      # imp edit start
+      - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Snail ]
+        damage:
+          types:
+            Poison: 4
+      # imp edit end
 
   # Should heal quite literally everything, use in very small amounts
 - type: reagent
@@ -1036,6 +967,15 @@
     Medicine:
       effects:
       - !type:EyeDamage
+      # imp edit start
+      - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Snail ]
+        damage:
+          types:
+            Poison: 2
+      # imp edit end
 
 - type: reagent
   id: Cognizine
@@ -1274,6 +1214,15 @@
             Heat: -0.2
             Shock: -0.2
             Cold: -0.2
+      # imp edit start
+      - !type:AdjustReagent
+        conditions:
+        - !type:ReagentCondition
+          reagent: ForeverWeed
+          min: 1
+        reagent: ForeverWeed
+        amount: -1
+      # imp edit end
   reactiveEffects:
     Extinguish:
       methods: [ Touch ]
@@ -1388,32 +1337,18 @@
   physicalDesc: reagent-physical-desc-sickly
   flavor: acid
   color: "#b5e36d"
-  # worksOnTheDead: true # Offbrand
+  worksOnTheDead: true
   metabolisms:
     Medicine:
       effects:
-      # Begin Offbrand Additions
-      - !type:ModifyBrainDamage
-        amount: -0.5
-        conditions:
-        - !type:TemperatureCondition
-          max: 150.0
-      - !type:ModifyBrainOxygen
-        amount: 0.5
-        conditions:
-        - !type:TemperatureCondition
-          max: 150.0
-      # End Offbrand Additions
-        # Begin Offbrand Removals
-        # - !type:ReduceRotting
-        #   seconds: 20
-        #   conditions:
-        #   #Patient must be dead and in a cryo tube (or something cold)
-        #   - !type:TemperatureCondition
-        #     max: 150.0
-        #   - !type:MobStateCondition
-        #     mobstate: Dead
-        # End Offbrand Removals
+        - !type:ReduceRotting
+          seconds: 20
+          conditions:
+          #Patient must be dead and in a cryo tube (or something cold)
+          - !type:TemperatureCondition
+            max: 150.0
+          - !type:MobStateCondition
+            mobstate: Dead
 
 - type: reagent
   id: Arcryox
@@ -1464,13 +1399,6 @@
   metabolisms:
     Medicine:
       effects:
-        # Begin Offbrand - Derotting moved to necrosol
-        - !type:ReduceRotting
-          seconds: 20
-          conditions:
-          - !type:TemperatureCondition
-            max: 213.0
-        # End Offbrand - Derotting moved to necrosol
         - !type:EvenHealthChange
           conditions:
           - !type:TemperatureCondition
@@ -1512,52 +1440,19 @@
   desc: reagent-desc-mannitol
   physicalDesc: reagent-physical-desc-opaque
   flavor: sweet
-  color: "#fedb79" # Offbrand
+  color: "#A0A0A0"
   metabolisms:
     Medicine:
-      # Begin Offbrand
-      metabolismRate: 0.05
-      statusEffects:
-      - statusEffect: StatusEffectBrainHealingMannitol
       effects:
-      - !type:Drunk
-        boozePower: 1
-      - !type:Jitter
-        conditions:
-        - !type:ReagentCondition
-          reagent: Mannitol
-          min: 10.5
-      - !type:Emote
-        emote: Scream
-        probability: 0.2
-        conditions:
-        - !type:ReagentCondition
-          reagent: Mannitol
-          min: 10.5
-      - !type:Vomit
+      - !type:PopupMessage
         conditions:
         - !type:ReagentCondition
           reagent: Mannitol
           min: 15
-        probability: 0.1
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentCondition
-          reagent: Mannitol
-          min: 10.5
-        damage:
-          types:
-            Poison: 1
-      # - !type:PopupMessage
-      #   conditions:
-      #   - !type:ReagentCondition
-      #     reagent: Mannitol
-      #     min: 15
-      #   type: Local
-      #   visualType: Medium
-      #   messages: [ "mannitol-effect-enlightened" ]
-      #   probability: 0.2
-      # End Offbrand
+        type: Local
+        visualType: Medium
+        messages: [ "mannitol-effect-enlightened" ]
+        probability: 0.2
 
 - type: reagent
   id: Psicodine

@@ -29,8 +29,6 @@
             Poison: 3 # this is added to the base damage of the meth.
             Asphyxiation: 2
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainDesoxyephedrine
       effects:
       # Main effects
       - !type:MovementSpeedModifier
@@ -92,8 +90,6 @@
   meltingPoint: 36.0
   metabolisms:
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainEphedrine
       effects:
       # Main effects
       - !type:MovementSpeedModifier
@@ -165,9 +161,6 @@
   meltingPoint: 170.0
   metabolisms:
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainHyperzine
-      metabolismRate: 1.0
       effects:
       # Main effects
       - !type:MovementSpeedModifier
@@ -279,8 +272,6 @@
     amount: -1
   metabolisms:
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStabilizationTHC
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectSeeingRainbow
@@ -298,13 +289,22 @@
   plantMetabolism:
   - !type:PlantAdjustHealth
     amount: -5
-  metabolisms: # Offbrand
+  metabolisms: # imp edit begin
     Narcotic:
-      statusEffects:
-      - statusEffect: StatusEffectHeartStrainNicotine
       effects:
-      - !type:ModifyLungDamage
-        amount: 0.25
+      - !type:HealthChange
+        probability: 0.1
+        damage:
+          types:
+            Cellular: 0.2
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Nicotine
+          min: 1
+        damage:
+          types:
+            Cellular: 0.2 # imp edit end
 
 # TODO: Replace these nonstandardized effects with generic brain damage
 - type: reagent
@@ -381,8 +381,6 @@
   meltingPoint: 128.0
   metabolisms:
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectPainSuppressionNocturine
       effects: # It would be nice to have speech slurred or mumbly, but accents are a bit iffy atm. Same for distortion effects.
       - !type:MovementSpeedModifier
         walkSpeedModifier: 0.65

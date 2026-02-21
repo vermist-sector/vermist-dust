@@ -1,9 +1,0 @@
-- type: cargoProduct # VDS, temporary until we are able to maintain our own maps so we can add roundstart crates instead.
-  id: IvBloodBags
-  icon:
-    sprite: _Offbrand/iv_bag.rsi
-    state: base
-  product: CrateFreezerIVBag
-  cost: 3500
-  category: cargoproduct-category-name-medical
-  group: market

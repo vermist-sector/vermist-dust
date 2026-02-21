@@ -1,186 +1,64 @@
-<!-- offbrand completely redid this file, use offbrand's version if there are merge conflicts -->
-<!-- VDS also changed this file a lot. cry if there are merge conflicts. -->
 <controls:FancyWindow
     xmlns="https://spacestation14.io"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    MinSize="390 320"
-    SetSize="640 520">
+    MaxHeight="525"
+    MinWidth="300">
     <ScrollContainer
         Margin="5 5 5 5"
         ReturnMeasure="True"
-        HorizontalExpand="True"
         VerticalExpand="True">
-        <BoxContainer Orientation="Horizontal">
+        <BoxContainer
+            Name="RootContainer"
+            VerticalExpand="True"
+            Orientation="Vertical">
+            <Label
+                Name="NoPatientDataText"
+                Text="{Loc health-analyzer-window-no-patient-data-text}" />
+
             <BoxContainer
-                Name="LeftContainer"
-                VerticalExpand="True"
-                HorizontalExpand="True"
-                Orientation="Vertical"
-                MinWidth="320">
-                <Label
-                    Name="NoPatientDataText"
-                    Text="{Loc health-analyzer-window-no-patient-data-text}" />
-                <BoxContainer
-                    Name="PatientDataContainer"
-                    Margin="0 0 0 5"
-                    Orientation="Vertical">
-                    <BoxContainer Orientation="Horizontal" Margin="5 0 0 5">
-                        <SpriteView OverrideDirection="South" Scale="2 2" Name="SpriteView" Access="Public" SetSize="64 64" />
-                        <TextureRect Name="NoDataTex" Access="Public" SetSize="64 64" Visible="false" Stretch="KeepAspectCentered" TexturePath="/Textures/Interface/Misc/health_analyzer_out_of_range.png"/>
-                        <BoxContainer Margin="5 0 0 0" Orientation="Vertical" VerticalAlignment="Top">
-                            <RichTextLabel Name="NameLabel" SetWidth="150" />
-                            <Label Name="SpeciesLabel" VerticalAlignment="Top" StyleClasses="LabelSubText" />
-                        </BoxContainer>
-                        <Label Margin="0 0 5 0" HorizontalExpand="True" HorizontalAlignment="Right" VerticalExpand="True"
-                               VerticalAlignment="Top" Name="ScanModeLabel"
-                               Text="{Loc 'health-analyzer-window-entity-unknown-text'}" />
+                Name="PatientDataContainer"
+                Margin="0 0 0 5"
+                Orientation="Vertical">
+                <BoxContainer Orientation="Horizontal" Margin="0 0 0 5">
+                    <SpriteView OverrideDirection="South" Scale="2 2" Name="SpriteView" Access="Public" SetSize="64 64" />
+                    <TextureRect Name="NoDataTex" Access="Public" SetSize="64 64" Visible="false" Stretch="KeepAspectCentered" TexturePath="/Textures/Interface/Misc/health_analyzer_out_of_range.png"/>
+                    <BoxContainer Margin="5 0 0 0" Orientation="Vertical" VerticalAlignment="Top">
+                        <RichTextLabel Name="NameLabel" SetWidth="150" />
+                        <Label Name="SpeciesLabel" VerticalAlignment="Top" StyleClasses="LabelSubText" />
                     </BoxContainer>
-
-                    <PanelContainer StyleClasses="LowDivider" Margin="0 5 0 0" />
-
-                    <BoxContainer Orientation="Vertical" Margin="0 0 0 0">
-                        <PanelContainer VerticalExpand="True" Margin="0 5 0 5">
-                            <PanelContainer.PanelOverride>
-                                <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
-                            </PanelContainer.PanelOverride>
-                            <GridContainer Margin="8 3 3 3" Columns="2" HorizontalAlignment="Stretch" HorizontalExpand="True">
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                        <Label Text="{Loc 'health-analyzer-window-entity-status-text'}" />
-                                        <RichTextLabel Name="StatusLabel" Margin="5 0 5 0" />
-                                </BoxContainer>
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                        <TextureButton Name="StatusButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" VerticalAlignment="Center" />
-                                </BoxContainer>
-
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                        <Label Name="BrainHealthText" Text="{Loc 'health-analyzer-window-entity-brain-health-text'}" />
-                                        <RichTextLabel Name="BrainHealthLabel" Margin="5 0 5 0" />
-                                </BoxContainer>
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                        <RichTextLabel Name="BrainHealthRating" HorizontalAlignment="Right" />
-                                        <TextureButton Name="BrainHealthButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                                </BoxContainer>
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                        <Label Name="HeartHealthText" Text="{Loc 'health-analyzer-window-entity-heart-health-text'}" />
-                                        <RichTextLabel Name="HeartHealthLabel" Margin="5 0 5 0" />
-                                </BoxContainer>
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                        <RichTextLabel Name="HeartHealthRating" HorizontalAlignment="Right" />
-                                        <TextureButton Name="HeartHealthButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                                </BoxContainer>
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                        <Label Name="LungHealthText" Text="{Loc 'health-analyzer-window-entity-lung-health-text'}" />
-                                        <RichTextLabel Name="LungHealthLabel" Margin="5 0 5 0" />
-                                </BoxContainer>
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                        <RichTextLabel Name="LungHealthRating" HorizontalAlignment="Right" />
-                                        <TextureButton Name="LungHealthButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                                </BoxContainer>
-                            </GridContainer>
-                        </PanelContainer>
-
-                        <PanelContainer StyleClasses="LowDivider" Margin="0 0 0 0" />
-
-
-                        <GridContainer Margin="8 3 3 3" Columns="2" HorizontalAlignment="Stretch" HorizontalExpand="True">
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                <Label Name="HeartRateText" Text="{Loc 'health-analyzer-window-entity-heart-rate-text'}" />
-                                <RichTextLabel Name="HeartRateLabel" Margin="5 0 5 0" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                <RichTextLabel Name="HeartRateRating" HorizontalAlignment="Right" />
-                                <TextureButton Name="HeartRateButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                <Label Name="SpO2Text" />
-                                <RichTextLabel Name="SpO2Label" Margin="5 0 5 0" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                <RichTextLabel Name="SpO2Rating" HorizontalAlignment="Right" />
-                                <TextureButton Name="SpO2Button" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                <Label Name="EtCO2Text" />
-                                <RichTextLabel Name="EtCO2Label" Margin="5 0 5 0" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                <RichTextLabel Name="EtCO2Rating" HorizontalAlignment="Right" />
-                                <TextureButton Name="EtCO2Button" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                <Label Name="BloodPressureText" Text="{Loc 'health-analyzer-window-entity-blood-pressure-text'}" />
-                                <RichTextLabel Name="BloodPressureLabel" Margin="5 0 5 0" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                <TextureButton Name="BloodPressureButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                <Label Name="RespiratoryRateText" Text="{Loc 'health-analyzer-window-entity-respiratory-rate-text'}" />
-                                <RichTextLabel Name="RespiratoryRateLabel" Margin="5 0 5 0" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                <TextureButton Name="RespiratoryRateButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                <Label Name="BloodText" Text="{Loc 'health-analyzer-window-entity-blood-level-text'}" />
-                                <RichTextLabel Name="BloodLabel" Margin="5 0 5 0" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                <TextureButton Name="BloodButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                <Label Text="{Loc 'health-analyzer-window-entity-temperature-text'}" />
-                                <RichTextLabel Name="TemperatureLabel" Margin="5 0 5 0" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                <TextureButton Name="TemperatureButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" HorizontalExpand="True">
-                                <Label Text="{Loc 'health-analyzer-window-entity-damage-total-text'}" />
-                                <RichTextLabel Name="DamageLabel" Margin="5 0 5 0" />
-                            </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
-                                <RichTextLabel Name="DamageRating" HorizontalAlignment="Right" />
-                                <TextureButton Name="DamageButton" StyleClasses="windowHelpButton" Margin="5 0 0 0" Scale="0.9 0.9" HorizontalAlignment="Right" HorizontalExpand="True" VerticalAlignment="Center" />
-                            </BoxContainer>
-                        </GridContainer>
-                    </BoxContainer>
+                    <Label Margin="0 0 5 0" HorizontalExpand="True" HorizontalAlignment="Right" VerticalExpand="True"
+                           VerticalAlignment="Top" Name="ScanModeLabel"
+                           Text="{Loc 'health-analyzer-window-entity-unknown-text'}" />
                 </BoxContainer>
-                <PanelContainer Name="ReagentsDivider" Visible="False" StyleClasses="LowDivider" />
-                <BoxContainer Name="ReagentsContainer" Visible="False" Margin="0 5" Orientation="Vertical" HorizontalExpand="True" />
+
+                <PanelContainer StyleClasses="LowDivider" />
+
+                <GridContainer Margin="0 5 0 0" Columns="2">
+                    <Label Text="{Loc 'health-analyzer-window-entity-status-text'}" />
+                    <Label Name="StatusLabel" />
+                    <Label Text="{Loc 'health-analyzer-window-entity-temperature-text'}" />
+                    <Label Name="TemperatureLabel" />
+                    <Label Text="{Loc 'health-analyzer-window-entity-blood-level-text'}" />
+                    <Label Name="BloodLabel" />
+                    <Label Text="{Loc 'health-analyzer-window-entity-damage-total-text'}" />
+                    <Label Name="DamageLabel" />
+                </GridContainer>
             </BoxContainer>
 
-            <PanelContainer StyleClasses="LowDivider" VerticalExpand="True" Margin="0 0 0 0" SetWidth="2" />
+            <PanelContainer Name="AlertsDivider" Visible="False" StyleClasses="LowDivider" />
 
-            <PanelContainer VerticalExpand="True" HorizontalExpand="True">
-                <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
-            </PanelContainer.PanelOverride>
-                <BoxContainer
-                    Name="RightContainer"
-                    VerticalExpand="True"
-                    HorizontalExpand="True"
-                    Orientation="Vertical"
-                    MinWidth="0">
-                        <BoxContainer Name="AlertsContainer" Visible="False" Margin="10 5 0 10" Orientation="Vertical" HorizontalAlignment="Center"/>
+            <BoxContainer Name="AlertsContainer" Visible="False" Margin="0 5" Orientation="Vertical" HorizontalAlignment="Center">
 
-                        <PanelContainer Name="AlertsDivider" Visible="False" StyleClasses="LowDivider" />
+            </BoxContainer>
 
-                        <BoxContainer
-                            Name="GroupsContainer"
-                            Margin="5 5 0 10"
-                            Orientation="Vertical">
-                        </BoxContainer>
+            <PanelContainer StyleClasses="LowDivider" />
 
-                        <RichTextLabel
-                            Name="NoDamagesText"
-                            HorizontalAlignment="Center"
-                            VerticalExpand="True"
-                            Margin="5 5 5 5"
-                            Text="{Loc health-analyzer-window-no-patient-damages}" />
-                </BoxContainer>
-            </PanelContainer>
+            <BoxContainer
+                Name="GroupsContainer"
+                Margin="0 5 0 5"
+                Orientation="Vertical">
+            </BoxContainer>
+
         </BoxContainer>
     </ScrollContainer>
 </controls:FancyWindow>

@@ -26,7 +26,6 @@ using Content.Shared.Zombies;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Zombies
 {
@@ -44,7 +43,6 @@ namespace Content.Server.Zombies
         [Dependency] private readonly MobStateSystem _mobState = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly SharedRoleSystem _role = default!;
-        [Dependency] private readonly Content.Shared._Offbrand.Wounds.BrainDamageSystem _brainDamage = default!; // Offbrand
 
         public readonly ProtoId<NpcFactionPrototype> Faction = "Zombie";
 
@@ -140,7 +138,6 @@ namespace Content.Server.Zombies
                     : 1f;
 
                 _damageable.ChangeDamage((uid, damage), comp.Damage * multiplier, true, false);
-                _brainDamage.TryChangeBrainDamage(uid, multiplier / 2f); // Offbrand
             }
 
             // Heal the zombified
@@ -259,14 +256,6 @@ namespace Content.Server.Zombies
                     args.Handled = true;
                     continue;
                 }
-                else if (!HasComp<WoundableComponent>(uid)) // Offbrand
-                {
-                    if (!HasComp<ZombieImmuneComponent>(uid) && !cannotSpread && _random.Prob(GetZombieInfectionChance(uid, entity.Comp)))
-                    {
-                        EnsureComp<PendingZombieComponent>(uid);
-                        EnsureComp<ZombifyOnDeathComponent>(uid);
-                    }
-                }
 
                 if (_mobState.IsAlive(uid, mobState))
                 {
@@ -279,7 +268,7 @@ namespace Content.Server.Zombies
                     EnsureComp<PendingZombieComponent>(uid);
                     EnsureComp<ZombifyOnDeathComponent>(uid);
                 }
-                else if (!HasComp<WoundableComponent>(entity)) // Offbrand
+                else
                 {
                     if (HasComp<ZombieImmuneComponent>(uid) || cannotSpread)
                         continue;

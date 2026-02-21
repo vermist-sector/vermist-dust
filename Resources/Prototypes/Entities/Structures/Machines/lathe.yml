@@ -14,11 +14,9 @@
           bounds: "-0.35,-0.35,0.35,0.35" # VDS
         density: 190
         mask:
-        - Impassable
-        - MidImpassable
-        # - MachineMask
+        - MachineMask
         layer:
-        - MachineLayer
+          - MachineLayer
   - type: Lathe
   - type: MaterialStorage
   - type: Destructible
@@ -208,7 +206,6 @@
     - ImpProtoStatic # Imp
     - ReportingStatic # DeltaV
     - SteelBriefcaseImp # Imp
-    - OffbrandSurgeryStatic # Offbrand
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
@@ -274,7 +271,6 @@
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
     - ImpCircuitStatic # Imp
-    - OffbrandCircuitboardsStatic # Offbrand
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
@@ -499,8 +495,6 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
-    - OffbrandMedicalStatic # Offbrand
     dynamicPacks:
     - Chemistry
     - ImpMedDynamic # Imp

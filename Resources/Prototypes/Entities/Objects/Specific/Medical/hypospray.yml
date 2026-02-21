@@ -251,18 +251,12 @@
   - type: SolutionContainerManager
     solutions:
       pen:
-        maxVol: 35 # Offbrand
+        maxVol: 15
         reagents:
         - ReagentId: Epinephrine
           Quantity: 12
         - ReagentId: TranexamicAcid
           Quantity: 3
-        # Begin Offbrand
-        - ReagentId: Paracetamol
-          Quantity: 10
-        - ReagentId: Inaprovaline
-          Quantity: 10
-        # End Offbrand
   - type: Tag # goob edit
     tags:
       - Trash
@@ -494,7 +488,7 @@
   parent: ChemicalMedipen
   id: AirlossAutoInjector
   name: airloss auto-injector
-  description: A single-dose, non-refillable medipen containing saline, inaprovaline and dexalin plus, used to stabilize patients suffering from asphyxiation. # Offbrand
+  description: A single-dose, non-refillable medipen containing saline and dexalin plus, used to quickly and easily treat blood loss and asphyxiation.
   components:
   - type: Item
     inhandVisuals:
@@ -523,11 +517,9 @@
         maxVol: 40
         reagents:
         - ReagentId: Saline
-          Quantity: 10
+          Quantity: 20
         - ReagentId: DexalinPlus
           Quantity: 20
-        - ReagentId: Inaprovaline
-          Quantity: 10
 
 - type: entity
   parent: ChemicalMedipen
@@ -680,7 +672,7 @@
         reagents:
         - ReagentId: Omnizine
           Quantity: 25
-        - ReagentId: Coagulant # Offbrand
+        - ReagentId: TranexamicAcid
           Quantity: 5
   - type: StaticPrice
     price: 1500
