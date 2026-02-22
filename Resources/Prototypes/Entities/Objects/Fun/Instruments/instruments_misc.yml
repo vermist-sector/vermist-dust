@@ -50,6 +50,7 @@
   - type: Sprite
     sprite: Objects/Fun/Instruments/otherinstruments.rsi
     state: red_phone
+    noRot: true
   - type: EmitSoundOnLand
     sound:
        path: /Audio/Items/ring.ogg
@@ -63,6 +64,13 @@
     notificationPrefix: prayer-chat-notify-centcom
     verb: prayer-verbs-call
     verbImage: null
+  #vds beneath this line -- for admeme calls
+  - type: Speech
+    speechSounds: Crunched
+    speechVerb: Electricity
+  - type: TypingIndicator
+    proto: Clock
+  - type: Examiner
 
 - type: entity
   parent: [BasePhoneInstrument, BaseCommandContraband]

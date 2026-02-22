@@ -1,0 +1,8 @@
+- type: speechSounds
+  id: Crunched
+  saySound:
+    path: /Audio/_VDS/Voice/Talk/crunched_speak.ogg
+  askSound:
+    path: /Audio/_VDS/Voice/Talk/crunched_ask.ogg
+  exclaimSound:
+    path: /Audio/_VDS/Voice/Talk/crunched_exclaim.ogg
