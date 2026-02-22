@@ -1,2 +1,10 @@
 lobby-state-background-gravitational-pull-title = Gravitational Pull
 lobby-state-background-gravitational-pull-artist = (blackmage) mathie
+lobby-state-background-my-shuttle-title = PICTURE OF ME IN MY SHUTTLE I EVEN SAID "CHEESE" STOP BUT I SAID IT VERY QUIETLY AND I THINK OBA TOOK THE PHOTOGRAPH TOO LATE SO YOU
+lobby-state-background-my-shuttle-artist = rainyatrium
+lobby-state-background-forum-title = shuttle late?
+lobby-state-background-forum-artist = rainyatrium
+lobby-state-background-bananman-title = something gazes back
+lobby-state-background-bananman-artist = banan man
+lobby-state-background-greenspace-title = Calm
+lobby-state-background-greenspace-artist = Jellvisk

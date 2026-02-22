@@ -3,3 +3,27 @@
   background: /Textures/_VDS/LobbyScreens/gravitational_pull.webp
   title: lobby-state-background-gravitational-pull-title
   artist: lobby-state-background-gravitational-pull-artist
+
+- type: lobbyBackground
+  id: MyShuttle
+  background: /Textures/_VDS/LobbyScreens/myshuttle.webp
+  title: lobby-state-background-my-shuttle-title
+  artist: lobby-state-background-my-shuttle-artist
+
+- type: lobbyBackground
+  id: Forum
+  background: /Textures/_VDS/LobbyScreens/forum.webp
+  title: lobby-state-background-forum-title
+  artist: lobby-state-background-forum-artist
+
+- type: lobbyBackground
+  id: BananMan
+  background: /Textures/_VDS/LobbyScreens/bananman.webp
+  title: lobby-state-background-bananman-title
+  artist: lobby-state-background-bananman-artist
+
+- type: lobbyBackground
+  id: GreenSpace
+  background: /Textures/_VDS/LobbyScreens/greenspace.webp
+  title: lobby-state-background-greenspace-title
+  artist: lobby-state-background-greenspace-artist

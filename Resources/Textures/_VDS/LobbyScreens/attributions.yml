@@ -2,3 +2,18 @@
   license: "CC-BY-SA-4.0"
   copyright: "(blackmage)mathie"
   source: "https://mathie.gay/works/art/gravitational-pull/" # 18+ content is here!
+
+- files: ["forum.webp","myshuttle.webp"]
+  license: "CC-BY-SA-4.0"
+  copyright: "rainyatrium"
+  source: "https://rainyatrium.net"
+
+- files: ["bananman.webp"]
+  license: "MIT"
+  copyright: "rainyatrium, jellvisk"
+  source: "https://github.com/vermist-sector/vermist-dust"
+
+- files: ["greenspace.webp"]
+  license: "CC-BY-SA-4.0"
+  copyright: "jellvisk"
+  source: "https://github.com/vermist-sector/vermist-dust"
