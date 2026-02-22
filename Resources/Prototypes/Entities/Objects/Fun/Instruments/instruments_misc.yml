@@ -69,7 +69,7 @@
     speechSounds: Crunched
     speechVerb: Electricity
   - type: TypingIndicator
-    proto: Clock
+    proto: clock
   - type: Examiner
 
 - type: entity
