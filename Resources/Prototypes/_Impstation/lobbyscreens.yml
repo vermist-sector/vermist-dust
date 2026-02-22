@@ -1,12 +1,6 @@
 #vds - thinned this out a lot
 
 - type: lobbyBackground
-  id: movebitch
-  background: /Textures/_Impstation/LobbyScreens/dont_care.webp
-  title: lobby-state-background-movebitch-title
-  artist: lobby-state-background-movebitch-artist
-
-- type: lobbyBackground
   id: dontbedaft
   background: /Textures/_Impstation/LobbyScreens/dont_be_daft.webp
   title: lobby-state-background-dontbedaft-title
