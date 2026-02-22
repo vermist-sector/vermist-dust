@@ -20,7 +20,6 @@
     globalReceive: true
   - type: DoAfter
   - type: Actions
-  - type: Emoting
   - type: Speech
     speechSounds: Bass
   - type: MobState
