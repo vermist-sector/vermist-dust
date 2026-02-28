@@ -1,12 +1,12 @@
-﻿<Control xmlns="https://spacestation14.io"
+<Control xmlns="https://spacestation14.io"
          xmlns:pllax="clr-namespace:Content.Client.Parallax"
          xmlns:clog="clr-namespace:Content.Client.Changelog">
     <pllax:ParallaxControl
-        ParallaxPrototype="TrainStation"
+        ParallaxPrototype="Fog"
         SpeedX="5"
         SpeedY="20"
-        ScaleX="3"
-        ScaleY="3"/>
+        ScaleX="1.5"
+        ScaleY="1.5"/>
     <BoxContainer Name="VBox"
                   Orientation="Vertical"
                   HorizontalAlignment="Center"
@@ -15,8 +15,10 @@
                   VerticalExpand="True"
                   StyleIdentifier="mainMenuVBox"
                   SeparationOverride="3">
+    <BoxContainer MaxSize="512 512">
         <TextureRect Name="Logo"
-                     Stretch="KeepCentered"/>
+                     Stretch="KeepAspectCentered"/>
+    </BoxContainer>
         <GridContainer Columns="2">
             <Label Text="{Loc 'main-menu-username-label'}" />
             <LineEdit Name="UsernameBox"
