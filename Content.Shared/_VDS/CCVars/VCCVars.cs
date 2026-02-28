@@ -22,6 +22,12 @@ public sealed class VCCVars
         CVarDef.Create("vds.acoustics.enable", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 
     /// <summary>
+    /// Muffled
+    /// </summary>
+    public static readonly CVarDef<bool> AcousticEnableLowPressureMuffle =
+        CVarDef.Create("vds.acoustics.enable.low_pressure_muffle", true, CVar.REPLICATED | CVar.ARCHIVE | CVar.CLIENT);
+
+    /// <summary>
     /// Whether to cast acoustic rays in four cardinal directions, or eight.
     /// </summary>
     /// <seealso cref="AcousticDataSystem"/>
@@ -46,4 +52,5 @@ public sealed class VCCVars
     /// </summary>
     public static readonly CVarDef<int> AcousticReflectionCountMaximum =
         CVarDef.Create("vds.acoustics.reflection_count_maximum", 16, CVar.REPLICATED | CVar.SERVER | CVar.CHEAT);
+
 }
