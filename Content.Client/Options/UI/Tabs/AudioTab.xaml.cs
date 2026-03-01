@@ -86,6 +86,7 @@ public sealed partial class AudioTab : Control
             SliderAcousticReflectionCount,
             _cfg.GetCVar(VCCVars.AcousticReflectionCountMinimum),
             _cfg.GetCVar(VCCVars.AcousticReflectionCountMaximum));
+        Control.AddOptionCheckBox(VCCVars.AcousticEnableLowPressureFilter, AcousticEnableLowPressureFilterCheckBox);
         // VDS end
 
         Control.Initialize();
@@ -115,6 +116,8 @@ public sealed partial class AudioTab : Control
     {
         AcousticHighResolutionCheckBox.Visible = value is true;
         SliderAcousticReflectionCount.Visible = value is true;
+        AcousticsWipWarningLabel.Visible = value is true;
+        AcousticEnableLowPressureFilterCheckBox.Visible = value is true;
     }
 
     private void OnMasterVolumeSliderChanged(float value)

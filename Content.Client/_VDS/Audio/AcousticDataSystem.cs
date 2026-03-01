@@ -13,7 +13,6 @@ using System.Numerics;
 using Content.Client._Mono.Audio;
 using Content.Client._VDS.Audio.Components;
 using Content.Shared._VDS.Atmos.Components;
-using Content.Shared._VDS.Atmos.EntitySystems;
 using Content.Shared._VDS.Audio.Components;
 using Content.Shared._VDS.CCVars;
 using Content.Shared._VDS.Physics;
@@ -23,12 +22,12 @@ using Content.Shared.Light.EntitySystems;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
 using JetBrains.Annotations;
-using Robust.Client.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Network;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -51,11 +50,17 @@ public sealed class AcousticDataSystem : EntitySystem
     [Dependency] private readonly SharedRoofSystem _roofSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly TurfSystem _turfSystem = default!;
+    [Dependency] private readonly IClientNetManager _clientNetManager = default!;
 
     /// <summary>
     /// Quick reference to our <see cref="AcousticSettingsComponent"/>
     /// </summary>
     private AcousticSettingsComponent _acousticSettings = default!;
+
+    /// <summary>
+    /// Quick reference to our <see cref="AtmosDataComponent"/>
+    /// </summary>
+    private AtmosDataComponent _atmosData = default!;
 
     /// <summary>
     /// The directions that are raycasted.
@@ -81,13 +86,19 @@ public sealed class AcousticDataSystem : EntitySystem
     private SortedList<float, ProtoId<AudioPresetPrototype>>? _acousticPresets;
 
     /// <summary>
+    /// Arbitrary values for determining what ReverbPreset to use during low pressure.
+    /// Defined in <see cref="AcousticSettingsComponent"/>.
+    /// See <see cref="Robust.Shared.Audio.Effects.ReverbPresets"/>.
+    /// </summary>
+    private SortedList<float, ProtoId<AudioPresetPrototype>>? _pressurePresets;
+
+    /// <summary>
     /// The client's local entity, to spawn our raycasts at.
     /// </summary>
     private EntityUid _clientEnt = EntityUid.Invalid;
 
     private bool _acousticEnabled = true;
-    private bool _acousticEnabledLowPressureMuffle = true;
-    // private AtmosDataComponent _serverAtmosData = default!;
+    private bool _acousticEnabledLowPressureFilter = true;
 
     /// <summary>
     /// Max amount of times single acoustic ray is allowed to bounce
@@ -118,8 +129,8 @@ public sealed class AcousticDataSystem : EntitySystem
             invokeImmediately: true
         );
         _configurationManager.OnValueChanged(
-            VCCVars.AcousticEnableLowPressureMuffle,
-            x => _acousticEnabledLowPressureMuffle = x,
+            VCCVars.AcousticEnableLowPressureFilter,
+            x => _acousticEnabledLowPressureFilter = x,
             invokeImmediately: true
         );
         _configurationManager.OnValueChanged(
@@ -147,14 +158,7 @@ public sealed class AcousticDataSystem : EntitySystem
 
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnLocalPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnLocalPlayerDetached);
-
-        // SubscribeNetworkEvent<ReceiveAtmosDataEvent>(OnReceiveAtmosData);
     }
-
-    // private void OnReceiveAtmosData(ReceiveAtmosDataEvent ev)
-    // {
-    //     _serverAtmosData = ev.Comp;
-    // }
 
     private void OnLocalPlayerAttached(LocalPlayerAttachedEvent ev)
     {
@@ -162,18 +166,32 @@ public sealed class AcousticDataSystem : EntitySystem
         EnsureComp<AcousticSettingsComponent>(_clientEnt, out var comp);
         _acousticPresets = comp.ReverbPresets;
         _acousticSettings = comp;
-        if (_acousticEnabledLowPressureMuffle
+        if (_acousticEnabledLowPressureFilter
             && TryGetNetEntity(_clientEnt, out var netEnt)
             && netEnt.HasValue)
         {
-            EnsureComp<AtmosDataComponent>(_clientEnt);
-            RaiseNetworkEvent(new RequestAtmosDataEvent(netEnt.Value, true));
+            EnsureComp<AtmosDataComponent>(_clientEnt, out var atmos);
+            // _pressurePresets = comp.PressurePresets;
+            _atmosData = atmos;
+
+            if (_clientNetManager.IsConnected)
+                RaiseNetworkEvent(new RequestAtmosDataComponentEvent(netEnt.Value));
         }
     }
 
     private void OnLocalPlayerDetached(LocalPlayerDetachedEvent ev)
     {
-        RemComp<AtmosDataComponent>(_clientEnt);
+        if (_acousticEnabledLowPressureFilter
+            && TryGetNetEntity(_clientEnt, out var netEnt)
+            && netEnt.HasValue)
+        {
+            RemComp<AtmosDataComponent>(_clientEnt);
+
+            if (_clientNetManager.IsConnected)
+                RaiseNetworkEvent(new RequestAtmosDataComponentEvent(netEnt.Value, remove: true));
+        }
+
+        RemComp<AcousticSettingsComponent>(_clientEnt);
         _clientEnt = EntityUid.Invalid;
     }
 
@@ -193,22 +211,27 @@ public sealed class AcousticDataSystem : EntitySystem
         if (!_clientEnt.IsValid() || _acousticPresets == null || _acousticPresets.Count == 0)
             return;
 
-        if (_acousticEnabledLowPressureMuffle
+        if (_acousticEnabledLowPressureFilter
+            // && _pressurePresets != null
+            // && _pressurePresets.Count != 0
             && TryGetLocalPressure(_clientEnt, out var pressure)
-            && pressure < 50f
+            && pressure.Value < 80f
             )
         {
-            Log.Info("doin it aw3esome");
+            // var bestPressurePreset = GetBestReverbPreset(pressure.Value, _pressurePresets);
+
+            // scale our gain based on our distance and pressure
             var distance = GetAudioDistance(_clientEnt, audioEnt);
             var normalized = InverseNormalizeToPercentage(distance, 0, 10);
-            _audioSystem.SetGain(audioEnt.Owner, normalized * 0.5f, audioEnt.Comp);
-            if (_audioEffectSystem.TryAddEffect(in audioEnt, in _acousticSettings.MuffledPresets))
-                Log.Info("added");
-            audioEnt.Comp.Occlusion = 1f;
+            var pressurePercent = NormalizeToPercentage(pressure.Value, 0, 100, minClamp: 0.1f);
+            _audioSystem.SetGain(audioEnt.Owner, normalized * pressurePercent, audioEnt.Comp);
+
+
+
+            // add the effect
+            _audioEffectSystem.TryAddEffect(in audioEnt, in _acousticSettings.TestPreset);
             Dirty(audioEnt);
-
             return;
-
         }
 
         var maxMagnitude = _acousticPresets.Keys[^1];
@@ -257,13 +280,13 @@ public sealed class AcousticDataSystem : EntitySystem
 
         //  we only care about loaded local audio. it would be kinda weird
         //  if stuff like nukie music reverbed
-        if (!audio.Comp.Playing || audio.Comp.Global || audio.Comp.State == AudioState.Stopped)
+        if (audio.Comp.Global || audio.Comp.State == AudioState.Stopped)
         {
             return false;
         }
 
-        var distance = GetAudioDistance(_clientEnt, audio, xForm);
-        return _audioSystem.GetAudioDistance(distance) <= audio.Comp.MaxDistance;
+        // var distance = GetAudioDistance(_clientEnt, audio, xForm);
+        return true;
     }
 
     [PublicAPI]
@@ -278,16 +301,22 @@ public sealed class AcousticDataSystem : EntitySystem
     {
         Vector2 audioPos;
         Vector2 clientPos;
-        if ((audio.Comp.Flags & AudioFlags.GridAudio) != 0x0)
-        {
-            audioPos = audioXForm.LocalPosition;
-            clientPos = _mapSystem.GetGridPosition(listenerUid);
-        }
-        else
-        {
-            audioPos = _transformSystem.GetWorldPosition(audioXForm);
-            clientPos = _transformSystem.GetWorldPosition(listenerUid);
-        }
+        // if ((audio.Comp.Flags & AudioFlags.GridAudio) != 0x0)
+        // {
+        //     audioPos = audioXForm.LocalPosition;
+        //     Log.Info($"grid audio pos {audioPos}");
+        //     clientPos = _mapSystem.GetGridPosition(listenerUid);
+        // }
+        // else
+        // {
+        //     audioPos = _transformSystem.GetWorldPosition(audioXForm);
+        //     Log.Info($"world audio pos {audioPos}");
+        //     clientPos = Transform(listenerUid).LocalPosition;
+        //     var matrix = _transformSystem.GetInvWorldMatrix(listenerUid);
+        //     audioPos = Vector2.Transform(audioPos, matrix);
+        // }
+        audioPos = _transformSystem.GetWorldPosition(audio);
+        clientPos = _transformSystem.GetWorldPosition(listenerUid);
 
         // check distance!
         var delta = audioPos - clientPos;
@@ -547,14 +576,12 @@ public sealed class AcousticDataSystem : EntitySystem
 
     private bool TryGetLocalPressure(Entity<AtmosDataComponent?> ent, [NotNullWhen(true)] out float? pressure)
     {
-        if (!Resolve(ent.Owner, ref ent.Comp) || ent.Comp.ExternalGas == null || !ent.Comp.ExternalGas.Any())
+        if (!Resolve(ent.Owner, ref ent.Comp))
         {
-            Log.Info("resolved bad style");
             pressure = null;
             return false;
         }
-        Log.Info("gAingmg");
-        pressure = ent.Comp.ExternalGas.Pressure;
+        pressure = ent.Comp.Pressure;
         return true;
     }
 
@@ -621,11 +648,12 @@ public sealed class AcousticDataSystem : EntitySystem
         float value,
         float minValue = 0f,
         float maxValue = 100f,
-        float maxClamp = 1f
+        float maxClamp = 1f,
+        float minClamp = 0f
     )
     {
         var percentage = (value - minValue) / (maxValue - minValue);
-        return Math.Clamp(percentage, 0f, maxClamp);
+        return Math.Clamp(percentage, minClamp, maxClamp);
     }
 
     /// <summary>
@@ -635,10 +663,11 @@ public sealed class AcousticDataSystem : EntitySystem
         float value,
         float minValue = 0f,
         float maxValue = 100f,
-        float maxClamp = 1f
+        float maxClamp = 1f,
+        float minClamp = 0f
     )
     {
-        return NormalizeToPercentage(maxValue - value, minValue, maxValue, maxClamp);
+        return NormalizeToPercentage(maxValue - value, minValue, maxValue, maxClamp, minClamp);
     }
 
     /// <summary>
