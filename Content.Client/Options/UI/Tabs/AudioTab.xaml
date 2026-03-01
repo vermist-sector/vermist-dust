@@ -41,6 +41,8 @@
                                     Text="{Loc 'ui-options-acoustics-high-resolution'}"
                                     ToolTip="{Loc 'ui-options-acoustics-high-resolution-tooltip'}" />
                     <ui:OptionSlider Name="SliderAcousticReflectionCount" Title="{Loc 'ui-options-acoustics-max-reflections'}" />
+                    <Label Name="AcousticsWipWarningLabel" Text="{Loc 'ui-options-acoustics-wip-warning'}" StyleClasses="LabelSubText" />
+                    <CheckBox Name="AcousticEnableLowPressureFilterCheckBox" Text="{Loc 'ui-options-acoustics-enabled-low-presssure-filter'}" />
                     <!-- VDS additions end -->
                 </BoxContainer>
             </BoxContainer>

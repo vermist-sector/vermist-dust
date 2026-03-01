@@ -14,7 +14,7 @@ namespace Content.Client._VDS.Audio.Components;
 public sealed partial class AcousticSettingsComponent : Component
 {
     /// <summary>
-    /// A list of distances and what <see cref="AudioPresetPrototype"/> to use alongside it.
+    /// A list of magnitudes and what <see cref="AudioPresetPrototype"/> to use alongside it.
     /// </summary>
     [DataField, ViewVariables]
     public SortedList<float, ProtoId<AudioPresetPrototype>> ReverbPresets = new()
@@ -32,10 +32,19 @@ public sealed partial class AcousticSettingsComponent : Component
     };
 
     /// <summary>
+    /// A list of magnitudes and what <see cref="AudioPresetPrototype"/> to use alongside it.
+    /// </summary>
+    // [DataField, ViewVariables]
+    // public SortedList<float, ProtoId<AudioPresetPrototype>> PressurePresets = new()
+    // {
+    //     { 10f, "SpaceStationCupboard" },
+    // };
+
+    /// <summary>
     ///
     /// </summary>
     [DataField, ViewVariables]
-    public ProtoId<AudioPresetPrototype> MuffledPresets = "Muffled";
+    public ProtoId<AudioPresetPrototype> TestPreset = "Muffled";
 
     /// <summary>
     /// Based on the maximum posssible distance an acoustic raycast can travel,
@@ -66,7 +75,7 @@ public sealed partial class AcousticSettingsComponent : Component
 
     /// <summary>
     /// How large our absorption modifier is allowed to get.
-/// Values above 1.0f allow negative <see cref="Content.Shared._VDS.Audio.Components.AcousticDataComponent.Absorption"/> values
+    /// Values above 1.0f allow negative <see cref="Content.Shared._VDS.Audio.Components.AcousticDataComponent.Absorption"/> values
     /// to amplify the acoustic magnitude.
     /// </summary>
     [DataField, ViewVariables]

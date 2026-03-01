@@ -1,6 +1,5 @@
 - type: audioPreset
   id: Muffled
-  createAuxiliary: true
   density: 0.9000
   diffusion: 0.0500
   gain: 1.0000

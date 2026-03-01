@@ -16,7 +16,7 @@ public sealed partial class AtmosDataSystem : SharedAtmosDataSystem
 
         SubscribeLocalEvent<AtmosDataComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<AtmosDataComponent, AtmosExposedUpdateEvent>(OnAtmosExposedUpdate);
-        SubscribeNetworkEvent<RequestAtmosDataEvent>(OnRequestAtmosData);
+        SubscribeNetworkEvent<RequestAtmosDataComponentEvent>(OnRequestAtmosDataComponent);
     }
 
     private void OnMapInit(Entity<AtmosDataComponent> ent, ref MapInitEvent args)
@@ -27,42 +27,33 @@ public sealed partial class AtmosDataSystem : SharedAtmosDataSystem
 
     private void OnAtmosExposedUpdate(Entity<AtmosDataComponent> ent, ref AtmosExposedUpdateEvent args)
     {
-        Log.Info("we gota dat event");
         var curTime = _timing.CurTime;
         if (ent.Comp.NextUpdate < curTime)
             return;
-        Log.Info("we pass time");
 
         ent.Comp.NextUpdate += ent.Comp.UpdateRate;
 
-        if (ent.Comp.ExternalGas != args.GasMixture)
-            ent.Comp.ExternalGas = args.GasMixture;
+        if (ent.Comp.Pressure != args.GasMixture.Pressure)
+            ent.Comp.Pressure = args.GasMixture.Pressure;
 
-        Log.Info("we got gryasss");
         Dirty(ent, ent.Comp);
     }
 
-    private void OnRequestAtmosData(RequestAtmosDataEvent ev, EntitySessionEventArgs args)
+    private void OnRequestAtmosDataComponent(RequestAtmosDataComponentEvent ev, EntitySessionEventArgs args)
     {
         if (!args.SenderSession.AttachedEntity.HasValue
             || args.SenderSession.AttachedEntity != GetEntity(ev.Requester))
             return;
 
         var ent = args.SenderSession.AttachedEntity.Value;
-        EnsureComp<AtmosDataComponent>(ent);
-        Log.Info($" holyu fuuuuuck {ToPrettyString(ent)}, {ev}");
 
-        // RaiseNetworkEvent(new ReceiveAtmosDataEvent(GetAtmosData(ent, ev.Ensure)), args.SenderSession);
-    }
-
-    private AtmosDataComponent GetAtmosData(EntityUid ent, bool ensure)
-    {
-        if (ensure)
+        if (ev.Remove)
         {
-            EnsureComp<AtmosDataComponent>(ent, out var comp);
-            return comp;
-
+            RemComp<AtmosDataComponent>(ent);
         }
-        return Comp<AtmosDataComponent>(ent);
+        else
+        {
+            EnsureComp<AtmosDataComponent>(ent);
+        }
     }
 }

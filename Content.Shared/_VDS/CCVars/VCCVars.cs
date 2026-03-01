@@ -24,8 +24,8 @@ public sealed class VCCVars
     /// <summary>
     /// Muffled
     /// </summary>
-    public static readonly CVarDef<bool> AcousticEnableLowPressureMuffle =
-        CVarDef.Create("vds.acoustics.enable.low_pressure_muffle", true, CVar.REPLICATED | CVar.ARCHIVE | CVar.CLIENT);
+    public static readonly CVarDef<bool> AcousticEnableLowPressureFilter =
+        CVarDef.Create("vds.acoustics.enable.low_pressure_filter", true, CVar.REPLICATED | CVar.ARCHIVE | CVar.CLIENT);
 
     /// <summary>
     /// Whether to cast acoustic rays in four cardinal directions, or eight.
