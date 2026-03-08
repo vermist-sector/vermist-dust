@@ -1,15 +1,15 @@
 - type: gameMap
-  id: Refsdal
-  mapName: 'Refsdal'
-  mapPath: /Maps/_VDS/refsdal.yml
+  id: Oslo
+  mapName: 'Oslo'
+  mapPath: /Maps/_VDS/oslo.yml
   minPlayers: 0
-  maxPlayers: 22
+  maxPlayers: 25
   stations:
     Refsdal:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Refsdal {1}'
+          mapNameTemplate: '{0} Oslo-class Shuttle {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '-VDS'

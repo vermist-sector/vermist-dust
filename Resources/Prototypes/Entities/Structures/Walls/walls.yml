@@ -1411,7 +1411,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 700
+        damage: 1000 # vds - imp is at 700
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -1450,7 +1450,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 600
+        damage: 1200 # vds - imp is at 700
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]

@@ -19,7 +19,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 300 # vds - temporary 2x buff. replace with reinforced variant later
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -85,7 +85,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 75
+        damage: 150 # vds - temporary 2x buff. replace with reinforced variant later
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
