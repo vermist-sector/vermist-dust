@@ -18,7 +18,9 @@
   id: HighEarsR
   bodyPart: HeadSide
   markingCategory: HeadSide
-  parent: [HighEars]
+  followSkinColor: true
+  randomWeight: 0.2
+  speciesRestriction: [Human, Dwarf]
   sprites:
   - sprite: _DEN/Mobs/Customization/Head/ears.rsi
     state: high_ears_r
@@ -27,7 +29,9 @@
   id: HighEarsL
   bodyPart: HeadSide
   markingCategory: HeadSide
-  parent: [HighEars]
+  followSkinColor: true
+  randomWeight: 0.2
+  speciesRestriction: [Human, Dwarf]
   sprites:
   - sprite: _DEN/Mobs/Customization/Head/ears.rsi
     state: high_ears_l
