@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2026 gardens
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Head Side
+- type: marking
+  id: HighEars
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  followSkinColor: true
+  randomWeight: 0.2
+  speciesRestriction: [Human, Dwarf]
+  sprites:
+  - sprite: _DEN/Mobs/Customization/Head/ears.rsi
+    state: high_ears
+
+- type: marking
+  id: HighEarsR
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  parent: [HighEars]
+  sprites:
+  - sprite: _DEN/Mobs/Customization/Head/ears.rsi
+    state: high_ears_r
+
+- type: marking
+  id: HighEarsL
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  parent: [HighEars]
+  sprites:
+  - sprite: _DEN/Mobs/Customization/Head/ears.rsi
+    state: high_ears_l
