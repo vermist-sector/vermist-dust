@@ -240,3 +240,6 @@
   - type: IconSmooth
     key: cosmictable
     base: state_
+  - type: Construction # vds
+    graph: Table
+    node: TableCosmic

@@ -18,7 +18,7 @@
         - type: StationCargoShuttle
           path: /Maps/_VDS/Shuttles/cargo_refsdal.yml
         - type: StationJobs
-          availableJobs: #TODO ENUMERATE THIS ONCE IN ROTATION
+          availableJobs:
             # command
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]

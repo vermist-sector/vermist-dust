@@ -1,0 +1,63 @@
+#frankenstein is the name of the scientist actually
+- type: entity
+  id: PottedPlantPowerCellRecharger
+  name: plastic potted cell recharger
+  description: Photosynthesis is the process by which green plants and certain other organisms transform light energy into chemical energy.
+  parent: PottedPlantBase
+  components:
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: Sprite
+    state: plant-27
+  - type: Item # imp
+    inhandVisuals:
+      left:
+      - state: plant-27
+      right:
+      - state: plant-27
+  - type: Charger
+    slotId: charger_slot
+  - type: ApcPowerReceiver
+    powerLoad: 1 # same as draw given in ChargerComponent.PassiveDraw; increased when it is actually charging something
+  - type: StaticPrice
+    price: 75
+  - type: ContainerContainer
+    containers:
+      charger_slot: !type:ContainerSlot
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: RequireProjectileTarget
+  - type: Machine
+    board: CellRechargerCircuitboard
+  - type: WiresPanel
+  - type: PowerCellSlot
+    cellSlotId: charger_slot
+    # fitsInCharger is true i dont think this will ever affect anything negatively but it lets it function
+  - type: ItemSlots
+    slots:
+      charger_slot:
+        ejectOnInteract: true
+        name: power-cell-slot-component-slot-name-default
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
+          - BlasterCell #imp
+        blacklist:
+          tags:
+          - PotatoBattery
+  - type: ExtensionCableReceiver
+  - type: LightningTarget
+    priority: 1
+  - type: TooShortForUIBlacklist #imp
+  - type: AcousticData # VDS
+    absorption: 10
+  - type: Damageable
+    damageContainer: StructuralInorganic # The pot. Not the plant. Or is it plastic?
+  - type: SecretStash
+    blacklist:
+        tags:
+        - PowerCell
+        - PowerCellSmall
+        - BlasterCell #imp
