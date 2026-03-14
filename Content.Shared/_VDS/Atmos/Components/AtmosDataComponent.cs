@@ -1,7 +1,5 @@
-using Content.Shared.Atmos;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._VDS.Atmos.Components;
@@ -23,12 +21,19 @@ public sealed partial class AtmosDataComponent : Component
     /// External gas pressure.
     /// </summary>
     [DataField, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public float Pressure;
+
+    /// <summary>
+    /// Minimum pressure difference required before we dirty.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadOnly)]
+    public float MinPressureDifference = 5f;
 
     /// <summary>
     /// How often we will request a serverside update.
     /// </summary>
-    [DataField(customTypeSerializer: typeof(TimespanSerializer))]
+    [DataField]
     public TimeSpan UpdateRate = TimeSpan.FromSeconds(1);
 
     /// <summary>
@@ -37,12 +42,11 @@ public sealed partial class AtmosDataComponent : Component
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     [AutoNetworkedField, AutoPausedField]
     public TimeSpan NextUpdate = TimeSpan.Zero;
-
 }
 
 /// <summary>
 /// Sent from the client to request a serverside <see cref="AtmosDataComponent"/>.
-/// Used to create/remove the component serverside from the clien, that way we only
+/// Used to create/remove the component serverside from the client, that way we only
 /// have it when we needed, as determined by clientsided methods.
 /// </summary>
 [Serializable, NetSerializable]
