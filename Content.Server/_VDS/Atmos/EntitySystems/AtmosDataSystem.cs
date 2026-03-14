@@ -33,9 +33,11 @@ public sealed partial class AtmosDataSystem : SharedAtmosDataSystem
 
         ent.Comp.NextUpdate += ent.Comp.UpdateRate;
 
-        if (ent.Comp.Pressure != args.GasMixture.Pressure)
-            ent.Comp.Pressure = args.GasMixture.Pressure;
+        // only send substantial changes, we don't need high accuracy.
+        if (MathHelper.CloseTo(ent.Comp.Pressure, args.GasMixture.Pressure, ent.Comp.MinPressureDifference))
+            return;
 
+        ent.Comp.Pressure = args.GasMixture.Pressure;
         Dirty(ent, ent.Comp);
     }
 
