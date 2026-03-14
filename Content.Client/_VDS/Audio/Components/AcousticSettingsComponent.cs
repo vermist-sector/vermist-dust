@@ -6,11 +6,11 @@ using Robust.Shared.Prototypes;
 namespace Content.Client._VDS.Audio.Components;
 
 /// <summary>
-/// Holds client-side settings for <see cref="AcousticDataSystem"/> that the player
+/// Holds client-side settings for <see cref="AdvancedAcousticsSystem"/> that the player
 /// should not be able to normally adjust.
 /// </summary>
 [RegisterComponent]
-[Access(typeof(AcousticDataSystem))]
+[Access(typeof(AdvancedAcousticsSystem))]
 public sealed partial class AcousticSettingsComponent : Component
 {
     /// <summary>
