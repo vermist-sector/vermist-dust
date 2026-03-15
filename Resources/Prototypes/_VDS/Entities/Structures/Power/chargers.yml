@@ -9,6 +9,8 @@
   description: Photosynthesis is the process by which green plants and certain other organisms transform light energy into chemical energy.
   parent: PottedPlantBase
   components:
+  - type: Physics
+    bodyType: Dynamic
   - type: Transform
     anchored: true
     noRot: false
