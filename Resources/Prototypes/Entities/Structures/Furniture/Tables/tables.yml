@@ -56,7 +56,7 @@
     node: TableFrame
   - type: ThrownItemImmune # imp
   - type: AcousticData # VDS
-    absorption: 3
+    absorption: 0.2
 
 - type: entity
   id: CounterWoodFrame
@@ -113,7 +113,7 @@
     graph: Table
     node: CounterWoodFrame
   - type: AcousticData # VDS
-    absorption: 5
+    absorption: 0.3
 
 - type: entity
   id: CounterMetalFrame
@@ -585,7 +585,7 @@
     footstepSoundCollection:
       collection: FootstepWood
   - type: AcousticData # VDS
-    absorption: 25
+    absorption: 0.5
 
 - type: entity
   id: TableCarpet
@@ -640,7 +640,7 @@
     footstepSoundCollection:
       collection: FootstepCarpet
   - type: AcousticData # VDS
-    absorption: 35
+    absorption: 0.8
 
 - type: entity
   id: TableStone
@@ -709,7 +709,7 @@
     tags:
     - Table
   - type: AcousticData # VDS
-    absorption: 30
+    absorption: 1
 
 - type: entity
   parent: TableBase
@@ -785,7 +785,7 @@
     footstepSoundCollection:
       collection: FootstepCarpet
   - type: AcousticData # VDS
-    absorption: 25
+    absorption: 0.9
 
 - type: entity
   id: TableFancyBlue
@@ -1034,7 +1034,7 @@
     footstepSoundCollection:
       collection: FootstepWood
   - type: AcousticData # VDS
-    absorption: 25
+    absorption: 0.95
 
 - type: entity
   id: TableCounterMetal

@@ -117,7 +117,7 @@
     damageCoefficient: 0.1
   - type: Airtight
   - type: AcousticData # VDS
-    absorption: 20
+    absorption: 0.3
     reflectRay: true
 
 - type: entity

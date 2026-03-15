@@ -108,7 +108,7 @@
         Blunt: 10
     staminaCost: 35
   - type: AcousticData # VDS
-    absorption: 15
+    absorption: 0.4
     reflectRay: true
 
 # steel closet base (that can be constructed/deconstructed)
@@ -314,5 +314,5 @@
     stateDoorClosed: door
   - type: LockVisuals
   - type: AcousticData # VDS
-    absorption: 20
+    absorption: 0.5
     reflectRay: true

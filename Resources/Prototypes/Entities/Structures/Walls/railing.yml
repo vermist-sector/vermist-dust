@@ -25,7 +25,7 @@
     delay: 2
     fx: EffectRCDDeconstruct2
   - type: AcousticData # VDS
-    absorption: 3
+    absorption: 0.2
 
 - type: entity
   parent: BaseRailing

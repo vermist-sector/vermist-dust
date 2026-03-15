@@ -50,7 +50,7 @@
   - type: StaticPrice
     price: 50
   - type: AcousticData # VDS
-    absorption: 12
+    absorption: 0.2
 
 #Starts unanchored, cannot be rotated while anchored
 - type: entity
@@ -100,7 +100,7 @@
   - type: Transform
     anchored: true
   - type: AcousticData # VDS. smaller :-|
-    absorption: 10
+    absorption: 0.1
 
 - type: entity
   name: chair
@@ -249,7 +249,7 @@
   - type: StaticPrice
     price: 75
   - type: AcousticData # VDS. wood :-)
-    absorption: 18
+    absorption: 0.3
 
 - type: entity
   name: ritual chair
@@ -362,7 +362,7 @@
     graph: WebStructures
     node: chair
   - type: AcousticData # VDS. web :-)
-    absorption: 20
+    absorption: 0.5
 
 - type: entity
   parent: [SeatBase, BaseDeployFoldable]
@@ -398,7 +398,7 @@
     node: chairFolding
   - type: DamageExaminable
   - type: AcousticData # VDS. cheap :-(
-    absorption: 6
+    absorption: 0.05
 
 - type: entity
   parent: ChairFolding
@@ -499,7 +499,7 @@
   - type: StaticPrice
     price: 50
   - type: AcousticData # VDS. wood (big) :-)
-    absorption: 20
+    absorption: 0.4
 
 - type: entity
   parent: StoolBase

@@ -59,7 +59,7 @@
   - type: WallMount
     arc: 360
   - type: AcousticData # VDS
-    absorption: 35
+    absorption: 2
 
 - type: entity
   id: HospitalCurtains
