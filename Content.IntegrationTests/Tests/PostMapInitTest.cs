@@ -90,6 +90,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Impstation/eclipse.yml", // Contains PTK-800 "Matter Dematerializer", LSE-400c "Svalinn machine gun"
             "/Maps/_Impstation/monarch.yml", // Contains ship cannons
             "/Maps/_VDS/progenitor.yml", // Contains EXP-2100g "Duster" machine board, "EXP-320g "Friendship" machine board, "PTK-800 "Matter Dematerializer" machine board, LSE-1200c "Perforator" machine board, and an anomalite spawn point for good measure. No suffix can contain me. None.
+            "/Maps/_VDS/facsimile.yml", // Contains luxury mining hardsuit
 
             // Shuttles
             "/Maps/_DV/Shuttles/listening_post.yml", // Contains captain's rubber stamp, chief engineer's rubber stamp, chaplain's rubber stamp, clown's rubber stamp, blablabla you get the picture
