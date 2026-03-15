@@ -1,0 +1,66 @@
+- type: gameMap
+  id: Facsimile
+  mapName: 'Facsimile'
+  mapPath: /Maps/_VDS/facsimile.yml
+  minPlayers: 0
+  maxPlayers: 25
+  stations:
+    Facsimile:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'research Shuttle'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/_VDS/Shuttles/emergency_facsimile.yml
+        - type: StationCargoShuttle
+          path: /Maps/_VDS/Shuttles/cargo_facsimile.yml
+        - type: StationJobs
+          availableJobs:
+            # command
+            Captain: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            ChiefEngineer: [ 1, 1 ]
+            ChiefMedicalOfficer: [ 1, 1 ]
+            ResearchDirector: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            HospitalityDirector: [ 1, 1 ]
+            Quartermaster: [ 1, 1 ]
+            # service - 10
+            Bartender: [ 1, 1 ]
+            Botanist: [ 1, 1 ]
+            Chef: [ 1, 1 ]
+            Clown: [ 1, 1 ]
+            Janitor: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            Chaplain: [1, 1]
+            Librarian: [1, 1]
+            Reporter: [1, 1]
+            #ServiceWorker: [2, 2]
+            # engineering - 2-3
+            AtmosphericTechnician: [ 1, 1 ]
+            StationEngineer: [ 1, 2 ]
+            TechnicalAssistant: [ 1, 1 ]
+            # medical - 3
+            Chemist: [ 1, 1 ]
+            Paramedic: [1, 1]
+            MedicalDoctor: [ 1, 1 ]
+            MedicalIntern: [ 1, 1 ]
+            # science - 3
+            Borg: [ 1, 1 ]
+            ResearchAssistant: [ 1, 1 ]
+            Scientist: [ 1, 1 ]
+            StationAi: [1, 1]
+            # security - 5
+            SecurityCadet: [ 1, 1 ]
+            Brigmedic: [1, 1]
+            Detective: [1, 1]
+            Warden: [1,1]
+            SecurityOfficer: [ 2, 2 ]
+            # cargo - 4
+            CargoTechnician: [ 1, 1 ]
+            Courier: [ 1, 1 ]
+            SalvageSpecialist: [ 2, 2 ]
+            SupplyAssistant: [ 1, 1 ]
+            # civilian
+            Passenger: [ -1, -1 ]
