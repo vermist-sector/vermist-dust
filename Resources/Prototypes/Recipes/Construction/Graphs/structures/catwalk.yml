@@ -33,7 +33,7 @@
               amount: 1
               doAfter: 1
 
-    - node: ReinforcedCatwalk # vermist
+    - node: ReinforcedCatwalk # vds
       entity: ReinforcedCatwalk
       edges:
         - to: Catwalk
@@ -44,3 +44,15 @@
           steps:
             - tool: Cutting
               doAfter: 2
+
+    - node: ReaperCatwalk #vds
+      entity: ReaperCatwalk
+      edges:
+        - to: start
+          completed:
+          - !type:SpawnPrototype
+                prototype: PartRodMetal1
+                amount: 2
+          - !type:DeleteEntity {}
+          steps:
+            - tool: Cutting

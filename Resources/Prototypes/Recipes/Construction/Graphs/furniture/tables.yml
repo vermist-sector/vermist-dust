@@ -487,6 +487,7 @@
         - tool: Anchoring
           doAfter: 1
 
+
     - node: TableWoodReinforced #imp
       entity: TableWoodReinforced
       edges:
@@ -498,3 +499,15 @@
           steps:
             - tool: Prying
               doAfter: 1
+
+    - node: TableCosmic #vds
+      entity: CosmicTable
+      edges:
+      - to: TableFrame
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 1
+        steps:
+        - tool: Anchoring
+          doAfter: 1
