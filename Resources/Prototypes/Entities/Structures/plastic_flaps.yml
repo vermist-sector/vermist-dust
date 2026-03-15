@@ -42,7 +42,7 @@
   - type: StaticPrice
     price: 100
   - type: AcousticData # VDS
-    absorption: 20
+    absorption: 1
 
 - type: entity
   id: PlasticFlapsClear
@@ -98,7 +98,7 @@
   - type: StaticPrice
     price: 100
   - type: AcousticData # VDS
-    absorption: 20
+    absorption: 1
     reflectRay: true
 
 - type: entity
@@ -120,5 +120,5 @@
   - type: StaticPrice
     price: 100
   - type: AcousticData # VDS
-    absorption: 20
+    absorption: 1
     reflectRay: true

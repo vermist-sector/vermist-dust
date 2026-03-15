@@ -54,38 +54,37 @@ public sealed partial class AdvancedAcousticsSystem
     {
         var totalRays = acousticResults.Count;
         var totalAmplitude = acousticResults.Sum(amp => amp.TotalRange);
-        var totalBounces = acousticResults.Sum(bounce => bounce.TotalBounces);
+        var avgBounces = acousticResults.Average(bounce => bounce.TotalBounces);
         var avgAmplitude = acousticResults.Average(amp => amp.TotalRange);
         var absorptionSum = acousticResults.Sum(absorb => absorb.TotalAbsorption);
+        var avgAbsorb = acousticResults.Average(absorb => absorb.TotalAbsorption);
         var escaped = acousticResults.Sum(escapees => escapees.TotalEscapes);
-        Log.Info($"avgAbsorption = {absorptionSum:F2}");
-        Log.Info($"escaped = {escaped}");
-        Log.Info($"avgAmplitude = {avgAmplitude:F2}");
-        Log.Info($"prevAvgAmplitude = {_prevAvgAmplitude:F2})");
+        // Log.Info($"absorb sum = {absorptionSum:F2}");
+        // Log.Info($"absorb avg = {avgAbsorb:F2}");
+        // Log.Info($"escaped = {escaped}");
+        // Log.Info($"avgAmplitude = {avgAmplitude:F2}");
+        // Log.Info($"prevAvgAmplitude = {_prevAvgAmplitude:F2})");
 
-        // we store our previous avg magnitude and lerp it with the current to make sure changes aren't too jarring
-        var lerpedAmplitude = avgAmplitude;
-        if (_prevAvgAmplitude > float.Epsilon)
-        {
-            lerpedAmplitude = MathF.Max(
-                float.Epsilon,
-                MathHelper.Lerp(_prevAvgAmplitude, avgAmplitude, settings.AvgAmplitudeBlend));
-        }
-        _prevAvgAmplitude = lerpedAmplitude;
 
         var amplitude = 0f;
 
         // things like furniture or different material walls should eat our energy
-        Log.Info($"bounc = {totalBounces}");
-        Log.Info($"aborb bounc = {absorptionSum / totalBounces}");
-        var absorbMultiplier = NormalizeToPercentage(absorptionSum, maxValue: 100f, minClamp: -1f, maxClamp: 1f);
+        // Log.Info($"bounc = {avgBounces}");
+        // Log.Info($"aborb bounc = {avgAmplitude * avgBounces}");
 
+        // we store our previous avg magnitude and lerp it with the current to make sure changes aren't too jarring
+        if (_prevAvgAmplitude > float.Epsilon)
+        {
+            avgAmplitude = MathF.Max(
+                float.Epsilon,
+                MathHelper.Lerp(_prevAvgAmplitude, avgAmplitude, settings.AvgAmplitudeBlend));
+        }
+        _prevAvgAmplitude = avgAmplitude;
 
-        if (absorbMultiplier == 0f)
-            absorbMultiplier = float.Epsilon;
+        var absorbMultiplier = 1f - NormalizeToPercentage(avgAbsorb, maxValue: (float)avgBounces, minClamp: -1f, maxClamp: 1f);
 
-        Log.Info($"total dist amp = {totalAmplitude:F2}");
-        Log.Info($"absorbMultiplier = {absorbMultiplier:F2}");
+        // // Log.Info($"total dist amp = {totalAmplitude:F2}");
+        // // Log.Info($"absorbMultiplier = {absorbMultiplier:F2}");
 
         // escaped rays are mostly irrelevant, so penalize based on that.
         var escapeMultiplier = MathHelper.Clamp(
@@ -93,17 +92,28 @@ public sealed partial class AdvancedAcousticsSystem
             settings.MaxmimumEscapePenalty,
             1f
         );
-        Log.Info($"escapeMultiplier = {escapeMultiplier:F2}");
+        // Log.Info($"escapeMultiplier = {escapeMultiplier:F2}");
 
-        amplitude += lerpedAmplitude;
-        amplitude *= absorbMultiplier;
+        amplitude += avgAmplitude;
+
+        // don't multiply by 0
+        if (absorbMultiplier < 0.1f && absorbMultiplier > 0f)
+        {
+            amplitude *= 0.1f;
+        }
+        else
+        {
+            amplitude *= absorbMultiplier;
+        }
+
         amplitude *= escapeMultiplier;
 
         // severely punish our amplitude if there is no roof.
-        Log.Info($"roofPenalty = {GetRayAmplitudeRoofPenalty(originEnt, settings, amplitude):F2}");
+        // Log.Info($"roofPenalty = {GetRayAmplitudeRoofPenalty(originEnt, settings, amplitude):F2}");
         amplitude *= GetRayAmplitudeRoofPenalty(originEnt, settings, amplitude);
 
-        Log.Info($"Final Amplitude = {amplitude:F2})");
+        // Log.Info($"Final Amplitude = {amplitude:F2})");
+
 
         return amplitude;
     }

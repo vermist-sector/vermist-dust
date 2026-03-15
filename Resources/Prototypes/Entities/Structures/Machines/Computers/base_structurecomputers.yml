@@ -71,7 +71,7 @@
       tags:
       - NoConsoleSound
   - type: AcousticData # VDS
-    absorption: 20
+    absorption: 0.5
   - type: ContainerContainer
     containers:
       board: !type:Container

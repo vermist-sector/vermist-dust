@@ -107,7 +107,7 @@
   - type: Appearance
   - type: WiresVisuals
   - type: AcousticData # VDS
-    absorption: 20
+    absorption: 0.25
     reflectRay: true
 
 - type: entity

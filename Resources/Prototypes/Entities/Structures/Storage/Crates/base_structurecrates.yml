@@ -95,7 +95,7 @@
       - entity_storage
   - type: RequireProjectileTarget
   - type: AcousticData # VDS
-    absorption: 10
+    absorption: 0.2
 
 - type: entity
   parent: CrateGeneric

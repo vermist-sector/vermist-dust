@@ -23,19 +23,6 @@ public sealed class VCCVars
         CVarDef.Create("vds.acoustics.enable", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 
     /// <summary>
-    /// Enable low pressure filtering.
-    /// </summary>
-    public static readonly CVarDef<bool> AcousticEnableLowPressureFilter =
-        CVarDef.Create("vds.acoustics.enable.low_pressure_filter", true, CVar.ARCHIVE | CVar.CLIENTONLY);
-
-    /// <summary>
-    /// Minimum volume for zero pressure environments.
-    /// </summary>
-    /// <seealso cref="AdvancedAcousticsSystem"/>
-    public static readonly CVarDef<float> AcousticLowPressureMinimumVolume =
-        CVarDef.Create("vds.acoustics.low_pressure_filter.minimum_volume", 0.4f, CVar.ARCHIVE | CVar.CLIENTONLY);
-
-    /// <summary>
     /// How many bounces an acoustic ray may take before ending early.
     /// </summary>
     /// <seealso cref="AdvancedAcousticsSystem"/>
@@ -49,7 +36,6 @@ public sealed class VCCVars
     public static readonly CVarDef<bool> AcousticHighResolution =
         CVarDef.Create("vds.acoustics.high_resolution", false, CVar.ARCHIVE | CVar.CLIENTONLY);
 
-
     /// <summary>
     /// The minimum value the user can set for vds.acoustics.reflection_count
     /// </summary>
@@ -60,6 +46,19 @@ public sealed class VCCVars
     /// The maximum value the user can set for vds.acoustics.reflection_count
     /// </summary>
     public static readonly CVarDef<int> AcousticReflectionCountMaximum =
-        CVarDef.Create("vds.acoustics.reflection_count_maximum", 64, CVar.REPLICATED | CVar.SERVER | CVar.CHEAT);
+        CVarDef.Create("vds.acoustics.reflection_count_maximum", 16, CVar.REPLICATED | CVar.SERVER | CVar.CHEAT);
+
+    /// <summary>
+    /// Enable low pressure filtering.
+    /// </summary>
+    public static readonly CVarDef<bool> AcousticEnableLowPressureFilter =
+        CVarDef.Create("vds.acoustics.enable.low_pressure_filter", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+    /// <summary>
+    /// Minimum volume for zero pressure environments.
+    /// </summary>
+    /// <seealso cref="AdvancedAcousticsSystem"/>
+    public static readonly CVarDef<float> AcousticLowPressureMinimumVolume =
+        CVarDef.Create("vds.acoustics.low_pressure_filter.minimum_volume", 0.4f, CVar.ARCHIVE | CVar.CLIENTONLY);
 
 }

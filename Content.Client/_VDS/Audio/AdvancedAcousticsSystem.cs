@@ -178,8 +178,6 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
         if (!_clientEnt.IsValid() || !_acousticSettingsQuery.Resolve(_clientEnt, ref settings))
             return;
 
-        // these filter(s) requires no raycasting
-        TryProcessPressureFilter(audioEnt, _clientEnt, settings);
 
         // cast rays to get required data
         if (!TryCastAndGetEnvironmentAcousticData(
@@ -194,6 +192,9 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
 
         // these filter(s) requires raycasting
         ProcessReverbFilter(in audioEnt, in settings, in acousticResults);
+
+        // these filter(s) requires no raycasting
+        TryProcessPressureFilter(audioEnt, _clientEnt, settings);
     }
 
     private float GetAudioDistance(EntityUid listenerUid, Entity<AudioComponent> audio)
@@ -209,13 +210,13 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
         // if ((audio.Comp.Flags & AudioFlags.GridAudio) != 0x0)
         // {
         //     audioPos = audioXForm.LocalPosition;
-        //     Log.Info($"grid audio pos {audioPos}");
+        //     // Log.Info($"grid audio pos {audioPos}");
         //     clientPos = _mapSystem.GetGridPosition(listenerUid);
         // }
         // else
         // {
         //     audioPos = _transformSystem.GetWorldPosition(audioXForm);
-        //     Log.Info($"world audio pos {audioPos}");
+        //     // Log.Info($"world audio pos {audioPos}");
         //     clientPos = Transform(listenerUid).LocalPosition;
         //     var matrix = _transformSystem.GetInvWorldMatrix(listenerUid);
         //     audioPos = Vector2.Transform(audioPos, matrix);
