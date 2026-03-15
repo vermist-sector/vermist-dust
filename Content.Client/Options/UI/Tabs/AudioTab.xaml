@@ -37,12 +37,20 @@
                     <Label Text="{Loc 'ui-options-acoustics-subtext-3'}" StyleClasses="LabelSubText"
                                     Margin="0 0 0 6" />
                     <CheckBox Name="AcousticEnableCheckBox" Text="{Loc 'ui-options-acoustics-enabled'}" />
-                    <CheckBox Name="AcousticHighResolutionCheckBox"
-                                    Text="{Loc 'ui-options-acoustics-high-resolution'}"
-                                    ToolTip="{Loc 'ui-options-acoustics-high-resolution-tooltip'}" />
-                    <ui:OptionSlider Name="SliderAcousticReflectionCount" Title="{Loc 'ui-options-acoustics-max-reflections'}" />
-                    <Label Name="AcousticsWipWarningLabel" Text="{Loc 'ui-options-acoustics-wip-warning'}" StyleClasses="LabelSubText" />
-                    <CheckBox Name="AcousticEnableLowPressureFilterCheckBox" Text="{Loc 'ui-options-acoustics-enabled-low-presssure-filter'}" />
+                    <BoxContainer Name="AcousticSettingsContainer" Orientation="Vertical"  VerticalExpand="True" Margin="20 2 0 0" >
+                        <CheckBox Name="AcousticHighResolutionCheckBox"
+                                        Text="{Loc 'ui-options-acoustics-high-resolution'}"
+                                        ToolTip="{Loc 'ui-options-acoustics-high-resolution-tooltip'}" />
+                        <ui:OptionSlider Name="SliderAcousticReflectionCount" Title="{Loc 'ui-options-acoustics-max-reflections'}" />
+                        <Label Name="AcousticsWipWarningLabel" Text="{Loc 'ui-options-acoustics-wip-warning'}" StyleClasses="LabelSubText" />
+                        <CheckBox Name="AcousticEnableLowPressureFilterCheckBox" Text="{Loc 'ui-options-acoustics-enabled-low-presssure-filter'}" />
+                        <BoxContainer Name="AcousticLowPressureSettingsContainer" Orientation="Vertical" Margin="10 2 0 0">
+                            <Label Name="AcousticLowPressureSubtext" HorizontalAlignment="Right" VerticalAlignment="Top" MaxHeight="0" Margin="0 -20 10 20" StyleClasses="LabelSubText" />
+                            <ui:OptionSlider Name="SliderAcousticLowPressureMinimumVolume"
+                                        Title="{Loc 'ui-options-acoustics-low-pressure-min-volume'}"
+                                        ToolTip="{Loc 'ui-options-acoustics-low-pressure-min-volume-tooltip'}"/>
+                        </BoxContainer>
+                    </BoxContainer>
                     <!-- VDS additions end -->
                 </BoxContainer>
             </BoxContainer>

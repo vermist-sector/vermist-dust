@@ -1,9 +1,9 @@
-using Content.Client._VDS.Audio.Components;
-using Robust.Shared.Audio.Components;
-using Robust.Shared.Audio;
-using Robust.Shared.Prototypes;
 using System.Linq;
+using Content.Client._VDS.Audio.Components;
 using JetBrains.Annotations;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._VDS.Audio;
 
@@ -25,7 +25,8 @@ public sealed partial class AdvancedAcousticsSystem
     public void ProcessReverbFilter(
         in Entity<AudioComponent> audioEnt,
         in AcousticSettingsComponent settings,
-        in List<AcousticRayResults> acousticResults)
+        in List<AcousticRayResults> acousticResults
+    )
     {
         var rayAmplitude = CalculateRayAmplitude((_clientEnt, Transform(_clientEnt)), in acousticResults, in settings);
         if (rayAmplitude > _reverbPresets.Keys[0])
@@ -48,53 +49,84 @@ public sealed partial class AdvancedAcousticsSystem
     public float CalculateRayAmplitude(
         Entity<TransformComponent> originEnt,
         in List<AcousticRayResults> acousticResults,
-        in AcousticSettingsComponent settings)
+        in AcousticSettingsComponent settings
+    )
     {
         var totalRays = acousticResults.Count;
+        var totalAmplitude = acousticResults.Sum(amp => amp.TotalRange);
+        var totalBounces = acousticResults.Sum(bounce => bounce.TotalBounces);
         var avgAmplitude = acousticResults.Average(amp => amp.TotalRange);
-        var avgAbsorption = acousticResults.Average(absorb => absorb.TotalAbsorption);
+        var absorptionSum = acousticResults.Sum(absorb => absorb.TotalAbsorption);
         var escaped = acousticResults.Sum(escapees => escapees.TotalEscapes);
-        // TODO: resonance??
-        // var avgBounces = (float)acousticResults.Average(bounce => bounce.TotalBounces);
+        Log.Info($"avgAbsorption = {absorptionSum:F2}");
+        Log.Info($"escaped = {escaped}");
+        Log.Info($"avgAmplitude = {avgAmplitude:F2}");
+        Log.Info($"prevAvgAmplitude = {_prevAvgAmplitude:F2})");
 
         // we store our previous avg magnitude and lerp it with the current to make sure changes aren't too jarring
+        var lerpedAmplitude = avgAmplitude;
         if (_prevAvgAmplitude > float.Epsilon)
-            avgAmplitude = MathHelper.Lerp(_prevAvgAmplitude, avgAmplitude, settings.AvgMagnitudeBlend);
-        _prevAvgAmplitude = avgAmplitude;
+        {
+            lerpedAmplitude = MathF.Max(
+                float.Epsilon,
+                MathHelper.Lerp(_prevAvgAmplitude, avgAmplitude, settings.AvgAmplitudeBlend));
+        }
+        _prevAvgAmplitude = lerpedAmplitude;
 
         var amplitude = 0f;
 
         // things like furniture or different material walls should eat our energy
-        var absorbMultiplier = InverseNormalizeToPercentage(avgAbsorption, maxClamp: settings.MaxAbsorptionClamp);
+        Log.Info($"bounc = {totalBounces}");
+        Log.Info($"aborb bounc = {absorptionSum / totalBounces}");
+        var absorbMultiplier = NormalizeToPercentage(absorptionSum, maxValue: 100f, minClamp: -1f, maxClamp: 1f);
+
+
+        if (absorbMultiplier == 0f)
+            absorbMultiplier = float.Epsilon;
+
+        Log.Info($"total dist amp = {totalAmplitude:F2}");
+        Log.Info($"absorbMultiplier = {absorbMultiplier:F2}");
 
         // escaped rays are mostly irrelevant, so penalize based on that.
-        var escapeMultiplier = MathF.Max(
-            InverseNormalizeToPercentage(escaped, 0f, totalRays),
-            settings.MaxmimumEscapePenalty);
+        var escapeMultiplier = MathHelper.Clamp(
+            1f - NormalizeToPercentage(escaped, maxValue: totalRays),
+            settings.MaxmimumEscapePenalty,
+            1f
+        );
+        Log.Info($"escapeMultiplier = {escapeMultiplier:F2}");
 
-        amplitude += avgAmplitude;
+        amplitude += lerpedAmplitude;
         amplitude *= absorbMultiplier;
         amplitude *= escapeMultiplier;
 
         // severely punish our amplitude if there is no roof.
+        Log.Info($"roofPenalty = {GetRayAmplitudeRoofPenalty(originEnt, settings, amplitude):F2}");
         amplitude *= GetRayAmplitudeRoofPenalty(originEnt, settings, amplitude);
+
+        Log.Info($"Final Amplitude = {amplitude:F2})");
 
         return amplitude;
     }
 
     [PublicAPI]
-    public float GetRayAmplitudeRoofPenalty(Entity<TransformComponent> originEnt, AcousticSettingsComponent settings, float amplitude)
+    public float GetRayAmplitudeRoofPenalty(
+        Entity<TransformComponent> originEnt,
+        AcousticSettingsComponent settings,
+        float amplitude
+    )
     {
-        if (originEnt.Comp.GridUid.HasValue
+        if (
+            originEnt.Comp.GridUid.HasValue
             && _roofQuery.TryGetComponent(originEnt.Comp.GridUid.Value, out var roof)
             && _gridQuery.TryGetComponent(originEnt.Comp.GridUid.Value, out var grid)
             && _transformSystem.TryGetGridTilePosition(originEnt.Owner, out var indices)
-            && !_roofSystem.IsRooved((originEnt.Comp.GridUid.Value, grid, roof), indices))
+            && !_roofSystem.IsRooved((originEnt.Comp.GridUid.Value, grid, roof), indices)
+        )
         {
-            amplitude *= settings.NoRoofPenalty;
+            return settings.NoRoofPenalty;
         }
 
-        return amplitude;
+        return 1f;
     }
 
     /// <summary>
@@ -103,7 +135,8 @@ public sealed partial class AdvancedAcousticsSystem
     [PublicAPI]
     public static ProtoId<AudioPresetPrototype> GetBestReverbPreset(
         float amplitude,
-        SortedList<float, ProtoId<AudioPresetPrototype>> presetList)
+        SortedList<float, ProtoId<AudioPresetPrototype>> presetList
+    )
     {
         var keys = presetList.Keys;
         var index = keys.ToList().BinarySearch(amplitude);
