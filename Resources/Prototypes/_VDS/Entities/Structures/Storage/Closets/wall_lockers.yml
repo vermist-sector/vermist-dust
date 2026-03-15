@@ -1,0 +1,50 @@
+- type: entity
+  id: BaseWallClosetWhite
+  parent: BaseWallCloset
+  components:
+  - type: Sprite
+    sprite: _VDS/Structures/Storage/wall_locker.rsi
+
+- type: entity
+  id: ClosetWallMaintenanceWhite
+  parent: BaseWallClosetWhite
+  name: white maintenance wall closet
+  description: It's a storage unit.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: generic_door
+
+- type: entity
+  id: ClosetWallEmergencyWhite
+  name: white emergency wall closet
+  parent: BaseWallClosetWhite
+  description: It's a storage unit for emergency breath masks and O2 tanks.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: emergency
+    stateDoorOpen: emergency_open
+    stateDoorClosed: emergency_door
+
+- type: entity
+  parent: BaseWallClosetWhite
+  id: ClosetWallEmergencyN2White
+  name: white emergency nitrogen wall closet
+  description: It's full of life-saving equipment. Assuming, that is, that you breathe nitrogen.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: emergencynit # imp
+    stateDoorOpen: emergencynit_open # imp
+    stateDoorClosed: emergencynit_door # imp
+
+- type: entity
+  id: ClosetWallFireWhite
+  name: white fire-safety wall closet
+  parent: BaseWallClosetWhite
+  description: It's a storage unit for fire-fighting supplies.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: fire
+    stateDoorOpen: fire_open
+    stateDoorClosed: fire_door

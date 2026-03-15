@@ -1,22 +1,19 @@
 - type: gameMap
-  id: Oslo
-  mapName: 'Oslo'
-  mapPath: /Maps/_VDS/oslo.yml
+  id: Facsimile
+  mapName: 'Facsimile'
+  mapPath: /Maps/_VDS/facsimile.yml
   minPlayers: 0
   maxPlayers: 25
   stations:
-    Refsdal:
+    Facsimile:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Oslo-class Shuttle {1}'
-          nameGenerator:
-            !type:NanotrasenNameGenerator
-            prefixCreator: '-VDS'
+          mapNameTemplate: 'research Shuttle'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/_VDS/Shuttles/emergency_refsdal.yml
+          emergencyShuttlePath: /Maps/_VDS/Shuttles/emergency_facsimile.yml
         - type: StationCargoShuttle
-          path: /Maps/_VDS/Shuttles/cargo_refsdal.yml
+          path: /Maps/_VDS/Shuttles/cargo_facsimile.yml
         - type: StationJobs
           availableJobs:
             # command
