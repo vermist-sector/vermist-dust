@@ -1,0 +1,31 @@
+
+- type: entity
+  name: fruit of knowledge
+  parent: FoodProduceBase
+  id: FoodKnowledgeFruit
+  description: It's slimy enough that it slips your mind when you look away.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - knowledge
+  - type: Sprite
+    sprite: Objects/Fun/pondering_orb.rsi
+    layers:
+    - state: icon
+      shader: unshaded
+  - type: Item
+    heldPrefix: produce
+  - type: PointLight
+    radius: 3
+    softness: 20
+    energy: 4
+    curveFactor: 0
+    color: "#9233D6FF"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Nothing
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit

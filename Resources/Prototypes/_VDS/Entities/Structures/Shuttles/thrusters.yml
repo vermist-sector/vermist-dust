@@ -1,0 +1,12 @@
+- type: entity
+  id: ThrusterLargeExperimental
+  name: experimental large thruster
+  suffix: UNBALANCED, MAP WITH CARE
+  parent: ThrusterLarge
+  placement:
+    mode: AlignTileAny
+  components:
+  - type: ApcPowerReceiver
+    powerLoad: 1000
+  - type: Thruster
+    thrust: 2000
