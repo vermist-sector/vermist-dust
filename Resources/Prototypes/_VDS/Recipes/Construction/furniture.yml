@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2025 gardens
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: construction
+  id: PlasticFlapsCurtains
+  name: construction-recipe-plastic-flaps-curtains
+  graph: PlasticFlapsGraph
+  startNode: start
+  targetNode: curtainsFlaps
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+

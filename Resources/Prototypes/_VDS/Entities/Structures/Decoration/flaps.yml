@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2025 gardens
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: PlasticFlapsCurtains
+  name: plastic flaps
+  parent: BaseCurtains
+  suffix: Passable
+  description: Light duty plastic flaps for keeping dust out of workspaces. They're easy to push open.
+  components:
+  - type: Door
+    bumpOpen: false # not until door autoclose component exists
+    occludes: false
+    closeTimeOne: 0
+    closeTimeTwo: 0
+    openTimeOne: 0
+    openTimeTwo: 0
+    openingAnimationTime: 0
+    closingAnimationTime: 0
+    openSound:
+      collection: storageRustle
+    closeSound:
+      collection: storageRustle
+    openingSpriteState: "open"
+  - type: Occluder
+    enabled: false
+  - type: Sprite
+    snapCardinals: true
+    sprite: _VDS/Structures/plastic_flaps.rsi
+    layers:
+    - state: plasticflaps
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Construction
+    graph: PlasticFlapsGraph
+    node: curtainsFlaps
+  - type: AcousticData # VDS
+    absorption: 20
+    reflectRay: true
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+
+
+- type: entity
+  id: PlasticFlapsCurtainsOpen
+  parent: PlasticFlapsCurtains
+  suffix: Open, Passable
+  components:
+  - type: Door
+    state: Open
+  - type: Construction
+    graph: Curtains
+    node: CurtainsOpen
+  - type: Physics
+    canCollide: false
