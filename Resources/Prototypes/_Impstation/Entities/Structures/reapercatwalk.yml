@@ -48,3 +48,6 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: TrayScanReveal
+  - type: Construction # vds
+    graph: Catwalk
+    node: ReaperCatwalk

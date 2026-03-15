@@ -1,16 +1,16 @@
 meta:
   format: 7
-  category: Map
+  category: Grid
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 03/15/2026 04:01:54
-  entityCount: 270
-maps:
-- 7
+  time: 03/15/2026 06:01:01
+  entityCount: 269
+maps: []
 grids:
 - 1
-orphans: []
+orphans:
+- 1
 nullspace: []
 tilemap:
   1: Space
@@ -37,7 +37,7 @@ entities:
       name: Exit
     - type: Transform
       pos: 1,0.59375
-      parent: 7
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -137,17 +137,17 @@ entities:
         tiles:
           0,-1:
             0: 4112
+          -1,0:
+            0: 3327
+            1: 4096
           0,0:
             0: 768
             1: 17472
-          -1,0:
-            0: 3300
-            1: 4096
           0,-2:
-            0: 768
+            0: 784
             1: 17472
           -1,-2:
-            0: 64704
+            0: 64736
             1: 16
           -1,-1:
             0: 65535
@@ -157,22 +157,24 @@ entities:
           -5,-1:
             0: 3584
           -4,0:
-            1: 1
+            1: 129
+          -4,-2:
+            1: 32768
+          -3,-2:
+            1: 7168
           -3,-1:
             0: 61422
-          -3,-2:
-            1: 4096
           -3,0:
             0: 14
-            1: 16
+            1: 3088
+          -2,-2:
+            1: 496
+            0: 57856
           -2,-1:
             0: 61422
-          -2,-2:
-            1: 416
-            0: 60480
           -2,0:
-            0: 3310
-            1: 41216
+            0: 750
+            1: 61696
         uniqueMixes:
         - volume: 2500
           temperature: 293.15
@@ -187,16 +189,6 @@ entities:
     - type: RadiationGridResistance
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
-  - uid: 7
-    components:
-    - type: MetaData
-      name: Map Entity
-    - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: GridTree
-    - type: Broadphase
-    - type: OccluderTree
 - proto: AirAlarm
   entities:
   - uid: 315
