@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprited by AftrLife(github) based on closet sprites taken from tgstation from https://github.com/tgstation/tgstation/pull/85491. modified by gardens",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+      {
+          "name": "emergency"
+      },
+      {
+          "name": "emergency_door"
+      },
+      {
+          "name": "emergency_open"
+      },
+      {
+          "name": "emergencynit"
+      },
+      {
+          "name": "emergencynit_door"
+      },
+      {
+          "name": "emergencynit_open"
+      },
+      {
+          "name": "fire"
+      },
+      {
+          "name": "fire_door"
+      },
+      {
+          "name": "fire_open"
+      },
+      {
+          "name": "generic_icon"
+      },
+	  {
+          "name": "generic_open"
+      },
+	  {
+          "name": "generic_door"
+      },
+	  {
+          "name": "generic"
+      },
+      {
+          "name": "locked"
+      },
+      {
+          "name": "unlocked"
+      },
+      {
+          "name": "welded"
+      }
+  ]
+}

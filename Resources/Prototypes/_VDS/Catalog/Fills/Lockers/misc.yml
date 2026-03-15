@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2025 gardens
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: ClosetWallMaintenanceWhiteFilledRandom
+  parent: ClosetWallMaintenanceWhite
+  suffix: Filled, Random
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: MaintenanceLockerLoot
+
+- type: entity
+  id: ClosetWallEmergencyWhiteFilledRandom
+  parent: ClosetWallEmergencyWhite
+  suffix: Filled, Random
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerEmergencyStandard
+
+- type: entity
+  parent: ClosetWallEmergencyN2White
+  id: ClosetWallEmergencyN2WhiteFilledRandom
+  suffix: Filled, Random
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerEmergencyN2Standard
+
+- type: entity
+  id: ClosetWallFireWhiteFilledRandom
+  parent: ClosetWallFireWhite
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerFireStandard

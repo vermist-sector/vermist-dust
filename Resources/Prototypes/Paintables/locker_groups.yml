@@ -82,6 +82,11 @@
     pink: ClosetWallPink
     white: ClosetWallWhite
     yellow: ClosetWallYellow
+    # vds edit start
+    white-basic: ClosetWallMaintenanceWhite
+    white-oxygen: ClosetWallEmergencyWhite
+    white-nitrogen: ClosetWallEmergencyN2White
+    white-fire: ClosetWallFireWhite
 
 - type: paintableGroup
   id: WallLocker
