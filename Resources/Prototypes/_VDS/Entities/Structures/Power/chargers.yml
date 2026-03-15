@@ -10,7 +10,7 @@
   parent: PottedPlantBase
   components:
   - type: Physics
-    bodyType: Dynamic
+    bodyType: Static
   - type: Transform
     anchored: true
     noRot: false
