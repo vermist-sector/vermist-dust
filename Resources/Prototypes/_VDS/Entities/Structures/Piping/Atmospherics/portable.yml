@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2025 gardens
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: PortableScrubberFish
+  parent: PortableScrubber
+  name: portable fish
+  description: A fish's gills consist of fleshy filaments supported by bony gill arches. The filaments are rich in blood vessels and provide a large surface area for gas exchange.
+  components:
+  - type: Sprite
+    sprite: _VDS/Structures/Piping/Atmospherics/Portable/portable_scrubber_fish.rsi # imp
