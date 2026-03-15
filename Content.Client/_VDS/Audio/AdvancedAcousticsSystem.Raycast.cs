@@ -208,7 +208,7 @@ public sealed partial class AdvancedAcousticsSystem
     }
 
     /// <summary>
-    /// Gets an absorption percentage using inverse square falloff.
+    /// Gets an absorption percentage, scaled by distance.
     /// </summary>
     private float GetAcousticAbsorption(
         RayHit result,
@@ -216,14 +216,17 @@ public sealed partial class AdvancedAcousticsSystem
         in AcousticDataComponent comp,
         in AcousticSettingsComponent settings)
     {
-        result.Entity.ToCoordinates().TryDistance(EntityManager, originEnt.ToCoordinates(), out var distance);
+        if (!result.Entity.ToCoordinates().TryDistance(
+            EntityManager,
+            originEnt.ToCoordinates(),
+            out var distance))
+        {
+            return 0f;
+        }
+        var normalized = (25f - Math.Clamp(distance, 5f, 25f)) / (25f - 5f);
 
-        // make sure we don't divide by zero.
-        var distanceSquared = MathF.Max(distance * distance, 0.01f);
-
-        return (comp.Absorption < 0)
-            ? -NormalizeToPercentage(comp.Absorption, -100f, 0f, maxClamp: settings.MaxAbsorptionClamp) * distanceSquared
-            : NormalizeToPercentage(comp.Absorption, maxClamp: settings.MaxAbsorptionClamp) * distanceSquared;
+        Log.Info($"abosrb rfays :{MathF.Log(normalized + 1f) * 2f}");
+        return MathF.Log(normalized + 1f) * 2f;
     }
 
     /// <summary>

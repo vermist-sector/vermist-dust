@@ -9,6 +9,8 @@ namespace Content.Client._VDS.Audio;
 
 public sealed partial class AdvancedAcousticsSystem
 {
+    private float _acousticLowPressureMinimumVolume;
+
     /// <summary>
     /// Arbitrary values for determining what AudioPreset to use during low pressure.
     /// Defined in <see cref="AcousticSettingsComponent"/>.
@@ -36,10 +38,15 @@ public sealed partial class AdvancedAcousticsSystem
         // var bestPressurePreset = GetBestReverbPreset(pressure.Value, _pressurePresets);
 
         // scale our gain based on our distance and pressure
-        var distance = GetAudioDistance(_clientEnt, audioEnt);
-        var normalized = InverseNormalizeToPercentage(distance, 0, 10);
-        var pressurePercent = NormalizeToPercentage(pressure, 0, 100, minClamp: 0.1f);
-        _audioSystem.SetGain(audioEnt.Owner, normalized * pressurePercent, audioEnt.Comp);
+        var distance = 1f - NormalizeToPercentage(GetAudioDistance(_clientEnt, audioEnt), 10f, 0f);
+        var pressurePercent = 1f - NormalizeToPercentage(pressure, 100f, 0f);
+        var volumePercent = MathF.Min(MathHelper.Lerp(distance, pressurePercent, 0.25f), _acousticLowPressureMinimumVolume);
+        Log.Info($"volume pressure percent = {volumePercent:F2}");
+
+
+        // lower volume, if we're not practically at 100% percentage already.
+        if (!MathHelper.CloseTo(_acousticLowPressureMinimumVolume, 1f, 0.005f))
+            _audioSystem.SetGain(audioEnt.Owner, volumePercent, audioEnt.Comp);
 
         // add the effect
         _audioEffectSystem.TryAddEffect(in audioEnt, in settings.TestPreset);

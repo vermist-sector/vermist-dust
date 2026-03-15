@@ -55,6 +55,7 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     private EntityQuery<AcousticDataComponent> _acousticQuery;
     private EntityQuery<AcousticSettingsComponent> _acousticSettingsQuery;
     private EntityQuery<AtmosDataComponent> _atmosDataQuery;
+    private EntityQuery<AudioComponent> _audioQuery;
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<RoofComponent> _roofQuery;
     private EntityQuery<TransformComponent> _transformQuery;
@@ -69,11 +70,6 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
             invokeImmediately: true
         );
         _configurationManager.OnValueChanged(
-            VCCVars.AcousticEnableLowPressureFilter,
-            x => _acousticEnabledLowPressureFilter = x,
-            invokeImmediately: true
-        );
-        _configurationManager.OnValueChanged(
             VCCVars.AcousticHighResolution,
             x => _calculatedDirections = GetEffectiveDirections(x),
             invokeImmediately: true
@@ -84,9 +80,21 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
             invokeImmediately: true
         );
 
+        _configurationManager.OnValueChanged(
+            VCCVars.AcousticEnableLowPressureFilter,
+            x => _acousticEnabledLowPressureFilter = x,
+            invokeImmediately: true
+        );
+        _configurationManager.OnValueChanged(
+            VCCVars.AcousticLowPressureMinimumVolume,
+            x => _acousticLowPressureMinimumVolume = x,
+            invokeImmediately: true
+        );
+
         _acousticQuery = GetEntityQuery<AcousticDataComponent>();
         _acousticSettingsQuery = GetEntityQuery<AcousticSettingsComponent>();
         _atmosDataQuery = GetEntityQuery<AtmosDataComponent>();
+        _audioQuery = GetEntityQuery<AudioComponent>();
         _gridQuery = GetEntityQuery<MapGridComponent>();
         _roofQuery = GetEntityQuery<RoofComponent>();
         _transformQuery = GetEntityQuery<TransformComponent>();
@@ -222,32 +230,11 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     }
 
     /// <summary>
-    /// Returns a 0f..1f percent, where the closer to 0f the value is, the closer to 100% (1.0f) it is.
+    /// Normalize the input value with a provided max value,  and clamp between -1f and 1f, by default.
     /// </summary>
-    public static float NormalizeToPercentage(
-        float value,
-        float minValue = 0f,
-        float maxValue = 100f,
-        float maxClamp = 1f,
-        float minClamp = 0f
-    )
+    public static float NormalizeToPercentage(float value, float maxValue, float minClamp = -1f, float maxClamp = 1f)
     {
-        var percentage = (value - minValue) / (maxValue - minValue);
-        return Math.Clamp(percentage, minClamp, maxClamp);
-    }
-
-    /// <summary>
-    /// Returns a 0f..1f percent, where the closer to 1.0f the value is, the closer to 0% (0f) it is.
-    /// </summary>
-    public static float InverseNormalizeToPercentage(
-        float value,
-        float minValue = 0f,
-        float maxValue = 100f,
-        float maxClamp = 1f,
-        float minClamp = 0f
-    )
-    {
-        return NormalizeToPercentage(maxValue - value, minValue, maxValue, maxClamp, minClamp);
+        return Math.Clamp(value / maxValue, minClamp, maxClamp);
     }
 
     /// <summary>

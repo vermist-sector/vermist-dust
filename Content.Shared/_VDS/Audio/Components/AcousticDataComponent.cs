@@ -1,9 +1,11 @@
+using Robust.Shared.GameStates;
+
 namespace Content.Shared._VDS.Audio.Components;
 
 /// <summary>
 /// Data that alters audio if the client has acoustics enabled.
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class AcousticDataComponent : Component
 {
     /// <summary>
@@ -11,7 +13,7 @@ public sealed partial class AcousticDataComponent : Component
     /// Ranges from 0% to 100% are ideal.
     /// Farther away things suffer falloff.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public float Absorption = 0f;
 
     /// <summary>

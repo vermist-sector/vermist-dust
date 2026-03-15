@@ -9,3 +9,7 @@ ui-options-acoustics-high-resolution-tooltip = Cast more acoustic rays at one ti
 ui-options-acoustics-max-reflections = Maximum Reflections:
 ui-options-acoustics-wip-warning = The below option(s) are very WIP. Please report any bugs to the VDS discord.
 ui-options-acoustics-enabled-low-presssure-filter = Enable Low Pressure Filters
+ui-options-acoustics-low-pressure-min-volume = Minimum Pressure Volume:
+ui-options-acoustics-low-pressure-min-volume-tooltip = The minimum volume you'll hear (or not) at zero pressure.
+ui-options-acoustics-low-pressure-subtext-zero-volume = In space, nobody can hear you scream.
+ui-options-acoustics-low-pressure-subtext-max-volume = In space, everybody can hear you scream.

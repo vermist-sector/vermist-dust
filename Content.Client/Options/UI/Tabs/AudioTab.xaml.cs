@@ -8,7 +8,8 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Content.Shared._EE.CCVar; // EE
-using Content.Shared._VDS.CCVars; // VDS
+using Content.Shared._VDS.CCVars;
+using Content.Client.UserInterface.ControlExtensions; // VDS
 
 namespace Content.Client.Options.UI.Tabs;
 
@@ -86,7 +87,12 @@ public sealed partial class AudioTab : Control
             SliderAcousticReflectionCount,
             _cfg.GetCVar(VCCVars.AcousticReflectionCountMinimum),
             _cfg.GetCVar(VCCVars.AcousticReflectionCountMaximum));
-        Control.AddOptionCheckBox(VCCVars.AcousticEnableLowPressureFilter, AcousticEnableLowPressureFilterCheckBox);
+        var acousticPressureEnable = Control.AddOptionCheckBox(VCCVars.AcousticEnableLowPressureFilter, AcousticEnableLowPressureFilterCheckBox);
+        acousticPressureEnable.ImmediateValueChanged += UpdateAcousticPressureFilterButtons;
+        var pressureMinVolumeSlider = Control.AddOptionPercentSlider(
+            VCCVars.AcousticLowPressureMinimumVolume,
+            SliderAcousticLowPressureMinimumVolume);
+        pressureMinVolumeSlider.ImmediateValueChanged += OnAcousticLowPressureMinVolumeSliderChanged;
         // VDS end
 
         Control.Initialize();
@@ -98,6 +104,9 @@ public sealed partial class AudioTab : Control
         _admin.AdminStatusUpdated += UpdateAdminButtonsVisibility;
         UpdateAdminButtonsVisibility();
         UpdateAcousticButtons(_cfg.GetCVar(VCCVars.AcousticEnable)); // VDS
+        UpdateAcousticPressureFilterButtons(
+                _cfg.GetCVar(VCCVars.AcousticEnable)
+                && _cfg.GetCVar(VCCVars.AcousticEnableLowPressureFilter)); // VDS
     }
 
     protected override void ExitedTree()
@@ -106,7 +115,6 @@ public sealed partial class AudioTab : Control
         _admin.AdminStatusUpdated -= UpdateAdminButtonsVisibility;
     }
 
-
     private void UpdateAdminButtonsVisibility()
     {
         BwoinkSoundCheckBox.Visible = _admin.IsActive();
@@ -114,10 +122,26 @@ public sealed partial class AudioTab : Control
 
     private void UpdateAcousticButtons(bool value) // VDS
     {
-        AcousticHighResolutionCheckBox.Visible = value is true;
-        SliderAcousticReflectionCount.Visible = value is true;
-        AcousticsWipWarningLabel.Visible = value is true;
-        AcousticEnableLowPressureFilterCheckBox.Visible = value is true;
+        AcousticSettingsContainer.Visible = value is true;
+        // AcousticHighResolutionCheckBox.Visible = value is true;
+        // SliderAcousticReflectionCount.Visible = value is true;
+        // AcousticsWipWarningLabel.Visible = value is true;
+        // AcousticEnableLowPressureFilterCheckBox.Visible = value is true;
+    }
+
+    private void UpdateAcousticPressureFilterButtons(bool value) // VDS
+    {
+        AcousticLowPressureSettingsContainer.Visible = value is true;
+    }
+
+    private void OnAcousticLowPressureMinVolumeSliderChanged(float value) // VDS
+    {
+        if (value == 0f)
+            AcousticLowPressureSubtext.Text = Loc.GetString("ui-options-acoustics-low-pressure-subtext-zero-volume");
+        else if (value == 1f)
+            AcousticLowPressureSubtext.Text = Loc.GetString("ui-options-acoustics-low-pressure-subtext-max-volume");
+        else
+            AcousticLowPressureSubtext.Text = " ";
     }
 
     private void OnMasterVolumeSliderChanged(float value)
