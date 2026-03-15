@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 gardens
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 #frankenstein is the name of the scientist actually
 - type: entity
   id: PottedPlantPowerCellRecharger
