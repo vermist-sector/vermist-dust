@@ -9,7 +9,7 @@
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'research Shuttle'
+          mapNameTemplate: 'Nanotrasen Research Shuttle'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_VDS/Shuttles/emergency_facsimile.yml
         - type: StationCargoShuttle
