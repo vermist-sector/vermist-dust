@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "ThornsTearingWool",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "icon-running",
+      "delays": [
+        [
+          0.11,
+          0.11,
+          0.11,
+          0.11
+        ]
+      ]
+    },
+    {
+      "name": "unlit",
+      "delays": [
+        [
+          0.11,
+          0.11,
+          0.11,
+          0.11
+        ]
+      ]
+    },
+    {
+      "name": "unlit-full"
+    },
+    {
+      "name": "draining",
+      "delays": [
+        [
+          0.11,
+          0.11,
+          0.11,
+          0.11
+        ]
+      ]
+    }
+  ]
+}
