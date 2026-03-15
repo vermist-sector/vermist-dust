@@ -51,7 +51,7 @@
     graph: Dresser
     node: dresser
   - type: AcousticData # VDS
-    absorption: 20
+    absorption: 2
 
 - type: entity
   id: DresserFilled

@@ -53,7 +53,7 @@
         sound:
           path: /Audio/Effects/plant_rustle.ogg
   - type: AcousticData # VDS
-    absorption: 10
+    absorption: 0.2
 
 - type: entity
   id: PottedPlant0

@@ -225,7 +225,7 @@ public sealed partial class AdvancedAcousticsSystem
         }
         var normalized = (25f - Math.Clamp(distance, 5f, 25f)) / (25f - 5f);
 
-        Log.Info($"abosrb rfays :{MathF.Log(normalized + 1f) * 2f}");
+        // Log.Info($"abosrb rfays :{MathF.Log(normalized + 1f) * 2f}");
         return MathF.Log(normalized + 1f) * 2f;
     }
 

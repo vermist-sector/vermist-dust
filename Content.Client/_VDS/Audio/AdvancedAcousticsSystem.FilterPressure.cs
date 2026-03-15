@@ -22,7 +22,7 @@ public sealed partial class AdvancedAcousticsSystem
     {
         if (!_acousticEnabledLowPressureFilter
             || !_atmosDataQuery.Resolve(originEnt, ref originEnt.Comp)
-            || originEnt.Comp.Pressure > 80f)
+            || originEnt.Comp.Pressure > 90f)
         {
             return false;
         }
@@ -38,10 +38,9 @@ public sealed partial class AdvancedAcousticsSystem
         // var bestPressurePreset = GetBestReverbPreset(pressure.Value, _pressurePresets);
 
         // scale our gain based on our distance and pressure
-        var distance = 1f - NormalizeToPercentage(GetAudioDistance(_clientEnt, audioEnt), 10f, 0f);
-        var pressurePercent = 1f - NormalizeToPercentage(pressure, 100f, 0f);
-        var volumePercent = MathF.Min(MathHelper.Lerp(distance, pressurePercent, 0.25f), _acousticLowPressureMinimumVolume);
-        Log.Info($"volume pressure percent = {volumePercent:F2}");
+        var pressurePercent = NormalizeToPercentage(pressure, 100f, 0f);
+        var volumePercent = MathF.Max(pressurePercent, _acousticLowPressureMinimumVolume);
+        // Log.Info($"volume pressure percent = {volumePercent:F2}");
 
 
         // lower volume, if we're not practically at 100% percentage already.

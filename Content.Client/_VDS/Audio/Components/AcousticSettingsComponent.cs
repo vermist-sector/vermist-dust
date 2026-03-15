@@ -19,16 +19,14 @@ public sealed partial class AcousticSettingsComponent : Component
     [DataField, ViewVariables]
     public SortedList<float, ProtoId<AudioPresetPrototype>> ReverbPresets = new()
     {
-        { 10f, "SpaceStationCupboard" },
-        { 13f, "DustyRoom" },
-        { 15f, "SpaceStationSmallRoom" },
-        { 18f, "SpaceStationShortPassage" },
-        { 23f, "SpaceStationMediumRoom" },
-        { 28f, "SpaceStationHall" },
-        { 35f, "SpaceStationLargeRoom" },
-        { 40f, "Auditorium" },
-        { 45f, "ConcertHall" },
-        { 70f, "Hangar" },
+        { 3f, "Room" },
+        { 10f, "SpaceStationShortPassage" },
+        { 20f, "SpaceStationSmallRoom" },
+        { 35f, "SpaceStationMediumRoom" },
+        { 50f, "SpaceStationHall" },
+        { 55f, "SpaceStationLargeRoom" },
+        { 65f, "SpaceStationLongPassage" },
+        { 75f, "Hangar" },
     };
 
     /// <summary>
@@ -51,7 +49,7 @@ public sealed partial class AcousticSettingsComponent : Component
     /// what percentage a single segment of it can it travel before it is considered 'escaped' and terminated early?
     /// </summary>
     [DataField, ViewVariables]
-    public float EscapeDistancePercentage = 0.4f;
+    public float EscapeDistancePercentage = 0.35f;
 
     /// <summary>
     /// We will never penalize our acoustic data below this percentage.
