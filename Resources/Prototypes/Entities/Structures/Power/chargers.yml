@@ -68,6 +68,7 @@
       charger_slot: !type:ContainerSlot
       machine_board: !type:Container
       machine_parts: !type:Container
+      stash: !type:ContainerSlot {}
   - type: RequireProjectileTarget
 
 - type: entity
