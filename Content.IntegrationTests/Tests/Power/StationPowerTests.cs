@@ -70,6 +70,7 @@ public sealed class StationPowerTests
         // VDS
         "Refsdal",
         "Progenitor",
+        "Facsimile"
 
         // DEROTATED:
         //"Eclipse",

@@ -163,6 +163,7 @@ namespace Content.IntegrationTests.Tests
             "Progenitor",
             "Refsdal",
             "Foundry",
+            "Facsimile"
 
             // DEROTATED:
             //"Eclipse",
