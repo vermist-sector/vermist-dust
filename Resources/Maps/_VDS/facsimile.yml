@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 03/16/2026 01:55:08
-  entityCount: 5717
+  time: 03/18/2026 19:51:06
+  entityCount: 5719
 maps:
 - 1
 grids:
@@ -3342,7 +3342,7 @@ entities:
       pos: -42.5,1.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -53403.1
+      secondsUntilStateChange: -53448.777
       state: Opening
     - type: DeviceLinkSource
       linkedPorts:
@@ -16195,6 +16195,18 @@ entities:
     components:
     - type: Transform
       pos: -22.5,11.5
+      parent: 2
+- proto: ClosetRadiationSuitFilled
+  entities:
+  - uid: 5718
+    components:
+    - type: Transform
+      pos: -61.5,-25.5
+      parent: 2
+  - uid: 5719
+    components:
+    - type: Transform
+      pos: -57.5,-25.5
       parent: 2
 - proto: ClosetWallEmergencyN2White
   entities:
@@ -33295,7 +33307,7 @@ entities:
       pos: -48.5,25.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -13956.969
+      secondsUntilStateChange: -14002.643
       state: Opening
   - uid: 3820
     components:
