@@ -49,6 +49,7 @@ public sealed class StationPowerTests
         "CogImp",
         "CoreImp",
         //"E1M1",
+        "Eclipse",
         "ElkridgeImp",
         "GateImp",
         "Hummingbird",
@@ -59,13 +60,13 @@ public sealed class StationPowerTests
         "PlasmaImp",
         "ReachImp",
         "SalternImp",
+        "Schooner",
         "Submarine",
         "TrainImp",
         "Union",
         "Xeno",
         "Pathway",
         "Whisper",
-        "Monarch",
 
         // VDS
         "Refsdal",
@@ -77,7 +78,7 @@ public sealed class StationPowerTests
         //"Luna",
         //"reHash",
         //"RelicImp",
-        //"Skimmer",
+
     };
 
     [Explicit]
