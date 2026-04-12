@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 03/18/2026 19:51:06
-  entityCount: 5719
+  time: 03/18/2026 23:52:44
+  entityCount: 5737
 maps:
 - 1
 grids:
@@ -2373,11 +2373,12 @@ entities:
       parent: 2
     - type: DeviceList
       devices:
-      - 3294
-      - 3793
-      - 4448
+      - 2118
       - 4451
       - 4447
+      - 3793
+      - 3294
+      - 4039
     - type: AccessReader
       accessListsOriginal:
       - - Atmospherics
@@ -3106,9 +3107,10 @@ entities:
       parent: 2
     - type: DeviceList
       devices:
-      - 5698
+      - 4039
       - 4647
       - 4648
+      - 3815
     - type: Fixtures
       fixtures: {}
   - uid: 5694
@@ -3119,9 +3121,9 @@ entities:
       parent: 2
     - type: DeviceList
       devices:
-      - 3815
-      - 5696
       - 5697
+      - 5696
+      - 3815
     - type: Fixtures
       fixtures: {}
 - proto: Airlock
@@ -3311,6 +3313,12 @@ entities:
       rot: 3.141592653589793 rad
       pos: -58.5,-26.5
       parent: 2
+    - type: Door
+      secondsUntilStateChange: -208.8532
+      state: Opening
+    - type: DeviceLinkSource
+      lastSignals:
+        DoorStatus: True
 - proto: AirlockEngineeringLocked
   entities:
   - uid: 2118
@@ -3319,6 +3327,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: -52.5,-22.5
       parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 2499
 - proto: AirlockExternalCargoLocked
   entities:
   - uid: 1124
@@ -3342,7 +3353,7 @@ entities:
       pos: -42.5,1.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -53448.777
+      secondsUntilStateChange: -54029.348
       state: Opening
     - type: DeviceLinkSource
       linkedPorts:
@@ -16203,10 +16214,15 @@ entities:
     - type: Transform
       pos: -61.5,-25.5
       parent: 2
-  - uid: 5719
+  - uid: 5724
     components:
     - type: Transform
-      pos: -57.5,-25.5
+      pos: -32.5,3.5
+      parent: 2
+  - uid: 5725
+    components:
+    - type: Transform
+      pos: -9.5,6.5
       parent: 2
 - proto: ClosetWallEmergencyN2White
   entities:
@@ -16680,6 +16696,12 @@ entities:
       rot: 3.141592653589793 rad
       pos: -7.5,-3.5
       parent: 2
+  - uid: 5722
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -63.5,-24.5
+      parent: 2
 - proto: ComputerAnalysisConsole
   entities:
   - uid: 963
@@ -16694,6 +16716,14 @@ entities:
         1198:
         - - ArtifactAnalyzerSender
           - ArtifactAnalyzerReceiver
+- proto: ComputerAtmosMonitoring
+  entities:
+  - uid: 5723
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -63.5,-25.5
+      parent: 2
 - proto: ComputerComms
   entities:
   - uid: 1830
@@ -17095,9 +17125,9 @@ entities:
     - type: Transform
       pos: -45.5,25.5
       parent: 2
-- proto: CrateEngineeringElectricalSupplies
+- proto: CrateEngineeringCableHV
   entities:
-  - uid: 3234
+  - uid: 5726
     components:
     - type: Transform
       pos: -46.5,-34.5
@@ -18685,6 +18715,18 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -53.5,22.5
       parent: 2
+  - uid: 5720
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -60.5,-26.5
+      parent: 2
+  - uid: 5721
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -61.5,-26.5
+      parent: 2
 - proto: DisposalTrunk
   entities:
   - uid: 3081
@@ -19470,7 +19512,6 @@ entities:
       parent: 2
     - type: DeviceNetwork
       deviceLists:
-      - 2499
       - 4587
   - uid: 4452
     components:
@@ -19673,24 +19714,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -65.5,-30.5
       parent: 2
-  - uid: 5697
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -62.5,-26.5
-      parent: 2
-    - type: DeviceNetwork
-      deviceLists:
-      - 5694
-  - uid: 5698
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -58.5,-26.5
-      parent: 2
-    - type: DeviceNetwork
-      deviceLists:
-      - 5650
 - proto: FirelockEdge
   entities:
   - uid: 57
@@ -19978,6 +20001,15 @@ entities:
       deviceLists:
       - 10
       - 4590
+  - uid: 3815
+    components:
+    - type: Transform
+      pos: -62.5,-26.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 5694
+      - 5650
   - uid: 3843
     components:
     - type: Transform
@@ -19988,6 +20020,15 @@ entities:
       deviceLists:
       - 4591
       - 4592
+  - uid: 4039
+    components:
+    - type: Transform
+      pos: -58.5,-26.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 5650
+      - 2499
   - uid: 4441
     components:
     - type: Transform
@@ -27153,17 +27194,6 @@ entities:
       - 4595
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 3815
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -63.5,-29.5
-      parent: 2
-    - type: DeviceNetwork
-      deviceLists:
-      - 5694
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
   - uid: 3817
     components:
     - type: Transform
@@ -27430,6 +27460,17 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 3845
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 5697
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -63.5,-29.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 5694
     - type: AtmosPipeColor
       color: '#0055CCFF'
 - proto: GasVentScrubber
@@ -33307,7 +33348,7 @@ entities:
       pos: -48.5,25.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -14002.643
+      secondsUntilStateChange: -14583.215
       state: Opening
   - uid: 3820
     components:
@@ -58423,6 +58464,18 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
+- proto: SheetClockworkGlass
+  entities:
+  - uid: 5733
+    components:
+    - type: Transform
+      pos: -57.471153,-28.222914
+      parent: 2
+  - uid: 5734
+    components:
+    - type: Transform
+      pos: -57.48678,-28.816664
+      parent: 2
 - proto: SheetGlass
   entities:
   - uid: 2127
@@ -58430,6 +58483,16 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -27.602562,-13.443724
+      parent: 2
+  - uid: 5731
+    components:
+    - type: Transform
+      pos: -57.596153,-28.066664
+      parent: 2
+  - uid: 5732
+    components:
+    - type: Transform
+      pos: -57.51803,-28.597914
       parent: 2
 - proto: SheetGlass10
   entities:
@@ -58466,6 +58529,13 @@ entities:
       rot: 3.141592653589793 rad
       pos: -38.39284,-25.64146
       parent: 2
+- proto: SheetPlasteel
+  entities:
+  - uid: 5727
+    components:
+    - type: Transform
+      pos: -56.252403,-28.566664
+      parent: 2
 - proto: SheetPlastic
   entities:
   - uid: 2065
@@ -58473,6 +58543,11 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -27.508986,-13.428124
+      parent: 2
+  - uid: 5730
+    components:
+    - type: Transform
+      pos: -56.26803,-28.097914
       parent: 2
 - proto: SheetPlastic10
   entities:
@@ -58509,6 +58584,21 @@ entities:
     components:
     - type: Transform
       pos: -63.524113,-23.546625
+      parent: 2
+  - uid: 5728
+    components:
+    - type: Transform
+      pos: -56.89303,-28.160414
+      parent: 2
+  - uid: 5729
+    components:
+    - type: Transform
+      pos: -56.89303,-28.551039
+      parent: 2
+  - uid: 5737
+    components:
+    - type: Transform
+      pos: -56.78056,-28.321209
       parent: 2
 - proto: SheetSteel10
   entities:
@@ -59335,6 +59425,18 @@ entities:
     - type: Transform
       pos: -37.5,-35.5
       parent: 2
+- proto: SpaceHeater
+  entities:
+  - uid: 5735
+    components:
+    - type: Transform
+      pos: -59.5,-29.5
+      parent: 2
+  - uid: 5736
+    components:
+    - type: Transform
+      pos: -60.5,-29.5
+      parent: 2
 - proto: SpawnMobCat
   entities:
   - uid: 455
@@ -60025,7 +60127,7 @@ entities:
       pos: -60.5,-21.5
       parent: 2
     - type: RadiationSource
-      intensity: 3
+      intensity: 4
     - type: PointLight
       energy: 5
       color: '#47B38DFF'
@@ -60503,6 +60605,11 @@ entities:
     - type: Transform
       pos: -53.5,-26.5
       parent: 2
+  - uid: 828
+    components:
+    - type: Transform
+      pos: -57.5,-28.5
+      parent: 2
   - uid: 839
     components:
     - type: Transform
@@ -60519,6 +60626,11 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -10.5,8.5
+      parent: 2
+  - uid: 3234
+    components:
+    - type: Transform
+      pos: -56.5,-28.5
       parent: 2
   - uid: 3986
     components:
@@ -61352,10 +61464,10 @@ entities:
       parent: 2
 - proto: VendingMachineEngivend
   entities:
-  - uid: 828
+  - uid: 5719
     components:
     - type: Transform
-      pos: -56.5,-28.5
+      pos: -57.5,-25.5
       parent: 2
 - proto: VendingMachineGames
   entities:
@@ -61497,10 +61609,10 @@ entities:
     - type: Transform
       pos: -47.5,22.5
       parent: 2
-  - uid: 4039
+  - uid: 5698
     components:
     - type: Transform
-      pos: -57.5,-28.5
+      pos: -57.5,-24.5
       parent: 2
 - proto: WallmountTelevision
   entities:
