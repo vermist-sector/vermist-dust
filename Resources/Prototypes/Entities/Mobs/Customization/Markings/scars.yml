@@ -54,7 +54,7 @@
   id: ScarNeck
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Vulpkanin] # Misfit - added Vulpkanin
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin] # Misfit - added Vulpkanin
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
