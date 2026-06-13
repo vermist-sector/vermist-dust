@@ -29,6 +29,7 @@ using Content.Shared.Players.RateLimiting;
 using Robust.Client.GameObjects;
 using Content.Client._VDS.Chat.Managers;
 using Content.Client._DV.NanoChat; // DeltaV: NanoChat
+using Content.Client._Impstation.Notifier; // IMP
 
 namespace Content.Client.IoC
 {
@@ -66,7 +67,7 @@ namespace Content.Client.IoC
             collection.Register<SharedPlayerRateLimitManager, PlayerRateLimitManager>();
             collection.Register<TitleWindowManager>();
             collection.Register<ClientsidePlaytimeTrackingManager>();
-
+            collection.Register<IClientNotifierManager, ClientNotifierManager>();// imp: notifier
             // VDS start
             collection.Register<IClientOOCColorManager, ClientOOCColorManager>();
             // VDS end
