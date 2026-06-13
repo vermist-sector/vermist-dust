@@ -15,3 +15,6 @@ lobby-state-background-greenspace-artist = Jellvisk
 
 lobby-state-background-mirror-image-title = Mirror Image
 lobby-state-background-mirror-image-artist = dragonmagus
+
+lobby-state-background-farlow-in-winter-title = Farlow In Winter
+lobby-state-background-farlow-in-winter-artist = lichpassing

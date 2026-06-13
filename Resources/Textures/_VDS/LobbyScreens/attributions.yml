@@ -22,3 +22,8 @@
   license: "CC-BY-SA-4.0"
   copyright: "dragonmagus"
   source: "https://github.com/vermist-sector/vermist-dust"
+
+- files: ["farlow_in_winter.webp"]
+  license: "CC-BY-SA-4.0"
+  copyright: "lichpassing"
+  source: "https://github.com/vermist-sector/vermist-dust"
