@@ -17,3 +17,8 @@
   license: "CC-BY-SA-4.0"
   copyright: "jellvisk"
   source: "https://github.com/vermist-sector/vermist-dust"
+
+- files: ["mirror_image.webp"]
+  license: "CC-BY-SA-4.0"
+  copyright: "dragonmagus"
+  source: "https://github.com/vermist-sector/vermist-dust"
