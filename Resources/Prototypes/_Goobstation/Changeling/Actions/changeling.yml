@@ -187,7 +187,7 @@
     event: !type:ToggleChitinousArmorEvent {}
   - type: GoobChangelingAction
     chemicalCost: 25
-    requireAbsorbed: 2
+    # requireAbsorbed: 2 # vermist, commented out
 
 - type: entity
   parent: BaseAction
@@ -205,7 +205,7 @@
     event: !type:ToggleOrganicShieldEvent {}
   - type: GoobChangelingAction
     chemicalCost: 20
-    requireAbsorbed: 1
+    # requireAbsorbed: 1 # vermist, commented out
 
 - type: entity
   parent: BaseAction
@@ -224,7 +224,7 @@
   - type: GoobChangelingAction
     chemicalCost: 30
     useInLesserForm: true
-    requireAbsorbed: 1
+    # requireAbsorbed: 1 # vermist, commented out
 
 - type: entity
   parent: BaseAction
@@ -243,7 +243,7 @@
   - type: GoobChangelingAction
     chemicalCost: 30
     useInLesserForm: true
-    requireAbsorbed: 1
+    # requireAbsorbed: 1 # vermist, commented out
 
 - type: entity
   parent: BaseAction
@@ -618,7 +618,7 @@
     event: !type:ToggleTentacleEvent {}
   - type: GoobChangelingAction
     chemicalCost: 15
-    requireAbsorbed: 1
+    # requireAbsorbed: 1 # vermist, commented out
 #imp edit ^
 
 - type: entity

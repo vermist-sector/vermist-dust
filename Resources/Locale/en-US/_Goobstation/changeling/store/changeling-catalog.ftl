@@ -13,25 +13,23 @@ evolutionmenu-combat-boneshard-desc =
 evolutionmenu-combat-armor-name = Chitinous Armor
 evolutionmenu-combat-armor-desc =
     We turn our skin into tough chitin to protect us from damage.
-    WARNING: We must absorb at least 2 organics to use this ability. Cannot be used in our lesser form.
+    Cannot be used in our lesser form.
     Costs a small amount of chemicals.
 
 evolutionmenu-combat-shield-name = Organic Shield
 evolutionmenu-combat-shield-desc =
     We reform one of our arms into a hard yet brittle shield.
-    WARNING: Requires you to absorb at least 1 organic to use the ability. Cannot be used in our lesser form.
+    Cannot be used in our lesser form.
     Costs a small amount of chemicals.
 
 evolutionmenu-combat-shriek-dissonant-name = Dissonant Shriek
 evolutionmenu-combat-shriek-dissonant-desc =
     We shift our vocal cords to release a high-frequency sound that overloads nearby electronics.
-    WARNING: Requires you to absorb at least 1 organic to use the ability.
     Costs a small amount of chemicals.
 
 evolutionmenu-combat-shriek-resonant-name = Resonant Shriek
 evolutionmenu-combat-shriek-resonant-desc =
     Our lungs and vocal cords shift, allowing us to briefly emit a noise that deafens and confuses our prey.
-    WARNING: Requires you to absorb at least 1 organic to use the ability.
     Costs a small amount of chemicals.
 
 evolutionmenu-combat-strainedmuscles-name = Strained Muscles
@@ -126,8 +124,8 @@ evolutionmenu-utility-mindshield-desc =
 # imp edit ↓
 evolutionmenu-combat-Tentacle-name = Flesh Tentacle
 evolutionmenu-combat-tentacle-desc =
-    We shape one of our arms into a grotesque Fishing Rod, capable of grabbing our enemies or bodies from afar to brings us together. Cannot be used in our lesser form.
-    WARNING: Requires you to absorb at least 1 organic to use the ability.
+    We shape one of our arms into a grotesque Fishing Rod, capable of grabbing our enemies or bodies from afar to brings us together.
+    Cannot be used in our lesser form.
     Costs a small amount of chemicals.
 
 evolutionmenu-utility-spacesuit-name = Space Adaptation
