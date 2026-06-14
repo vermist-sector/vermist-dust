@@ -731,6 +731,35 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("job", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.NotifierData", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("user_id");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("enabled");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("notifier_data_id");
+
+                    b.Property<string>("NotifierFreetext")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("notifier_freetext");
+
+                    b.HasKey("UserId")
+                        .HasName("PK_notifier_data");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("notifier_data", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.PlayTime", b =>
                 {
                     b.Property<int>("Id")

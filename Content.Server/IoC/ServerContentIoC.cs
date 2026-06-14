@@ -1,3 +1,4 @@
+using Content.Server._Impstation.Notifier;
 using Content.Server._VDS.Chat.Managers;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -81,7 +82,7 @@ internal static class ServerContentIoC
         deps.Register<CVarControlManager>();
         deps.Register<DiscordLink>();
         deps.Register<DiscordChatLink>();
-
+        deps.Register<IServerNotifierManager, ServerNotifierManager>();
         // VDS start
         deps.Register<IOOCColorManager, OOCColorManager>();
         // VDS end

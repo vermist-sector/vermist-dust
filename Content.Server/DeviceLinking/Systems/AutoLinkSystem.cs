@@ -33,16 +33,16 @@ public sealed class AutoLinkSystem : EntitySystem
         if (!TryComp<DeviceLinkSourceComponent>(ent, out var source))
             return;
 
-        var xform = Transform(ent);
+        var transmitterXform = Transform(ent);
 
-        foreach (var receiver in _entityLookupSystem.GetEntitiesInRange<AutoLinkReceiverComponent>(xform.Coordinates, source.Range))
+        foreach (var receiver in _entityLookupSystem.GetEntitiesInRange<AutoLinkReceiverComponent>(transmitterXform.Coordinates, source.Range))
         {
             if (receiver.Comp.AutoLinkChannel != ent.Comp.AutoLinkChannel)
                 continue; // Not ours.
 
             var receiverXform = Transform(receiver);
 
-            if (receiverXform.GridUid != xform.GridUid)
+            if (!receiver.Comp.AcrossGrids && receiverXform.GridUid != transmitterXform.GridUid) // Imp, added !receiver.AcrossGrids
                 continue;
 
             _deviceLinkSystem.LinkDefaults(null, ent, receiver);
