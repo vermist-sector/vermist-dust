@@ -66946,38 +66946,6 @@ entities:
       parent: 2
     - type: AtmosPipeColor
       color: '#FF1212FF'
-- proto: GasketPart
-  entities:
-  - uid: 16546
-    components:
-    - type: Transform
-      pos: -4.5336995,35.695724
-      parent: 2
-  - uid: 16547
-    components:
-    - type: Transform
-      pos: -4.4555745,35.570724
-      parent: 2
-  - uid: 16548
-    components:
-    - type: Transform
-      pos: -4.5649495,35.445724
-      parent: 2
-  - uid: 16549
-    components:
-    - type: Transform
-      pos: -4.3461995,35.351974
-      parent: 2
-  - uid: 16550
-    components:
-    - type: Transform
-      pos: -4.5805745,35.3051
-      parent: 2
-  - uid: 16551
-    components:
-    - type: Transform
-      pos: -4.3461995,35.133224
-      parent: 2
 - proto: GasMinerNitrogenStation
   entities:
   - uid: 5645
