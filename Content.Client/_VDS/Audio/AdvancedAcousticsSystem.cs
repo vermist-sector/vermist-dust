@@ -25,6 +25,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using System.Numerics;
 using JetBrains.Annotations;
+using Content.Shared.Humanoid;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Client._VDS.Audio;
 
@@ -59,6 +61,7 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<RoofComponent> _roofQuery;
     private EntityQuery<TransformComponent> _transformQuery;
+    private EntityQuery<HumanoidAppearanceComponent> _humanoidAppearanceQuery;
 
     public override void Initialize()
     {
@@ -98,6 +101,7 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
         _gridQuery = GetEntityQuery<MapGridComponent>();
         _roofQuery = GetEntityQuery<RoofComponent>();
         _transformQuery = GetEntityQuery<TransformComponent>();
+        _humanoidAppearanceQuery = GetEntityQuery<HumanoidAppearanceComponent>();
 
         /*
            this is kinda janky as fuck. it also wasn't me who originally did it i swear
@@ -112,6 +116,7 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
 
     private void OnLocalPlayerAttached(LocalPlayerAttachedEvent ev)
     {
+            
         _clientEnt = ev.Entity;
         EnsureComp<AcousticSettingsComponent>(_clientEnt, out var comp);
         _reverbPresets = comp.ReverbPresets;
@@ -141,10 +146,41 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
 
     private void OnParentChange(Entity<AudioComponent> audio, ref EntParentChangedMessage ev)
     {
+        if (!TryGetPlayerAcousticSettings(_clientEnt, out var acousticSettings))
+            return;
+
         if (!CanAudioBePostProcessed((audio.Owner, audio.Comp), ev.Transform))
             return;
 
-        ProcessAcoustics(audio);
+        ProcessAcoustics(audio, acousticSettings);
+    }
+
+    /// <summary>
+    /// If the player is valid for advanced acoustics or not
+    /// </summary>
+    [PublicAPI]
+    public bool TryGetPlayerAcousticSettings(
+        EntityUid playerEnt,
+        [NotNullWhen(true)] out AcousticSettingsComponent? acousticSettings,
+        HumanoidAppearanceComponent? humanoidAppearance = null)
+    {
+        acousticSettings = null;
+
+        if (!_acousticEnabled || playerEnt == EntityUid.Invalid || TerminatingOrDeleted(playerEnt))
+            return false;
+
+        /* TODO: right now we check if they have a humanoid appearance, because
+                actors like cyborgs technically are controlled via an internal container and
+                that causes some issues with the raycasting and pressure filter...
+            also the AI eye shouldn't be affected anyway.
+         */ 
+        if (!_humanoidAppearanceQuery.Resolve(playerEnt, ref humanoidAppearance))
+            return false;
+
+        if (!_acousticSettingsQuery.Resolve(playerEnt, ref acousticSettings))
+            return false;
+
+        return true;
     }
 
     /// <summary>
@@ -153,12 +189,7 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     [PublicAPI]
     public bool CanAudioBePostProcessed(Entity<AudioComponent> audio, in TransformComponent xForm)
     {
-        if (!_acousticEnabled
-            || TerminatingOrDeleted(audio))
-            return false;
-
-        // we cast from the player, so they need a valid entity.
-        if (!_clientEnt.IsValid())
+        if (TerminatingOrDeleted(audio))
             return false;
 
         //  we only care about loaded local audio. it would be kinda weird
@@ -177,7 +208,6 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     {
         if (!_clientEnt.IsValid() || !_acousticSettingsQuery.Resolve(_clientEnt, ref settings))
             return;
-
 
         // cast rays to get required data
         if (!TryCastAndGetEnvironmentAcousticData(

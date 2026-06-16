@@ -3,6 +3,7 @@ using Content.Shared._VDS.Atmos.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._VDS.Audio;
@@ -39,13 +40,11 @@ public sealed partial class AdvancedAcousticsSystem
 
         // scale our gain based on our distance and pressure
         var pressurePercent = NormalizeToPercentage(pressure, 100f, 0f);
+
         var volumePercent = MathF.Max(pressurePercent, _acousticLowPressureMinimumVolume);
+        volumePercent *= SharedAudioSystem.VolumeToGain(audioEnt.Comp.Params.Volume);
         // Log.Info($"volume pressure percent = {volumePercent:F2}");
-
-
-        // lower volume, if we're not practically at 100% percentage already.
-        if (!MathHelper.CloseTo(_acousticLowPressureMinimumVolume, 1f, 0.005f))
-            _audioSystem.SetGain(audioEnt.Owner, volumePercent, audioEnt.Comp);
+        _audioSystem.SetGain(audioEnt.Owner, volumePercent, audioEnt.Comp);
 
         // add the effect
         _audioEffectSystem.TryAddEffect(in audioEnt, in settings.TestPreset);
