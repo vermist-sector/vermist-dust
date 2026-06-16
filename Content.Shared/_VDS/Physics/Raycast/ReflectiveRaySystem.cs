@@ -83,8 +83,8 @@ public sealed partial class ReflectiveRaycastSystem : EntitySystem
         }
         else // we go forward instead.
         {
-            var results = _rayCast.CastRay(state.MapId, state.OldPos, state.Translation, state.ResultsFilter);
             UpdateStateForward(ref state);
+            var results = _rayCast.CastRay(state.MapId, state.OldPos, state.Translation, state.ResultsFilter);
 #if DEBUG
             CastDebugRay(in state);
 # endif
