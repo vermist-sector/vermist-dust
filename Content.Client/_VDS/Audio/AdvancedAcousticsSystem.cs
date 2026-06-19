@@ -9,24 +9,23 @@
 
 using Content.Client._Mono.Audio;
 using Content.Client._VDS.Audio.Components;
-using Content.Shared.Light.Components;
-using Content.Shared.Light.EntitySystems;
-using Content.Shared.Maps;
+using Content.Shared.CCVar;
+using Content.Shared.Humanoid;
 using Content.Shared._VDS.Atmos.Components;
 using Content.Shared._VDS.Audio.Components;
 using Content.Shared._VDS.CCVars;
-using Content.Shared._VDS.Physics;
+using JetBrains.Annotations;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
-using Robust.Shared.Map.Components;
+using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Robust.Shared.Random;
-using System.Numerics;
-using JetBrains.Annotations;
-using Content.Shared.Humanoid;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Content.Client._VDS.Audio;
 
@@ -36,31 +35,38 @@ namespace Content.Client._VDS.Audio;
 public sealed partial class AdvancedAcousticsSystem : EntitySystem
 {
     [Dependency] private readonly AudioEffectSystem _audioEffectSystem = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IClientNetManager _clientNetManager = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReflectiveRaycastSystem _reflectiveRaycast = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly SharedRoofSystem _roofSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly TurfSystem _turfSystem = default!;
+
+
+    private float _masterVolume;
+    private float _ambienceVolume;
 
     // Set by VCCVars
     private bool _acousticEnabled = true;
-    private bool _acousticEnabledLowPressureFilter = true;
+    private List<string> _blacklist = new();
 
     /// <summary>
-    /// The client's local entity, to spawn our raycasts at.
+    /// The client's cached EntityUid. 
     /// </summary>
     private EntityUid _clientEnt = EntityUid.Invalid;
 
+    /// <summary>
+    /// The client's cached acoustic settings component.
+    /// </summary>
+    private AcousticSettingsComponent? _settings = null;
+
+    /// <summary>
+    /// Collection of nearby audio entities.
+    /// </summary>
+    private readonly HashSet<Entity<AudioComponent>> _nearbyAudioEntities = new();
+
     private EntityQuery<AcousticDataComponent> _acousticQuery;
     private EntityQuery<AcousticSettingsComponent> _acousticSettingsQuery;
-    private EntityQuery<AtmosDataComponent> _atmosDataQuery;
     private EntityQuery<AudioComponent> _audioQuery;
-    private EntityQuery<MapGridComponent> _gridQuery;
-    private EntityQuery<RoofComponent> _roofQuery;
-    private EntityQuery<TransformComponent> _transformQuery;
     private EntityQuery<HumanoidAppearanceComponent> _humanoidAppearanceQuery;
 
     public override void Initialize()
@@ -69,100 +75,138 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
 
         _configurationManager.OnValueChanged(
             VCCVars.AcousticEnable,
-            x => _acousticEnabled = x,
-            invokeImmediately: true
-        );
-        _configurationManager.OnValueChanged(
-            VCCVars.AcousticHighResolution,
-            x => _calculatedDirections = GetEffectiveDirections(x),
-            invokeImmediately: true
-        );
-        _configurationManager.OnValueChanged(
-            VCCVars.AcousticReflectionCount,
-            x => _acousticMaxReflections = x,
+            OnAcousticEnableChanged,
             invokeImmediately: true
         );
 
         _configurationManager.OnValueChanged(
-            VCCVars.AcousticEnableLowPressureFilter,
-            x => _acousticEnabledLowPressureFilter = x,
+            CCVars.AudioMasterVolume,
+            x => _masterVolume = x,
             invokeImmediately: true
         );
+
         _configurationManager.OnValueChanged(
-            VCCVars.AcousticLowPressureMinimumVolume,
-            x => _acousticLowPressureMinimumVolume = x,
+            CCVars.AmbienceVolume,
+            x => _ambienceVolume = x,
             invokeImmediately: true
+        );
+
+        _blacklist = _configurationManager.GetCVar(
+            VCCVars.AcousticAudioStringBlacklist
         );
 
         _acousticQuery = GetEntityQuery<AcousticDataComponent>();
         _acousticSettingsQuery = GetEntityQuery<AcousticSettingsComponent>();
-        _atmosDataQuery = GetEntityQuery<AtmosDataComponent>();
         _audioQuery = GetEntityQuery<AudioComponent>();
-        _gridQuery = GetEntityQuery<MapGridComponent>();
-        _roofQuery = GetEntityQuery<RoofComponent>();
-        _transformQuery = GetEntityQuery<TransformComponent>();
         _humanoidAppearanceQuery = GetEntityQuery<HumanoidAppearanceComponent>();
+
+        // utilities
+        InitializeAcousticRaycasts();
+
+        // effects
+        InitializeReverbEffects();
+        InitializePressureEffects();
 
         /*
            this is kinda janky as fuck. it also wasn't me who originally did it i swear
            but to be fair it works good enough and I can't think of any other solution right
            now and i'm tired good night
-        */
+          */
         SubscribeLocalEvent<AudioComponent, EntParentChangedMessage>(OnParentChange);
+
+        SubscribeLocalEvent<AcousticSettingsComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<AcousticSettingsComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<AcousticSettingsComponent, ComponentShutdown>(OnShutdown);
 
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnLocalPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnLocalPlayerDetached);
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        var curTime = _timing.CurTime;
+
+        if (!_acousticEnabled
+            || !_clientEnt.IsValid()
+            || !_acousticSettingsQuery.Resolve(_clientEnt, ref _settings) || curTime < _settings.NextCheck)
+            return;
+
+        _settings.NextCheck = curTime + _settings.CheckInterval;
+        ProcessNearbyAudioEntities(Transform(_clientEnt).Coordinates, 20f);
+    }
+
+    private void OnMapInit(Entity<AcousticSettingsComponent> ent, ref MapInitEvent args)
+    {
+        ent.Comp.NextCheck = _timing.CurTime + ent.Comp.CheckInterval;
+    }
+
+    private void OnStartup(Entity<AcousticSettingsComponent> ent, ref ComponentStartup args)
+    {
+        Startup(ent);
+    }
+
+    private void OnShutdown(Entity<AcousticSettingsComponent> ent, ref ComponentShutdown args)
+    {
+        Cleanup();
+    }
+
     private void OnLocalPlayerAttached(LocalPlayerAttachedEvent ev)
     {
-            
-        _clientEnt = ev.Entity;
-        EnsureComp<AcousticSettingsComponent>(_clientEnt, out var comp);
-        _reverbPresets = comp.ReverbPresets;
-        if (_acousticEnabledLowPressureFilter && TryGetNetEntity(_clientEnt, out var netEnt) && netEnt.HasValue)
-        {
-            EnsureComp<AtmosDataComponent>(_clientEnt, out var _);
-            // _pressurePresets = comp.PressurePresets;
-
-            if (_clientNetManager.IsConnected)
-                RaiseNetworkEvent(new RequestAtmosDataComponentEvent(netEnt.Value));
-        }
+        Startup(ev.Entity);
     }
 
     private void OnLocalPlayerDetached(LocalPlayerDetachedEvent ev)
     {
-        if (_acousticEnabledLowPressureFilter && TryGetNetEntity(_clientEnt, out var netEnt) && netEnt.HasValue)
-        {
-            RemComp<AtmosDataComponent>(_clientEnt);
-
-            if (_clientNetManager.IsConnected)
-                RaiseNetworkEvent(new RequestAtmosDataComponentEvent(netEnt.Value, remove: true));
-        }
-
-        RemComp<AcousticSettingsComponent>(_clientEnt);
-        _clientEnt = EntityUid.Invalid;
+        Cleanup();
     }
 
     private void OnParentChange(Entity<AudioComponent> audio, ref EntParentChangedMessage ev)
     {
-        if (!TryGetPlayerAcousticSettings(_clientEnt, out var acousticSettings))
-            return;
+        TryProcessAcoustics(audio, ev.Transform);
+    }
 
-        if (!CanAudioBePostProcessed((audio.Owner, audio.Comp), ev.Transform))
-            return;
-
-        ProcessAcoustics(audio, acousticSettings);
+    private void ProcessNearbyAudioEntities(EntityCoordinates coords, float range)
+    {
+        _nearbyAudioEntities.Clear();
+        _lookup.GetEntitiesInRange<AudioComponent>(coords, range, _nearbyAudioEntities);
+        foreach (var audioEnt in _nearbyAudioEntities)
+        {
+            var audioXform = Transform(audioEnt);
+            TryProcessAcoustics(audioEnt, audioXform);
+        }
     }
 
     /// <summary>
-    /// If the player is valid for advanced acoustics or not
+    /// Tries to process audio effects on the client and audio entity.
     /// </summary>
+    /// <returns>True if the audio and client are valid and the audio has been processed.</returns>
     [PublicAPI]
-    public bool TryGetPlayerAcousticSettings(
+    public bool TryProcessAcoustics(Entity<AudioComponent> audio, TransformComponent audioXform)
+    {
+        if (!TryGetAndResolvePlayerAcousticSettings(_clientEnt, out var acousticSettings))
+            return false;
+
+        if (!CanAudioBePostProcessed((audio.Owner, audio.Comp)))
+            return false;
+
+        ProcessAcoustics(audio, acousticSettings);
+        return true;
+    }
+
+    /// <summary>
+    /// Tries to get the player's acoustic settings,
+    /// resolving it and caching it to the acoustic system.
+    /// </summary>
+    /// <returns>True if acousticSettings is not null, false if null.</returns>
+    [PublicAPI]
+    public bool TryGetAndResolvePlayerAcousticSettings(
         EntityUid playerEnt,
-        [NotNullWhen(true)] out AcousticSettingsComponent? acousticSettings,
-        HumanoidAppearanceComponent? humanoidAppearance = null)
+        [NotNullWhen(true)] out AcousticSettingsComponent? acousticSettings)
     {
         acousticSettings = null;
 
@@ -173,21 +217,29 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
                 actors like cyborgs technically are controlled via an internal container and
                 that causes some issues with the raycasting and pressure filter...
             also the AI eye shouldn't be affected anyway.
-         */ 
-        if (!_humanoidAppearanceQuery.Resolve(playerEnt, ref humanoidAppearance))
+         */
+        if (!_humanoidAppearanceQuery.HasComp(playerEnt))
             return false;
 
-        if (!_acousticSettingsQuery.Resolve(playerEnt, ref acousticSettings))
+        if (!_acousticSettingsQuery.TryComp(playerEnt, out var settings))
             return false;
+
+        _settings = settings;
+
+        if (!_acousticSettingsQuery.Resolve(playerEnt, ref _settings))
+            return false;
+
+        acousticSettings = _settings;
 
         return true;
     }
 
     /// <summary>
     /// Basic check for whether an audio entity can be applied effects such as reverb.
+    /// Does not take client settings into account.
     /// </summary>
     [PublicAPI]
-    public bool CanAudioBePostProcessed(Entity<AudioComponent> audio, in TransformComponent xForm)
+    public bool CanAudioBePostProcessed(Entity<AudioComponent> audio)
     {
         if (TerminatingOrDeleted(audio))
             return false;
@@ -197,6 +249,10 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
         if (audio.Comp.Global || audio.Comp.State == AudioState.Stopped)
             return false;
 
+        var fileName = audio.Comp.FileName;
+        if (_blacklist.Any(blacklist => fileName.Contains(blacklist)))
+            return false;
+
         // var distance = GetAudioDistance(_clientEnt, audio, xForm);
         return true;
     }
@@ -204,11 +260,8 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     /// <summary>
     /// Cast, get, and process the obtained <see cref="AcousticRayResults"/>.
     /// </summary>
-    private void ProcessAcoustics(Entity<AudioComponent> audioEnt, AcousticSettingsComponent? settings = null)
+    private void ProcessAcoustics(Entity<AudioComponent> audioEnt, AcousticSettingsComponent settings)
     {
-        if (!_clientEnt.IsValid() || !_acousticSettingsQuery.Resolve(_clientEnt, ref settings))
-            return;
-
         // cast rays to get required data
         if (!TryCastAndGetEnvironmentAcousticData(
                 in _clientEnt,
@@ -217,6 +270,7 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
                 out var acousticResults,
                 settings))
         {
+            TryProcessPressureFilter(audioEnt, (_clientEnt, _atmosData), settings);
             return;
         }
 
@@ -224,48 +278,192 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
         ProcessReverbFilter(in audioEnt, in settings, in acousticResults);
 
         // these filter(s) requires no raycasting
-        TryProcessPressureFilter(audioEnt, _clientEnt, settings);
+        TryProcessPressureFilter(audioEnt, (_clientEnt, _atmosData), settings);
     }
 
-    private float GetAudioDistance(EntityUid listenerUid, Entity<AudioComponent> audio)
+    private void OnAcousticEnableChanged(bool acousticEnable)
     {
-        var audioXForm = Transform(audio);
-        return GetAudioDistance(listenerUid, audio, audioXForm);
+        _acousticEnabled = acousticEnable;
+
+        if (acousticEnable) Startup(); else Cleanup();
     }
 
-    private float GetAudioDistance(EntityUid listenerUid, Entity<AudioComponent> audio, TransformComponent audioXForm)
+    private void OnAcousticEnableLowPressureChanged(bool lowPressureEnable)
     {
-        Vector2 audioPos;
-        Vector2 clientPos;
-        // if ((audio.Comp.Flags & AudioFlags.GridAudio) != 0x0)
-        // {
-        //     audioPos = audioXForm.LocalPosition;
-        //     // Log.Info($"grid audio pos {audioPos}");
-        //     clientPos = _mapSystem.GetGridPosition(listenerUid);
-        // }
-        // else
-        // {
-        //     audioPos = _transformSystem.GetWorldPosition(audioXForm);
-        //     // Log.Info($"world audio pos {audioPos}");
-        //     clientPos = Transform(listenerUid).LocalPosition;
-        //     var matrix = _transformSystem.GetInvWorldMatrix(listenerUid);
-        //     audioPos = Vector2.Transform(audioPos, matrix);
-        // }
-        audioPos = _transformSystem.GetWorldPosition(audio);
-        clientPos = _transformSystem.GetWorldPosition(listenerUid);
+        _acousticEnabledLowPressureFilter = lowPressureEnable;
 
-        // check distance!
-        var delta = audioPos - clientPos;
-        var distance = delta.Length();
-        return _audioSystem.GetAudioDistance(distance);
+        if (lowPressureEnable) StartupLowPressureFilter(); else CleanupLowPressureFilter();
     }
 
     /// <summary>
-    /// Normalize the input value with a provided max value,  and clamp between -1f and 1f, by default.
+    /// Starts the AdvancedAcoustics system, ensuring references are cached
+    /// and essential components are given.
     /// </summary>
-    public static float NormalizeToPercentage(float value, float maxValue, float minClamp = -1f, float maxClamp = 1f)
+    private void Startup()
     {
-        return Math.Clamp(value / maxValue, minClamp, maxClamp);
+        if (_clientEnt.IsValid())
+            Startup(_clientEnt);
+    }
+
+    /// <summary>
+    /// Starts the AdvancedAcoustics system, ensuring references are cached
+    /// and essential components are given.
+    /// </summary>
+    private void Startup(EntityUid clientEnt)
+    {
+        if (!_acousticEnabled)
+            return;
+
+        _clientEnt = clientEnt;
+        _settings = null; // clear old resolved settings just incase
+
+        EnsureComp<AcousticSettingsComponent>(_clientEnt);
+
+        if (!_acousticSettingsQuery.Resolve(_clientEnt, ref _settings))
+            return;
+
+        _reverbPresets = _settings.ReverbPresets;
+
+        StartupLowPressureFilter(in _settings);
+    }
+
+    /// <summary>
+    /// Starts the AdvancedAcoustics low pressure system, ensuring references are cached
+    /// and essential components are given.
+    ///
+    /// Importantly, it raises a network event to ask the server to ensure the AtmosData component
+    /// exists on its side as well, since atmospheric data is serverside.
+    /// </summary>
+    private void StartupLowPressureFilter()
+    {
+        if (!_acousticSettingsQuery.Resolve(_clientEnt, ref _settings))
+            return;
+
+        StartupLowPressureFilter(in _settings);
+    }
+
+    /// <summary>
+    /// Starts the AdvancedAcoustics low pressure system, ensuring references are cached
+    /// and essential components are given.
+    ///
+    /// Importantly, it raises a network event to ask the server to ensure the AtmosData component
+    /// exists on its side as well, since atmospheric data is serverside.
+    /// </summary>
+    private void StartupLowPressureFilter(in AcousticSettingsComponent settings)
+    {
+        if (!_acousticEnabled
+            || !_acousticEnabledLowPressureFilter
+            || !TryGetNetEntity(_clientEnt, out var netEnt)
+            || !netEnt.HasValue)
+        {
+            return;
+        }
+
+        _atmosData = null; // clear old resolved atmosdata just incase
+
+        EnsureComp<AtmosDataComponent>(_clientEnt);
+        _atmosDataQuery.Resolve(_clientEnt, ref _atmosData);
+            _pressurePresets = settings.PressurePresets;
+
+        // send an event to add the atmosdata component on the server
+        if (_clientNetManager.IsConnected)
+            RaiseNetworkEvent(new RequestAtmosDataComponentEvent(netEnt.Value));
+    }
+
+    /// <summary>
+    /// Cleans up AdvancedAcousticSystem, ensuring it and all features are wiped
+    /// and unecessary components are removed.
+    /// </summary>
+    private void Cleanup()
+    {
+        if (!_clientEnt.IsValid())
+            return;
+
+        _settings = null;
+
+        // we must cleanup any enabled features first before we remove the
+        // core settings.
+        CleanupLowPressureFilter();
+
+        // now we can remove the core settings
+        if (_acousticSettingsQuery.TryComp(_clientEnt, out var settings)
+            && !settings.Deleted && settings.LifeStage < ComponentLifeStage.Running)
+        {
+            RemComp<AcousticSettingsComponent>(_clientEnt);
+        }
+
+        // clientEnt is kill
+        _clientEnt = EntityUid.Invalid;
+    }
+
+    /// <summary>
+    /// Cleans up AdvancedAcousticSystem's low pressure feature.
+    /// </summary>
+    private void CleanupLowPressureFilter()
+    {
+        if (_acousticEnabledLowPressureFilter
+            || !TryGetNetEntity(_clientEnt, out var netEnt)
+            || !netEnt.HasValue)
+        {
+            return;
+        }
+        _atmosData = null;
+
+        if (_atmosDataQuery.HasComp(_clientEnt))
+            RemComp<AtmosDataComponent>(_clientEnt);
+
+        // send an event to remove the atmosdata component on the server, too.
+        if (_clientNetManager.IsConnected)
+            RaiseNetworkEvent(new RequestAtmosDataComponentEvent(netEnt.Value, remove: true));
+    }
+
+    /// <summary>
+    /// Normalize and clamps the input value by minValue and maxValue.
+    /// </summary>
+    public static float NormalizeToPercentage(float value, float minValue = 0f, float maxValue = 1f)
+    {
+        // prevent division by zero, should min/max be the same. unlikely but whatever.
+        if (Math.Abs(maxValue - minValue) < float.Epsilon)
+            return 0f;
+
+        var normalized = (value - minValue) / (maxValue - minValue) * maxValue;
+
+        return Math.Clamp(normalized, minValue, maxValue);
+    }
+
+    /// <summary>
+    /// Given a value and a value/audiopreset list, return the audio preset that is closest to our value.
+    /// </summary>
+    [PublicAPI]
+    public static ProtoId<AudioPresetPrototype> GetPresetClosestToValue(
+        float value,
+        SortedList<float, ProtoId<AudioPresetPrototype>> presetList
+    )
+    {
+        var keys = presetList.Keys;
+        var index = keys.ToList().BinarySearch(value);
+
+        // our value was found exactly in the list so just take it i guess.
+        if (index >= 0)
+            return presetList.GetValueAtIndex(index);
+
+        // invert the bits to get our insertion point
+        index = ~index;
+        var lowerIndex = index - 1;
+        var upperIndex = index;
+
+        // edge cases
+        if (upperIndex == 0) // magnitude is smaller than the first element of our list
+            return presetList.GetValueAtIndex(upperIndex);
+        else if (lowerIndex == presetList.Count - 1) // magnitude is bigger than the last element of our list
+            return presetList.GetValueAtIndex(lowerIndex);
+
+        // return the value of whatever is closest to our magnitude
+        var lowerDiff = MathF.Abs(value - keys[lowerIndex]);
+        var upperDiff = MathF.Abs(value - keys[upperIndex]);
+        return (lowerDiff <= upperDiff)
+            ? presetList.GetValueAtIndex(lowerIndex)
+            : presetList.GetValueAtIndex(upperIndex);
     }
 
     /// <summary>
@@ -274,6 +472,8 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     public struct AcousticRayResults
     {
         public float TotalAbsorption;
+        public float TotalReflection;
+        public float TotalTransmission;
         public int TotalBounces;
         public int TotalEscapes;
         public float TotalRange;

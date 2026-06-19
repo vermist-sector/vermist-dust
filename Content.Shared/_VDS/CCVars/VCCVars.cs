@@ -61,4 +61,11 @@ public sealed class VCCVars
     public static readonly CVarDef<float> AcousticLowPressureMinimumVolume =
         CVarDef.Create("vds.acoustics.low_pressure_filter.minimum_volume", 0.4f, CVar.ARCHIVE | CVar.CLIENTONLY);
 
+    /// <summary>
+    /// List of strings.
+    /// Matches anywhere, so "/Music/" or "adminhelp.ogg" will match anywhere in the sound's path/file
+    /// </summary>
+    public static readonly CVarDef<List<string>> AcousticAudioStringBlacklist =
+        CVarDef.Create("vds.acoustics.blacklist", new List<string> {"/Music/", "/Lobby/", "/Expedition/", "adminhelp.ogg"}, CVar.SERVER);
+
 }

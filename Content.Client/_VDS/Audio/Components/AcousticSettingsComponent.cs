@@ -1,6 +1,4 @@
-using System.Numerics;
 using Robust.Shared.Audio;
-using Robust.Shared.Audio.Effects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._VDS.Audio.Components;
@@ -14,7 +12,8 @@ namespace Content.Client._VDS.Audio.Components;
 public sealed partial class AcousticSettingsComponent : Component
 {
     /// <summary>
-    /// A list of magnitudes and what <see cref="AudioPresetPrototype"/> to use alongside it.
+    /// A list of magnitudes and what <see cref="AudioPresetPrototype"/> to use alongside it, for reverb effects
+    /// Ranked by how large and furnished the room is, taking material absorption into account.
     /// </summary>
     [DataField, ViewVariables]
     public SortedList<float, ProtoId<AudioPresetPrototype>> ReverbPresets = new()
@@ -30,32 +29,40 @@ public sealed partial class AcousticSettingsComponent : Component
     };
 
     /// <summary>
-    /// A list of magnitudes and what <see cref="AudioPresetPrototype"/> to use alongside it.
-    /// </summary>
-    // [DataField, ViewVariables]
-    // public SortedList<float, ProtoId<AudioPresetPrototype>> PressurePresets = new()
-    // {
-    //     { 10f, "SpaceStationCupboard" },
-    // };
-
-    /// <summary>
-    ///
+    /// A list of magnitudes and what <see cref="AudioPresetPrototype"/> to use alongside it, for pressure effects.
+    /// Ranked by current gas pressure, only applies in gas pressures below the highest value.
     /// </summary>
     [DataField, ViewVariables]
-    public ProtoId<AudioPresetPrototype> TestPreset = "Muffled";
+    public SortedList<float, ProtoId<AudioPresetPrototype>> PressurePresets = new()
+    {
+        { 20f, "VeryMuffled" },
+        { 50f, "Muffled" },
+    };
+
+    /// <summary>
+    /// When we will next update ongoing sound effects.
+    /// </summary>
+    [DataField]
+    public TimeSpan NextCheck = TimeSpan.Zero;
+
+    /// <summary>
+    /// How often we check for ongoing sounds to update.
+    /// </summary>
+    [DataField]
+    public TimeSpan CheckInterval = TimeSpan.FromSeconds(1);
 
     /// <summary>
     /// Based on the maximum posssible distance an acoustic raycast can travel,
     /// what percentage a single segment of it can it travel before it is considered 'escaped' and terminated early?
     /// </summary>
     [DataField, ViewVariables]
-    public float EscapeDistancePercentage = 0.35f;
+    public float EscapeDistancePercentage = 0.30f;
 
     /// <summary>
     /// We will never penalize our acoustic data below this percentage.
     /// </summary>
     [DataField, ViewVariables]
-    public float MaxmimumEscapePenalty = 0.2f;
+    public float MaxmimumEscapePenalty = 0.15f;
 
     /// <summary>
     /// Penalize the all of the acoustic data by this percentage if the client is standing in
@@ -69,7 +76,7 @@ public sealed partial class AcousticSettingsComponent : Component
     /// Note that this is applied both clock-wise and counter-clockwise.
     /// </summary>
     [DataField, ViewVariables]
-    public float DirectionRandomOffset = 0.5f;
+    public float DirectionRandomOffset = 0.4f;
 
     /// <summary>
     /// How much blending we do via lerp for our previous and current average amplitude values.

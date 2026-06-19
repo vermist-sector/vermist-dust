@@ -2,11 +2,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Client._VDS.Audio.Components;
 using Content.Shared._VDS.Audio.Components;
+using Content.Shared._VDS.CCVars;
 using Content.Shared._VDS.Physics;
 using Content.Shared.Coordinates;
 using Content.Shared.Physics;
 using JetBrains.Annotations;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Random;
 
 namespace Content.Client._VDS.Audio;
 
@@ -29,6 +31,24 @@ public sealed partial class AdvancedAcousticsSystem
         Direction.South.ToAngle(),
         Direction.East.ToAngle(),
     ];
+
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly ReflectiveRaycastSystem _reflectiveRaycast = default!;
+
+    private void InitializeAcousticRaycasts()
+    {
+        _configurationManager.OnValueChanged(
+            VCCVars.AcousticHighResolution,
+            x => _calculatedDirections = GetEffectiveDirections(x),
+            invokeImmediately: true
+        );
+
+        _configurationManager.OnValueChanged(
+            VCCVars.AcousticReflectionCount,
+            x => _acousticMaxReflections = x,
+            invokeImmediately: true
+        );
+    }
 
     /// <summary>
     /// Attempts to cast and gather environmental <see cref="AcousticRayResults"/> around <paramref name="originEnt"/>.
@@ -161,6 +181,7 @@ public sealed partial class AdvancedAcousticsSystem
         ref ReflectiveRayState state)
     {
         var results = new AcousticRayResults();
+        var energy = 1f;
         for (var bounce = 0; bounce <= maxBounces; bounce++)
         {
             /*
@@ -172,6 +193,7 @@ public sealed partial class AdvancedAcousticsSystem
             */
             var (probeResult, pathResults) = _reflectiveRaycast.CastAndUpdateReflectiveRayStateRef(ref state);
 
+            energy *= 1f - NormalizeToPercentage(state.CurrentSegmentDistance, 0f, state.MaxRange) / state.MaxRange;
             results.TotalRange += state.CurrentSegmentDistance;
             if (probeResult.Hit)
             {
@@ -188,19 +210,25 @@ public sealed partial class AdvancedAcousticsSystem
                         continue;
 
                     // TODO: more component data can be gathered here in the future
-                    results.TotalAbsorption += GetAcousticAbsorption(result, in originEnt, in comp, in settings);
+                    var absorptionResults = GetAcousticAbsorption(result, energy, in originEnt, in comp, in settings);
+
+                    results.TotalAbsorption += absorptionResults.Absorption;
+                    results.TotalReflection += absorptionResults.Reflection;
+                    results.TotalTransmission += absorptionResults.Transmission;
                 }
             }
 
             // this ray is long enough to be considered in an open area and now shall be ignored
-            if (state.CurrentSegmentDistance >= state.MaxRange * settings.EscapeDistancePercentage)
+            if (state.CurrentSegmentDistance >= state.MaxRange * settings.EscapeDistancePercentage
+            )
             {
                 results.TotalEscapes++;
                 break;
             }
 
             // expended our range budget, break the loop
-            if (results.TotalRange >= state.MaxRange)
+            if (results.TotalRange >= state.MaxRange
+               || energy < 0.01f)
                 break;
         }
 
@@ -210,8 +238,9 @@ public sealed partial class AdvancedAcousticsSystem
     /// <summary>
     /// Gets an absorption percentage, scaled by distance.
     /// </summary>
-    private float GetAcousticAbsorption(
+    private AcousticMaterialProperties GetAcousticAbsorption(
         RayHit result,
+        float energy,
         in EntityUid originEnt,
         in AcousticDataComponent comp,
         in AcousticSettingsComponent settings)
@@ -221,12 +250,38 @@ public sealed partial class AdvancedAcousticsSystem
             originEnt.ToCoordinates(),
             out var distance))
         {
-            return 0f;
+            return default;
         }
-        var normalized = (25f - Math.Clamp(distance, 5f, 25f)) / (25f - 5f);
+        // var minDist = 1f;
+        // var maxDist = settings.;
+        // var amplitude = minDist / MathF.Max(distance, minDist);
+        // var amplitudeMax = minDist / maxDist;
 
+
+        // // evergy lost to distance (0 = close, 1 = far)
+        // var distanceLoss = (1f - amplitude) / (1f - amplitudeMax);
+        // Log.Info($"loss {distanceLoss}");
+        // var energyRemaining = 1f - distanceLoss;
+        // Log.Info($"remains {energyRemaining}");
+
+        var materialAbsorption = comp.Absorption;
+        var materialTransmission = comp.Transmission;
+        var materialReflectivity = comp.Reflectivity;
+        var baseReflection = MathF.Max(1f - materialAbsorption - materialTransmission, 0f);
+        var materialReflection = baseReflection * materialReflectivity;
+
+        return new AcousticMaterialProperties
+        {
+            Absorption = energy * materialAbsorption,
+            Reflection = energy * materialReflection,
+            Transmission = energy * materialTransmission
+        };
+
+        // var normalized = NormalizeToPercentage(distance, minClamp: 1f, maxClamp: 25f);
+        // Log.Info($"{normalized}");
+        // Log.Info($"loggy = {MathF.Log(normalized + 1f) * 2f}");
         // Log.Info($"abosrb rfays :{MathF.Log(normalized + 1f) * 2f}");
-        return MathF.Log(normalized + 1f) * 2f;
+        // return MathF.Log10(normalized + 1f);
     }
 
     /// <summary>
@@ -254,5 +309,26 @@ public sealed partial class AdvancedAcousticsSystem
             Direction.South.ToAngle(),
             Direction.East.ToAngle(),
         ];
+    }
+    public struct AcousticMaterialProperties
+    {
+        /// <summary>
+        /// Energy absorbed by the material (lost as heat). [0, 1]
+        /// </summary>
+        /// <remarks>
+        /// We don't actually apply heat to anything but could you imagine catching somebody on fire
+        /// with sound alone
+        /// </remarks>
+        public float Absorption;
+
+        /// <summary>
+        /// Energy reflected back from the material (reverb contribution). [0, inf] can exceed 1 for highly reflective surface.
+        /// </summary>
+        public float Reflection;
+
+        /// <summary>
+        /// Energy transmitted through the material. [0, 1]
+        /// </summary>
+        public float Transmission;
     }
 }
