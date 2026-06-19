@@ -48,7 +48,9 @@
       amount: 1
   - type: TrayScanReveal
   - type: AcousticData # VDS
-    absorption: 12
+    absorption: 0.15
+    transmission: 0.99
+    reflectivity: 0.98
 
 - type: entity
   id: Carpet

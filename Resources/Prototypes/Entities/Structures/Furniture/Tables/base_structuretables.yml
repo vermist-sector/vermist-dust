@@ -42,7 +42,9 @@
     - ForceFixRotations
   - type: ThrownItemImmune # imp
   - type: AcousticData # VDS
-    absorption: 0.5
+    absorption: 0.035
+    transmission: 0.95
+    reflectivity: 1
 
 - type: entity
   id: CounterBase
@@ -62,4 +64,6 @@
         layer:
         - TableLayer
   - type: AcousticData # VDS
-    absorption: 0.8
+    absorption: 0.055
+    transmission: 0.90
+    reflectivity: 0.99

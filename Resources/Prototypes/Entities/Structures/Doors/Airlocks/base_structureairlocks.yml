@@ -184,7 +184,9 @@
     - WirePanels
     - Networking
   - type: AcousticData # VDS
-    absorption: 0.1
+    absorption: 0.15
+    transmission: 0.003
+    reflectivity: 1
     reflectRay: true
   placement:
     mode: SnapgridCenter

@@ -59,7 +59,8 @@
     priority: 1
   - type: TooShortForUIBlacklist #imp
   - type: AcousticData # VDS
-    absorption: 10
+    absorption: 0.05
+    transmission: 1
   - type: Damageable
     damageContainer: StructuralInorganic # The pot. Not the plant. Or is it plastic?
   - type: SecretStash

@@ -1,8 +1,10 @@
+# See: https://opentk.net/api/OpenTK.Audio.OpenAL.ReverbProperties.html
+
 - type: audioPreset
   id: Muffled
   density: 0.9000
   diffusion: 0.0500
-  gain: 1.0000
+  gain: 1.000
   gainHf: 0.0450
   gainLf: 1.0000
   decayTime: 0.1000
@@ -20,6 +22,32 @@
   modulationDepth: 0.9850
   airAbsorptionGainHf: 0.8920
   hfReference: 2500.0000
+  lfReference: 20.0000
+  roomRolloffFactor: 10.0000
+  decayHfLimit: 1
+
+- type: audioPreset
+  id: VeryMuffled
+  density: 0.8000
+  diffusion: 0.0400
+  gain: 1.000
+  gainHf: 0.0350
+  gainLf: 1.0000
+  decayTime: 0.1000
+  decayHfRatio: 2.0000
+  decayLfRatio: 0.1500
+  reflectionsGain: 3.1000
+  reflectionsDelay: 0.0000
+  reflectionsPan: 0,0,0
+  lateReverbGain: 0.7500
+  lateReverbDelay: 0.0000
+  lateReverbPan: 0,0,0
+  echoTime: 0.0750
+  echoDepth: 0.5000
+  modulationTime: 0.0400
+  modulationDepth: 0.9950
+  airAbsorptionGainHf: 0.8920
+  hfReference: 2200.0000
   lfReference: 20.0000
   roomRolloffFactor: 10.0000
   decayHfLimit: 1

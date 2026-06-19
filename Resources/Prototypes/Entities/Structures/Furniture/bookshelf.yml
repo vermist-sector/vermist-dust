@@ -102,7 +102,9 @@
     node: bookshelf
   - type: BlockWeather
   - type: AcousticData # VDS
-    absorption: 1
+    absorption: 0.2
+    transmission: 0.5
+    reflectivity: 0.95
     reflectRay: true
   - type: ItemSlots #Imp change start
   - type: PaperLabel
@@ -186,5 +188,7 @@
     node: bookshelf
   - type: BlockWeather
   - type: AcousticData # VDS
-    absorption: 2
+    absorption: 0.25
+    transmission: 0.55
+    reflectivity: 0.94
     reflectRay: true

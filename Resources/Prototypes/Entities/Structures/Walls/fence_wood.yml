@@ -56,7 +56,9 @@
     delay: 5.0
   - type: Appearance
   - type: AcousticData # VDS
-    absorption: 0.8
+    absorption: 0.05
+    transmission: 0.85
+    reflectivity: 0.98
     reflectRay: true
 
 - type: entity

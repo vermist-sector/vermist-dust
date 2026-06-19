@@ -99,6 +99,8 @@
   - type: BlockWeather
   - type: AcousticData # VDS
     absorption: 0.1
+    transmission: 0.1
+    reflectivity: 1.1
     reflectRay: true
 
 - type: entity
@@ -223,7 +225,9 @@
   - type: StaticPrice
     price: 15
   - type: AcousticData # VDS
-    absorption: 0.1
+    absorption: 0.05
+    transmission: 0.05
+    reflectivity: 1.1
     reflectRay: true
 
 - type: entity

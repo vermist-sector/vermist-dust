@@ -25,7 +25,8 @@
         layer:
         - MachineLayer
   - type: AcousticData # VDS
-    absorption: 10
+    absorption: 0.08
+    transmission: 0.98
 
 - type: entity
   parent: [BaseWrappedParcel, BaseStructureDynamic]
@@ -54,4 +55,5 @@
         layer:
         - MachineLayer
   - type: AcousticData # VDS
-    absorption: 15
+    absorption: 0.095
+    transmission: 0.95

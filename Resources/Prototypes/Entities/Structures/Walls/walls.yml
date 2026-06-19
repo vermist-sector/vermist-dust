@@ -57,6 +57,7 @@
   - type: SunShadowCast
   - type: AcousticData # VDS
     absorption: 0.1
+    transmission: 0.00005
     reflectRay: true
 
 
@@ -1316,7 +1317,9 @@
     key: woods
     base: wood
   - type: AcousticData # VDS. wood absorb more!
-    absorption: 1
+    absorption: 0.15
+    transmission: 0.005
+    reflectivity: 0.98
     reflectRay: true
 
 - type: entity
@@ -1368,7 +1371,9 @@
     graph: WebStructures
     node: wall
   - type: AcousticData # VDS. web sticky
-    absorption: 1
+    absorption: 0.15
+    transmission: 0.008
+    reflectivity: 0.99
     reflectRay: true
 
 

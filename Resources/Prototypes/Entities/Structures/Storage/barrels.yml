@@ -51,7 +51,9 @@
   - type: StaticPrice
     price: 600 # imp edit, plastic more spensive than steel
   - type: AcousticData # VDS
-    absorption: -1
+    absorption: 0.005
+    transmission: 0.95
+    reflectivity: 1.1
     reflectRay: true
 
 - type: entity

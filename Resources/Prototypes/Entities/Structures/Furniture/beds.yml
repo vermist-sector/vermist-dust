@@ -63,7 +63,8 @@
   - type: Anchorable
   - type: Pullable
   - type: AcousticData # VDS
-    absorption: 0.6
+    absorption: 0.05
+    transmission: 0.95
 
 
 - type: entity

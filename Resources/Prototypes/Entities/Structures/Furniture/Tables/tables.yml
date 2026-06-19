@@ -56,7 +56,8 @@
     node: TableFrame
   - type: ThrownItemImmune # imp
   - type: AcousticData # VDS
-    absorption: 0.2
+    absorption: 0.005
+    transmission: 0.99
 
 - type: entity
   id: CounterWoodFrame
@@ -113,7 +114,9 @@
     graph: Table
     node: CounterWoodFrame
   - type: AcousticData # VDS
-    absorption: 0.3
+    absorption: 0.009
+    transmission: 0.99
+    reflectivity: 0.995
 
 - type: entity
   id: CounterMetalFrame
@@ -206,6 +209,10 @@
   - type: Tag # goob edit
     tags:
     - Table
+  - type: AcousticData # VDS
+    absorption: 0.055
+    transmission: 0.95
+    reflectivity: 0.995
 
 - type: entity
   id: TableReinforced
@@ -256,6 +263,10 @@
   - type: Tag # imp edit
     tags:
     - Table
+  - type: AcousticData # VDS
+    absorption: 0.04
+    transmission: 0.88
+    reflectivity: 1.01
 
 - type: entity
   id: TableGlass
@@ -313,6 +324,10 @@
   - type: Tag # imp edit
     tags:
     - Table
+  - type: AcousticData # VDS
+    absorption: 0.02
+    transmission: 0.9
+    reflectivity: 1.05
 
 - type: entity
   id: TableCard
@@ -368,6 +383,10 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepTile
+  - type: AcousticData # VDS
+    absorption: 0.085
+    transmission: 0.95
+    reflectivity: 0.99
 
 - type: entity
   id: TableReinforcedGlass
@@ -428,6 +447,10 @@
   - type: Tag # imp edit
     tags:
     - Table
+  - type: AcousticData # VDS
+    absorption: 0.04
+    transmission: 0.85
+    reflectivity: 1.08
 
 - type: entity
   id: TablePlasmaGlass
@@ -488,6 +511,10 @@
   - type: Tag # imp edit
     tags:
     - Table
+  - type: AcousticData # VDS
+    absorption: 0.08
+    transmission: 0.85
+    reflectivity: 1.1
 
 - type: entity
   id: TableBrass
@@ -534,6 +561,10 @@
   - type: Tag # imp edit
     tags:
     - Table
+  - type: AcousticData # VDS
+    absorption: 0.085
+    transmission: 0.85
+    reflectivity: 1.15
 
 - type: entity
   id: TableWood
@@ -585,7 +616,9 @@
     footstepSoundCollection:
       collection: FootstepWood
   - type: AcousticData # VDS
-    absorption: 0.5
+    absorption: 0.095
+    transmission: 0.9
+    reflectivity: 0.995
 
 - type: entity
   id: TableCarpet
@@ -640,7 +673,9 @@
     footstepSoundCollection:
       collection: FootstepCarpet
   - type: AcousticData # VDS
-    absorption: 0.8
+    absorption: 0.1
+    transmission: 0.85
+    reflectivity: 0.85
 
 - type: entity
   id: TableStone
@@ -671,6 +706,10 @@
   - type: Tag # imp edit
     tags:
     - Table
+  - type: AcousticData # VDS
+    absorption: 0.025
+    transmission: 0.85
+    reflectivity: 1.15
 
 - type: entity
   id: TableWeb
@@ -709,7 +748,9 @@
     tags:
     - Table
   - type: AcousticData # VDS
-    absorption: 1
+    absorption: 0.12
+    transmission: 0.85
+    reflectivity: 0.85
 
 - type: entity
   parent: TableBase
@@ -785,7 +826,9 @@
     footstepSoundCollection:
       collection: FootstepCarpet
   - type: AcousticData # VDS
-    absorption: 0.9
+    absorption: 0.12
+    transmission: 0.9
+    reflectivity: 0.85
 
 - type: entity
   id: TableFancyBlue
@@ -1034,7 +1077,9 @@
     footstepSoundCollection:
       collection: FootstepWood
   - type: AcousticData # VDS
-    absorption: 0.95
+    absorption: 0.09
+    transmission: 0.85
+    reflectivity: 0.98
 
 - type: entity
   id: TableCounterMetal
@@ -1080,3 +1125,7 @@
   - type: Construction
     graph: Table
     node: CounterMetal
+  - type: AcousticData # VDS
+    absorption: 0.09
+    transmission: 0.85
+    reflectivity: 1

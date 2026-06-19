@@ -117,7 +117,9 @@
           SeatUp: { state: disposal-up }
           SeatDown: { state: disposal-down }
   - type: AcousticData # VDS
-    absorption: 0.3
+    absorption: 0.02
+    transmission: 0.9
+    reflectivity: 1.05
 
 - type: entity
   parent: BaseToilet

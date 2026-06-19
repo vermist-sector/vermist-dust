@@ -108,7 +108,9 @@
         Blunt: 10
     staminaCost: 35
   - type: AcousticData # VDS
-    absorption: 0.4
+    absorption: 0.085
+    transmission: 0.9
+    reflectivity: 1.005
     reflectRay: true
   - type: ParcelWrapOverride # imp
     parcelPrototype: WrappedParcelLocker
@@ -317,5 +319,7 @@
     stateDoorClosed: door
   - type: LockVisuals
   - type: AcousticData # VDS
-    absorption: 0.5
+    absorption: 0.095
+    transmission: 0.85
+    reflectivity: 1.008
     reflectRay: true

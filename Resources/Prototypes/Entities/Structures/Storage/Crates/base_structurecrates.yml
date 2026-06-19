@@ -98,7 +98,8 @@
     parcelPrototype: WrappedParcelCrate
     wrapDelay: 2.0
   - type: AcousticData # VDS
-    absorption: 0.2
+    absorption: 0.05
+    transmission: 0.985
 
 - type: entity
   parent: CrateGeneric

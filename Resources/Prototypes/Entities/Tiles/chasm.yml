@@ -55,7 +55,9 @@
     unitsPerSecond: 10
     unitsDestroyedPerSecond: 10
   - type: AcousticData # VDS. the fucking chasm ate my sound
-    absorption: 30
+    absorption: 0.25
+    transmission: 1
+    reflectivity: 2.5
 
 - type: entity
   parent: FloorChasmEntity
