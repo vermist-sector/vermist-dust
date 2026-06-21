@@ -27,3 +27,15 @@
   background: /Textures/_VDS/LobbyScreens/greenspace.webp
   title: lobby-state-background-greenspace-title
   artist: lobby-state-background-greenspace-artist
+
+- type: lobbyBackground
+  id: MirrorImage
+  background: /Textures/_VDS/LobbyScreens/mirror_image.webp
+  title: lobby-state-background-mirror-image-title
+  artist: lobby-state-background-mirror-image-artist
+
+- type: lobbyBackground
+  id: FarlowInWinter
+  background: /Textures/_VDS/LobbyScreens/farlow_in_winter.webp
+  title: lobby-state-background-farlow-in-winter-title
+  artist: lobby-state-background-farlow-in-winter-artist
