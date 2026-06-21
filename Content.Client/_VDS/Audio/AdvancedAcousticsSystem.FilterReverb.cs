@@ -51,6 +51,7 @@ public sealed partial class AdvancedAcousticsSystem
         if (rayAmplitude > _reverbPresets.Keys[0])
         {
             var bestPreset = GetPresetClosestToValue(rayAmplitude, _reverbPresets);
+            settings.CachedReverbPreset = bestPreset;
             // Log.Debug($"preset: {bestPreset}");
             _audioEffectSystem.TryAddEffect(in audioEnt, in bestPreset);
         }

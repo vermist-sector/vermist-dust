@@ -58,6 +58,7 @@
   - type: AcousticData # VDS
     absorption: 0.1
     transmission: 0.00005
+    reflectivity: 1
     reflectRay: true
 
 
@@ -402,6 +403,11 @@
   - type: IconSmooth
     key: walls
     base: ice
+  - type: AcousticData # VDS
+    absorption: 0.05
+    transmission: 0.005
+    reflectivity: 1.1
+    reflectRay: true
 
 - type: entity
   parent: BaseWall
@@ -518,6 +524,11 @@
       damageModifierSet: StructuralMetallicStrong
     - type: RadiationBlocker
       resistance: 5
+    - type: AcousticData # VDS
+      absorption: 0.15
+      transmission: 0.00001
+      reflectivity: 0.95
+      reflectRay: true
 
 - type: entity
   parent: WallPlastitaniumIndestructible
@@ -657,6 +668,11 @@
         layer:
         - WallLayer
         density: 2000
+  - type: AcousticData # VDS
+    absorption: 0.12
+    transmission: 0.00004
+    reflectivity: 0.99
+    reflectRay: true
 
 - type: entity
   parent: WallReinforced
@@ -979,6 +995,11 @@
         layer:
         - WallLayer
         density: 2000
+  - type: AcousticData # VDS
+    absorption: 0.16
+    transmission: 0.00003
+    reflectivity: 0.99
+    reflectRay: true
 
 - type: entity
   parent: BaseWall

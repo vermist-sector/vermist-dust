@@ -50,8 +50,9 @@
   - type: StaticPrice
     price: 50
   - type: AcousticData # VDS
-    absorption: 0.01
-    transmission: 0.99
+    absorption: 0.015
+    transmission: 0.98
+    reflectivity: 1
 
 #Starts unanchored, cannot be rotated while anchored
 - type: entity
@@ -101,8 +102,10 @@
   - type: Transform
     anchored: true
   - type: AcousticData # VDS. smaller :-|
-    absorption: 0.009
-    transmission: 1
+    absorption: 0.01
+    transmission: 0.99
+    reflectivity: 1
+
 
 - type: entity
   name: chair
@@ -252,7 +255,8 @@
     price: 75
   - type: AcousticData # VDS. wood :-)
     absorption: 0.02
-    transmission: 0.99
+    transmission: 0.98
+    reflectivity: 0.99
 
 - type: entity
   name: ritual chair
@@ -367,6 +371,7 @@
   - type: AcousticData # VDS. web :-)
     absorption: 0.02
     transmission: 0.99
+    reflectivity: 0.98
 
 - type: entity
   parent: [SeatBase, BaseDeployFoldable]
@@ -513,6 +518,7 @@
   - type: AcousticData # VDS. wood (big) :-)
     absorption: 0.25
     transmission: 0.98
+    reflectivity: 0.98
 
 - type: entity
   parent: StoolBase

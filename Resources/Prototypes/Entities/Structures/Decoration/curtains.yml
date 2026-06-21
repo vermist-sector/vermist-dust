@@ -60,7 +60,7 @@
     arc: 360
   - type: AcousticData # VDS
     absorption: 0.3
-    transmission: 0.6
+    transmission: 0.7
     reflectivity: 0.98
 
 - type: entity

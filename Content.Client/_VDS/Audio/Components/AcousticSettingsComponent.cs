@@ -35,18 +35,26 @@ public sealed partial class AcousticSettingsComponent : Component
     [DataField, ViewVariables]
     public SortedList<float, ProtoId<AudioPresetPrototype>> PressurePresets = new()
     {
-        { 20f, "VeryMuffled" },
-        { 50f, "Muffled" },
+        { 70f, "Muffled" },
     };
 
+    [DataField, ViewVariables]
+    public ProtoId<AudioPresetPrototype>? CachedReverbPreset = null;
+
+    [DataField, ViewVariables]
+    public ProtoId<AudioPresetPrototype>? CachedPressurePreset = null;
+
+    [DataField, ViewVariables]
+    public float CachedPressureGain;
+
     /// <summary>
-    /// When we will next update ongoing sound effects.
+    /// The next time we raycast.
     /// </summary>
     [DataField]
     public TimeSpan NextCheck = TimeSpan.Zero;
 
     /// <summary>
-    /// How often we check for ongoing sounds to update.
+    /// How often we recalculate our environment with raycasting.
     /// </summary>
     [DataField]
     public TimeSpan CheckInterval = TimeSpan.FromSeconds(1);

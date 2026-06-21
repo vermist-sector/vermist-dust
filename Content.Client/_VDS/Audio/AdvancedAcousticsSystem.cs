@@ -62,7 +62,7 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     /// <summary>
     /// Collection of nearby audio entities.
     /// </summary>
-    private readonly HashSet<Entity<AudioComponent>> _nearbyAudioEntities = new();
+    private readonly HashSet<Entity<AudioComponent>> _audioEntities = new();
 
     private EntityQuery<AcousticDataComponent> _acousticQuery;
     private EntityQuery<AcousticSettingsComponent> _acousticSettingsQuery;
@@ -126,18 +126,26 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        var curTime = _timing.CurTime;
 
         if (!_acousticEnabled
             || !_clientEnt.IsValid()
-            || !_acousticSettingsQuery.Resolve(_clientEnt, ref _settings) || curTime < _settings.NextCheck)
+            || !_acousticSettingsQuery.Resolve(_clientEnt, ref _settings))
+        {
             return;
+        }
+
+        var curTime = _timing.CurTime;
+        if (curTime < _settings.NextCheck)
+        {
+            // we don't want to raycast all the time.
+            ProcessAndCacheAudioEntities();
+            return;
+        }
+
+        ProcessStartingAudioEntities();
+        ProcessCachedAudioEntities(_audioEntities);
 
         _settings.NextCheck = curTime + _settings.CheckInterval;
-        ProcessNearbyAudioEntities(Transform(_clientEnt).Coordinates, 20f);
     }
 
     private void OnMapInit(Entity<AcousticSettingsComponent> ent, ref MapInitEvent args)
@@ -167,18 +175,68 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
 
     private void OnParentChange(Entity<AudioComponent> audio, ref EntParentChangedMessage ev)
     {
-        TryProcessAcoustics(audio, ev.Transform);
+        ProcessAndCacheAudioEntities();
     }
 
-    private void ProcessNearbyAudioEntities(EntityCoordinates coords, float range)
+    private void ProcessStartingAudioEntities()
     {
-        _nearbyAudioEntities.Clear();
-        _lookup.GetEntitiesInRange<AudioComponent>(coords, range, _nearbyAudioEntities);
-        foreach (var audioEnt in _nearbyAudioEntities)
+        var entities = AllEntityQuery<AudioComponent>();
+        while(entities.MoveNext(out var uid, out var audio))
         {
-            var audioXform = Transform(audioEnt);
-            TryProcessAcoustics(audioEnt, audioXform);
+            if (audio.PlaybackPosition <= float.Epsilon + float.Epsilon)
+                TryProcessAcoustics((uid, audio));
         }
+    }
+
+    private void ProcessAndCacheAudioEntities()
+    {
+        var entities = AllEntityQuery<AudioComponent>();
+        while(entities.MoveNext(out var uid, out var audio))
+        {
+            if (_audioEntities.Contains((uid, audio)))
+                continue;
+
+            if (TryProcessCachedAcoustics((uid, audio)))
+            {
+                _audioEntities.Add((uid, audio));
+            }
+        }
+    }
+
+    private void ProcessCachedAudioEntities(HashSet<Entity<AudioComponent>> entities)
+    {
+        if (!entities.Any())
+            return;
+
+        foreach (var audio in entities)
+        {
+            if (!TryProcessCachedAcoustics(audio))
+            {
+                _audioEntities.Remove(audio);
+            }
+        }
+    }
+
+    private bool TryProcessCachedAcoustics(Entity<AudioComponent> audio)
+    {
+        if (!TryGetAndResolvePlayerAcousticSettings(_clientEnt, out var acousticSettings))
+            return false;
+
+        if (!acousticSettings.CachedReverbPreset.HasValue)
+            return false;
+
+        if (!CanAudioBePostProcessed((audio.Owner, audio.Comp)))
+            return false;
+
+        _audioEffectSystem.TryAddEffect(in audio, acousticSettings.CachedReverbPreset.Value);
+
+        if (_acousticEnabledLowPressureFilter && acousticSettings.CachedPressurePreset.HasValue)
+        {
+            _audioEffectSystem.TryAddEffect(in audio, acousticSettings.CachedPressurePreset.Value);
+            _audioSystem.SetVolume(audio, SharedAudioSystem.GainToVolume(acousticSettings.CachedPressureGain), audio.Comp);
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -186,7 +244,7 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     /// </summary>
     /// <returns>True if the audio and client are valid and the audio has been processed.</returns>
     [PublicAPI]
-    public bool TryProcessAcoustics(Entity<AudioComponent> audio, TransformComponent audioXform)
+    public bool TryProcessAcoustics(Entity<AudioComponent> audio)
     {
         if (!TryGetAndResolvePlayerAcousticSettings(_clientEnt, out var acousticSettings))
             return false;
@@ -195,6 +253,8 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
             return false;
 
         ProcessAcoustics(audio, acousticSettings);
+
+
         return true;
     }
 
@@ -376,6 +436,8 @@ public sealed partial class AdvancedAcousticsSystem : EntitySystem
     /// </summary>
     private void Cleanup()
     {
+        _audioEntities.Clear();
+
         if (!_clientEnt.IsValid())
             return;
 

@@ -51,7 +51,7 @@
     graph: Dresser
     node: dresser
   - type: AcousticData # VDS
-    absorption: 0.085
+    absorption: 0.1
     transmission: 0.85
     reflectivity: 0.98
 

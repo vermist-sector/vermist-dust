@@ -73,6 +73,7 @@
   - type: AcousticData # VDS
     absorption: 0.12
     transmission: 0.95
+    reflectivity: 1
   - type: ContainerContainer
     containers:
       board: !type:Container

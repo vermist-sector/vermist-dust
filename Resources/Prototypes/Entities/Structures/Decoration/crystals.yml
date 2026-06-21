@@ -77,9 +77,9 @@
 #            - !type:DoActsBehavior
 #              acts: [ "Destruction" ]
     - type: AcousticData # VDS
-      absorption: 0.05
+      absorption: 0.005
       transmission: 0.95
-      reflectivity: 1.35
+      reflectivity: 3
       reflectRay: true
 
 # imp start

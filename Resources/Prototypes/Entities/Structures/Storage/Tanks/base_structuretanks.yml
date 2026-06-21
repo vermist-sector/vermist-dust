@@ -73,7 +73,7 @@
   # imp edit end
   - type: AcousticData # VDS
     absorption: 0.1
-    transmission: 0.8
+    transmission: 0.7
     reflectivity: 1.005
     reflectRay: true
 

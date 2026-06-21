@@ -55,6 +55,7 @@
   - type: AcousticData # VDS
     absorption: 0.05
     transmission: 0.99
+    reflectivity: 0.99
 
 - type: entity
   id: PottedPlant0

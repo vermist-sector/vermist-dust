@@ -100,6 +100,7 @@
   - type: AcousticData # VDS
     absorption: 0.05
     transmission: 0.985
+    reflectivity: 1
 
 - type: entity
   parent: CrateGeneric

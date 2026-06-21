@@ -5,6 +5,7 @@ using Content.Shared._VDS.CCVars;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._VDS.Audio;
@@ -62,12 +63,29 @@ public sealed partial class AdvancedAcousticsSystem
         float pressure)
     {
         var pressurePreset = GetPresetClosestToValue(pressure, _pressurePresets);
+        settings.CachedPressurePreset = pressurePreset;
 
         // scale our gain based on our pressure
         var pressurePercent = NormalizeToPercentage(pressure, minValue: 0f, maxValue: 100f) / 100f;
 
-        var volumePercent = audioEnt.Comp.Params.Volume;
+        var gain = GetPressureGain(audioEnt, pressurePercent);
+        settings.CachedPressureGain = MathF.Max(float.Lerp(gain, settings.CachedPressureGain, 0.5f), 0.01f);
 
+        if (pressure < _pressurePresets.Keys.Max())
+        {
+            _audioEffectSystem.TryAddEffect(in audioEnt, in pressurePreset);
+            _audioSystem.SetVolume(audioEnt, SharedAudioSystem.GainToVolume(gain), audioEnt.Comp);
+        }
+        else
+        {
+            settings.CachedPressurePreset = null;
+        }
+
+        return;
+    }
+
+    private float GetPressureGain(Entity<AudioComponent> audioEnt, float pressurePercent)
+    {
         /* TODO: everything below sucks
             currently this does not store the audio's initial
             volume, which means ongoing volume will not return
@@ -76,6 +94,9 @@ public sealed partial class AdvancedAcousticsSystem
             right now it'll just restore it to a reasonable default...
          */
 
+        var minPercent = MathF.Max(pressurePercent, _acousticLowPressureMinimumVolume);
+
+        var volumePercent = audioEnt.Comp.Params.Volume;
         // this is incredibly jank and I feel bad.
         // but i hope to replace it with some sort caching system later.
         var fileName = audioEnt.Comp.FileName;
@@ -89,16 +110,9 @@ public sealed partial class AdvancedAcousticsSystem
         {
             sliderVolume = _masterVolume;
         }
-        volumePercent += sliderVolume;
-        
-        if (pressure < _pressurePresets.Keys.Max())
-        {
-            volumePercent *= MathF.Max(pressurePercent, _acousticLowPressureMinimumVolume);
-
-            _audioEffectSystem.TryAddEffect(in audioEnt, in pressurePreset);
-            _audioSystem.SetGain(audioEnt, volumePercent, audioEnt.Comp);
-        }
-
-        return;
+        volumePercent *= sliderVolume;
+        volumePercent *= minPercent;
+        Log.Debug($"vol {volumePercent}");
+        return volumePercent;
     }
 }

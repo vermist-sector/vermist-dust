@@ -264,9 +264,9 @@
     tags:
     - Table
   - type: AcousticData # VDS
-    absorption: 0.04
+    absorption: 0.07
     transmission: 0.88
-    reflectivity: 1.01
+    reflectivity: 1
 
 - type: entity
   id: TableGlass
@@ -325,7 +325,7 @@
     tags:
     - Table
   - type: AcousticData # VDS
-    absorption: 0.02
+    absorption: 0.05
     transmission: 0.9
     reflectivity: 1.05
 
@@ -384,8 +384,8 @@
     footstepSoundCollection:
       collection: FootstepTile
   - type: AcousticData # VDS
-    absorption: 0.085
-    transmission: 0.95
+    absorption: 0.1
+    transmission: 0.90
     reflectivity: 0.99
 
 - type: entity
@@ -448,9 +448,9 @@
     tags:
     - Table
   - type: AcousticData # VDS
-    absorption: 0.04
+    absorption: 0.1
     transmission: 0.85
-    reflectivity: 1.08
+    reflectivity: 1.02
 
 - type: entity
   id: TablePlasmaGlass
@@ -512,9 +512,9 @@
     tags:
     - Table
   - type: AcousticData # VDS
-    absorption: 0.08
-    transmission: 0.85
-    reflectivity: 1.1
+    absorption: 0.15
+    transmission: 0.7
+    reflectivity: 0.98
 
 - type: entity
   id: TableBrass
@@ -564,7 +564,7 @@
   - type: AcousticData # VDS
     absorption: 0.085
     transmission: 0.85
-    reflectivity: 1.15
+    reflectivity: 1.25
 
 - type: entity
   id: TableWood
@@ -616,7 +616,7 @@
     footstepSoundCollection:
       collection: FootstepWood
   - type: AcousticData # VDS
-    absorption: 0.095
+    absorption: 0.1
     transmission: 0.9
     reflectivity: 0.995
 
@@ -673,7 +673,7 @@
     footstepSoundCollection:
       collection: FootstepCarpet
   - type: AcousticData # VDS
-    absorption: 0.1
+    absorption: 0.15
     transmission: 0.85
     reflectivity: 0.85
 
@@ -826,8 +826,8 @@
     footstepSoundCollection:
       collection: FootstepCarpet
   - type: AcousticData # VDS
-    absorption: 0.12
-    transmission: 0.9
+    absorption: 0.15
+    transmission: 0.85
     reflectivity: 0.85
 
 - type: entity
@@ -1077,9 +1077,9 @@
     footstepSoundCollection:
       collection: FootstepWood
   - type: AcousticData # VDS
-    absorption: 0.09
-    transmission: 0.85
-    reflectivity: 0.98
+    absorption: 0.2
+    transmission: 0.7
+    reflectivity: 0.95
 
 - type: entity
   id: TableCounterMetal
@@ -1126,6 +1126,6 @@
     graph: Table
     node: CounterMetal
   - type: AcousticData # VDS
-    absorption: 0.09
-    transmission: 0.85
+    absorption: 0.18
+    transmission: 0.6
     reflectivity: 1
