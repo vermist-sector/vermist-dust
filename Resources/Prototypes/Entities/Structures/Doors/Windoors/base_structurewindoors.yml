@@ -176,7 +176,9 @@
     price: 150
   - type: PryUnpowered
   - type: AcousticData # VDS
-    absorption: 5
+    absorption: 0.1
+    transmission: 0.8
+    reflectivity: 1.05
     reflectRay: true
 
 - type: entity
@@ -252,6 +254,11 @@
     tags:
       - SecureWindoor
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
+  - type: AcousticData # VDS
+    absorption: 0.15
+    transmission: 0.2
+    reflectivity: 1
+    reflectRay: true
 
 
 #Plasma Windoors

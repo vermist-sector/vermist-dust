@@ -80,7 +80,9 @@
     delay: 2
     fx: EffectRCDDeconstruct2
   - type: AcousticData # VDS
-    absorption: 2
+    absorption: 0.03
+    transmission: 1 
+    reflectivity: 1.1
 
 - type: entity
   parent: BaseFenceMetal

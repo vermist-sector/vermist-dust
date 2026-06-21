@@ -184,7 +184,9 @@
     - WirePanels
     - Networking
   - type: AcousticData # VDS
-    absorption: 10
+    absorption: 0.2
+    transmission: 0.003
+    reflectivity: 0.98
     reflectRay: true
   placement:
     mode: SnapgridCenter
@@ -238,3 +240,8 @@
     tags:
       - GlassAirlock
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
+  - type: AcousticData # VDS
+    absorption: 0.15
+    transmission: 0.003
+    reflectivity: 1.005
+    reflectRay: true

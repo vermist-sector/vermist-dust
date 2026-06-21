@@ -43,7 +43,8 @@
         sound:
           collection: MetalBreak
   - type: AcousticData # VDS
-    absorption: 15
+    absorption: 0.08
+    transmission: 0.95
 
 - type: entity
   abstract: true

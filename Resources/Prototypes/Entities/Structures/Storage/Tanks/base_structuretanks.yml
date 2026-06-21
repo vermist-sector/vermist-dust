@@ -72,7 +72,9 @@
     solution: tank
   # imp edit end
   - type: AcousticData # VDS
-    absorption: 15
+    absorption: 0.1
+    transmission: 0.7
+    reflectivity: 1.005
     reflectRay: true
 
 # For highcap tanks
