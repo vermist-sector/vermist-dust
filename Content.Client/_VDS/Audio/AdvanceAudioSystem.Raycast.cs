@@ -12,7 +12,7 @@ using Robust.Shared.Random;
 
 namespace Content.Client._VDS.Audio;
 
-public sealed partial class AdvancedAcousticsSystem
+public sealed partial class AdvanceAudioSystem
 {
     /// <summary>
     /// Max amount of times single acoustic ray is allowed to bounce
@@ -38,24 +38,25 @@ public sealed partial class AdvancedAcousticsSystem
     private void InitializeAcousticRaycasts()
     {
         _configurationManager.OnValueChanged(
-            VCCVars.AcousticHighResolution,
+            VCCVars.AARaycastHighResolution,
             x => _calculatedDirections = GetEffectiveDirections(x),
             invokeImmediately: true
         );
 
         _configurationManager.OnValueChanged(
-            VCCVars.AcousticReflectionCount,
+            VCCVars.AARaycastReflectionCount,
             x => _acousticMaxReflections = x,
             invokeImmediately: true
         );
     }
+
+#region Casting
 
     /// <summary>
     /// Attempts to cast and gather environmental <see cref="AcousticRayResults"/> around <paramref name="originEnt"/>.
     /// <seealso cref="ReflectiveRaycastSystem"/>
     /// </summary>
     /// <param name="originEnt">The origin of our raycasts.</param>
-    /// <param name="maxRange">Maximum range of a ray.</param>
     /// <param name="maxBounces">How many times a ray is allowed to bounce before terminating early.</param>
     /// <param name="castDirections">What angles our rays will shoot out from.</param>
     /// <param name="acousticResults">A list of <see cref="AcousticRayResults"/>.</param>
@@ -66,9 +67,9 @@ public sealed partial class AdvancedAcousticsSystem
         in int maxBounces,
         in Angle[] castDirections,
         [NotNullWhen(true)] out List<AcousticRayResults>? acousticResults,
-        AcousticSettingsComponent? settings = null)
+        in AcousticSettingsComponent settings)
     {
-        if (_reverbPresets.Count == 0 || !_acousticSettingsQuery.Resolve(originEnt, ref settings))
+        if (_reverbPresets.Count == 0)
         {
             acousticResults = null;
             return false;
@@ -235,6 +236,8 @@ public sealed partial class AdvancedAcousticsSystem
         return results;
     }
 
+#endregion Casting
+
     /// <summary>
     /// Gets an absorption percentage, scaled by distance.
     /// </summary>
@@ -284,6 +287,8 @@ public sealed partial class AdvancedAcousticsSystem
         // return MathF.Log10(normalized + 1f);
     }
 
+#region Helpers
+
     /// <summary>
     /// Returns all four cardinal directions when <paramref name="highResolution"/> is false.
     /// Otherwise, returns all eight intercardinal and cardinal directions as listed in
@@ -310,6 +315,9 @@ public sealed partial class AdvancedAcousticsSystem
             Direction.East.ToAngle(),
         ];
     }
+
+#endregion Helpers
+
     public struct AcousticMaterialProperties
     {
         /// <summary>

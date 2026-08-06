@@ -79,18 +79,21 @@ public sealed partial class AudioTab : Control
         Control.AddOptionCheckBox(CCVars.BwoinkSoundEnabled, BwoinkSoundCheckBox);
 
         // VDS start
-        var acousticEnable = Control.AddOptionCheckBox(VCCVars.AcousticEnable, AcousticEnableCheckBox);
+        var acousticEnable = Control.AddOptionCheckBox(VCCVars.AdvanceAudioToggle, AcousticEnableCheckBox);
         acousticEnable.ImmediateValueChanged += UpdateAcousticButtons;
-        Control.AddOptionCheckBox(VCCVars.AcousticHighResolution, AcousticHighResolutionCheckBox);
+
+        Control.AddOptionCheckBox(VCCVars.AARaycastHighResolution, AcousticHighResolutionCheckBox);
         Control.AddOptionSlider(
-            VCCVars.AcousticReflectionCount,
+            VCCVars.AARaycastReflectionCount,
             SliderAcousticReflectionCount,
-            _cfg.GetCVar(VCCVars.AcousticReflectionCountMinimum),
-            _cfg.GetCVar(VCCVars.AcousticReflectionCountMaximum));
-        var acousticPressureEnable = Control.AddOptionCheckBox(VCCVars.AcousticEnableLowPressureFilter, AcousticEnableLowPressureFilterCheckBox);
+            _cfg.GetCVar(VCCVars.AARaycastReflectionCountMinimum),
+            _cfg.GetCVar(VCCVars.AARaycastReflectionCountMaximum));
+
+        var acousticPressureEnable = Control.AddOptionCheckBox(VCCVars.AAFilterPressureToggle, AcousticEnableLowPressureFilterCheckBox);
         acousticPressureEnable.ImmediateValueChanged += UpdateAcousticPressureFilterButtons;
+
         var pressureMinVolumeSlider = Control.AddOptionPercentSlider(
-            VCCVars.AcousticLowPressureMinimumVolume,
+            VCCVars.AAFilterPressureMinimumGain,
             SliderAcousticLowPressureMinimumVolume);
         pressureMinVolumeSlider.ImmediateValueChanged += OnAcousticLowPressureMinVolumeSliderChanged;
         // VDS end
@@ -103,10 +106,10 @@ public sealed partial class AudioTab : Control
         base.EnteredTree();
         _admin.AdminStatusUpdated += UpdateAdminButtonsVisibility;
         UpdateAdminButtonsVisibility();
-        UpdateAcousticButtons(_cfg.GetCVar(VCCVars.AcousticEnable)); // VDS
+        UpdateAcousticButtons(_cfg.GetCVar(VCCVars.AdvanceAudioToggle)); // VDS
         UpdateAcousticPressureFilterButtons(
-                _cfg.GetCVar(VCCVars.AcousticEnable)
-                && _cfg.GetCVar(VCCVars.AcousticEnableLowPressureFilter)); // VDS
+                _cfg.GetCVar(VCCVars.AdvanceAudioToggle)
+                && _cfg.GetCVar(VCCVars.AAFilterPressureToggle)); // VDS
     }
 
     protected override void ExitedTree()
