@@ -172,8 +172,8 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     {
         if (_settings is null)
         {
-            Log.Error(
-                $"Tried to start AcousticComponent for {ToPrettyString(ent)}, but {ToPrettyString(_clientEnt)} has no cached acoustic settings."
+            Log.Debug(
+                $"Tried to start AcousticSettingsComponent for {ToPrettyString(ent)}, but {ToPrettyString(_clientEnt)} has no cached acoustic settings. Is this a test?"
             );
             RemComp<AdvanceAudioComponent>(ent);
             return;
@@ -181,7 +181,7 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
 
         if (!TryComp<AudioComponent>(ent, out var audio))
         {
-            Log.Error($"Unable to get AudioComponent for {ToPrettyString(ent)}.");
+            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
             RemComp<AdvanceAudioComponent>(ent);
             return;
         }
@@ -553,7 +553,7 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
 
         if (!ResolvePlayerAcousticSettings(_clientEnt, ref _settings))
         {
-            Log.Debug($"Unable to obtain client entity {ToPrettyString(_clientEnt)} acoustic settings.");
+            Log.Debug($"Unable to obtain client entity {ToPrettyString(_clientEnt)} acoustic settings. Is this a test?");
             return;
         }
 
@@ -574,12 +574,6 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     {
         if (_settings is null)
             return;
-
-        // if (!TryGetAndResolvePlayerAcousticSettings(_clientEnt, out var settings))
-        // {
-        //     Log.Debug($"Unable to obtain client entity {ToPrettyString(_clientEnt)} acoustic settings.");
-        //     return;
-        // }
 
         StartupFilterPressureSettings(_settings);
     }
@@ -609,7 +603,7 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
 
         if (!ResolvePlayerAtmosData(_clientEnt, ref _atmosData))
         {
-            Log.Debug($"Unable to obtain client entity {ToPrettyString(_clientEnt)} acoustic settings.");
+            Log.Debug($"Unable to obtain client entity {ToPrettyString(_clientEnt)} acoustic settings. Is this a test?");
         }
     }
 

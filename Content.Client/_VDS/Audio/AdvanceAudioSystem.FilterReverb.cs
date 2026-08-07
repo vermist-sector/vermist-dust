@@ -51,8 +51,8 @@ public sealed partial class AdvanceAudioSystem
     {
         if (_settings is null)
         {
-            Log.Error(
-                $"Tried to start AcousticComponent for {ToPrettyString(ent)}, but {ToPrettyString(_clientEnt)} has no cached acoustic settings."
+            Log.Debug(
+                $"Tried to start AcousticSettingsComponent for {ToPrettyString(ent)}, but {ToPrettyString(_clientEnt)} has no cached acoustic settings. Is this a test?"
             );
             RemComp<AAReverbComponent>(ent);
             return;
@@ -60,7 +60,7 @@ public sealed partial class AdvanceAudioSystem
 
         if (!TryComp<AudioComponent>(ent, out var audio))
         {
-            Log.Error($"Unable to get AudioComponent for {ToPrettyString(ent)}.");
+            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
             return;
         }
 
@@ -152,7 +152,6 @@ public sealed partial class AdvanceAudioSystem
     {
         if (amplitude > _reverbPresets.Keys[0])
         {
-            Log.Debug($"preset: {reverbPreset}");
             _audioEffectSystem.TryAddEffect(audioEnt, in reverbPreset);
         }
     }
