@@ -123,7 +123,7 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
 
         // if _settings is null (handled elsewhere), that also means
         // every other required acoustic check (enabled, has a body, etc) has failed.
-        if (_settings is null)
+        if (_settings is null || !_advanceAudioEnabled)
         {
             return;
         }
@@ -256,7 +256,7 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     )
     {
         var (uid, advanceAudioComp, audioComp) = ent;
-        if (_settings is null || !IsAudioValid((uid, audioComp)))
+        if (!_advanceAudioEnabled || _settings is null || !IsAudioValid((uid, audioComp)))
             return;
 
         if (_aaFilterReverbEnabled)
@@ -368,7 +368,7 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         AAPressureComponent? aaPressureComp = null
     )
     {
-        if (!IsAudioValid((audioEnt.Owner, audioEnt.Comp2)))
+        if (!_advanceAudioEnabled || !IsAudioValid((audioEnt.Owner, audioEnt.Comp2)))
             return false;
 
         var (uid, advanceAudioComp, audioComp) = audioEnt;
@@ -395,6 +395,9 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     /// </summary>
     private void ProcessStartingAudioEntities()
     {
+        if (!_advanceAudioEnabled)
+            return;
+
         var entities = AllEntityQuery<AudioComponent>();
         while (entities.MoveNext(out var uid, out var audio))
         {
@@ -410,6 +413,9 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     /// </summary>
     private void ProcessAdvanceAudio()
     {
+        if (!_advanceAudioEnabled)
+            return;
+
         var entities = AllEntityQuery<AdvanceAudioComponent, AudioComponent>();
         while (entities.MoveNext(out var uid, out var advanceAudio, out var audio))
         {
@@ -424,6 +430,9 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     /// </summary>
     private bool TryUpdateEnvironmentalData()
     {
+        if (!_advanceAudioEnabled)
+            return false;
+
         if (_settings is null)
             return false;
 
