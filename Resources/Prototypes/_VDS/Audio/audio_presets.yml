@@ -1,25 +1,51 @@
 - type: audioPreset
   id: Muffled
-  density: 0.7500
-  diffusion: 0.3500
-  gain: 0.2200
-  gainHf: 0.2450
-  gainLf: 0.6500
-  decayTime: 0.1000
-  decayHfRatio: 1.5000
-  decayLfRatio: 0.5500
-  reflectionsGain: 1.5000
-  reflectionsDelay: 0.0000
+  density: 0.9850
+  diffusion: 1.0000
+  gain: 0.1200
+  gainHf: 0.0100
+  gainLf: 0.4000
+  decayTime: 0.1200
+  decayHfRatio: 0.1000
+  decayLfRatio: 1.0000
+  reflectionsGain: 0.0435
+  reflectionsDelay: 0.0010
   reflectionsPan: 0,0,0
-  lateReverbGain: 0.5500
+  lateReverbGain: 1.1000
   lateReverbDelay: 0.0000
   lateReverbPan: 0,0,0
-  echoTime: 0.0750
-  echoDepth: 0.5000
+  echoTime: 0.0800
+  echoDepth: 0.0000
   modulationTime: 0.0400
-  modulationDepth: 0.9850
+  modulationDepth: 0.2100
   airAbsorptionGainHf: 0.8920
-  hfReference: 8000.0000
+  hfReference: 5000.0000
   lfReference: 250.0000
-  roomRolloffFactor: 10.0000
+  roomRolloffFactor: 0.0000
   decayHfLimit: 1
+
+# - type: audioPreset
+#   id: Muted
+#   density: 0.0000
+#   diffusion: 0.0000
+#   gain: 0.0000
+#   gainHf: 0.0000
+#   gainLf: 0.0000
+#   decayTime: 0.1000
+#   decayHfRatio: 0.1000
+#   decayLfRatio: 0.1000
+#   reflectionsGain: 0.0000
+#   reflectionsDelay: 0.0000
+#   reflectionsPan: 0,0,0
+#   lateReverbGain: 0.0000
+#   lateReverbDelay: 0.0000
+#   lateReverbPan: 0,0,0
+#   echoTime: 0.0750
+#   echoDepth: 0.0000
+#   modulationTime: 0.0400
+#   modulationDepth: 0.0000
+#   airAbsorptionGainHf: 0.8920
+#   hfReference: 1000.0000
+#   lfReference: 20.0000
+#   roomRolloffFactor: 0.0000
+#   decayHfLimit: 0

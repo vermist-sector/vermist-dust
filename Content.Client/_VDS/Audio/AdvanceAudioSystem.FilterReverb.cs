@@ -11,8 +11,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._VDS.Audio;
 
-public sealed partial class AdvancedAcousticsSystem
+public sealed partial class AdvanceAudioSystem
 {
+    // Set by VCCVars
+    private bool _aaFilterReverbEnabled = true;
+
     /// <summary>
     /// Our previously recorded amplitude, for lerp purposes.
     /// </summary>
@@ -29,37 +32,131 @@ public sealed partial class AdvancedAcousticsSystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly TurfSystem _turfSystem = default!;
 
+    private EntityQuery<AAReverbComponent> _aaReverbQuery;
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<RoofComponent> _roofQuery;
     private EntityQuery<TransformComponent> _transformQuery;
 
     private void InitializeReverbEffects()
     {
+        _aaReverbQuery = GetEntityQuery<AAReverbComponent>();
         _gridQuery = GetEntityQuery<MapGridComponent>();
         _roofQuery = GetEntityQuery<RoofComponent>();
         _transformQuery = GetEntityQuery<TransformComponent>();
+
+        SubscribeLocalEvent<AAReverbComponent, ComponentInit>(OnAAReverbInit);
     }
 
+    private void OnAAReverbInit(Entity<AAReverbComponent> ent, ref ComponentInit args)
+    {
+        if (_settings is null)
+        {
+            Log.Debug(
+                $"Tried to start AcousticSettingsComponent for {ToPrettyString(ent)}, but {ToPrettyString(_clientEnt)} has no cached acoustic settings. Is this a test?"
+            );
+            RemComp<AAReverbComponent>(ent);
+            return;
+        }
+
+        if (!TryComp<AudioComponent>(ent, out var audio))
+        {
+            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
+            return;
+        }
+
+        ent.Comp.CachedAmplitude = _settings.LastAmplitude;
+        ent.Comp.CachedReverbPreset = _settings.LastReverbPreset;
+
+        TryUpdateReverbFilter((ent.Owner, ent.Comp, audio));
+    }
+
+    #region Processing
+
+    /// <summary>
+    /// Tries to updates <see cref="AAReverbComponent"/> values for the provided
+    /// audio entity. The filter will make use of the new values on the next <see cref="TrySetReverbFilter(Entity{AdvanceAudioComponent, AudioComponent}, float)"/> call.
+    /// </summary>
+    /// <param name="audioEnt">The audio entity we are updating.</param>
+    /// <returns>True if the <paramref name="audioEnt"/> was updated.</returns>
     [PublicAPI]
-    public void ProcessReverbFilter(
-        in Entity<AudioComponent> audioEnt,
-        in AcousticSettingsComponent settings,
-        in List<AcousticRayResults> acousticResults
+    public bool TryUpdateReverbFilter(
+       Entity<AAReverbComponent, AudioComponent> audioEnt,
+       AdvanceAudioComponent? advanceAudioComp = null
     )
     {
-        var rayAmplitude = CalculateRayAmplitude((_clientEnt, Transform(_clientEnt)), in acousticResults, in settings);
-        if (rayAmplitude > _reverbPresets.Keys[0])
+        var (uid, aaReverbComp, audioComp) = audioEnt;
+
+        if (!_advancedAudioQuery.Resolve(uid, ref advanceAudioComp))
+            return false;
+
+        return TryUpdateReverbFilter((uid, advanceAudioComp, aaReverbComp, audioComp));
+    }
+
+    /// <inheritdoc/>
+    [PublicAPI]
+    public bool TryUpdateReverbFilter(
+       Entity<AdvanceAudioComponent, AAReverbComponent, AudioComponent> audioEnt
+    )
+    {
+        if (!ResolvePlayerAcousticSettings(_clientEnt, ref _settings))
+            return false;
+
+        UpdateReverbFilter(audioEnt, _settings);
+        return true;
+    }
+
+    /// <summary>
+    /// Sets values to be used by the reverb filter.
+    /// </summary>
+    /// <param name="audioEnt">The audio entity we are updating.</param>
+    /// <param name="rayAmplitude">Amplitude gathered by our raycast.</param>
+    /// <returns>True if the filter has been successfully set.</returns>
+    [PublicAPI]
+    public bool TrySetReverbFilter(
+        Entity<AdvanceAudioComponent, AudioComponent> audioEnt,
+        float rayAmplitude
+    )
+    {
+        if (_settings is null)
+            return false;
+
+        var (uid, _, audioComp) = audioEnt;
+
+        var preset = GetPresetClosestToValue(rayAmplitude, _reverbPresets);
+        SetReverbFilter((uid, audioComp), preset, rayAmplitude);
+        return true;
+    }
+
+    private void UpdateReverbFilter(
+        Entity<AdvanceAudioComponent, AAReverbComponent, AudioComponent> audioEnt,
+        AcousticSettingsComponent settings)
+    {
+        var (uid, _, aaReverbComp, audioComp) = audioEnt;
+
+        var lastAmp = aaReverbComp.CachedAmplitude;
+        aaReverbComp.CachedAmplitude = settings.LastAmplitude;
+        settings.LastAmplitude = lastAmp ?? _reverbPresets.Keys[0];
+
+        settings.LastReverbPreset = aaReverbComp.CachedReverbPreset;
+        aaReverbComp.CachedReverbPreset = GetPresetClosestToValue(aaReverbComp.CachedAmplitude.Value, _reverbPresets);
+
+
+        SetReverbFilter((uid, audioComp), aaReverbComp.CachedReverbPreset.Value, aaReverbComp.CachedAmplitude.Value);
+    }
+
+    private void SetReverbFilter(
+        Entity<AudioComponent> audioEnt,
+        ProtoId<AudioPresetPrototype> reverbPreset,
+        float amplitude
+    )
+    {
+        if (amplitude > _reverbPresets.Keys[0])
         {
-            var bestPreset = GetPresetClosestToValue(rayAmplitude, _reverbPresets);
-            settings.CachedReverbPreset = bestPreset;
-            // Log.Debug($"preset: {bestPreset}");
-            _audioEffectSystem.TryAddEffect(in audioEnt, in bestPreset);
-        }
-        else
-        {
-            _audioEffectSystem.TryRemoveEffect(in audioEnt);
+            _audioEffectSystem.TryAddEffect(audioEnt, in reverbPreset);
         }
     }
+
+    #endregion Processing
 
     /// <summary>
     /// Calculates our the overall amplitude of <paramref name="acousticResults"/>.
@@ -103,7 +200,7 @@ public sealed partial class AdvancedAcousticsSystem
 
         // escaped rays are mostly irrelevant, so penalize based on that.
         var escapeMultiplier = MathHelper.Clamp(
-            1f - NormalizeToPercentage(escaped,  minValue: 0f, maxValue: totalRays) / totalRays,
+            1f - NormalizeToPercentage(escaped, minValue: 0f, maxValue: totalRays) / totalRays,
             settings.MaxmimumEscapePenalty,
             1f
         );
@@ -118,19 +215,25 @@ public sealed partial class AdvancedAcousticsSystem
 
         amplitude *= escapeMultiplier;
 
+
         // severely punish our amplitude if there is no roof.
-        amplitude *= GetRayAmplitudeRoofPenalty(originEnt, settings, amplitude);
+        amplitude *= GetRayAmplitudeRoofPenalty(originEnt, settings);
+
+        // reduce amplitude with pressure, if pressure filter is enabled.
+        if (_aaFilterPressureEnabled && _atmosData?.Pressure <= _pressurePresets.Keys[^1])
+            amplitude *= NormalizeToPercentage(_atmosData.Pressure, minValue: 0f, maxValue: 100f) / 100f;
 
         // Log.Debug($"Final Amplitude = {amplitude:F2}");
 
         return amplitude;
     }
 
+    #region Helpers
+
     [PublicAPI]
     public float GetRayAmplitudeRoofPenalty(
         Entity<TransformComponent> originEnt,
-        AcousticSettingsComponent settings,
-        float amplitude
+        AcousticSettingsComponent settings
     )
     {
         if (
@@ -146,4 +249,6 @@ public sealed partial class AdvancedAcousticsSystem
 
         return 1f;
     }
+
+    #endregion Helpers
 }

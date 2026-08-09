@@ -1,4 +1,5 @@
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Effects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._VDS.Audio.Components;
@@ -8,9 +9,10 @@ namespace Content.Client._VDS.Audio.Components;
 /// should not be able to normally adjust.
 /// </summary>
 [RegisterComponent]
-[Access(typeof(AdvancedAcousticsSystem))]
+[Access(typeof(AdvanceAudioSystem))]
 public sealed partial class AcousticSettingsComponent : Component
 {
+
     /// <summary>
     /// A list of magnitudes and what <see cref="AudioPresetPrototype"/> to use alongside it, for reverb effects
     /// Ranked by how large and furnished the room is, taking material absorption into account.
@@ -39,13 +41,16 @@ public sealed partial class AcousticSettingsComponent : Component
     };
 
     [DataField, ViewVariables]
-    public ProtoId<AudioPresetPrototype>? CachedReverbPreset = null;
+    public ProtoId<AudioPresetPrototype>? LastReverbPreset;
 
     [DataField, ViewVariables]
-    public ProtoId<AudioPresetPrototype>? CachedPressurePreset = null;
+    public ProtoId<AudioPresetPrototype>? LastPressurePreset;
 
     [DataField, ViewVariables]
-    public float CachedPressureGain;
+    public float LastPressureGain;
+
+    [DataField, ViewVariables]
+    public float LastAmplitude;
 
     /// <summary>
     /// The next time we raycast.
@@ -58,6 +63,12 @@ public sealed partial class AcousticSettingsComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan CheckInterval = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// We will never reduce depressurized audio gain below this normal.
+    /// </summary>
+    [DataField, ViewVariables]
+    public float MinimumPressureGain = 0.15f;
 
     /// <summary>
     /// Based on the maximum posssible distance an acoustic raycast can travel,
