@@ -34,3 +34,26 @@
     Hologram:
       sprite: _VDS/Mobs/Silicon/holograms.rsi
       state: centauri
+
+- type: stationAiCustomization
+  id: StationAiHologramScary
+  name: station-ai-hologram-scary
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _VDS/Mobs/Silicon/holograms.rsi
+      state: scary
+
+#Iconography
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconScary
+  name: station-ai-icon-scary
+  layerData:
+    Occupied:
+      sprite: _VDS/Mobs/Silicon/station_ai.rsi
+      state: scaryeyes
+    Dead:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
