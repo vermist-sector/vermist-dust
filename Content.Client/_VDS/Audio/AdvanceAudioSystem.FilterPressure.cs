@@ -5,6 +5,7 @@ using Content.Shared._VDS.Atmos.Components;
 using Content.Shared._VDS.CCVars;
 using JetBrains.Annotations;
 using Robust.Client.Audio;
+using Robust.Client.State;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
@@ -45,7 +46,6 @@ public sealed partial class AdvanceAudioSystem
 
 
         SubscribeLocalEvent<AAPressureComponent, ComponentInit>(OnAAPressureInit);
-        SubscribeLocalEvent<AAPressureComponent, ComponentStartup>(OnAAPressureStartup);
     }
 
     #region Events
@@ -61,46 +61,16 @@ public sealed partial class AdvanceAudioSystem
             return;
         }
 
-        if (!TryComp<AudioComponent>(ent, out var audio))
+        if (!_advancedAudioQuery.TryComp(ent, out var advanceAudioComp))
         {
-            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
+            Log.Debug($"Unable to get AdvanceAudioComponent for {ToPrettyString(ent)}. Is this a test?");
             RemComp<AAPressureComponent>(ent);
             return;
         }
 
-        ent.Comp.CachedPressureGain = GetPressureGain((ent.Owner, audio), _atmosData.Pressure, audio.Params.Volume, _aaFilterPressureMinimumGain);
+        advanceAudioComp.FilterPressure = ent.Comp;
+        ent.Comp.CachedPressureGain = GetPressureGain((ent.Owner, advanceAudioComp.BaseAudio), _atmosData.Pressure, advanceAudioComp.OriginalGain, _aaFilterPressureMinimumGain);
         ent.Comp.CachedPressurePreset = GetPresetClosestToValue(_atmosData.Pressure, _settings.PressurePresets);
-        TrySetPressureFilter((ent.Owner, ent.Comp, audio), ent.Comp.CachedPressureGain.Value);
-    }
-
-    private void OnAAPressureStartup(Entity<AAPressureComponent> ent, ref ComponentStartup args)
-    {
-        if (_settings is null || _atmosData is null)
-        {
-            Log.Debug(
-                $"Tried to start AAPressure for {ToPrettyString(ent)}, but {ToPrettyString(_clientEnt)} has no cached settings or atmosData. Is this a test?"
-            );
-            return;
-        }
-
-        if (!TryComp<AudioComponent>(ent, out var audio))
-        {
-            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
-            return;
-        }
-
-        if (TryUpdatePressureFilter((ent.Owner, ent.Comp, audio), _clientEnt))
-        {
-            TrySetPressureFilter(
-                (ent.Owner, ent.Comp, audio),
-                ent.Comp.CachedPressureGain ?? _settings.LastPressureGain);
-        }
-        else
-        {
-            TrySetPressureFilter(
-                (ent.Owner, ent.Comp, audio),
-                0f);
-        }
     }
 
     private void OnAAFilterPressureToggle(bool aaFilterPressureToggle)
@@ -126,9 +96,6 @@ public sealed partial class AdvanceAudioSystem
         if (_settings is null)
             return;
         _settings.MinimumPressureGain = _aaFilterPressureMinimumGain;
-
-        // we need to process all audio again so the volume and muffling is updated,
-        ProcessAdvanceAudio();
     }
 
     #endregion Events
@@ -144,17 +111,19 @@ public sealed partial class AdvanceAudioSystem
     /// <returns>True if the <paramref name="audioEnt"/> was updated.</returns>
     [PublicAPI]
     public bool TryUpdatePressureFilter(
-       Entity<AAPressureComponent, AudioComponent> audioEnt,
-       EntityUid originEnt,
-       AdvanceAudioComponent? advanceAudioComp = null
+       Entity<AdvanceAudioComponent, AudioComponent> audioEnt,
+       EntityUid originEnt
     )
     {
-        var (uid, aaPressureComp, audioComp) = audioEnt;
-
-        if (!_advancedAudioQuery.Resolve(uid, ref advanceAudioComp))
+        if (!_aaFilterPressureEnabled)
             return false;
 
-        return TryUpdatePressureFilter((uid, advanceAudioComp, aaPressureComp, audioComp), originEnt);
+        var (uid, advanceAudioComp, audioComp) = audioEnt;
+
+        if (!ResolveFilterPressure(audioEnt, ref advanceAudioComp.FilterPressure))
+            return false;
+
+        return TryUpdatePressureFilter((uid, advanceAudioComp, advanceAudioComp.FilterPressure, audioComp), originEnt);
     }
 
     /// <inheritdoc/>
@@ -217,12 +186,14 @@ public sealed partial class AdvanceAudioSystem
     {
         var (uid, advanceAudioComp, aaPressureComp, audioComp) = audioEnt;
 
-        var gain = GetPressureGain((uid, audioComp), atmosData.Pressure, advanceAudioComp.OriginalVolume, _aaFilterPressureMinimumGain);
+        var gain = GetPressureGain((uid, audioComp), atmosData.Pressure, advanceAudioComp.OriginalGain, _aaFilterPressureMinimumGain);
         settings.LastPressureGain = aaPressureComp.CachedPressureGain ?? gain;
-        aaPressureComp.CachedPressureGain = gain;
+        aaPressureComp.CachedPressureGain = MathHelper.Lerp(gain, aaPressureComp.CachedPressureGain ?? gain, 0.99f);
 
         settings.LastPressurePreset = aaPressureComp.CachedPressurePreset;
         aaPressureComp.CachedPressurePreset = GetPresetClosestToValue(atmosData.Pressure, settings.PressurePresets);
+
+
     }
 
     private void SetPressureFilter(Entity<AdvanceAudioComponent, AudioComponent> audioEnt, ProtoId<AudioPresetPrototype> pressurePreset, float gain, float pressure)
@@ -231,12 +202,12 @@ public sealed partial class AdvanceAudioSystem
 
         if (pressure >= _pressurePresets.Keys[^1])
         {
-            TryApplyGain((uid, advanceAudioComp, audioComp), SharedAudioSystem.VolumeToGain(advanceAudioComp.OriginalVolume));
+            TryApplyPressureGain(audioEnt, advanceAudioComp.OriginalGain);
         }
         else
         {
             _audioEffectSystem.TryAddEffect((uid, audioComp), in pressurePreset);
-            TryApplyGain((uid, advanceAudioComp, audioComp), gain);
+            TryApplyPressureGain(audioEnt, gain);
         }
     }
 
@@ -269,71 +240,87 @@ public sealed partial class AdvanceAudioSystem
 
     #region Helpers
 
-    // FUCK this method holy shit audio won't mute quickly enough in space without jarring cut-offs without
-    // this method. someday this should be replaced when this system overrides how the engine handles audio.
-    private void FilterPressureStupidFuckingBandaidFix(Entity<AudioComponent> audio)
+    [PublicAPI]
+    public bool ResolveFilterPressure(
+        Entity<AdvanceAudioComponent, AudioComponent> ent,
+        [NotNullWhen(true)] ref AAPressureComponent? aaPressureComp
+    )
     {
-        if (_settings is null || !_aaFilterPressureEnabled || _atmosData is null)
-            return;
-
-        if (!IsAudioValid(audio))
-            return;
-
-        var pressurePercent = MathF.Max(NormalizeToPercentage(_atmosData.Pressure, minValue: 0f, maxValue: 100f) / 100f, _aaFilterPressureMinimumGain);
-        if (pressurePercent <= 0.1f)
-        {
-            ApplyGain(audio, 0f);
-        }
+        return _aaPressureQuery.Resolve(ent, ref aaPressureComp) && aaPressureComp is not null;
     }
 
-    // fuck this method too
-    private void FilterPressureStupidFuckingBandaidFixAll()
-    {
-        if (_settings is null || !_aaFilterPressureEnabled || _atmosData is null)
-            return;
 
-        var pressurePercent = MathF.Max(NormalizeToPercentage(_atmosData.Pressure, minValue: 0f, maxValue: 100f) / 100f, _aaFilterPressureMinimumGain);
-        if (pressurePercent <= 0.1f)
-        {
-            var entities = AllEntityQuery<AdvanceAudioComponent, AAPressureComponent, AudioComponent>();
-            while (entities.MoveNext(out var uid, out var advanceAudio, out var aaPressureComp, out var audio))
-            {
-                ApplyGain((uid, audio), 0f);
-            }
-        }
-    }
+    // // FUCK this method holy shit audio won't mute quickly enough in space without jarring cut-offs without
+    // // this method. someday this should be replaced when this system overrides how the engine handles audio.
+    // private void FilterPressureStupidFuckingBandaidFix(Entity<AudioComponent> audio)
+    // {
+    //     if (_settings is null || !_aaFilterPressureEnabled || _atmosData is null)
+    //         return;
+    //
+    //     if (!IsAudioValidForAA(audio))
+    //         return;
+    //
+    //     var pressurePercent = MathF.Max(NormalizeToPercentage(_atmosData.Pressure, minValue: 0f, maxValue: 100f) / 100f, _aaFilterPressureMinimumGain);
+    //     if (pressurePercent <= 0.1f)
+    //     {
+    //         ApplyGain(audio, 0f);
+    //     }
+    // }
+    //
+    // // fuck this method too
+    // private void FilterPressureStupidFuckingBandaidFixAll()
+    // {
+    //     if (_settings is null || !_aaFilterPressureEnabled || _atmosData is null)
+    //         return;
+    //
+    //     var pressurePercent = MathF.Max(NormalizeToPercentage(_atmosData.Pressure, minValue: 0f, maxValue: 100f) / 100f, _aaFilterPressureMinimumGain);
+    //     if (pressurePercent <= 0.1f)
+    //     {
+    //         var entities = AllEntityQuery<AdvanceAudioComponent, AAPressureComponent, AudioComponent>();
+    //         while (entities.MoveNext(out var uid, out var advanceAudio, out var aaPressureComp, out var audio))
+    //         {
+    //             ApplyGain((uid, audio), 0f);
+    //         }
+    //     }
+    // }
 
     /// <summary>
     /// Tries to apply a new gain to the provided audio entity.
     /// </summary>
     /// <returns>True if the gain has been applied.</returns>
     [PublicAPI]
-    public bool TryApplyGain(Entity<AdvanceAudioComponent, AudioComponent> audioEnt, float gain)
+    public bool TryApplyPressureGain(Entity<AdvanceAudioComponent, AudioComponent> audioEnt, float gain)
     {
         var (uid, advanceAudioComp, audioComp) = audioEnt;
 
-        // if (!CanApplyGain(audioEnt, gain))
-        //     return false;
+        if (_atmosData is null)
+            return false;
 
-        advanceAudioComp.PriorVolume = audioComp.Volume;
-        ApplyGain((uid, audioComp), gain);
+        if (!CanApplyGain(audioEnt, gain))
+            return false;
 
+        ApplyPressureGain(audioEnt, gain, _atmosData);
         return true;
     }
 
-    private void ApplyGain(Entity<AudioComponent> audioEnt, float gain)
+    private void ApplyPressureGain(Entity<AdvanceAudioComponent, AudioComponent> audioEnt, float gain, AtmosDataComponent atmosData)
     {
-        var (uid, audioComp) = audioEnt;
+        var (uid, advanceAudioComp, audioComp) = audioEnt;
 
-        if (gain <= 0.01f || float.IsNaN(gain))
+        if (float.IsNaN(gain))
+            gain = 0f;
+
+        advanceAudioComp.PriorGain = audioComp.Gain;
+
+        if (atmosData.Pressure >= _pressurePresets.Keys[^1])
         {
-            _audioSystem.SetGain(audioEnt, 0f, audioEnt.Comp);
-            // audioComp.Gain = 0f;
+            Log.Debug($"!!!! applying reset gain to {ToPrettyString(audioEnt)}... they real gain be {audioComp.Gain}");
+            audioComp.Gain = advanceAudioComp.OriginalGain;
         }
         else
         {
-            _audioSystem.SetGain(audioEnt, gain, audioEnt.Comp);
-            // audioComp.Gain = gain;
+            Log.Debug($"applying {gain} to {ToPrettyString(audioEnt)}, prior {audioComp.Gain}");
+            audioComp.Gain = gain;
         }
     }
 
@@ -347,19 +334,7 @@ public sealed partial class AdvanceAudioSystem
     {
         var (uid, advanceAudioComp, audioComp) = audioEnt;
 
-        if (MathHelper.CloseTo(advanceAudioComp.PriorVolume, gain))
-            return false;
-
-        return CanApplyGain((uid, audioComp), gain);
-    }
-
-    /// <inheritdoc/>
-    [PublicAPI]
-    private static bool CanApplyGain(Entity<AudioComponent> audioEnt, float gain)
-    {
-        var (uid, audioComp) = audioEnt;
-
-        return !MathHelper.CloseTo(SharedAudioSystem.VolumeToGain(audioComp.Volume), gain);
+        return !MathHelper.CloseTo(audioComp.Gain, gain);
     }
 
     /// <summary>
@@ -367,17 +342,16 @@ public sealed partial class AdvanceAudioSystem
     /// </summary>
     /// <param name="audioEnt">The audio entity we're going to apply this gain to.</param>
     /// <param name="pressure">Current air pressure around the listener.</param>
-    /// <param name="originalVolume">Original volume of the audio entity, from its creation.</param>
+    /// <param name="originalGain">Original gain of the audio entity, from its creation.</param>
     /// <param name="minScalar">Minimum volume scalar we will accept</param>
     /// <returns>A new gain level</returns>
     [PublicAPI]
-    public static float GetPressureGain(Entity<AudioComponent> audioEnt, float pressure, float originalVolume, float minScalar)
+    public static float GetPressureGain(Entity<AudioComponent> audioEnt, float pressure, float originalGain, float minScalar)
     {
         var (uid, audio) = audioEnt;
 
         var pressurePercent = NormalizeToPercentage(pressure, minValue: 0f, maxValue: 100f) / 100f;
         var minChange = MathF.Max(pressurePercent, minScalar);
-        var originalGain = SharedAudioSystem.VolumeToGain(originalVolume);
         var change = originalGain * minChange;
         return Math.Clamp(change, 0f, originalGain);
     }
