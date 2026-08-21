@@ -26,11 +26,17 @@
   - StationAiHologramCat
   - StationAiHologramDog
   - StationAiHologramBee #imp
+  - StationAiHologramWatcher #vds
+  - StationAiHologramImp #vds
+  - StationAiHologramEarth #vds
+  - StationAiHologramSmiley #vds
+  - StationAiHologramJellyfish #vds
   - StationAiHologramXenophysarum #vds
   - StationAiHologramMu #vds
   - StationAiHologramMazMaraz #vds
   - StationAiHologramCentauri #vds
   - StationAiHologramScary #vds
+  - StationAiHologramMagister #vds
 
 # Iconography
 - type: stationAiCustomization
