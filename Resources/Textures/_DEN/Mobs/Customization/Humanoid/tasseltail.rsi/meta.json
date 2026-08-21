@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Body parts by @Kilath",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "tasseltailtone1",
+            "directions": 4
+        },
+        {
+            "name": "tasseltailtone2",
+            "directions": 4
+        }
+    ]
+}
