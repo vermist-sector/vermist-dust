@@ -273,6 +273,7 @@ public sealed partial class HolopadWindow : FancyWindow
                 CallStatusText.Text = (_currentUiKey == HolopadUiKey.AiRequestWindow) ?
                     Loc.GetString("holopad-window-ai-request") : Loc.GetString("holopad-window-incoming-call"); break;
 
+            case TelephoneState.InIndefiniteCall://verm edit
             case TelephoneState.InCall:
                 CallStatusText.Text = Loc.GetString("holopad-window-call-in-progress"); break;
 

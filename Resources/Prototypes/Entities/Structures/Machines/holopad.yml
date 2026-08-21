@@ -42,6 +42,7 @@
           Ringing: { state: lights_ringing }
           InCall: { state: lights_in_call }
           EndingCall: { state: lights_hanging_up }
+          InIndefiniteCall: { state: lights_in_call }
       enum.PowerDeviceVisuals.Powered:
         enum.PowerDeviceVisualLayers.Powered:
           False: { visible: true }
