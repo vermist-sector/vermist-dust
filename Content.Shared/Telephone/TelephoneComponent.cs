@@ -203,7 +203,8 @@ public enum TelephoneState : byte
     Calling,
     Ringing,
     InCall,
-    EndingCall
+    EndingCall,
+    InIndefiniteCall//verm edit, add indefinite call
 }
 
 [Serializable, NetSerializable]
