@@ -1,0 +1,19 @@
+- type: marking
+  id: OniHornUnicorn
+  bodyPart: HeadTop
+  markingCategory: Special
+  speciesRestriction: [ Human ]
+  sprites:
+    - sprite: _DEN/Mobs/Customization/Head/oni_horns.rsi
+      state: unicorn
+
+- type: marking
+  id: OniHornAntlers
+  bodyPart: HeadTop
+  markingCategory: Special
+  speciesRestriction: [ Human ]
+  sprites:
+    - sprite: _DEN/Mobs/Customization/Head/oni_horns.rsi
+      state: antlers_2tone_1
+    - sprite: _DEN/Mobs/Customization/Head/oni_horns.rsi
+      state: antlers_2tone_2
