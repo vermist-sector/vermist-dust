@@ -68,7 +68,7 @@
   markingCategory: Overlay
   speciesRestriction: [ Human ]
   layering:
-    seraphtop: Tail
+    seraphtop: TailOversuit
   coloring:
     default:
       type:
@@ -84,7 +84,7 @@
   markingCategory: Overlay
   speciesRestriction: [ Human ]
   layering:
-    seraphmid: Tail
+    seraphmid: TailOversuit
   coloring:
     default:
       type:
@@ -100,7 +100,7 @@
   markingCategory: Overlay
   speciesRestriction: [ Human ]
   layering:
-    seraphbutt: Tail
+    seraphbutt: TailOversuit
   coloring:
     default:
       type:
@@ -116,7 +116,7 @@
   markingCategory: Overlay
   speciesRestriction: [ Human ]
   layering:
-    seraphfull: Tail
+    seraphfull: TailOversuit
   coloring:
     default:
       type:
