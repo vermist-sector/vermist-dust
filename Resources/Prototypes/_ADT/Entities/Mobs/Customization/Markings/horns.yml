@@ -6,3 +6,32 @@
   sprites:
     - sprite: _ADT/Mobs/Customization/devil_horns.rsi
       state: horns_devil
+
+- type: marking
+  id: DemonHornsDevil2
+  bodyPart: HeadTop
+  markingCategory: Special
+  speciesRestriction: [ Human ]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/devil_horns.rsi
+      state: horns_devil2
+
+- type: marking
+  id: DemonHornsDevil3
+  bodyPart: HeadTop
+  markingCategory: Special
+  speciesRestriction: [ Human ]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/devil_horns.rsi
+      state: horns_devil3
+
+- type: marking
+  id: DemonHornsDevil4
+  bodyPart: HeadTop
+  markingCategory: Special
+  speciesRestriction: [ Human ]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/devil_horns.rsi
+      state: horns_devil4
+
+
