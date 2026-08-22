@@ -1,3 +1,12 @@
+# Head
+
+marking-OniHornAntlers = Antlers
+marking-OniHornAntlers-antlers_2tone_1 = Base
+marking-OniHornAntlers-antlers_2tone_2 = Wings
+
+marking-OniHornUnicorn = Unicorn
+marking-OniHornUnicorn-unicorn = Unicorn
+
 
 # Tail
 

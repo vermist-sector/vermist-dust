@@ -1,0 +1,8 @@
+- type: marking
+  id: DemonHornsDevil
+  bodyPart: HeadTop
+  markingCategory: Special
+  speciesRestriction: [ Human ]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/devil_horns.rsi
+      state: horns_devil
