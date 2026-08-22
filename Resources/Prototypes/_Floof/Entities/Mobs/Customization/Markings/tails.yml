@@ -1,0 +1,8 @@
+- type: marking
+  id: TailSuccubus
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Human ]
+  sprites:
+    - sprite: _SimpleStation14/Mobs/Customization/succubustail.rsi
+      state: succubustail
