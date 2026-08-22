@@ -13,7 +13,6 @@
   - StationAiIconSmiley
   - StationAiIconJohnnyChaos # imp
   - StationAiIconBee #imp
-  - StationAiIconScary #vds
 
 - type: stationAiCustomizationGroup
   id: StationAiHolograms
@@ -30,7 +29,6 @@
   - StationAiHologramMu #vds
   - StationAiHologramMazMaraz #vds
   - StationAiHologramCentauri #vds
-  - StationAiHologramScary #vds
 
 # Iconography
 - type: stationAiCustomization
