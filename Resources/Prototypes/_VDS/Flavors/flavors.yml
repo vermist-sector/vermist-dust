@@ -6,3 +6,8 @@
   id: knowledge
   flavorType: Complex
   description: flavor-complex-knowledge
+
+- type: flavor
+  id: bramble
+  flavorType: Base
+  description: flavor-base-bramble

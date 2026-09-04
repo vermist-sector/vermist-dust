@@ -1,0 +1,22 @@
+- type: reagent
+  id: Bramble
+  name: reagent-name-bramble
+  parent: BaseAlcohol
+  desc: reagent-desc-bramble
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: bramble
+  color: "#5F2424"
+  metamorphicSprite:
+    sprite: _VDS/Objects/Consumable/Drinks/brambleglass.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.2
