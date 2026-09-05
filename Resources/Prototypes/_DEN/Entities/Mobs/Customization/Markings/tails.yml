@@ -1,0 +1,19 @@
+- type: marking
+  id: TasselTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Human ]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: Hair
+      fallbackTypes:
+        - !type:CategoryColoring
+          category: FacialHair
+        - !type:SkinColoring
+  sprites:
+  - sprite: _DEN/Mobs/Customization/Tails/tasseltail.rsi
+    state: tasseltailtone1
+  - sprite: _DEN/Mobs/Customization/Tails/tasseltail.rsi
+    state: tasseltailtone2

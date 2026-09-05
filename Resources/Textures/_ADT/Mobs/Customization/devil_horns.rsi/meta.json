@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "license": "CC-BY-NC-SA-3.0",
+    "copyright": "Created by discord:lunalita",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "horns_devil",
+            "directions": 4
+        },
+        {
+            "name": "horns_devil2",
+            "directions": 4
+        },
+        {
+            "name": "horns_devil3",
+            "directions": 4
+        },
+        {
+            "name": "horns_devil4",
+            "directions": 4
+        }
+    ]
+}
