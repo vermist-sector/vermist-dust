@@ -233,7 +233,7 @@ public sealed class TelephoneSystem : SharedTelephoneSystem
 
         // Try to open a line of communication immediately
         if (options?.ForceConnect == true ||
-            (options?.ForceJoin == true && receiver.Comp.CurrentState == TelephoneState.InCall))
+            (options?.ForceJoin == true && (receiver.Comp.CurrentState == TelephoneState.InCall || receiver.Comp.CurrentState == TelephoneState.InIndefiniteCall)))//verm edit, add clause for indefinite call
         {
             CommenceTelephoneCall(source, receiver);
             return true;
@@ -263,8 +263,16 @@ public sealed class TelephoneSystem : SharedTelephoneSystem
 
     private void CommenceTelephoneCall(Entity<TelephoneComponent> source, Entity<TelephoneComponent> receiver)
     {
-        SetTelephoneState(source, TelephoneState.InCall);
-        SetTelephoneState(receiver, TelephoneState.InCall);
+        if (HasComp<StationAiCoreComponent>(source) || HasComp<StationAiCoreComponent>(receiver))//verm edit, add indefinite call
+        {
+            SetTelephoneState(source, TelephoneState.InIndefiniteCall);
+            SetTelephoneState(receiver, TelephoneState.InIndefiniteCall);
+        }
+        else
+        {
+            SetTelephoneState(source, TelephoneState.InCall);
+            SetTelephoneState(receiver, TelephoneState.InCall);
+        }
 
         SetTelephoneMicrophoneState(source, true);
         SetTelephoneMicrophoneState(receiver, true);
