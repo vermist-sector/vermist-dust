@@ -1,0 +1,63 @@
+- type: marking
+  id: WingsSeraphPositionUpper
+  bodyPart: Chest
+  markingCategory: Overlay
+  speciesRestriction: [ Human ]
+  layering:
+    seraphtop: TailOversuit
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _DEN/Mobs/Customization/Wings/seraphwings.rsi
+      state: seraphtop
+
+- type: marking
+  id: WingsSeraphPositionMiddle
+  bodyPart: Chest
+  markingCategory: Overlay
+  speciesRestriction: [ Human ]
+  layering:
+    seraphmid: TailOversuit
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _DEN/Mobs/Customization/Wings/seraphwings.rsi
+      state: seraphmid
+
+- type: marking
+  id: WingsSeraphPositionLower
+  bodyPart: Chest
+  markingCategory: Overlay
+  speciesRestriction: [ Human ]
+  layering:
+    seraphbutt: TailOversuit
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _DEN/Mobs/Customization/Wings/seraphwings.rsi
+      state: seraphbutt
+
+- type: marking
+  id: WingsSeraphFull
+  bodyPart: Chest
+  markingCategory: Overlay
+  speciesRestriction: [ Human ]
+  layering:
+    seraphfull: TailOversuit
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _DEN/Mobs/Customization/Wings/seraphwings.rsi
+      state: seraphfull
