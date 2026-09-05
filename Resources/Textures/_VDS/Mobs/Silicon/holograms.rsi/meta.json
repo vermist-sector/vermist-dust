@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from vgstation at https://github.com/vgstation-coders/vgstation13/blob/e2923df112df8aa025846d0764697bad6506586a/icons/mob/AI.dmi - modified by chromiumboy.",
+    "copyright": "Taken from vgstation at https://github.com/vgstation-coders/vgstation13/blob/e2923df112df8aa025846d0764697bad6506586a/icons/mob/AI.dmi - modified by chromiumboy. Mazmaraz and Mu sprites by rainyatrium. Xenophysarum sprites by lichpassing. Scary, Earth, Smiley, Magister and Jellyfish sprites by dragonmagus (Github)",
     "size": {
         "x": 32,
         "y": 32
@@ -33,6 +33,27 @@
         },
         {
             "name": "centauri_color"
+        },
+        {
+            "name": "scary"
+        },
+        {
+            "name": "watcher"
+        },
+        {
+            "name": "imp"
+        },
+        {
+            "name": "earth"
+        },
+        {
+            "name": "smiley"
+        },
+        {
+            "name": "magister"
+        },
+        {
+            "name": "jellyfish"
         }
     ]
 }

@@ -34,3 +34,80 @@
     Hologram:
       sprite: _VDS/Mobs/Silicon/holograms.rsi
       state: centauri
+
+- type: stationAiCustomization
+  id: StationAiHologramScary
+  name: station-ai-hologram-scary
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _VDS/Mobs/Silicon/holograms.rsi
+      state: scary
+
+- type: stationAiCustomization
+  id: StationAiHologramWatcher
+  name: station-ai-hologram-watcher
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _VDS/Mobs/Silicon/holograms.rsi
+      state: watcher
+
+- type: stationAiCustomization
+  id: StationAiHologramImp
+  name: station-ai-hologram-imp
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _VDS/Mobs/Silicon/holograms.rsi
+      state: imp
+
+- type: stationAiCustomization
+  id: StationAiHologramEarth
+  name: station-ai-hologram-earth
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _VDS/Mobs/Silicon/holograms.rsi
+      state: earth
+
+- type: stationAiCustomization
+  id: StationAiHologramSmiley
+  name: station-ai-hologram-smiley
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _VDS/Mobs/Silicon/holograms.rsi
+      state: smiley
+
+- type: stationAiCustomization
+  id: StationAiHologramMagister
+  name: station-ai-hologram-magister
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _VDS/Mobs/Silicon/holograms.rsi
+      state: magister
+
+- type: stationAiCustomization
+  id: StationAiHologramJellyfish
+  name: station-ai-hologram-jellyfish
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _VDS/Mobs/Silicon/holograms.rsi
+      state: jellyfish
+
+#Iconography
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconScary
+  name: station-ai-icon-scary
+  layerData:
+    Occupied:
+      sprite: _VDS/Mobs/Silicon/station_ai.rsi
+      state: scaryeyes
+    Dead:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
