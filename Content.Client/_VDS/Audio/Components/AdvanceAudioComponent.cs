@@ -29,12 +29,21 @@ public sealed partial class AdvanceAudioComponent : Component
     [DataField]
     public float OriginalGain;
 
+    /// <summary>
+    /// The audio component that owns us.
+    /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
     public AudioComponent BaseAudio;
 
+    /// <summary>
+    /// Reverb filter component, if enabled.
+    /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
     public AAReverbComponent? FilterReverb;
 
+    /// <summary>
+    /// Pressure filter component, if enabled.
+    /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
     public AAPressureComponent? FilterPressure;
 }

@@ -56,6 +56,10 @@ public sealed partial class AdvanceAudioSystem
         {
             advanceAudioComp.FilterPressure = ent.Comp;
             ent.Comp.CachedPressurePreset = _settings.LastPressurePreset;
+
+            if (_gainScalar > 0)
+                SetPressureFilter((ent.Owner, advanceAudioComp, ent.Comp, advanceAudioComp.BaseAudio), ent.Comp.CachedPressurePreset);
+
             return;
         }
 
@@ -109,11 +113,11 @@ public sealed partial class AdvanceAudioSystem
         {
             aaPressureComp.CachedPressurePreset = GetPresetClosestToValue(atmosData.Pressure, settings.PressurePresets);
         }
-
-        aaPressureComp.Updated = true;
     }
 
-    private void SetPressureFilter(Entity<AdvanceAudioComponent, AAPressureComponent, AudioComponent> audioEnt, ProtoId<AudioPresetPrototype>? pressurePreset = null)
+    private void SetPressureFilter(
+        Entity<AdvanceAudioComponent, AAPressureComponent, AudioComponent> audioEnt,
+        ProtoId<AudioPresetPrototype>? pressurePreset = null)
     {
         var (uid, advanceAudioComp, aaPressureComp, audioComp) = audioEnt;
 
@@ -122,10 +126,6 @@ public sealed partial class AdvanceAudioSystem
             if (pressurePreset is not null)
             {
                 _audioEffectSystem.TryAddEffect((uid, audioComp), pressurePreset.Value);
-            }
-            else
-            {
-                _audioEffectSystem.TryRemoveEffect((uid, audioComp));
             }
 
             aaPressureComp.AppliedPressurePreset = pressurePreset;
@@ -160,12 +160,32 @@ public sealed partial class AdvanceAudioSystem
     #endregion Startup/Cleanup
 
     #region Helpers
+
     /// <summary>
-    /// Get a new gain level based on our current atmospheric pressure.
+    /// Tries to get & resolve the pressure filter stored on <see cref="AdvanceAudioComponent"/>
+    /// Respects if the client has the pressure filter enabled or not.
+    /// </summary>
+    /// <returns>True if successfully resolved & enabled</returns>
+    [PublicAPI]
+    public bool TryGetPressureFilter(
+        Entity<AdvanceAudioComponent> audioEnt,
+        [NotNullWhen(true)] out AAPressureComponent? pressureComp
+    )
+    {
+        pressureComp = audioEnt.Comp.FilterPressure;
+
+        if (!_aaFilterPressureEnabled)
+            return false;
+
+        return _aaPressureQuery.Resolve(audioEnt, ref pressureComp);
+    }
+
+    /// <summary>
+    /// Get a pressure scalar based on our current atmospheric pressure.
     /// </summary>
     /// <param name="pressure">Current air pressure around the listener.</param>
     /// <param name="minScalar">Minimum volume scalar we will accept</param>
-    /// <returns>A new gain level</returns>
+    /// <returns>A new pressure gain scalar</returns>
     [PublicAPI]
     public static float GetPressureScalar(float pressure, float minScalar)
     {

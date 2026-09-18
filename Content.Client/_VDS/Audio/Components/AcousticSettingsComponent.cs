@@ -40,12 +40,21 @@ public sealed partial class AcousticSettingsComponent : Component
         { 70f, "Muffled" },
     };
 
+    /// <summary>
+    /// The last reverb preset we've had.
+    /// </summary>
     [DataField, ViewVariables]
     public ProtoId<AudioPresetPrototype>? LastReverbPreset;
 
+    /// <summary>
+    /// The last pressure preset we've had.
+    /// </summary>
     [DataField, ViewVariables]
     public ProtoId<AudioPresetPrototype>? LastPressurePreset;
 
+    /// <summary>
+    /// The last raycast amplitude we've recieved.
+    /// </summary>
     [ViewVariables]
     public float LastAmplitude;
 

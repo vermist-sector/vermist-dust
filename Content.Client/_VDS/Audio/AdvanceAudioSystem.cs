@@ -7,21 +7,17 @@
 // this has been heavily refactored by Jellvisk to the point
 // where this is like a ship of theseus situation.
 
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Numerics;
 using Content.Client._Mono.Audio;
 using Content.Client._VDS.Audio.Components;
+using Content.Shared.Humanoid;
 using Content.Shared._VDS.Atmos.Components;
 using Content.Shared._VDS.Audio.Components;
 using Content.Shared._VDS.CCVars;
-using Content.Shared.CCVar;
-using Content.Shared.Humanoid;
 using JetBrains.Annotations;
 using Robust.Client.Audio;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -30,38 +26,25 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Client._VDS.Audio;
 
 /// <summary>
-/// Gathers environmental acoustic data around the player, later to be processed by <see cref="AudioEffectSystem"/>.
+/// Gathers and processes acoustic data & filters to be processed by <see cref="AudioEffectSystem"/>.
 /// </summary>
 public sealed partial class AdvanceAudioSystem : EntitySystem
 {
-    [Dependency]
-    private readonly AudioEffectSystem _audioEffectSystem = default!;
+    [Dependency] private readonly AudioEffectSystem _audioEffectSystem = default!;
+    [Dependency] private readonly AudioSystem _audioSystem = default!;
+    [Dependency] private readonly IClientNetManager _clientNetManager = default!;
+    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physicsSystem = default!;
 
-    [Dependency]
-    private readonly IClientNetManager _clientNetManager = default!;
-
-    [Dependency]
-    private readonly IConfigurationManager _configurationManager = default!;
-
-    [Dependency]
-    private readonly IGameTiming _timing = default!;
-
-    [Dependency]
-    private readonly SharedMapSystem _mapSystem = default!;
-
-    [Dependency]
-    private readonly SharedPhysicsSystem _physicsSystem = default!;
-
-    [Dependency]
-    private readonly AudioSystem _audioSystem = default!;
-
-    private float _masterVolume;
-    private float _ambienceVolume;
-    private float _gainScalar;
 
     // Set by VCCVars
     private bool _advanceAudioEnabled = true;
@@ -78,12 +61,16 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     private AcousticSettingsComponent? _settings;
     private AtmosDataComponent? _atmosData;
 
+    /// <summary>
+    /// Gain scalar to be applied onto streamed audio.
+    /// </summary>
+    private float _gainScalar;
     private TimeSpan _curTime;
 
     private EntityQuery<AcousticDataComponent> _acousticQuery;
     private EntityQuery<AcousticSettingsComponent> _acousticSettingsQuery;
-    private EntityQuery<AudioComponent> _audioQuery;
     private EntityQuery<AdvanceAudioComponent> _advanceAudioQuery;
+    private EntityQuery<AudioComponent> _audioQuery;
     private EntityQuery<HumanoidAppearanceComponent> _humanoidAppearanceQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
 
@@ -92,39 +79,25 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         base.Initialize();
 
         _configurationManager.OnValueChanged(VCCVars.AdvanceAudioToggle, OnAdvanceAudioToggle, invokeImmediately: true);
-
-        _configurationManager.OnValueChanged(CCVars.AudioMasterVolume, x => _masterVolume = x, invokeImmediately: true);
-
-        _configurationManager.OnValueChanged(CCVars.AmbienceVolume, x => _ambienceVolume = x, invokeImmediately: true);
-
         _blacklist = _configurationManager.GetCVar(VCCVars.AABlacklist);
 
         _acousticQuery = GetEntityQuery<AcousticDataComponent>();
         _acousticSettingsQuery = GetEntityQuery<AcousticSettingsComponent>();
-        _audioQuery = GetEntityQuery<AudioComponent>();
         _advanceAudioQuery = GetEntityQuery<AdvanceAudioComponent>();
+        _audioQuery = GetEntityQuery<AudioComponent>();
         _humanoidAppearanceQuery = GetEntityQuery<HumanoidAppearanceComponent>();
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
 
         // subscriptions
         SubscribeLocalEvent<AcousticSettingsComponent, MapInitEvent>(OnMapInit);
-        // SubscribeLocalEvent<AcousticSettingsComponent, ComponentStartup>(OnStartup);
-        // SubscribeLocalEvent<AcousticSettingsComponent, ComponentShutdown>(OnShutdown);
-
-        SubscribeLocalEvent<AdvanceAudioComponent, MapInitEvent>(OnAdvancedAudioMapInit);
         SubscribeLocalEvent<AdvanceAudioComponent, ComponentInit>(OnAdvancedAudioInit, after: [typeof(AudioSystem)]);
-        SubscribeLocalEvent<AdvanceAudioComponent, ComponentStartup>(
-            OnAdvancedAudioStartup,
-            after: [typeof(AudioSystem)]
-        );
+        SubscribeLocalEvent<AdvanceAudioComponent, ComponentStartup>(OnAdvancedAudioStartup, after: [typeof(AudioSystem)]);
         SubscribeLocalEvent<AdvanceAudioComponent, ComponentShutdown>(OnAdvancedAudioShutdown);
-
-        // SubscribeLocalEvent<AudioComponent, EntParentChangedMessage>(OnParentChange);
 
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnLocalPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnLocalPlayerDetached);
 
-        // utilities
+        // raycasts
         InitializeAcousticRaycasts();
 
         // effects
@@ -185,6 +158,83 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         }
     }
 
+    #region Events
+
+    private void OnAdvanceAudioToggle(bool advanceAudioToggle)
+    {
+        _advanceAudioEnabled = advanceAudioToggle;
+        _aaFilterReverbEnabled = _advanceAudioEnabled; // TODO: ability to enable/disable reverb separately when we have more toggles to choose from.
+
+        if (advanceAudioToggle)
+        {
+            StartupSettings();
+
+            // We are now overriding how the engine handles the audio stream.
+            _audioSystem.ProcessStreamOverride += AAProcessStream;
+        }
+        else
+        {
+            CleanupSettings();
+
+            // We are no longer overriding how the engine handles the audio stream.
+            _audioSystem.ProcessStreamOverride -= AAProcessStream;
+        }
+    }
+
+    private void OnAdvancedAudioInit(Entity<AdvanceAudioComponent> ent, ref ComponentInit args)
+    {
+        if (!_audioQuery.TryComp(ent, out var audioComp))
+        {
+            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
+            RemComp<AdvanceAudioComponent>(ent);
+            return;
+        }
+
+        ent.Comp.BaseAudio = audioComp;
+        ent.Comp.NextProcess = _timing.RealTime + ent.Comp.ProcessInterval;
+    }
+
+    private void OnAdvancedAudioStartup(Entity<AdvanceAudioComponent> ent, ref ComponentStartup args)
+    {
+        if (_advanceAudioEnabled && ent.Comp.FilterReverb == null)
+        {
+            ent.Comp.FilterReverb = EnsureComp<AAReverbComponent>(ent);
+        }
+
+        if (_aaFilterPressureEnabled && ent.Comp.FilterPressure == null)
+        {
+            ent.Comp.FilterPressure = EnsureComp<AAPressureComponent>(ent);
+        }
+    }
+
+    private void OnAdvancedAudioShutdown(Entity<AdvanceAudioComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.FilterReverb is not null)
+            RemComp<AAReverbComponent>(ent);
+
+        if (ent.Comp.FilterPressure is not null)
+            RemComp<AAPressureComponent>(ent);
+    }
+
+    private void OnMapInit(Entity<AcousticSettingsComponent> ent, ref MapInitEvent args)
+    {
+        ent.Comp.NextCheck = _timing.CurTime + ent.Comp.CheckInterval;
+    }
+
+    private void OnLocalPlayerAttached(LocalPlayerAttachedEvent ev)
+    {
+        StartupSettings(ev.Entity);
+    }
+
+    private void OnLocalPlayerDetached(LocalPlayerDetachedEvent ev)
+    {
+        CleanupSettings();
+    }
+
+    #endregion Events
+
+    #region Processing
+
 #pragma warning disable RA0002 // Invalid access
     private void AAProcessStream(
         EntityUid audioUid,
@@ -199,12 +249,6 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
             ProcessStream(audioUid, audioComp, xform, listener);
             return;
         }
-
-        // // This entire method is on a separate thread, it's possible for us to not have the AA component yet.
-        // if (_settings is null || !TryGetAdvanceAudio((audioUid, audioComp), out var advanceAudioComp))
-        // {
-        //     return;
-        // }
 
         if (!audioComp.Started)
         {
@@ -259,13 +303,21 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
                 audioComp.Position = worldPos;
 
                 // Update audio velocity
-                // Still inefficient.
+                // Still inefficient. I'm lazy.
                 if (_physicsQuery.TryGetComponent(parentUid, out var physicsComp))
                     audioComp.Velocity = _physicsSystem.GetMapLinearVelocity(parentUid, physicsComp);
             }
         }
 
-        // Important that we apply OpenAL occlusion AFTER our gain, to avoid any weird OpenAL EFX behaviour.
+        var gain = MathHelper.Lerp(SharedAudioSystem.VolumeToGain(audioComp.Params.Volume) * _gainScalar, audioComp.Gain, 0.90f);
+        if (MathHelper.CloseTo(0f, gain, float.Epsilon + float.Epsilon))
+            gain = 0f; // Might as well be muted if the value is miniscule.
+
+        audioComp.Gain = audible
+            ? gain // Our gain scalar is handled in the main thread. (frameupdate)
+            : 0f; // If we're not audible, mute!
+
+        // Occlussssiiiooon
         if (!audioComp.Global && audible)
         {
             audioComp.Occlusion =
@@ -273,17 +325,10 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
                     ? 0f // No occlusion
                     : _audioSystem.GetOcclusion(listener, delta, distance, parentUid); // Occlude the lusion
         }
-
-        var gain = SharedAudioSystem.VolumeToGain(audioComp.Params.Volume) * _gainScalar;
-        if (MathHelper.CloseTo(0f, gain, float.Epsilon + float.Epsilon))
-            gain = 0f;
-
-        audioComp.Gain = audible
-            ? gain // Our gain scalar is handled in the main thread. (frameupdate)
-            : 0f; // If we're not audible, mute!
     }
 
     // default engine behaviour
+    // it's a copy/paste but I don't know any other way to have it as a fallback
     private void ProcessStream(
         EntityUid audioUid,
         AudioComponent audioComp,
@@ -380,98 +425,6 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     }
 #pragma warning restore RA0002 // Invalid access
 
-    #region Events
-
-    private void OnAdvanceAudioToggle(bool advanceAudioToggle)
-    {
-        _advanceAudioEnabled = advanceAudioToggle;
-        _aaFilterReverbEnabled = _advanceAudioEnabled; // TODO: ability to enable/disable reverb separately when we have more toggles to choose from.
-
-        if (advanceAudioToggle)
-        {
-            StartupSettings();
-
-            // We are now overriding how the engine handles the audio stream.
-            _audioSystem.ProcessStreamOverride += AAProcessStream;
-        }
-        else
-        {
-            CleanupSettings();
-
-            // We are no longer overriding how the engine handles the audio stream.
-            _audioSystem.ProcessStreamOverride -= AAProcessStream;
-        }
-    }
-
-    private void OnAdvancedAudioMapInit(Entity<AdvanceAudioComponent> ent, ref MapInitEvent args)
-    {
-        ent.Comp.NextProcess = _timing.RealTime + ent.Comp.ProcessInterval;
-    }
-
-    private void OnAdvancedAudioInit(Entity<AdvanceAudioComponent> ent, ref ComponentInit args)
-    {
-        if (!_audioQuery.TryComp(ent, out var audioComp))
-        {
-            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
-            RemComp<AdvanceAudioComponent>(ent);
-            return;
-        }
-
-        ent.Comp.BaseAudio = audioComp;
-        ent.Comp.OriginalGain = SharedAudioSystem.VolumeToGain(audioComp.Params.Volume);
-    }
-
-    private void OnAdvancedAudioStartup(Entity<AdvanceAudioComponent> ent, ref ComponentStartup args)
-    {
-        if (_advanceAudioEnabled)
-        {
-            if (ent.Comp.FilterReverb == null)
-            {
-                ent.Comp.FilterReverb = EnsureComp<AAReverbComponent>(ent);
-            }
-        }
-
-        if (_aaFilterPressureEnabled)
-        {
-            if (ent.Comp.FilterPressure == null)
-            {
-                ent.Comp.FilterPressure = EnsureComp<AAPressureComponent>(ent);
-            }
-        }
-    }
-
-    private void OnAdvancedAudioShutdown(Entity<AdvanceAudioComponent> ent, ref ComponentShutdown args)
-    {
-        if (ent.Comp.FilterReverb is not null)
-            RemComp<AAReverbComponent>(ent);
-
-        if (ent.Comp.FilterPressure is not null)
-            RemComp<AAPressureComponent>(ent);
-    }
-
-    private void OnMapInit(Entity<AcousticSettingsComponent> ent, ref MapInitEvent args)
-    {
-        ent.Comp.NextCheck = _timing.CurTime + ent.Comp.CheckInterval;
-    }
-
-    private void OnLocalPlayerAttached(LocalPlayerAttachedEvent ev)
-    {
-        StartupSettings(ev.Entity);
-    }
-
-    private void OnLocalPlayerDetached(LocalPlayerDetachedEvent ev)
-    {
-        CleanupSettings();
-    }
-
-    // private void OnParentChange(Entity<AudioComponent> audio, ref EntParentChangedMessage ev)
-    // {
-    //     FilterPressureStupidFuckingBandaidFix(audio);
-    // }
-
-    #endregion Events
-
-    #region Processing
 
     /// <summary>
     /// Go through all audio entities that do not have an <see cref="AdvanceAudioComponent"/>, add that component.
@@ -484,6 +437,9 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         var entities = AllEntityQuery<AudioComponent>();
         while (entities.MoveNext(out var uid, out var audio))
         {
+            if (TerminatingOrDeleted(uid))
+                continue;
+
             if (!_advanceAudioQuery.HasComp(uid) && IsAudioValidForAA((uid, audio)))
             {
                 EnsureComp<AdvanceAudioComponent>(uid);
@@ -565,15 +521,11 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         return true;
     }
 
-    [PublicAPI]
-    public bool ResolveAdvanceAudio(
-        Entity<AudioComponent> audioEnt,
-        [NotNullWhen(true)] ref AdvanceAudioComponent? advanceAudioComp
-    )
-    {
-        return _advanceAudioQuery.Resolve(audioEnt, ref advanceAudioComp, logMissing: false);
-    }
-
+    /// <summary>
+    /// Tries to get & resolve <see cref="AdvanceAudioComponent"/> on an audio entity.
+    /// Respects if the client has AA enabled or not.
+    /// </summary>
+    /// <returns>True if successfully resolved & enabled</returns>
     [PublicAPI]
     public bool TryGetAdvanceAudio(
         Entity<AudioComponent> audioEnt,
@@ -585,59 +537,7 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         if (!_advanceAudioEnabled || _settings is null)
             return false;
 
-        return ResolveAdvanceAudio(audioEnt, ref advanceAudioComp);
-    }
-
-    [PublicAPI]
-    public bool ResolveReverbFilter(
-        Entity<AdvanceAudioComponent> audioEnt,
-        [NotNullWhen(true)] ref AAReverbComponent? reverbComp
-    )
-    {
-        return _aaReverbQuery.Resolve(audioEnt, ref reverbComp);
-    }
-
-    [PublicAPI]
-    public bool TryGetReverbFilter(
-        Entity<AdvanceAudioComponent> audioEnt,
-        [NotNullWhen(true)] out AAReverbComponent? reverbComp
-    )
-    {
-        reverbComp = audioEnt.Comp.FilterReverb;
-
-        if (!_aaFilterReverbEnabled)
-            return false;
-
-        return ResolveReverbFilter(audioEnt, ref reverbComp);
-    }
-
-    [PublicAPI]
-    public bool ResolvePressureFilter(
-        Entity<AdvanceAudioComponent> audioEnt,
-        [NotNullWhen(true)] ref AAPressureComponent? pressureComp
-    )
-    {
-        return _aaPressureQuery.Resolve(audioEnt, ref pressureComp);
-    }
-
-    [PublicAPI]
-    public bool TryGetPressureFilter(
-        Entity<AdvanceAudioComponent> audioEnt,
-        [NotNullWhen(true)] out AAPressureComponent? pressureComp
-    )
-    {
-        pressureComp = audioEnt.Comp.FilterPressure;
-
-        if (!_aaFilterPressureEnabled)
-            return false;
-
-        return ResolvePressureFilter(audioEnt, ref pressureComp);
-    }
-
-    [PublicAPI]
-    public bool TryGetAudioComponent(Entity<AdvanceAudioComponent> ent, [NotNullWhen(true)] out AudioComponent? audio)
-    {
-        return _audioQuery.TryGetComponent(ent, out audio);
+        return _advanceAudioQuery.Resolve(audioEnt, ref advanceAudioComp, logMissing: false);
     }
 
     /// <summary>

@@ -55,6 +55,10 @@ public sealed partial class AdvanceAudioSystem
             advanceAudioComp.FilterReverb = ent.Comp;
             ent.Comp.CachedAmplitude = _settings.LastAmplitude;
             ent.Comp.CachedReverbPreset = _settings.LastReverbPreset;
+
+            if (_gainScalar > 0)
+                SetReverbFilter((ent.Owner, advanceAudioComp, ent.Comp, advanceAudioComp.BaseAudio), ent.Comp.CachedReverbPreset);
+
             return;
         }
 
@@ -82,8 +86,6 @@ public sealed partial class AdvanceAudioSystem
         {
             aaReverbComp.CachedReverbPreset = GetPresetClosestToValue(aaReverbComp.CachedAmplitude.Value, settings.ReverbPresets);
         }
-
-        aaReverbComp.Updated = true;
     }
 
     private void SetReverbFilter(
@@ -98,10 +100,6 @@ public sealed partial class AdvanceAudioSystem
             if (reverbPreset is not null)
             {
                 _audioEffectSystem.TryAddEffect((uid, audioComp), reverbPreset.Value);
-            }
-            else
-            {
-                _audioEffectSystem.TryRemoveEffect((uid, audioComp));
             }
 
             aaReverbComp.AppliedReverbPreset = reverbPreset;
@@ -182,16 +180,23 @@ public sealed partial class AdvanceAudioSystem
 
     #region Helpers
 
+    /// <summary>
+    /// Tries to get & resolve the reverb filter stored on <see cref="AdvanceAudioComponent"/>
+    /// Respects if the client has the reverb filter enabled or not.
+    /// </summary>
+    /// <returns>True if successfully resolved & enabled</returns>
     [PublicAPI]
-    public bool ResolveFilterReverb(
-        Entity<AdvanceAudioComponent, AudioComponent> ent,
-        [NotNullWhen(true)] ref AAReverbComponent? aaReverbComp
+    public bool TryGetReverbFilter(
+        Entity<AdvanceAudioComponent> audioEnt,
+        [NotNullWhen(true)] out AAReverbComponent? reverbComp
     )
     {
+        reverbComp = audioEnt.Comp.FilterReverb;
+
         if (!_aaFilterReverbEnabled)
             return false;
 
-        return _aaReverbQuery.Resolve(ent, ref aaReverbComp) && aaReverbComp is not null;
+        return _aaReverbQuery.Resolve(audioEnt, ref reverbComp);
     }
 
     [PublicAPI]

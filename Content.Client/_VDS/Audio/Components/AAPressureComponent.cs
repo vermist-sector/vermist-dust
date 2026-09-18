@@ -15,7 +15,4 @@ public sealed partial class AAPressureComponent : Component
 
     [DataField]
     public ProtoId<AudioPresetPrototype>? CachedPressurePreset;
-
-    [ViewVariables]
-    public bool Updated;
 }
