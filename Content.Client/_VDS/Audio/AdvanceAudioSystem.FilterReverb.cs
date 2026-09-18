@@ -95,6 +95,9 @@ public sealed partial class AdvanceAudioSystem
     {
         var (uid, advanceAudioComp, aaReverbComp, audioComp) = audioEnt;
 
+        if (TerminatingOrDeleted(audioEnt))
+            return;
+
         if (reverbPreset != aaReverbComp.AppliedReverbPreset)
         {
             if (reverbPreset is not null)

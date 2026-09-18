@@ -121,6 +121,9 @@ public sealed partial class AdvanceAudioSystem
     {
         var (uid, advanceAudioComp, aaPressureComp, audioComp) = audioEnt;
 
+        if (TerminatingOrDeleted(audioEnt))
+            return;
+
         if (pressurePreset != aaPressureComp.AppliedPressurePreset)
         {
             if (pressurePreset is not null)

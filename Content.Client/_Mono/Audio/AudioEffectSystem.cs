@@ -162,12 +162,6 @@ public sealed class AudioEffectSystem : EntitySystem
         if (!AuxiliariesAreDefinitelySafe() ||
             !ResolveCachedEffect(preset, out var auxiliaryUid, out _))
             return false;
-        // Log.Info($"""
-        //
-        //         trying so hard {ToPrettyString(entity)}
-        //         preset {preset}
-        //         aux {auxiliaryUid.Value}
-        //         """);
 
         _audioSystem.SetAuxiliary(entity, entity.Comp, auxiliaryUid);
         return true;

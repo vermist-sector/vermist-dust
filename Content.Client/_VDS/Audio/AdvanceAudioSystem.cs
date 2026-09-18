@@ -109,6 +109,9 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     {
         base.FrameUpdate(frameTime);
 
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         // if _settings is null (handled elsewhere), that also means
         // every other required acoustic check (enabled, has a body, etc) has failed.
         if (_settings is null || !_advanceAudioEnabled)
@@ -183,6 +186,9 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
 
     private void OnAdvancedAudioInit(Entity<AdvanceAudioComponent> ent, ref ComponentInit args)
     {
+        if (!Exists(ent) || TerminatingOrDeleted(ent))
+            return;
+
         if (!_audioQuery.TryComp(ent, out var audioComp))
         {
             Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
@@ -196,14 +202,17 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
 
     private void OnAdvancedAudioStartup(Entity<AdvanceAudioComponent> ent, ref ComponentStartup args)
     {
-        if (_advanceAudioEnabled && ent.Comp.FilterReverb == null)
+        if (!_advanceAudioEnabled || _settings is null || !Exists(ent))
+            return;
+
+        if (_aaFilterReverbEnabled && !_aaReverbQuery.Resolve(ent, ref ent.Comp.FilterReverb, logMissing: false))
         {
-            ent.Comp.FilterReverb = EnsureComp<AAReverbComponent>(ent);
+            ent.Comp.FilterReverb = AddComp<AAReverbComponent>(ent);
         }
 
-        if (_aaFilterPressureEnabled && ent.Comp.FilterPressure == null)
+        if (_aaFilterPressureEnabled && !_aaPressureQuery.Resolve(ent, ref ent.Comp.FilterPressure, logMissing: false))
         {
-            ent.Comp.FilterPressure = EnsureComp<AAPressureComponent>(ent);
+            ent.Comp.FilterPressure = AddComp<AAPressureComponent>(ent);
         }
     }
 
@@ -431,24 +440,18 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
     /// </summary>
     private void ProcessStartingAudioEntities()
     {
-        if (!_advanceAudioEnabled)
+        if (!_advanceAudioEnabled || _settings is null)
             return;
 
         var entities = AllEntityQuery<AudioComponent>();
         while (entities.MoveNext(out var uid, out var audio))
         {
-            if (TerminatingOrDeleted(uid))
+            if (!Exists(uid) || TerminatingOrDeleted(uid))
                 continue;
 
             if (!_advanceAudioQuery.HasComp(uid) && IsAudioValidForAA((uid, audio)))
             {
-                EnsureComp<AdvanceAudioComponent>(uid);
-
-                if (_aaFilterReverbEnabled)
-                    EnsureComp<AAReverbComponent>(uid);
-
-                if (_aaFilterPressureEnabled)
-                    EnsureComp<AAPressureComponent>(uid);
+                AddComp<AdvanceAudioComponent>(uid);
             }
         }
     }
