@@ -46,10 +46,7 @@ public sealed partial class AcousticSettingsComponent : Component
     [DataField, ViewVariables]
     public ProtoId<AudioPresetPrototype>? LastPressurePreset;
 
-    [DataField, ViewVariables]
-    public float LastPressureGain;
-
-    [DataField, ViewVariables]
+    [ViewVariables]
     public float LastAmplitude;
 
     /// <summary>

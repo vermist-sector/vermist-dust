@@ -21,26 +21,13 @@ public sealed partial class AdvanceAudioComponent : Component
     /// How often we process our data.
     /// </summary>
     [DataField]
-    public TimeSpan ProcessInterval = TimeSpan.FromSeconds(1f);
-
-
-    /// <summary>
-    /// Original volume of this audio entity.
-    /// </summary>
-    [DataField]
-    public float OriginalVolume;
+    public TimeSpan ProcessInterval = TimeSpan.FromSeconds(0.5f);
 
     /// <summary>
     /// Original gain of this audio entity.
     /// </summary>
     [DataField]
     public float OriginalGain;
-
-    /// <summary>
-    /// Prior gain of this audio entity
-    /// </summary>
-    [DataField]
-    public float PriorGain;
 
     [ViewVariables(VVAccess.ReadOnly)]
     public AudioComponent BaseAudio;
@@ -51,10 +38,3 @@ public sealed partial class AdvanceAudioComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public AAPressureComponent? FilterPressure;
 }
-
-[ByRefEvent]
-public record struct AdvanceAudioStartedPlayingEvent();
-
-[ByRefEvent]
-public record struct AdvanceAudioFieldsUpdatedEvent(AdvanceAudioComponent AdvanceAudioComp, bool Handled = false);
-

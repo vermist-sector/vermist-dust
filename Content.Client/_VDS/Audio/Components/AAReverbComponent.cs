@@ -13,6 +13,12 @@ public sealed partial class AAReverbComponent : Component
     [DataField]
     public float? CachedAmplitude;
 
+    [ViewVariables]
+    public ProtoId<AudioPresetPrototype>? AppliedReverbPreset;
+
     [DataField]
     public ProtoId<AudioPresetPrototype>? CachedReverbPreset;
+
+    [ViewVariables]
+    public bool Updated;
 }
