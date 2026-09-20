@@ -112,9 +112,7 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        // if _settings is null (handled elsewhere), that also means
-        // every other required acoustic check (enabled, has a body, etc) has failed.
-        if (_settings is null || !_advanceAudioEnabled)
+        if (_settings is null || !_advanceAudioEnabled || !Exists(_clientEnt))
         {
             return;
         }
@@ -186,12 +184,12 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
 
     private void OnAdvancedAudioInit(Entity<AdvanceAudioComponent> ent, ref ComponentInit args)
     {
-        if (!Exists(ent) || TerminatingOrDeleted(ent))
+        if (!_advanceAudioEnabled || _settings is null || !Exists(ent))
             return;
 
         if (!_audioQuery.TryComp(ent, out var audioComp))
         {
-            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
+            Log.Warning($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
             RemComp<AdvanceAudioComponent>(ent);
             return;
         }
@@ -252,8 +250,8 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         MapCoordinates listener
     )
     {
-        // Revert to engine behavior for audio we don't care about.
-        if (!IsAudioValidForAA((audioUid, audioComp)))
+        // Revert to engine behavior for audio we don't care about, or if the client entity doesn't exist.
+        if (!IsAudioValidForAA((audioUid, audioComp)) || !Exists(_clientEnt))
         {
             ProcessStream(audioUid, audioComp, xform, listener);
             return;

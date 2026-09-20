@@ -63,7 +63,7 @@ public sealed partial class AdvanceAudioSystem
             return;
         }
 
-        Log.Debug($"Unable to get AdvanceAudioComponent for {ToPrettyString(ent)}. Is this a test?");
+        Log.Warning($"Unable to get AdvanceAudioComponent for {ToPrettyString(ent)}. Is this a test?");
     }
 
     private void OnAAFilterPressureToggle(bool aaFilterPressureToggle)
