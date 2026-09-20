@@ -163,7 +163,10 @@ public sealed class AudioEffectSystem : EntitySystem
             !ResolveCachedEffect(preset, out var auxiliaryUid, out _))
             return false;
 
-        _audioSystem.SetAuxiliary(entity, entity.Comp, auxiliaryUid);
+        if (auxiliaryUid == null || !HasComp<AudioAuxiliaryComponent>(auxiliaryUid)) // VDS, fixes test failure.
+            return false;
+
+        _audioSystem.SetAuxiliary(entity, entity.Comp, auxiliaryUid.Value);
         return true;
     }
 
