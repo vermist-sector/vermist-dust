@@ -1,12 +1,4 @@
 ﻿Entries:
-- author: ComedyIdiot
-  changes:
-  - message: The PKA's recharge sound has been tweaked to sound like it used to back
-      in the good 'ol days of February 2025.
-    type: Tweak
-  id: 2455
-  time: '2025-11-28T21:54:47.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/3758
 - author: Squamatic
   changes:
   - message: Ceremonies involving the traditional Gray blaster will now be held at
@@ -4060,3 +4052,10 @@
   id: 2954
   time: '2026-09-20T19:12:49.0000000+00:00'
   url: https://github.com/impstation/imp-station-14/pull/4550
+- author: Simul-ad-Astra
+  changes:
+  - message: Serpentcrest has undergone a bunch of fixes. Yay!
+    type: Tweak
+  id: 2955
+  time: '2026-09-21T02:47:44.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/4562
