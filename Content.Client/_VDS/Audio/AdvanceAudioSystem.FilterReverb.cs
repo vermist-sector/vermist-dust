@@ -62,7 +62,7 @@ public sealed partial class AdvanceAudioSystem
             return;
         }
 
-        Log.Warning($"Unable to get AdvanceAudioComponent for {ToPrettyString(ent)}. Is this a test?");
+        Log.Warning($"Unable to get AdvanceAudioComponent for {ToPrettyString(ent)}.");
     }
 
     #region Processing

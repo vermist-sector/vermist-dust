@@ -63,7 +63,7 @@ public sealed partial class AdvanceAudioSystem
             return;
         }
 
-        Log.Warning($"Unable to get AdvanceAudioComponent for {ToPrettyString(ent)}. Is this a test?");
+        Log.Warning($"Unable to get AdvanceAudioComponent for {ToPrettyString(ent)}.");
     }
 
     private void OnAAFilterPressureToggle(bool aaFilterPressureToggle)
@@ -209,30 +209,25 @@ public sealed partial class AdvanceAudioSystem
     /// Tries to get the player's atmos data,
     /// resolving it and caching it to the acoustic system.
     /// </summary>
-    /// <returns>True if acousticSettings is not null, false if null.</returns>
+    /// <returns>True if acousticSettings is not null, false if null or pressure filter is disabled.</returns>
     [PublicAPI]
-    public bool ResolvePlayerAtmosData(
+    public bool TryGetPlayerAtmosData(
         EntityUid playerEnt,
-        [NotNullWhen(true)] ref AtmosDataComponent? atmosData
+        [NotNullWhen(true)] out AtmosDataComponent? atmosData
     )
     {
-        if (_settings is null || !_aaFilterPressureEnabled || playerEnt == EntityUid.Invalid || TerminatingOrDeleted(playerEnt))
-            return false;
-
-        /* TODO: right now we check if they have a humanoid appearance, because
-                actors like cyborgs technically are controlled via an internal container and
-                that causes some issues with the raycasting and pressure filter...
-            also the AI eye shouldn't be affected anyway.
-         */
-        if (!_humanoidAppearanceQuery.HasComp(playerEnt))
-            return false;
-
-        if (!_atmosDataQuery.Resolve(playerEnt, ref _atmosData))
-            return false;
-
         atmosData = _atmosData;
 
-        return true;
+        if (atmosData?.Deleted == true)
+        {
+            if (!_atmosDataQuery.TryComp(playerEnt, out var comp))
+                return false;
+
+            _atmosData = comp;
+            atmosData = comp;
+        }
+
+        return _atmosDataQuery.Resolve(playerEnt, ref atmosData);
     }
     #endregion Helpers
 }
