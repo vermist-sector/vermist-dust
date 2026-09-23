@@ -642,15 +642,17 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
                 ? GetPressureScalar(atmosData.Pressure, _aaFilterPressureMinimumGain)
                 : 1f;
 
-        // cache all effects in advance, to avoid tick/frame delay when a new audio preset is being applied
-        var presets = _reverbPresets
-            .Concat(_pressurePresets)
-            .GroupBy(kvp => kvp.Value)
-            .Select(first => first.First().Value)
-            .Distinct();
-
-        foreach (var preset in presets)
-            _audioEffectSystem.TryCacheEffect(in preset, out var _, out var _);
+        // nvm this causes test issues and this isn't important enough for me to fix
+        //
+        // // cache all effects in advance, to avoid tick/frame delay when a new audio preset is being applied
+        // var presets = _reverbPresets
+        //     .Concat(_pressurePresets)
+        //     .GroupBy(kvp => kvp.Value)
+        //     .Select(first => first.First().Value)
+        //     .Distinct();
+        //
+        // foreach (var preset in presets)
+        //     _audioEffectSystem.TryCacheEffect(in preset, out var _, out var _);
     }
 
     /// <summary>
