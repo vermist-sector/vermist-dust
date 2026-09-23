@@ -126,7 +126,7 @@ public sealed partial class AdvanceAudioSystem
 
         if (pressurePreset != aaPressureComp.AppliedPressurePreset)
         {
-            if (pressurePreset is not null)
+            if (pressurePreset is not null && _clientEnt is not null)
             {
                 _audioEffectSystem.TryAddEffect((uid, audioComp), pressurePreset.Value);
             }
@@ -218,7 +218,7 @@ public sealed partial class AdvanceAudioSystem
     {
         atmosData = _atmosData;
 
-        if (atmosData?.Deleted == true)
+        if (atmosData is null || atmosData.Deleted)
         {
             if (!_atmosDataQuery.TryComp(playerEnt, out var comp))
                 return false;

@@ -100,7 +100,7 @@ public sealed partial class AdvanceAudioSystem
 
         if (reverbPreset != aaReverbComp.AppliedReverbPreset)
         {
-            if (reverbPreset is not null)
+            if (reverbPreset is not null && _clientEnt is not null)
             {
                 _audioEffectSystem.TryAddEffect((uid, audioComp), reverbPreset.Value);
             }
