@@ -626,6 +626,8 @@ public sealed partial class AdvanceAudioSystem : EntitySystem
         if (!_advanceAudioEnabled)
             return;
 
+        if (!IsPlayerValidForAdvanceAudio(clientEnt))
+            return;
 
         _settings = EnsureComp<AcousticSettingsComponent>(clientEnt);
         _curTime = _timing.CurTime;
