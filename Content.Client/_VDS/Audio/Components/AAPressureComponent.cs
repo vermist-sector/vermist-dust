@@ -10,8 +10,8 @@ namespace Content.Client._VDS.Audio.Components;
 [Access(typeof(AdvanceAudioSystem))]
 public sealed partial class AAPressureComponent : Component
 {
-    [DataField]
-    public float? CachedPressureGain;
+    [ViewVariables]
+    public ProtoId<AudioPresetPrototype>? AppliedPressurePreset;
 
     [DataField]
     public ProtoId<AudioPresetPrototype>? CachedPressurePreset;

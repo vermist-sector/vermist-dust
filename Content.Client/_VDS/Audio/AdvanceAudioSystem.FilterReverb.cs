@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Client._VDS.Audio.Components;
 using Content.Shared.Light.Components;
@@ -49,83 +50,22 @@ public sealed partial class AdvanceAudioSystem
 
     private void OnAAReverbInit(Entity<AAReverbComponent> ent, ref ComponentInit args)
     {
-        if (_settings is null)
+        if (_settings is not null && _advanceAudioQuery.TryComp(ent, out var advanceAudioComp))
         {
-            Log.Debug(
-                $"Tried to start AcousticSettingsComponent for {ToPrettyString(ent)}, but {ToPrettyString(_clientEnt)} has no cached acoustic settings. Is this a test?"
-            );
-            RemComp<AAReverbComponent>(ent);
+            advanceAudioComp.FilterReverb = ent.Comp;
+            ent.Comp.CachedAmplitude = _settings.LastAmplitude;
+            ent.Comp.CachedReverbPreset = _settings.LastReverbPreset;
+
+            if (_gainScalar > 0)
+                SetReverbFilter((ent.Owner, advanceAudioComp, ent.Comp, advanceAudioComp.BaseAudio), ent.Comp.CachedReverbPreset);
+
             return;
         }
 
-        if (!TryComp<AudioComponent>(ent, out var audio))
-        {
-            Log.Debug($"Unable to get AudioComponent for {ToPrettyString(ent)}. Is this a test?");
-            return;
-        }
-
-        ent.Comp.CachedAmplitude = _settings.LastAmplitude;
-        ent.Comp.CachedReverbPreset = _settings.LastReverbPreset;
-
-        TryUpdateReverbFilter((ent.Owner, ent.Comp, audio));
+        Log.Warning($"Unable to get AdvanceAudioComponent for {ToPrettyString(ent)}.");
     }
 
     #region Processing
-
-    /// <summary>
-    /// Tries to updates <see cref="AAReverbComponent"/> values for the provided
-    /// audio entity. The filter will make use of the new values on the next <see cref="TrySetReverbFilter(Entity{AdvanceAudioComponent, AudioComponent}, float)"/> call.
-    /// </summary>
-    /// <param name="audioEnt">The audio entity we are updating.</param>
-    /// <returns>True if the <paramref name="audioEnt"/> was updated.</returns>
-    [PublicAPI]
-    public bool TryUpdateReverbFilter(
-       Entity<AAReverbComponent, AudioComponent> audioEnt,
-       AdvanceAudioComponent? advanceAudioComp = null
-    )
-    {
-        var (uid, aaReverbComp, audioComp) = audioEnt;
-
-        if (!_advancedAudioQuery.Resolve(uid, ref advanceAudioComp))
-            return false;
-
-        return TryUpdateReverbFilter((uid, advanceAudioComp, aaReverbComp, audioComp));
-    }
-
-    /// <inheritdoc/>
-    [PublicAPI]
-    public bool TryUpdateReverbFilter(
-       Entity<AdvanceAudioComponent, AAReverbComponent, AudioComponent> audioEnt
-    )
-    {
-        if (!ResolvePlayerAcousticSettings(_clientEnt, ref _settings))
-            return false;
-
-        UpdateReverbFilter(audioEnt, _settings);
-        return true;
-    }
-
-    /// <summary>
-    /// Sets values to be used by the reverb filter.
-    /// </summary>
-    /// <param name="audioEnt">The audio entity we are updating.</param>
-    /// <param name="rayAmplitude">Amplitude gathered by our raycast.</param>
-    /// <returns>True if the filter has been successfully set.</returns>
-    [PublicAPI]
-    public bool TrySetReverbFilter(
-        Entity<AdvanceAudioComponent, AudioComponent> audioEnt,
-        float rayAmplitude
-    )
-    {
-        if (_settings is null)
-            return false;
-
-        var (uid, _, audioComp) = audioEnt;
-
-        var preset = GetPresetClosestToValue(rayAmplitude, _reverbPresets);
-        SetReverbFilter((uid, audioComp), preset, rayAmplitude);
-        return true;
-    }
 
     private void UpdateReverbFilter(
         Entity<AdvanceAudioComponent, AAReverbComponent, AudioComponent> audioEnt,
@@ -135,24 +75,37 @@ public sealed partial class AdvanceAudioSystem
 
         var lastAmp = aaReverbComp.CachedAmplitude;
         aaReverbComp.CachedAmplitude = settings.LastAmplitude;
-        settings.LastAmplitude = lastAmp ?? _reverbPresets.Keys[0];
+        settings.LastAmplitude = lastAmp ?? settings.LastAmplitude;
 
         settings.LastReverbPreset = aaReverbComp.CachedReverbPreset;
-        aaReverbComp.CachedReverbPreset = GetPresetClosestToValue(aaReverbComp.CachedAmplitude.Value, _reverbPresets);
-
-
-        SetReverbFilter((uid, audioComp), aaReverbComp.CachedReverbPreset.Value, aaReverbComp.CachedAmplitude.Value);
+        if (aaReverbComp.CachedAmplitude.Value < settings.ReverbPresets.Keys[0])
+        {
+            aaReverbComp.CachedReverbPreset = null;
+        }
+        else
+        {
+            aaReverbComp.CachedReverbPreset = GetPresetClosestToValue(aaReverbComp.CachedAmplitude.Value, settings.ReverbPresets);
+        }
     }
 
     private void SetReverbFilter(
-        Entity<AudioComponent> audioEnt,
-        ProtoId<AudioPresetPrototype> reverbPreset,
-        float amplitude
+        Entity<AdvanceAudioComponent, AAReverbComponent, AudioComponent> audioEnt,
+        ProtoId<AudioPresetPrototype>? reverbPreset = null
     )
     {
-        if (amplitude > _reverbPresets.Keys[0])
+        var (uid, advanceAudioComp, aaReverbComp, audioComp) = audioEnt;
+
+        if (TerminatingOrDeleted(audioEnt))
+            return;
+
+        if (reverbPreset != aaReverbComp.AppliedReverbPreset)
         {
-            _audioEffectSystem.TryAddEffect(audioEnt, in reverbPreset);
+            if (reverbPreset is not null && _clientEnt is not null)
+            {
+                _audioEffectSystem.TryAddEffect((uid, audioComp), reverbPreset.Value);
+            }
+
+            aaReverbComp.AppliedReverbPreset = reverbPreset;
         }
     }
 
@@ -229,6 +182,25 @@ public sealed partial class AdvanceAudioSystem
     }
 
     #region Helpers
+
+    /// <summary>
+    /// Tries to get & resolve the reverb filter stored on <see cref="AdvanceAudioComponent"/>
+    /// Respects if the client has the reverb filter enabled or not.
+    /// </summary>
+    /// <returns>True if successfully resolved & enabled</returns>
+    [PublicAPI]
+    public bool TryGetReverbFilter(
+        Entity<AdvanceAudioComponent> audioEnt,
+        [NotNullWhen(true)] out AAReverbComponent? reverbComp
+    )
+    {
+        reverbComp = audioEnt.Comp.FilterReverb;
+
+        if (!_aaFilterReverbEnabled)
+            return false;
+
+        return _aaReverbQuery.Resolve(audioEnt, ref reverbComp);
+    }
 
     [PublicAPI]
     public float GetRayAmplitudeRoofPenalty(
