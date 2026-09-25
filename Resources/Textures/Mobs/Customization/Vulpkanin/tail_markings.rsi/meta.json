@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from https://github.com/DeltaV-Station/Delta-v/commit/65d35d0b3c20aa4e8a0e749a4de8392e53051e86. Fluffy created by Skarletto (Github). Modified by FairlySadPanda (Github/Discord)",
+    "copyright": "Taken from https://github.com/DeltaV-Station/Delta-v/commit/65d35d0b3c20aa4e8a0e749a4de8392e53051e86. Fluffy created by Skarletto (Github). Modified by FairlySadPanda (Github/Discord) | fox and otie states taken from https://github.com/DeltaV-Station/Delta-v/tree/061b844c99e7313467494150a3a93802301d4f4e/Resources/Textures/_DV/Mobs/Customization/Vulpkanin/tail_markings.rsi added by Zephyrpak for Misfit Station",
     "size": {"x": 32, "y": 32},
     "states": [
         {
@@ -57,6 +57,22 @@
         },
         {
             "name": "coyote",
+            "directions": 4
+        },
+		{
+            "name": "fox",
+            "directions": 4
+        },
+        {
+            "name": "fox-tip",
+            "directions": 4
+        },
+        {
+            "name": "fox-fade",
+            "directions": 4
+        },
+		{
+            "name": "otie",
             "directions": 4
         }
     ]

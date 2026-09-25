@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "https://github.com/DeltaV-Station/Delta-v/commit/e5426c4e3b160472b7d2913e1f89897bf72d957, some modification by FairlySadPanda (Github/Discord), ScarKy0 (Github/Discord) and TiniestShark (Github)",
+    "copyright": "https://github.com/DeltaV-Station/Delta-v/commit/e5426c4e3b160472b7d2913e1f89897bf72d957, some modification by FairlySadPanda (Github/Discord), ScarKy0 (Github/Discord) and TiniestShark (Github) | wolf and wolf-inner states taken from https://github.com/DeltaV-Station/Delta-v/tree/061b844c99e7313467494150a3a93802301d4f4e/Resources/Textures/_DV/Mobs/Customization/Vulpkanin/ear_markings.rsi added by Zephyrpak for Misfit Station",
     "size": {
         "x": 32,
         "y": 32
@@ -77,6 +77,14 @@
         },
         {
             "name": "coyote-inner",
+            "directions": 4
+        },
+		{
+            "name": "wolf",
+            "directions": 4
+        },
+        {
+            "name": "wolf-inner",
             "directions": 4
         }
     ]
