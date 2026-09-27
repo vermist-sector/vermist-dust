@@ -46,4 +46,7 @@ public sealed partial class AdvanceAudioComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
     public AAPressureComponent? FilterPressure;
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public bool Attached;
 }

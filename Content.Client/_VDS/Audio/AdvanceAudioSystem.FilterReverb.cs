@@ -56,9 +56,6 @@ public sealed partial class AdvanceAudioSystem
             ent.Comp.CachedAmplitude = _settings.LastAmplitude;
             ent.Comp.CachedReverbPreset = _settings.LastReverbPreset;
 
-            if (_gainScalar > 0)
-                SetReverbFilter((ent.Owner, advanceAudioComp, ent.Comp, advanceAudioComp.BaseAudio), ent.Comp.CachedReverbPreset);
-
             return;
         }
 
@@ -88,7 +85,7 @@ public sealed partial class AdvanceAudioSystem
         }
     }
 
-    private void SetReverbFilter(
+    private bool TrySetReverbFilter(
         Entity<AdvanceAudioComponent, AAReverbComponent, AudioComponent> audioEnt,
         ProtoId<AudioPresetPrototype>? reverbPreset = null
     )
@@ -96,7 +93,7 @@ public sealed partial class AdvanceAudioSystem
         var (uid, advanceAudioComp, aaReverbComp, audioComp) = audioEnt;
 
         if (TerminatingOrDeleted(audioEnt))
-            return;
+            return false;
 
         if (reverbPreset != aaReverbComp.AppliedReverbPreset)
         {
@@ -106,7 +103,10 @@ public sealed partial class AdvanceAudioSystem
             }
 
             aaReverbComp.AppliedReverbPreset = reverbPreset;
+            return true;
         }
+
+        return false;
     }
 
     #endregion Processing
