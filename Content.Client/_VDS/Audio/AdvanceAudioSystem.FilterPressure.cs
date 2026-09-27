@@ -57,9 +57,6 @@ public sealed partial class AdvanceAudioSystem
             advanceAudioComp.FilterPressure = ent.Comp;
             ent.Comp.CachedPressurePreset = _settings.LastPressurePreset;
 
-            if (_gainScalar > 0)
-                SetPressureFilter((ent.Owner, advanceAudioComp, ent.Comp, advanceAudioComp.BaseAudio), ent.Comp.CachedPressurePreset);
-
             return;
         }
 
@@ -115,14 +112,14 @@ public sealed partial class AdvanceAudioSystem
         }
     }
 
-    private void SetPressureFilter(
+    private bool TrySetPressureFilter(
         Entity<AdvanceAudioComponent, AAPressureComponent, AudioComponent> audioEnt,
         ProtoId<AudioPresetPrototype>? pressurePreset = null)
     {
         var (uid, advanceAudioComp, aaPressureComp, audioComp) = audioEnt;
 
         if (TerminatingOrDeleted(audioEnt))
-            return;
+            return false;
 
         if (pressurePreset != aaPressureComp.AppliedPressurePreset)
         {
@@ -132,7 +129,11 @@ public sealed partial class AdvanceAudioSystem
             }
 
             aaPressureComp.AppliedPressurePreset = pressurePreset;
+
+            return true;
         }
+
+        return false;
     }
 
     #endregion Processing
