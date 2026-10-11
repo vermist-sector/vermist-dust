@@ -14,14 +14,14 @@ public sealed partial class SharedFaxSystem : EntitySystem
 
         if (user != null)
         {
-            var userEv = new FaxUserModifyMessageEvent(message, machine, user);
+            var userEv = new FaxUserModifySentMessageEvent(message, machine, user);
             RaiseLocalEvent(user.Value, ref userEv);
             message = userEv.Message;
         }
 
         if (machine != null)
         {
-            var senderEv = new FaxSenderModifyMessageEvent(message, machine, user);
+            var senderEv = new FaxSenderModifySentMessageEvent(message, machine, user);
             RaiseLocalEvent(machine.Value, ref senderEv);
             message = senderEv.Message;
         }
@@ -32,7 +32,7 @@ public sealed partial class SharedFaxSystem : EntitySystem
     /// </summary>
     public void ModifyReceivedMessage(ref string message, EntityUid receiver)
     {
-        var receiverEv = new FaxReceiverModifyMessageEvent(message);
+        var receiverEv = new FaxModifyReceivedMessageEvent(message);
         RaiseLocalEvent(receiver, ref receiverEv);
         message = receiverEv.Message;
     }
@@ -65,7 +65,7 @@ public sealed partial class SharedFaxSystem : EntitySystem
 ///     Event raised on a fax machine to modify the message from sending a fax.
 /// </summary>
 [ByRefEvent]
-public record struct FaxSenderModifyMessageEvent(
+public record struct FaxSenderModifySentMessageEvent(
     string Message,
     EntityUid? Machine = null,
     EntityUid? User = null);
@@ -74,7 +74,7 @@ public record struct FaxSenderModifyMessageEvent(
 ///     Event raised on an entity using a fax machine to modify the message from sending a fax.
 /// </summary>
 [ByRefEvent]
-public record struct FaxUserModifyMessageEvent(
+public record struct FaxUserModifySentMessageEvent(
     string Message,
     EntityUid? Machine = null,
     EntityUid? User = null);
@@ -83,7 +83,7 @@ public record struct FaxUserModifyMessageEvent(
 ///     Event raised on a fax machine to modify the message from receiving a fax.
 /// </summary>
 [ByRefEvent]
-public record struct FaxReceiverModifyMessageEvent(string Message);
+public record struct FaxModifyReceivedMessageEvent(string Message);
 
 /// <summary>
 ///     Event raised on a fax machine to modify the message from copying a fax.
