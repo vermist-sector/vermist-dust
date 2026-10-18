@@ -1,0 +1,46 @@
+# Chest
+
+# Head
+
+# Snout
+
+# Eyes
+
+# RArm
+
+# LArm
+
+# RLeg
+
+# LLeg
+
+# UndergarmentBottom
+
+# UndergarmentTop
+
+# LFoot
+
+# RFoot
+
+# LHand
+
+# RHand
+
+# FacialHair
+
+# Hair
+
+- type: marking
+  id: HumanHairWolfCut
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [ Human ]
+  sprites:
+  - sprite: _VDS/Mobs/Customization/Human/hair.rsi
+    state: wolf_cut
+
+# HeadSide
+
+# HeadTop
+
+# RArmExtension
