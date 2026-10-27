@@ -1,114 +1,100 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-   # - /Audio/Lobby/thunderdome.ogg
-   # - /Audio/Lobby/absconditus.ogg # imp# - music purge voted to kill
-   # - /Audio/Lobby/space_asshole.ogg
-   # - /Audio/Lobby/the_wizard.ogg
-   # - /Audio/Lobby/endless_space.ogg
-   # - /Audio/Lobby/singuloose.ogg
-   # - /Audio/Lobby/comet_haley.ogg
-   # - /Audio/Lobby/title2.ogg
-   # - /Audio/Lobby/title3.ogg
-   # - /Audio/Lobby/mod.flip-flap.ogg
-   # - /Audio/Lobby/Spac_Stac.ogg
-   # - /Audio/Lobby/pwmur.ogg
-   # - /Audio/Lobby/lasers_rip_apart_the_bulkhead.ogg
-   # - /Audio/Lobby/every_light_is_blinking_at_once.ogg
-   # - /Audio/Lobby/atomicamnesiammx.ogg
     # imp edits below
-   # - /Audio/_Impstation/Music/4ff.ogg
-   # - /Audio/_Impstation/Music/a_line_in_the_sand.ogg
-   # - /Audio/_Impstation/Music/actors_anteroom.ogg
-   # - /Audio/_Impstation/Music/ai_bomb.ogg
+    # VDS - many imp entries removed; files are deleted
     - /Audio/_Impstation/Music/along_with_brew.ogg
-   # - /Audio/_Impstation/Music/armored_in_green.ogg
-   # - /Audio/_Impstation/Music/beam_katana_chronicles.ogg
-   # - /Audio/_Impstation/Music/bee_like_that.ogg
-    - /Audio/_Impstation/Music/bio-engineering.ogg
     - /Audio/_Impstation/Music/bodybuilder.ogg
-   # - /Audio/_Impstation/Music/burning_mens_soul.ogg
-   # - /Audio/_Impstation/Music/breaking_bad_remix.ogg
-   # - /Audio/_Impstation/Music/champanhe_e_agua_benta.ogg
-   # - /Audio/_Impstation/Music/choose_your_character.ogg
-   # - /Audio/_Impstation/Music/cizgi.ogg
-   # - /Audio/_Impstation/Music/clown.ogg
-   # - /Audio/_Impstation/Music/cmon.ogg
-   # - /Audio/_Impstation/Music/coops_d.ogg
-   # - /Audio/_Impstation/Music/create_a_wrestler.ogg
     - /Audio/_Impstation/Music/diesel.ogg.ogg
-   # - /Audio/_Impstation/Music/digital_nightmare.ogg
-    - /Audio/_Impstation/Music/dont_drink_it.ogg
-   # - /Audio/_Impstation/Music/epoch.ogg
-    - /Audio/_Impstation/Music/eternal_sanctity.ogg
-    - /Audio/_Impstation/Music/eudora.ogg
-   # - /Audio/_Impstation/Music/eve_of_the_war.ogg
-   # - /Audio/_Impstation/Music/final_tag_roll.ogg
-    - /Audio/_Impstation/Music/floor_one.ogg
-    - /Audio/_Impstation/Music/foot_traffic.ogg
-   # - /Audio/_Impstation/Music/foregone_destruction.ogg
-   # - /Audio/_Impstation/Music/get_enuf.ogg
-   # - /Audio/_Impstation/Music/gondalbad.ogg
-   # - /Audio/_Impstation/Music/gondalcut.ogg
+    - /Audio/_Impstation/Music/eve_of_the_war.ogg
     - /Audio/_Impstation/Music/gondalstinger.ogg
     - /Audio/_Impstation/Music/grinchs_ultimatum.ogg
     - /Audio/_Impstation/Music/hedgehog_stew.ogg
-   # - /Audio/_Impstation/Music/hitched_high_rail.ogg
-   # - /Audio/_Impstation/Music/ilun_kinem.ogg
-   # - /Audio/_Impstation/Music/impossible.ogg
-    - /Audio/_Impstation/Music/inspection.ogg
-   # - /Audio/_Impstation/Music/in_the_pocket.ogg
-   # - /Audio/_Impstation/Music/iwatodai_dorm.ogg
-   # - /Audio/_Impstation/Music/java_havana_funkaloo.ogg
-   # - /Audio/_Impstation/Music/join_us_4_happy_time.ogg
-   # - /Audio/_Impstation/Music/last_hoorah.ogg
     - /Audio/_Impstation/Music/let_me_out.ogg
-   # - /Audio/_Impstation/Music/live_studio_audience.ogg
-    - /Audio/_Impstation/Music/lost_in_recollection.ogg
-   # - /Audio/_Impstation/Music/lucid_rhythms.ogg
-    - /Audio/_Impstation/Music/mantis_battle.ogg
-   # - /Audio/_Impstation/Music/match.ogg
-   # - /Audio/_Impstation/Music/meadowtronic.ogg
-   # - /Audio/_Impstation/Music/milkyway_battle.ogg
-   # - /Audio/_Impstation/Music/montage.ogg
-    - /Audio/_Impstation/Music/morning_glow.ogg
-   # - /Audio/_Impstation/Music/move_me.ogg
-   # - /Audio/_Impstation/Music/mt_amient_vs_spasm.ogg
-   # - /Audio/_Impstation/Music/music_1.ogg
-   # - /Audio/_Impstation/Music/name_entry.ogg
-   # - /Audio/_Impstation/Music/neosf_strut.ogg
-   # - /Audio/_Impstation/Music/ordinary_days.ogg
-   # - /Audio/_Impstation/Music/organic_journey.ogg
-   # - /Audio/_Impstation/Music/pillars_of_creation.ogg
-   # - /Audio/_Impstation/Music/pizzatron_3000.ogg
-   # - /Audio/_Impstation/Music/please_dont_touch_anything.ogg
-   # - /Audio/_Impstation/Music/ready_steady_gogo.ogg
-   # - /Audio/_Impstation/Music/result_screen_e-rank.ogg
-   # - /Audio/_Impstation/Music/rolling_down_the_street_in_my_katamari.ogg
-   # - /Audio/_Impstation/Music/set_me_free.ogg
-   # - /Audio/_Impstation/Music/shred.ogg
-   # - /Audio/_Impstation/Music/snort_worms.ogg
-   # - /Audio/_Impstation/Music/snow_burn.ogg
-   # - /Audio/_Impstation/Music/song_that_plays_when_you_encounter_a_caterpillar.ogg
-   # - /Audio/_Impstation/Music/song_that_plays_when_you_encounter_a_gondal.ogg
-   # - /Audio/_Impstation/Music/special_stage.ogg
-   # - /Audio/_Impstation/Music/squarepusher.ogg
-   # - /Audio/_Impstation/Music/summer_love.ogg
-   # - /Audio/_Impstation/Music/the_a_la_menthe.ogg
-   # - /Audio/_Impstation/Music/the_day_of_night.ogg
-   # - /Audio/_Impstation/Music/the_flute_tune.ogg
-   # - /Audio/_Impstation/Music/the_norwegians.ogg
-   # - /Audio/_Impstation/Music/thrashard_in_the_cave.ogg
-   # - /Audio/_Impstation/Music/tracking_device.ogg
     - /Audio/_Impstation/Music/warsaw.ogg
-   # - /Audio/_Impstation/Music/what_im_feelin.ogg
-   # - /Audio/_Impstation/Music/whirling-in-rags_8am.ogg
     - /Audio/_Impstation/Music/xeno_arcadia.ogg
-   # - /Audio/_Impstation/Music/you_blow_my_mind.ogg
-   # - /Audio/_Impstation/Music/zip_ykk_arrange.ogg
     # VDS edits below
-    - /Audio/_Impstation/Music/hourglass_meadow.ogg
-    - /Audio/_Impstation/Music/overclocked_weakness.ogg
-    - /Audio/_Impstation/Music/i_like_it_here.ogg
-    - /Audio/_Impstation/Music/lax_lullaby.ogg
-    - /Audio/_Impstation/Music/more_gun.ogg
+    - /Audio/_VDS/Music/aboard_the_lariat.ogg
+    - /Audio/_VDS/Music/adinfinitum_ad_nauseam.ogg
+    - /Audio/_VDS/Music/all_possible_worlds.ogg
+    - /Audio/_VDS/Music/a_love_song.ogg
+    - /Audio/_VDS/Music/benthos.ogg
+    - /Audio/_VDS/Music/beware_the_friendly_stranger.ogg
+    - /Audio/_VDS/Music/blood_in_the_labyrinth.ogg
+    - /Audio/_VDS/Music/blow_hole.ogg
+    - /Audio/_VDS/Music/boardsof_canada_kaini_industries.ogg
+    - /Audio/_VDS/Music/boardsof_canada_ready_lets_go.ogg
+    - /Audio/_VDS/Music/bodies_of_water.ogg
+    - /Audio/_VDS/Music/carlakihlstedt_shahzad_ismaily_matthias_bossi_in_a_hotel_room.ogg
+    - /Audio/_VDS/Music/chypho_swirling_around_the_bathysphere.ogg
+    - /Audio/_VDS/Music/contact_with_the_ohmu.ogg
+    - /Audio/_VDS/Music/corru_vol_1_08_the_first_embassy.ogg
+    - /Audio/_VDS/Music/corru_vol_4side_a_03_oh_hi.ogg
+    - /Audio/_VDS/Music/dandelion.ogg
+    - /Audio/_VDS/Music/davidorlowsky_daniel_stelter_tommy_baldu_lisboa.ogg
+    - /Audio/_VDS/Music/davidorlowsky_daniel_stelter_tommy_baldu_petrichor.ogg
+    - /Audio/_VDS/Music/dionnewarwick_do_you_know_the_way_to_san_jose.ogg
+    - /Audio/_VDS/Music/diving_station.ogg
+    - /Audio/_VDS/Music/dolls_polyphony.ogg
+    - /Audio/_VDS/Music/elephant.ogg
+    - /Audio/_VDS/Music/elmer_bernstein_the_city.ogg
+    - /Audio/_VDS/Music/empty_warehouse.ogg
+    - /Audio/_VDS/Music/energy_warning.ogg
+    - /Audio/_VDS/Music/felixcolgrave_donksost_15_pipes_reprise.ogg
+    - /Audio/_VDS/Music/files.yml
+    - /Audio/_VDS/Music/geiger_counter.ogg
+    - /Audio/_VDS/Music/global.ogg
+    - /Audio/_VDS/Music/haze.ogg
+    - /Audio/_VDS/Music/hydrogenhelium_lithium_leviathan.ogg
+    - /Audio/_VDS/Music/in_the_annexe.ogg
+    - /Audio/_VDS/Music/isaw_something_again.ogg
+    - /Audio/_VDS/Music/island.ogg
+    - /Audio/_VDS/Music/i_saw_drones.ogg
+    - /Audio/_VDS/Music/james_bond_theme.ogg
+    - /Audio/_VDS/Music/kesson_dalek.ogg
+    - /Audio/_VDS/Music/lookfar_beyond_the_edge_of_the_world_01_the_far_reaches.ogg
+    - /Audio/_VDS/Music/lookfar_beyond_the_edge_of_the_world_02_the_old_speech.ogg
+    - /Audio/_VDS/Music/lookfar_beyond_the_edge_of_the_world_04_entombed.ogg
+    - /Audio/_VDS/Music/lookfar_beyond_the_edge_of_the_world_06_wall_of_stones.ogg
+    - /Audio/_VDS/Music/momentof_peace.ogg
+    - /Audio/_VDS/Music/mrs_robinson_charles_green.ogg
+    - /Audio/_VDS/Music/nekton.ogg
+    - /Audio/_VDS/Music/not_safe.ogg
+    - /Audio/_VDS/Music/opening_the_mouth.ogg
+    - /Audio/_VDS/Music/orbaneq_trx4.ogg
+    - /Audio/_VDS/Music/osborne_avenue.ogg
+    - /Audio/_VDS/Music/over_the_horizon_radar.ogg
+    - /Audio/_VDS/Music/pauline_oliveros__stuart_dempster__panaiotis_ione.ogg
+    - /Audio/_VDS/Music/pauline_oliveros__stuart_dempster__panaiotis_lear.ogg
+    - /Audio/_VDS/Music/pauline_oliveros__stuart_dempster__panaiotis_suiren.ogg
+    - /Audio/_VDS/Music/pelagy.ogg
+    - /Audio/_VDS/Music/plainsong.ogg
+    - /Audio/_VDS/Music/plankton.ogg
+    - /Audio/_VDS/Music/residentevil_safe_haven.ogg
+    - /Audio/_VDS/Music/robinson_crusoe.ogg
+    - /Audio/_VDS/Music/saiiko2_corru.works_ost_corru.observer_vol_3_07_breaking_free.ogg
+    - /Audio/_VDS/Music/school_for_grifters.ogg
+    - /Audio/_VDS/Music/searchengine.ogg
+    - /Audio/_VDS/Music/silence.ogg
+    - /Audio/_VDS/Music/sk2displace_grainy.ogg
+    - /Audio/_VDS/Music/sk2respite.ogg
+    - /Audio/_VDS/Music/sk2respite2.ogg
+    - /Audio/_VDS/Music/soft_breeze.ogg
+    - /Audio/_VDS/Music/spiralpit.ogg
+    - /Audio/_VDS/Music/stay_in_your_coma.ogg
+    - /Audio/_VDS/Music/sudoku.ogg
+    - /Audio/_VDS/Music/sunshine_recorder.ogg
+    - /Audio/_VDS/Music/the_art_of_noise_bright_noise.ogg
+    - /Audio/_VDS/Music/the_art_of_noise_promenade_1.ogg
+    - /Audio/_VDS/Music/the_art_of_noise_promenade_2.ogg
+    - /Audio/_VDS/Music/the_ink_spots_well_meet_again.ogg
+    - /Audio/_VDS/Music/the_look_of_love_phil_bodner.ogg
+    - /Audio/_VDS/Music/the_mouths_of_madness.ogg
+    - /Audio/_VDS/Music/the_race_of_a_thousand_ants.ogg
+    - /Audio/_VDS/Music/the_smallest_weird_number.ogg
+    - /Audio/_VDS/Music/those_were_the_days_dave_terry.ogg
+    - /Audio/_VDS/Music/tramlines.ogg
+    - /Audio/_VDS/Music/vanillastraylight.ogg
+    - /Audio/_VDS/Music/vordhosbn.ogg
+    - /Audio/_VDS/Music/wolfgun_clouded_view.ogg
+    - /Audio/_VDS/Music/youre_not_supposed_to_be_here.ogg

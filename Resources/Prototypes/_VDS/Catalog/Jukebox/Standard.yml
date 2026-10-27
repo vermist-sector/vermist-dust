@@ -9,4 +9,46 @@
   id: vanillastraylight
   name: "Vanilla // Luis Hernandez"
   path:
-    path: /Audio/_VDS/Music/vanilla-straylight.ogg
+    path: /Audio/_VDS/Music/vanillastraylight.ogg
+
+- type: jukebox
+  id: XenoArcadia
+  name: "Xeno Arcadia // Mason Lindroth"
+  path:
+    path: /Audio/_Impstation/Music/xeno_arcadia.ogg
+
+- type: jukebox
+  id: KittensOnTheMoon
+  name: "Kittens On The Moon // Jean-Jacques Perrey"
+  path:
+    path: /Audio/_VDS/Music/m-kittens_on_the_moon.ogg
+
+- type: jukebox
+  id: ThruTheNightcore
+  name: "thru the nightcore // nelward"
+  path:
+    path: /Audio/_VDS/Music/m-nelward_thru_the_nightcore.ogg
+
+- type: jukebox
+  id: TheEngineersHymn
+  name: "The Engineer's Hymn"
+  path:
+    path: /Audio/_VDS/Music/m-engineers_hymn.ogg
+
+- type: jukebox
+  id: HelloRadioExe
+  name: "hello_radio.exe // Pumodi"
+  path:
+    path: /Audio/_VDS/Music/m-hello_radio.exe.ogg
+
+- type: jukebox
+  id: GarbageDay
+  name: "Garbage Day // Dingaling Productions"
+  path:
+    path: /Audio/_VDS/Music/m-dingaling_garbage_day.ogg
+
+- type: jukebox
+  id: TheEveOfTheWar
+  name: "The Eve of The War // Jeff Wayne"
+  path:
+    path: /Audio/_VDS/Music/eve_of_tye_war.ogg
