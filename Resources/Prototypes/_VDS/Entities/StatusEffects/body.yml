@@ -1,0 +1,42 @@
+- type: entity
+  abstract: true
+  parent: MobStatusEffectBase
+  id: BaseTechInterefenceStatusEffect
+  name: technological interference
+  components:
+  - type: TechMessageCorruptionStatusEffect
+
+- type: entity
+  parent: BaseTechInterefenceStatusEffect
+  id: TechInterference10TraitStatusEffect
+  components:
+  - type: TechMessageCorruptionStatusEffect
+    corruptChance: 0.1
+
+- type: entity
+  parent: BaseTechInterefenceStatusEffect
+  id: TechInterference25TraitStatusEffect
+  components:
+  - type: TechMessageCorruptionStatusEffect
+    corruptChance: 0.25
+
+- type: entity
+  parent: BaseTechInterefenceStatusEffect
+  id: TechInterference50TraitStatusEffect
+  components:
+  - type: TechMessageCorruptionStatusEffect
+    corruptChance: 0.5
+
+- type: entity
+  parent: BaseTechInterefenceStatusEffect
+  id: TechInterference90TraitStatusEffect
+  components:
+  - type: TechMessageCorruptionStatusEffect
+    corruptChance: 0.9
+
+- type: entity
+  parent: BaseTechInterefenceStatusEffect
+  id: TechInterference100TraitStatusEffect
+  components:
+  - type: TechMessageCorruptionStatusEffect
+    corruptChance: 1.0
