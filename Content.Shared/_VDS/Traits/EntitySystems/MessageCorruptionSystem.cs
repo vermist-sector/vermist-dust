@@ -35,35 +35,83 @@ public sealed partial class MessageCorruptionSystem : EntitySystem
         Entity<TechMessageCorruptionStatusEffectComponent> ent,
         ref StatusEffectRelayedEvent<FaxUserModifySentMessageEvent> args)
     {
-        var message = CorruptTechMessage(ent, args.Args.Message);
-        args.Args = args.Args with { Message = message };
+        args.Args = args.Args with
+        {
+            Message = GetPossiblyCorruptedTechMessage(ent, args.Args.Message)
+        };
     }
 
     private void OnUserModifyCopyFaxMessage(
         Entity<TechMessageCorruptionStatusEffectComponent> ent,
         ref StatusEffectRelayedEvent<FaxUserModifyCopyMessageEvent> args)
     {
-        var message = CorruptTechMessage(ent, args.Args.Message);
-        args.Args = args.Args with { Message = message };
+        args.Args = args.Args with
+        {
+            Message = GetPossiblyCorruptedTechMessage(ent, args.Args.Message)
+        };
     }
 
-    private string CorruptTechMessage(
+    /// <summary>
+    ///     Attempts to corrupt an input message. This may fail and return the original message unaltered instead.
+    /// </summary>
+    private string GetPossiblyCorruptedTechMessage(
         Entity<TechMessageCorruptionStatusEffectComponent> ent,
         string message)
     {
+        var rand = GetPredictedRandom(ent);
+        if (!WillCorruptMessage(ent.Owner, rand))
+            return message;
+
+        return CorruptTechMessage(ent, message, rand);
+    }
+
+    /// <summary>
+    ///     Gets a <see cref="RobustRandom"/> class that is synchronized between the server and client.
+    /// </summary>
+    private RobustRandom GetPredictedRandom(EntityUid uid)
+    {
         // TODO: I just learned we didn't have predicted randomness yet and it made me frown
         var curTime = (int)_timing.CurTick.Value;
-        var entId = GetNetEntity(ent).Id;
+        var entId = GetNetEntity(uid).Id;
         var seed = SharedRandomExtensions.HashCodeCombine(curTime, entId);
         var rand = new RobustRandom();
         rand.SetSeed(seed);
+
+        return rand;
+    }
+
+    /// <summary>
+    ///     Attempt a random check for if this message will be corrupted.
+    /// </summary>
+    private bool WillCorruptMessage(Entity<TechMessageCorruptionStatusEffectComponent?> ent,
+        IRobustRandom? random = null)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp, logMissing: false))
+            return true;
+
+        random ??= _random;
+        return random.NextFloat() < ent.Comp.CorruptChance;
+    }
+
+    /// <summary>
+    ///     Corrupt a message transmitted through technology, e.g. fax machines.
+    /// </summary>
+    /// <param name="ent">The status effect that corrupts messages.</param>
+    /// <param name="message">The message to corrupt.</param>
+    /// <param name="random">The <see cref="RobustRandom"/> class used in RNG./param>
+    private string CorruptTechMessage(
+        Entity<TechMessageCorruptionStatusEffectComponent> ent,
+        string message,
+        IRobustRandom? random = null)
+    {
+        random ??= _random;
 
         var newMessage = CorruptMessage(message,
             ent.Comp.CharacterCorruptionChance,
             ent.Comp.PreserveSeparators,
             ent.Comp.PreserveNewlines,
             ent.Comp.ChararacterSet,
-            rand);
+            random);
 
         return newMessage;
     }
@@ -131,6 +179,9 @@ public sealed partial class MessageCorruptionSystem : EntitySystem
         return result.ToString();
     }
 
+    /// <summary>
+    ///     Generates a default character set for corruptions, used when no set is specified.
+    /// </summary>
     private static string GetDefaultCharset()
     {
         var set = new StringBuilder();
