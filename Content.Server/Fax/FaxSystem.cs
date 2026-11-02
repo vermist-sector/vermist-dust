@@ -34,6 +34,7 @@ using Content.Server._Impstation.Fax; // imp edit
 using Content.Server.Radio.EntitySystems; // imp edit
 using Content.Shared.Examine; // imp edit
 using Content.Shared.Ghost; // imp edit
+using Content.Shared._VDS.Fax; // VDS
 
 namespace Content.Server.Fax;
 
@@ -56,6 +57,7 @@ public sealed class FaxSystem : EntitySystem
     [Dependency] private readonly FaxecuteSystem _faxecute = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
     [Dependency] private readonly RadioSystem _radio = default!; // imp edit
+    [Dependency] private readonly SharedFaxSystem _sharedFax = default!; // VDS
 
     private static readonly ProtoId<ToolQualityPrototype> ScrewingQuality = "Screwing";
 
@@ -301,13 +303,19 @@ public sealed class FaxSystem : EntitySystem
                         !args.Data.TryGetValue(FaxConstants.FaxPaperContentData, out string? content))
                         return;
 
+                    // Begin VDS
+                    var message = content;
+                    if (content != null)
+                        _sharedFax.ModifyReceivedMessage(ref message, uid);
+                    // End VDS
+
                     args.Data.TryGetValue(FaxConstants.FaxPaperLabelData, out string? label);
                     args.Data.TryGetValue(FaxConstants.FaxPaperStampStateData, out string? stampState);
                     args.Data.TryGetValue(FaxConstants.FaxPaperStampedByData, out List<StampDisplayInfo>? stampedBy);
                     args.Data.TryGetValue(FaxConstants.FaxPaperPrototypeData, out string? prototypeId);
                     args.Data.TryGetValue(FaxConstants.FaxPaperLockedData, out bool? locked);
 
-                    var printout = new FaxPrintout(content, name, label, prototypeId, stampState, stampedBy, locked ?? false);
+                    var printout = new FaxPrintout(message, name, label, prototypeId, stampState, stampedBy, locked ?? false); // VDS: modified message
                     Receive(uid, printout, args.SenderAddress);
 
                     break;
@@ -473,14 +481,19 @@ public sealed class FaxSystem : EntitySystem
         TryComp<LabelComponent>(sendEntity, out var labelComponent);
         TryComp<NameModifierComponent>(sendEntity, out var nameMod);
 
+        // Begin VDS: Modify fax copies
+        var message = paper.Content;
+        _sharedFax.ModifyCopyMessage(ref message, uid, args.Actor);
+
         // TODO: See comment in 'Send()' about not being able to copy whole entities
-        var printout = new FaxPrintout(paper.Content,
+        var printout = new FaxPrintout(message,
                                        nameMod?.BaseName ?? metadata.EntityName,
                                        labelComponent?.CurrentLabel,
                                        metadata.EntityPrototype?.ID ?? component.PrintPaperId,
                                        paper.StampState,
                                        paper.StampedBy,
                                        paper.EditingDisabled);
+        // End VDS
 
         component.PrintingQueue.Enqueue(printout);
         component.SendTimeoutRemaining += component.SendTimeout;
@@ -527,12 +540,17 @@ public sealed class FaxSystem : EntitySystem
 
         TryComp<LabelComponent>(sendEntity, out var labelComponent);
 
+        // Begin VDS: Modify sent fax content
+        var message = paper.Content;
+        _sharedFax.ModifySentMessage(ref message, uid, args.Actor);
+        // End VDS
+
         var payload = new NetworkPayload()
         {
             { DeviceNetworkConstants.Command, FaxConstants.FaxPrintCommand },
             { FaxConstants.FaxPaperNameData, nameMod?.BaseName ?? metadata.EntityName },
             { FaxConstants.FaxPaperLabelData, labelComponent?.CurrentLabel },
-            { FaxConstants.FaxPaperContentData, paper.Content },
+            { FaxConstants.FaxPaperContentData, message }, // VDS
             { FaxConstants.FaxPaperLockedData, paper.EditingDisabled },
         };
 
