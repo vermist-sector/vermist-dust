@@ -5,6 +5,7 @@
   name: trait-tech-interference-name
   description: trait-tech-interference-desc
   category: MessageInterference
+  priority: &intTypePriority -1
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -18,6 +19,7 @@
   description: trait-corrupt-message-chance-desc
   category: MessageInterferenceChanceMod
   cost: 1
+  priority: &intChancePriority -2
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -29,6 +31,7 @@
   description: trait-corrupt-message-chance-desc
   category: MessageInterferenceChanceMod
   cost: 1
+  priority: *intChancePriority
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -40,6 +43,7 @@
   description: trait-corrupt-message-chance-desc
   category: MessageInterferenceChanceMod
   cost: 1
+  priority: *intChancePriority
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -51,6 +55,7 @@
   description: trait-corrupt-message-chance-desc
   category: MessageInterferenceChanceMod
   cost: 1
+  priority: *intChancePriority
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -64,6 +69,7 @@
   description: trait-corrupt-character-chance-10-desc
   category: CharacterInterferenceChanceMod
   cost: 1
+  priority: &intCharPriority -3
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -75,6 +81,7 @@
   description: trait-corrupt-character-chance-25-desc
   category: CharacterInterferenceChanceMod
   cost: 1
+  priority: *intCharPriority
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -86,6 +93,7 @@
   description: trait-corrupt-character-chance-50-desc
   category: CharacterInterferenceChanceMod
   cost: 1
+  priority: *intCharPriority
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:

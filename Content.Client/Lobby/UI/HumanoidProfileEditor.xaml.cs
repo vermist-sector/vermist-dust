@@ -514,9 +514,18 @@ namespace Content.Client.Lobby.UI
         {
             TraitsList.RemoveAllChildren();
 
-            // imp edit -- sort trait points by their cost, then their name
-            var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderByDescending(t => t.Cost).ThenBy(t => Loc.GetString(t.Name)).ToList();
-            // imp edit end
+            // Begin VDS: Sort trait points by their priority, THEN their cost, THEN their name
+            // // imp edit -- sort trait points by their cost, then their name
+            // var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderByDescending(t => t.Cost).ThenBy(t => Loc.GetString(t.Name)).ToList();
+            // // imp edit end
+
+            var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>()
+                .OrderByDescending(t => t.Priority)
+                .ThenByDescending(t => t.Cost)
+                .ThenBy(t => Loc.GetString(t.Name))
+                .ToList();
+            // End VDS
+
             TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
 
             if (traits.Count < 1)
