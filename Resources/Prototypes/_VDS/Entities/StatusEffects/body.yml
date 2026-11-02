@@ -3,75 +3,84 @@
 - type: entity
   abstract: true
   parent: MobStatusEffectBase
-  id: BaseTechInterefenceStatusEffect
-  name: technological interference
+  id: BaseCorruptMessageChanceModStatusEffect
+  name: random message corruption
   components:
-  - type: CorruptTechMessageStatusEffect
+  - type: CorruptMessageChanceModStatusEffect
 
 - type: entity
   abstract: true
   parent: MobStatusEffectBase
-  id: BaseTechCorruptCharacterChanceModStatusEffect
-  name: partial technological interference
+  id: BaseCorruptCharacterChanceModStatusEffect
+  name: partial message corruption
   components:
-  - type: TechCorruptCharacterChanceModStatusEffect
+  - type: CorruptCharacterChanceModStatusEffect
+
+# Corruption types
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: TechInterefenceStatusEffect
+  name: technological interference
+  components:
+  - type: CorruptTechMessageStatusEffect
 
 # Message corruption chances
 
 - type: entity
-  parent: BaseTechInterefenceStatusEffect
-  id: TechInterference10TraitStatusEffect
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance10TraitStatusEffect
   components:
-  - type: TechCorruptMessageChanceModStatusEffect
+  - type: CorruptMessageChanceModStatusEffect
     chanceModifier: 0.1
 
 - type: entity
-  parent: BaseTechInterefenceStatusEffect
-  id: TechInterference25TraitStatusEffect
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance25TraitStatusEffect
   components:
-  - type: TechCorruptMessageChanceModStatusEffect
+  - type: CorruptMessageChanceModStatusEffect
     chanceModifier: 0.25
 
 - type: entity
-  parent: BaseTechInterefenceStatusEffect
-  id: TechInterference50TraitStatusEffect
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance50TraitStatusEffect
   components:
-  - type: TechCorruptMessageChanceModStatusEffect
+  - type: CorruptMessageChanceModStatusEffect
     chanceModifier: 0.5
 
 - type: entity
-  parent: BaseTechInterefenceStatusEffect
-  id: TechInterference90TraitStatusEffect
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance90TraitStatusEffect
   components:
-  - type: TechCorruptMessageChanceModStatusEffect
+  - type: CorruptMessageChanceModStatusEffect
     chanceModifier: 0.9
 
 - type: entity
-  parent: BaseTechInterefenceStatusEffect
-  id: TechInterference100TraitStatusEffect
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance100TraitStatusEffect
   components:
-  - type: TechCorruptMessageChanceModStatusEffect
+  - type: CorruptMessageChanceModStatusEffect
     chanceModifier: 1.0
 
 # Character corruption chances
 
 - type: entity
-  parent: BaseTechCorruptCharacterChanceModStatusEffect
-  id: TechCorruptCharacterChanceMod10StatusEffect
+  parent: BaseCorruptCharacterChanceModStatusEffect
+  id: CorruptCharacterChance10StatusEffect
   components:
-  - type: TechCorruptCharacterChanceModStatusEffect
+  - type: CorruptCharacterChanceModStatusEffect
     chanceModifier: 0.10
 
 - type: entity
-  parent: BaseTechCorruptCharacterChanceModStatusEffect
-  id: TechCorruptCharacterChanceMod25StatusEffect
+  parent: BaseCorruptCharacterChanceModStatusEffect
+  id: CorruptCharacterChance25StatusEffect
   components:
-  - type: TechCorruptCharacterChanceModStatusEffect
+  - type: CorruptCharacterChanceModStatusEffect
     chanceModifier: 0.25
 
 - type: entity
-  parent: BaseTechCorruptCharacterChanceModStatusEffect
-  id: TechCorruptCharacterChanceMod50StatusEffect
+  parent: BaseCorruptCharacterChanceModStatusEffect
+  id: CorruptCharacterChance50StatusEffect
   components:
-  - type: TechCorruptCharacterChanceModStatusEffect
+  - type: CorruptCharacterChanceModStatusEffect
     chanceModifier: 0.50

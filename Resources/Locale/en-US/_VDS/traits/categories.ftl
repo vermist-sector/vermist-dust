@@ -1,2 +1,3 @@
-trait-category-tech-interference = Tech Interference
-trait-category-tech-interference-character-mod = Partial Tech Interference
+trait-category-message-interference = Message Interference
+trait-category-message-interference-chance-mod = Message Interference Chance
+trait-category-character-interference-chance-mod = Partial Interference

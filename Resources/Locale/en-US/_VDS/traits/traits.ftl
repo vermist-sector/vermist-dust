@@ -1,30 +1,30 @@
+trait-tech-interference-name = INT: Technological Interference
 trait-tech-interference-desc =
     Attempts to send messages through technology have a chance of corrupting the message -
     such as announcements, faxes, AAC, SGDs, and NanoChat.
+    Corruption chance per-message and per-character are both 100%, unless further modified.
 
-trait-tech-interference-10-name = Technological Interference (10%)
-trait-tech-interference-25-name = Technological Interference (25%)
-trait-tech-interference-50-name = Technological Interference (50%)
-trait-tech-interference-90-name = Technological Interference (90%)
-trait-tech-interference-100-name = Technological Interference (100%)
+trait-corrupt-message-chance-10-name = INT: Interference Chance (10%)
+trait-corrupt-message-chance-25-name = INT: Interference Chance (25%)
+trait-corrupt-message-chance-50-name = INT: Interference Chance (50%)
+trait-corrupt-message-chance-90-name = INT: Interference Chance (90%)
+trait-corrupt-message-chance-desc =
+    Modifies the chance that a message is corrupted. Default chance without modifiers is 100%.
 
-trait-tech-corrupt-character-chance-10-name = Partial Technological Interference (10%)
-trait-tech-corrupt-character-chance-10-desc =
-    Modifies the chance that each character in a message sent through technology is corrupted.
-    Otherwise, the full message (100% chance per-character) will be corrupted.
+trait-corrupt-character-chance-10-name = INT: Partial Interference (10%)
+trait-corrupt-character-chance-10-desc =
+    Modifies the chance that each character in a message is corrupted. Default chance without modifiers is 100%.
     {""}
     "Greetings, Central Com²and; I«hope thôs email fi²ds you wel¯."
 
-trait-tech-corrupt-character-chance-25-name = Partial Technological Interference (25%)
-trait-tech-corrupt-character-chance-25-desc =
-    Modifies the chance that each character in a message sent through technology is corrupted.
-    Otherwise, the full message (100% chance per-character) will be corrupted.
+trait-corrupt-character-chance-25-name = INT: Partial Interference (25%)
+trait-corrupt-character-chance-25-desc =
+    Modifies the chance that each character in a message is corrupted. Default chance without modifiers is 100%.
     {""}
     "Greftinño,¨Central |(m3aæd; I ho e th'< emaiÜ finds¹«ou /ell."
 
-trait-tech-corrupt-character-chance-50-name = Partial Technological Interference (50%)
-trait-tech-corrupt-character-chance-50-desc =
-    Modifies the chance that each character in a message sent through technology is corrupted.
-    Otherwise, the full message (100% chance per-character) will be corrupted.
+trait-corrupt-character-chance-50-name = INT: Partial Interference (50%)
+trait-corrupt-character-chance-50-desc =
+    Modifies the chance that each character in a message is corrupted. Default chance without modifiers is 100%.
     {""}
     "G½eetil'sáVCenEMa) Coñ~a®d0 I ³ó·e +his=eRas© ©ênds you )ç½l."

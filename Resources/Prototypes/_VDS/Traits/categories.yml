@@ -1,9 +1,13 @@
 - type: traitCategory
-  id: TechInterference
-  name: trait-category-tech-interference
+  id: MessageInterference
+  name: trait-category-message-interference
+
+- type: traitCategory
+  id: MessageInterferenceChanceMod
+  name: trait-category-message-interference-chance-mod
   maxTraitPoints: 1
 
 - type: traitCategory
-  id: TechInterferenceCharacterMod
-  name: trait-category-tech-interference-character-mod
+  id: CharacterInterferenceChanceMod
+  name: trait-category-character-interference-chance-mod
   maxTraitPoints: 1
