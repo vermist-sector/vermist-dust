@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Content.Shared.Random.Helpers;
+using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffectNew.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -23,6 +26,17 @@ public sealed partial class MessageCorruptionSystem : EntitySystem
         _defaultCharset = GetDefaultCharset();
 
         InitializeTech();
+    }
+
+    private bool TryGetStatusEffectHolder(Entity<StatusEffectComponent?> ent, [NotNullWhen(true)] out EntityUid? holder)
+    {
+        holder = null;
+
+        if (!Resolve(ent.Owner, ref ent.Comp))
+            return false;
+
+        holder = ent.Comp.AppliedTo;
+        return holder != null;
     }
 
     /// <summary>

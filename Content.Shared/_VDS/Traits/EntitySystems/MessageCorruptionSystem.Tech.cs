@@ -9,9 +9,13 @@ public sealed partial class MessageCorruptionSystem
     private void InitializeTech()
     {
         SubscribeLocalEvent<TechCorruptMessageChanceModStatusEffectComponent,
-            StatusEffectRelayedEvent<TechCorruptMessageChanceModEvent>>(OnGetTechMessageCorruptionChance);
+            TechCorruptMessageChanceModEvent>(OnGetTechMessageCorruptionChance);
         SubscribeLocalEvent<TechCorruptCharacterChanceModStatusEffectComponent,
-            StatusEffectRelayedEvent<TechCorruptCharacterChanceModEvent>>(OnGetTechCharacterCorruptionChance);
+            TechCorruptCharacterChanceModEvent>(OnGetTechCharacterCorruptionChance);
+        SubscribeLocalEvent<TechCorruptMessageChanceModStatusEffectComponent,
+            StatusEffectRelayedEvent<TechCorruptMessageChanceModEvent>>(OnEffectGetTechMessageCorruptionChance);
+        SubscribeLocalEvent<TechCorruptCharacterChanceModStatusEffectComponent,
+            StatusEffectRelayedEvent<TechCorruptCharacterChanceModEvent>>(OnEffectGetTechCharacterCorruptionChance);
 
         InitializeTechFaxMachine();
     }
@@ -21,6 +25,29 @@ public sealed partial class MessageCorruptionSystem
     /// </summary>
     private void OnGetTechMessageCorruptionChance(
         Entity<TechCorruptMessageChanceModStatusEffectComponent> ent,
+        ref TechCorruptMessageChanceModEvent args)
+    {
+        var chance = args.Chance;
+        args = args with { Chance = chance * ent.Comp.ChanceModifier };
+    }
+
+    /// <summary>
+    ///     Modify the chance that each character in a message sent ove technology is corrupted.
+    /// </summary>
+    private void OnGetTechCharacterCorruptionChance(
+        Entity<TechCorruptCharacterChanceModStatusEffectComponent> ent,
+        ref TechCorruptCharacterChanceModEvent args)
+    {
+        var chance = args.Chance;
+        args = args with { Chance = chance * ent.Comp.ChanceModifier };
+    }
+
+    /// <summary>
+    ///     Modify the chance that a message sent over technology is corrupted.
+    ///     This callback is applied to status effects on the target entity.
+    /// </summary>
+    private void OnEffectGetTechMessageCorruptionChance(
+        Entity<TechCorruptMessageChanceModStatusEffectComponent> ent,
         ref StatusEffectRelayedEvent<TechCorruptMessageChanceModEvent> args)
     {
         var chance = args.Args.Chance;
@@ -29,8 +56,9 @@ public sealed partial class MessageCorruptionSystem
 
     /// <summary>
     ///     Modify the chance that each character in a message sent ove technology is corrupted.
+    ///     This callback is applied to status effects on the target entity.
     /// </summary>
-    private void OnGetTechCharacterCorruptionChance(
+    private void OnEffectGetTechCharacterCorruptionChance(
         Entity<TechCorruptCharacterChanceModStatusEffectComponent> ent,
         ref StatusEffectRelayedEvent<TechCorruptCharacterChanceModEvent> args)
     {
@@ -93,11 +121,15 @@ public sealed partial class MessageCorruptionSystem
     /// <summary>
     ///     Get the chance that a tech message will be corrupted.
     /// </summary>
-    /// <param name="uid">The entity using the device.</param>
+    /// <param name="uid">A status effect applied to the entity using the device.</param>
     private float GetTechMessageCorruptionChance(EntityUid uid)
     {
+        var target = uid;
+        if (TryGetStatusEffectHolder(uid, out var holder))
+            target = holder.Value;
+
         var ev = new TechCorruptMessageChanceModEvent(Chance: 1.0f);
-        RaiseLocalEvent(uid, ref ev);
+        RaiseLocalEvent(target, ref ev);
 
         return ev.Chance;
     }
@@ -105,12 +137,16 @@ public sealed partial class MessageCorruptionSystem
     /// <summary>
     ///     Get the chance that each character of a tech message will be corrupted.
     /// </summary>
-    /// <param name="uid">The entity using the device.</param>
+    /// <param name="uid">A status effect applied to the entity using the device.</param>
     /// <param name="device">The optionally-provided device.</param>
     private float GetTechCharacterCorruptionChance(EntityUid uid, EntityUid? device = null)
     {
+        var target = uid;
+        if (TryGetStatusEffectHolder(uid, out var holder))
+            target = holder.Value;
+
         var ev = new TechCorruptCharacterChanceModEvent(Chance: 1.0f);
-        RaiseLocalEvent(uid, ref ev);
+        RaiseLocalEvent(target, ref ev);
 
         // Allow the device itself to modify chances as well
         if (device != null)
