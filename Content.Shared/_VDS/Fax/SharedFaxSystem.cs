@@ -102,4 +102,3 @@ public record struct FaxUserModifyCopyMessageEvent(
     string Message,
     EntityUid? Machine = null,
     EntityUid? User = null);
-

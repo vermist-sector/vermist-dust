@@ -1,4 +1,5 @@
 using Content.Shared._VDS.Fax;
+using Content.Shared._VDS.Traits.EntitySystems;
 using Content.Shared.StatusEffectNew.Components;
 
 namespace Content.Shared.StatusEffectNew;
@@ -14,5 +15,9 @@ public sealed partial class StatusEffectsSystem
 
         SubscribeLocalEvent<StatusEffectContainerComponent, FaxMachineModifyCopyMessageEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, FaxUserModifyCopyMessageEvent>(RefRelayStatusEffectEvent);
+
+        // Message corruption
+        SubscribeLocalEvent<StatusEffectContainerComponent, TechCorruptCharacterChanceModEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, TechCorruptMessageChanceModEvent>(RefRelayStatusEffectEvent);
     }
 }
