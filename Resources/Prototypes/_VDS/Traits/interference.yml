@@ -60,7 +60,7 @@
 - type: trait
   id: TechCorruptCharacterChance10
   name: trait-tech-corrupt-character-chance-10-name
-  description: trait-tech-corrupt-character-chance-desc
+  description: trait-tech-corrupt-character-chance-10-desc
   category: TechInterferenceCharacterMod
   cost: 1
   specials:
@@ -71,7 +71,7 @@
 - type: trait
   id: TechCorruptCharacterChance25
   name: trait-tech-corrupt-character-chance-25-name
-  description: trait-tech-corrupt-character-chance-desc
+  description: trait-tech-corrupt-character-chance-25-desc
   category: TechInterferenceCharacterMod
   cost: 1
   specials:
@@ -82,21 +82,10 @@
 - type: trait
   id: TechCorruptCharacterChance50
   name: trait-tech-corrupt-character-chance-50-name
-  description: trait-tech-corrupt-character-chance-desc
+  description: trait-tech-corrupt-character-chance-50-desc
   category: TechInterferenceCharacterMod
   cost: 1
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
     - TechCorruptCharacterChanceMod50StatusEffect
-
-- type: trait
-  id: TechCorruptCharacterChance75
-  name: trait-tech-corrupt-character-chance-75-name
-  description: trait-tech-corrupt-character-chance-desc
-  category: TechInterferenceCharacterMod
-  cost: 1
-  specials:
-  - !type:ApplyStatusEffectSpecial
-    statusEffects:
-    - TechCorruptCharacterChanceMod75StatusEffect

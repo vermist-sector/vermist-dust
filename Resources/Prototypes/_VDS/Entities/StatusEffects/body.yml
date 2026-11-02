@@ -75,10 +75,3 @@
   components:
   - type: TechCorruptCharacterChanceModStatusEffect
     chanceModifier: 0.50
-
-- type: entity
-  parent: BaseTechCorruptCharacterChanceModStatusEffect
-  id: TechCorruptCharacterChanceMod75StatusEffect
-  components:
-  - type: TechCorruptCharacterChanceModStatusEffect
-    chanceModifier: 0.75
