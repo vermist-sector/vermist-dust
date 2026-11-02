@@ -1,0 +1,4 @@
+- type: traitCategory
+  id: TechInterference
+  name: trait-category-tech-interference
+  maxTraitPoints: 1

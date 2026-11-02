@@ -1,0 +1,54 @@
+- type: trait
+  id: TechInterference10
+  name: trait-tech-interference-10-name
+  description: trait-tech-interference-desc
+  category: TechInterference
+  cost: 1
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TechInterference10TraitStatusEffect
+
+- type: trait
+  id: TechInterference25
+  name: trait-tech-interference-25-name
+  description: trait-tech-interference-desc
+  category: TechInterference
+  cost: 1
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TechInterference25TraitStatusEffect
+
+- type: trait
+  id: TechInterference50
+  name: trait-tech-interference-50-name
+  description: trait-tech-interference-desc
+  category: TechInterference
+  cost: 1
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TechInterference50TraitStatusEffect
+
+- type: trait
+  id: TechInterference90
+  name: trait-tech-interference-90-name
+  description: trait-tech-interference-desc
+  category: TechInterference
+  cost: 1
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TechInterference90TraitStatusEffect
+
+- type: trait
+  id: TechInterference100
+  name: trait-tech-interference-100-name
+  description: trait-tech-interference-desc
+  category: TechInterference
+  cost: 1
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TechInterference100TraitStatusEffect
