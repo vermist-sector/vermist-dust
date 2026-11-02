@@ -117,7 +117,7 @@ public sealed partial class MessageCorruptionSystem : EntitySystem
             }
 
             // chance of corruption per-character
-            if (corruptChance < 1.0f && _random.NextFloat() > corruptChance)
+            if (corruptChance < 1.0f && random.NextFloat() > corruptChance)
             {
                 result.Append(c);
                 continue;
@@ -137,7 +137,8 @@ public sealed partial class MessageCorruptionSystem : EntitySystem
 
         // basic ASCII set
         for (var c = ' '; c <= '~'; c++)
-            set.Append(c);
+            if (c != '\\')
+                set.Append(c);
 
         // latin-1 supplement
         for (var c = '\u00A1'; c <= '\u00FF'; c++)
