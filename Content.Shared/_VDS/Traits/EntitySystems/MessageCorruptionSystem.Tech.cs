@@ -102,6 +102,31 @@ public sealed partial class MessageCorruptionSystem
     }
 
     /// <summary>
+    ///     Corrupt a message transmitted through technology, e.g. fax machines.
+    /// </summary>
+    /// <param name="ent">The status effect that corrupts messages.</param>
+    /// <param name="message">The message to corrupt.</param>
+    /// <param name="random">The <see cref="RobustRandom"/> class used in RNG./param>
+    private string CorruptTechMessage(
+        Entity<CorruptTechMessageStatusEffectComponent> ent,
+        string message,
+        EntityUid? device = null,
+        IRobustRandom? random = null)
+    {
+        random ??= _random;
+
+        var chance = GetTechCharacterCorruptionChance(ent.Owner, device);
+        var newMessage = CorruptMessage(message,
+            chance,
+            ent.Comp.PreserveSeparators,
+            ent.Comp.PreserveNewlines,
+            ent.Comp.ChararacterSet,
+            random);
+
+        return newMessage;
+    }
+
+    /// <summary>
     ///     Get the chance that a tech message will be corrupted.
     /// </summary>
     /// <param name="uid">The entity using the device.</param>
@@ -128,31 +153,6 @@ public sealed partial class MessageCorruptionSystem
             RaiseLocalEvent(device.Value, ref ev);
 
         return ev.Chance;
-    }
-
-    /// <summary>
-    ///     Corrupt a message transmitted through technology, e.g. fax machines.
-    /// </summary>
-    /// <param name="ent">The status effect that corrupts messages.</param>
-    /// <param name="message">The message to corrupt.</param>
-    /// <param name="random">The <see cref="RobustRandom"/> class used in RNG./param>
-    private string CorruptTechMessage(
-        Entity<CorruptTechMessageStatusEffectComponent> ent,
-        string message,
-        EntityUid? device = null,
-        IRobustRandom? random = null)
-    {
-        random ??= _random;
-
-        var chance = GetTechCharacterCorruptionChance(ent.Owner, device);
-        var newMessage = CorruptMessage(message,
-            chance,
-            ent.Comp.PreserveSeparators,
-            ent.Comp.PreserveNewlines,
-            ent.Comp.ChararacterSet,
-            random);
-
-        return newMessage;
     }
 }
 
