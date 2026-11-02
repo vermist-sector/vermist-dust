@@ -17,7 +17,7 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, FaxUserModifyCopyMessageEvent>(RefRelayStatusEffectEvent);
 
         // Message corruption
-        SubscribeLocalEvent<StatusEffectContainerComponent, TechCorruptCharacterChanceModEvent>(RefRelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, TechCorruptMessageChanceModEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, CorruptCharacterChanceModEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, CorruptMessageChanceModEvent>(RefRelayStatusEffectEvent);
     }
 }

@@ -7,21 +7,4 @@ namespace Content.Shared._VDS.Traits.Components;
 ///     For example: fax machines, NanoChat, communications console announcements.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class CorruptTechMessageStatusEffectComponent
-    : BaseMessageCorruptionComponent;
-
-/// <summary>
-///     A status effect that modifies the chance that a message is corrupted over technology.
-///     For example: fax machines, NanoChat, communications console announcements.
-/// </summary>
-[RegisterComponent, NetworkedComponent]
-public sealed partial class TechCorruptMessageChanceModStatusEffectComponent
-    : BaseMessageCorruptionChanceModComponent;
-
-/// <summary>
-///     A status effect that modifies the chance that an individual character is corrupted over technology.
-///     For example: fax machines, NanoChat, communications console announcements.
-/// </summary>
-[RegisterComponent, NetworkedComponent]
-public sealed partial class TechCorruptCharacterChanceModStatusEffectComponent
-    : BaseCharacterCorruptionChanceModComponent;
+public sealed partial class CorruptTechMessageStatusEffectComponent : BaseMessageCorruptionComponent;

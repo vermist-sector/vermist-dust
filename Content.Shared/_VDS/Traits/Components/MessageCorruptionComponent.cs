@@ -1,4 +1,26 @@
+using Robust.Shared.GameStates;
+
 namespace Content.Shared._VDS.Traits.Components;
+
+/// <summary>
+///     A status effect modifier to the chance that a message will be corrupted.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public abstract partial class CorruptMessageChanceModStatusEffectComponent : Component
+{
+    [DataField]
+    public float ChanceModifier = 1.0f;
+}
+
+/// <summary>
+///     A status effect modifier to the chance that individual characters in a message will be corrupted.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public abstract partial class CorruptCharacterChanceModStatusEffectComponent : Component
+{
+    [DataField]
+    public float ChanceModifier = 1.0f;
+}
 
 /// <summary>
 ///     A base class for components used to corrupt messages.
@@ -22,22 +44,4 @@ public abstract partial class BaseMessageCorruptionComponent : Component
     /// </summary>
     [DataField]
     public string? ChararacterSet = null;
-}
-
-/// <summary>
-///     A base class for modifiers to the chance that a message will be corrupted.
-/// </summary>
-public abstract partial class BaseMessageCorruptionChanceModComponent : Component
-{
-    [DataField]
-    public float ChanceModifier = 1.0f;
-}
-
-/// <summary>
-///     A base class for modifiers to the chance that individual characters in a message will be corrupted.
-/// </summary>
-public abstract partial class BaseCharacterCorruptionChanceModComponent : Component
-{
-    [DataField]
-    public float ChanceModifier = 1.0f;
 }

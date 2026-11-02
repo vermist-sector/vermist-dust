@@ -103,7 +103,7 @@ public sealed partial class MessageCorruptionSystem : EntitySystem
             }
 
             // chance of corruption per-character
-            if (corruptChance < 1.0f && random.NextFloat() > corruptChance)
+            if (corruptChance < 1.0f && random.Prob(corruptChance))
             {
                 result.Append(c);
                 continue;
@@ -135,4 +135,73 @@ public sealed partial class MessageCorruptionSystem : EntitySystem
 
         return set.ToString();
     }
+
+    /// <summary>
+    ///     Attempt a random check for if this message will be corrupted.
+    /// </summary>
+    /// <param name="uid">A status effect applied to the entity using the device.</param>
+    /// <param name="device">The optionally-provided device.</param>
+    private bool WillCorruptMessage(EntityUid uid,
+        EntityUid? device = null,
+        IRobustRandom? random = null)
+    {
+        random ??= _random;
+        var chance = GetMessageCorruptionChance(uid, device);
+
+        return random.Prob(chance);
+    }
+
+    /// <summary>
+    ///     Get the chance that a message will be corrupted.
+    /// </summary>
+    /// <param name="uid">A status effect applied to the entity using the device.</param>
+    /// <param name="device">The optionally-provided device.</param>
+    private float GetMessageCorruptionChance(EntityUid uid, EntityUid? device = null)
+    {
+        var target = uid;
+        if (TryGetStatusEffectHolder(uid, out var holder))
+            target = holder.Value;
+
+        var ev = new CorruptMessageChanceModEvent(Chance: 1.0f);
+        RaiseLocalEvent(target, ref ev);
+
+        // Allow the device itself to modify chances as well
+        if (device != null)
+            RaiseLocalEvent(device.Value, ref ev);
+
+        return ev.Chance;
+    }
+
+    /// <summary>
+    ///     Get the chance that each character of a message will be corrupted.
+    /// </summary>
+    /// <param name="uid">A status effect applied to the entity using the device.</param>
+    /// <param name="device">The optionally-provided device.</param>
+    private float GetCharacterCorruptionChance(EntityUid uid, EntityUid? device = null)
+    {
+        var target = uid;
+        if (TryGetStatusEffectHolder(uid, out var holder))
+            target = holder.Value;
+
+        var ev = new CorruptCharacterChanceModEvent(Chance: 1.0f);
+        RaiseLocalEvent(target, ref ev);
+
+        // Allow the device itself to modify chances as well
+        if (device != null)
+            RaiseLocalEvent(device.Value, ref ev);
+
+        return ev.Chance;
+    }
 }
+
+/// <summary>
+///     Event raised on an entity to modify the chance that a message is corrupted.
+/// </summary>
+[ByRefEvent]
+public record struct CorruptMessageChanceModEvent(float Chance = 1.0f);
+
+/// <summary>
+///     Event raised on an entity to modify the chance that each character of a message is corrupted.
+/// </summary>
+[ByRefEvent]
+public record struct CorruptCharacterChanceModEvent(float Chance = 1.0f);
