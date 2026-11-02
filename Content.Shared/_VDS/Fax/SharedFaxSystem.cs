@@ -32,7 +32,7 @@ public sealed partial class SharedFaxSystem : EntitySystem
     /// </summary>
     public void ModifyReceivedMessage(ref string message, EntityUid receiver)
     {
-        var receiverEv = new FaxModifyReceivedMessageEvent(message);
+        var receiverEv = new FaxModifyReceivedMessageEvent(message, receiver);
         RaiseLocalEvent(receiver, ref receiverEv);
         message = receiverEv.Message;
     }
@@ -83,7 +83,9 @@ public record struct FaxUserModifySentMessageEvent(
 ///     Event raised on a fax machine to modify the message from receiving a fax.
 /// </summary>
 [ByRefEvent]
-public record struct FaxModifyReceivedMessageEvent(string Message);
+public record struct FaxModifyReceivedMessageEvent(
+    string Message,
+    EntityUid? Machine = null);
 
 /// <summary>
 ///     Event raised on a fax machine to modify the message from copying a fax.

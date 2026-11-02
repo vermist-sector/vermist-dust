@@ -20,6 +20,12 @@ public sealed partial class MessageCorruptionSystem
             StatusEffectRelayedEvent<FaxUserModifySentMessageEvent>>(OnUserModifySentFaxMessage);
         SubscribeLocalEvent<CorruptTechMessageStatusEffectComponent,
             StatusEffectRelayedEvent<FaxUserModifyCopyMessageEvent>>(OnUserModifyCopyFaxMessage);
+        SubscribeLocalEvent<CorruptTechMessageStatusEffectComponent,
+            StatusEffectRelayedEvent<FaxSenderModifySentMessageEvent>>(OnSenderModifySentFaxMessage);
+        SubscribeLocalEvent<CorruptTechMessageStatusEffectComponent,
+            StatusEffectRelayedEvent<FaxMachineModifyCopyMessageEvent>>(OnMachineModifyCopyFaxMessage);
+        SubscribeLocalEvent<CorruptTechMessageStatusEffectComponent,
+            StatusEffectRelayedEvent<FaxModifyReceivedMessageEvent>>(OnModifyReceivedFaxMessage);
     }
 
     /// <summary>
@@ -43,6 +49,8 @@ public sealed partial class MessageCorruptionSystem
         var chance = args.Args.Chance;
         args.Args = args.Args with { Chance = chance * ent.Comp.ChanceModifier };
     }
+
+    #region Faxes
 
     /// <summary>
     ///     Corrupt fax machine messages sent by by the entity using it
@@ -73,6 +81,55 @@ public sealed partial class MessageCorruptionSystem
                 device: args.Args.Machine)
         };
     }
+
+    /// <summary>
+    ///     Corrupt fax machine messages sent by this machine.
+    /// </summary>
+    private void OnSenderModifySentFaxMessage(
+        Entity<CorruptTechMessageStatusEffectComponent> ent,
+        ref StatusEffectRelayedEvent<FaxSenderModifySentMessageEvent> args)
+    {
+        args.Args = args.Args with
+        {
+            Message = GetPossiblyCorruptedTechMessage(ent,
+                message: args.Args.Message,
+                device: args.Args.Machine)
+        };
+    }
+
+    /// <summary>
+    ///     Corrupt fax machine messages copied by this machine.
+    /// </summary>
+    private void OnMachineModifyCopyFaxMessage(
+        Entity<CorruptTechMessageStatusEffectComponent> ent,
+        ref StatusEffectRelayedEvent<FaxMachineModifyCopyMessageEvent> args)
+    {
+        args.Args = args.Args with
+        {
+            Message = GetPossiblyCorruptedTechMessage(ent,
+                message: args.Args.Message,
+                device: args.Args.Machine)
+        };
+    }
+
+    /// <summary>
+    ///     Corrupt fax machine messages copied by this machine.
+    /// </summary>
+    private void OnModifyReceivedFaxMessage(
+        Entity<CorruptTechMessageStatusEffectComponent> ent,
+        ref StatusEffectRelayedEvent<FaxModifyReceivedMessageEvent> args)
+    {
+        args.Args = args.Args with
+        {
+            Message = GetPossiblyCorruptedTechMessage(ent,
+                message: args.Args.Message,
+                device: args.Args.Machine)
+        };
+    }
+
+    #endregion Faxes
+
+    #region Helpers
 
     /// <summary>
     ///     Attempts to corrupt an input message. This may fail and return the original message unaltered instead.
@@ -154,6 +211,8 @@ public sealed partial class MessageCorruptionSystem
 
         return ev.Chance;
     }
+
+    #endregion Helpers
 }
 
 /// <summary>
