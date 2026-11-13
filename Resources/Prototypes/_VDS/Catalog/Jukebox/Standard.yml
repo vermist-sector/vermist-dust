@@ -23,11 +23,12 @@
   path:
     path: /Audio/_VDS/Music/m-kittens_on_the_moon.ogg
 
-- type: jukebox
-  id: ThruTheNightcore
-  name: "thru the nightcore // nelward"
-  path:
-    path: /Audio/_VDS/Music/m-nelward_thru_the_nightcore.ogg
+# needs to be added
+#- type: jukebox
+#  id: ThruTheNightcore
+#  name: "thru the nightcore // nelward"
+#  path:
+#    path: /Audio/_VDS/Music/m-nelward_thru_the_nightcore.ogg
 
 - type: jukebox
   id: TheEngineersHymn
