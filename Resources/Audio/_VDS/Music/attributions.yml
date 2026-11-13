@@ -1,4 +1,4 @@
-#menu-only tracks are NOT mono, jukebox tracks MUST be mono
+#jukebox tracks MUST be mono
 #please prefix mono track filenames with m-
 #eg m-benthos.ogg
 
