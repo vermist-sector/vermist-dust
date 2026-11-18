@@ -17,12 +17,11 @@
   path:
     path: /Audio/_Impstation/Music/xeno_arcadia.ogg
 
-# needs audio file
-#- type: jukebox
-#  id: KittensOnTheMoon
-#  name: "Kittens On The Moon // Jean-Jacques Perrey"
-#  path:
-#    path: /Audio/_VDS/Music/m-kittens_on_the_moon.ogg
+- type: jukebox
+  id: KittensOnTheMoon
+  name: "Kittens On The Moon // Jean-Jacques Perrey"
+  path:
+    path: /Audio/_VDS/Music/m-kittens_on_the_moon.ogg
 
 - type: jukebox
   id: ThruTheNightcore
