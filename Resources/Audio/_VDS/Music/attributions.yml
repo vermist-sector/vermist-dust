@@ -444,3 +444,7 @@
   copyright: "Kittens On The Moon by Jean-Jacques Perrey"
   source: "https://www.youtube.com/watch?v=CMT1knHCNqI"
 
+- files: ["m-firesong.ogg"]
+  license: "Custom"
+  copyright: "fire song by Wolfgun"
+  source: "https://wolfgun.bandcamp.com/track/fire-song"

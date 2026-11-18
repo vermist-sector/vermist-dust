@@ -46,3 +46,9 @@
   name: "The Eve of The War // Jeff Wayne"
   path:
     path: /Audio/_Impstation/Music/eve_of_the_war.ogg
+
+- type: jukebox
+  id: FireSong
+  name: "fire song // Wolfgun"
+  path:
+    path: /Audio/_VDS/Music/m-firesong.ogg

@@ -37,3 +37,9 @@
   name: "warsaw // PilotRedSun"
   path:
     path: /Audio/_Impstation/Music/warsaw.ogg
+
+- type: jukebox
+  id: FunkyJazz
+  name: "[Ears of the Killer] Funky Jazz // Tommy Tone"
+  path:
+    path: /Audio/_Impstation/Music/funky_jazz.ogg
