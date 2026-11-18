@@ -17,18 +17,18 @@
   path:
     path: /Audio/_Impstation/Music/xeno_arcadia.ogg
 
-- type: jukebox
-  id: KittensOnTheMoon
-  name: "Kittens On The Moon // Jean-Jacques Perrey"
-  path:
-    path: /Audio/_VDS/Music/m-kittens_on_the_moon.ogg
-
-# needs to be added
+# needs audio file
 #- type: jukebox
-#  id: ThruTheNightcore
-#  name: "thru the nightcore // nelward"
+#  id: KittensOnTheMoon
+#  name: "Kittens On The Moon // Jean-Jacques Perrey"
 #  path:
-#    path: /Audio/_VDS/Music/m-nelward_thru_the_nightcore.ogg
+#    path: /Audio/_VDS/Music/m-kittens_on_the_moon.ogg
+
+- type: jukebox
+  id: ThruTheNightcore
+  name: "thru the nightcore // nelward"
+  path:
+    path: /Audio/_VDS/Music/m-nelward_thru_the_nightcore.ogg
 
 - type: jukebox
   id: TheEngineersHymn
