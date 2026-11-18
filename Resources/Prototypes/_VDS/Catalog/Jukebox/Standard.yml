@@ -30,12 +30,6 @@
     path: /Audio/_VDS/Music/m-nelward_thru_the_nightcore.ogg
 
 - type: jukebox
-  id: TheEngineersHymn
-  name: "The Engineer's Hymn"
-  path:
-    path: /Audio/_VDS/Music/m-engineers_hymn.ogg
-
-- type: jukebox
   id: HelloRadioExe
   name: "hello_radio.exe // Pumodi"
   path:
