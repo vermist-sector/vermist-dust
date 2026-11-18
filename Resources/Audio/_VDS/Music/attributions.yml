@@ -417,6 +417,11 @@
   copyright: "You're Not Supposed to Be Here by Valve"
   source: "https://www.youtube.com/watch?v=9bqLO9m2FzU"
 
+- files: ["terror_in_the_depths_of_the_fog.ogg"]
+  license: "Custom"
+  copyright: "Terror in the Depths of the Fog by Akira Yamaoka"
+  source: "https://www.youtube.com/watch?v=a80z9Ubi2Cw"
+
 #Jukebox
 
 - files: ["m-dingaling_garbage_day.ogg"]
