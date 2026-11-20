@@ -1,0 +1,13 @@
+- type: traitCategory
+  id: MessageInterference
+  name: trait-category-message-interference
+
+- type: traitCategory
+  id: MessageInterferenceChanceMod
+  name: trait-category-message-interference-chance-mod
+  maxTraitPoints: 1
+
+- type: traitCategory
+  id: CharacterInterferenceChanceMod
+  name: trait-category-character-interference-chance-mod
+  maxTraitPoints: 1

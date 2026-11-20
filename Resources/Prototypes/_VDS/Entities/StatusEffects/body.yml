@@ -1,0 +1,86 @@
+# Base prototypes
+
+- type: entity
+  abstract: true
+  parent: MobStatusEffectBase
+  id: BaseCorruptMessageChanceModStatusEffect
+  name: random message corruption
+  components:
+  - type: CorruptMessageChanceModStatusEffect
+
+- type: entity
+  abstract: true
+  parent: MobStatusEffectBase
+  id: BaseCorruptCharacterChanceModStatusEffect
+  name: partial message corruption
+  components:
+  - type: CorruptCharacterChanceModStatusEffect
+
+# Corruption types
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: TechInterefenceStatusEffect
+  name: technological interference
+  components:
+  - type: CorruptTechMessageStatusEffect
+
+# Message corruption chances
+
+- type: entity
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance10TraitStatusEffect
+  components:
+  - type: CorruptMessageChanceModStatusEffect
+    chanceModifier: 0.1
+
+- type: entity
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance25TraitStatusEffect
+  components:
+  - type: CorruptMessageChanceModStatusEffect
+    chanceModifier: 0.25
+
+- type: entity
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance50TraitStatusEffect
+  components:
+  - type: CorruptMessageChanceModStatusEffect
+    chanceModifier: 0.5
+
+- type: entity
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance90TraitStatusEffect
+  components:
+  - type: CorruptMessageChanceModStatusEffect
+    chanceModifier: 0.9
+
+- type: entity
+  parent: BaseCorruptMessageChanceModStatusEffect
+  id: CorruptMessageChance100TraitStatusEffect
+  components:
+  - type: CorruptMessageChanceModStatusEffect
+    chanceModifier: 1.0
+
+# Character corruption chances
+
+- type: entity
+  parent: BaseCorruptCharacterChanceModStatusEffect
+  id: CorruptCharacterChance10StatusEffect
+  components:
+  - type: CorruptCharacterChanceModStatusEffect
+    chanceModifier: 0.10
+
+- type: entity
+  parent: BaseCorruptCharacterChanceModStatusEffect
+  id: CorruptCharacterChance25StatusEffect
+  components:
+  - type: CorruptCharacterChanceModStatusEffect
+    chanceModifier: 0.25
+
+- type: entity
+  parent: BaseCorruptCharacterChanceModStatusEffect
+  id: CorruptCharacterChance50StatusEffect
+  components:
+  - type: CorruptCharacterChanceModStatusEffect
+    chanceModifier: 0.50
