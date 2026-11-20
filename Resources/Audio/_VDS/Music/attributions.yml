@@ -279,7 +279,7 @@
 
 - files: ["residentevil_safe_haven.ogg"]
   license: "Custom"
-  copyright: "residentevil_safe_haven"
+  copyright: "Save Theme (Resident Evil Remake) by Capcom Sound Team"
   source: "https://www.youtube.com/watch?v=dLX6reRrD88"
 
 - files: ["robinson_crusoe.ogg"]
@@ -300,7 +300,7 @@
 - files: ["searchengine.ogg"]
   license: "Custom"
   copyright: "searchengine"
-  source: "https://unconscious.online"
+  source: "https://collectiveunconscious.neocities.org"
 
 - files: ["silence.ogg"]
   license: "Custom"
@@ -417,6 +417,16 @@
   copyright: "You're Not Supposed to Be Here by Valve"
   source: "https://www.youtube.com/watch?v=9bqLO9m2FzU"
 
+- files: ["terror_in_the_depths_of_the_fog.ogg"]
+  license: "Custom"
+  copyright: "Terror in the Depths of the Fog by Akira Yamaoka"
+  source: "https://www.youtube.com/watch?v=a80z9Ubi2Cw"
+
+- files: ["something_wrong_phys.ogg"]
+  license: "Custom"
+  copyright: "$omething_wrong.phys by Pumodi"
+  source: "https://www.youtube.com/watch?v=PiQKdt5Ek48"
+
 #Jukebox
 
 - files: ["m-dingaling_garbage_day.ogg"]
@@ -439,7 +449,7 @@
   copyright: "Kittens On The Moon by Jean-Jacques Perrey"
   source: "https://www.youtube.com/watch?v=CMT1knHCNqI"
 
-- files: ["m-engineers_hymn.ogg"]
+- files: ["m-firesong.ogg"]
   license: "Custom"
-  copyright: "The Engineer's Hymn by Leslie Fish"
-  source: "https://www.youtube.com/watch?v=V1Fn-ZdplMA"
+  copyright: "fire song by Wolfgun"
+  source: "https://wolfgun.bandcamp.com/track/fire-song"
